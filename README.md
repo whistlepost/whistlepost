@@ -1,4 +1,4 @@
 whistlepost
 ===========
 
-A publishing platform for blogs and news sites
+A platform for open communities
