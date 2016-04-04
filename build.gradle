@@ -38,6 +38,8 @@ repositories {
 }
 
 dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.3'
+
     bundle configurations.constellation$felix, // OSGi runtime
             configurations.constellation$webconsole, // OSGi dashboard application
             configurations.constellation$http, // embedded Jetty HTTP server
