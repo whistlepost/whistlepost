@@ -1,0 +1,11 @@
+sling:
+  image: apachesling/sling
+  mem_limit: 256m
+  ports:
+    - 8081:8080
+  volumes_from:
+    - sling-data
+sling-data:
+  image: tianon/true
+  volumes:
+    - /opt/sling/sling
