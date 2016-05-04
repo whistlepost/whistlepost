@@ -1,0 +1,2 @@
+include 'sling-analytics-lib'
+include 'sling-comments-lib'
