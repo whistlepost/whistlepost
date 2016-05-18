@@ -1,0 +1,4 @@
+{
+  "name": "sling-bootstrap-lib",
+  "dependencies": {"bootstrap":"3.3.6"}
+}
