@@ -10,9 +10,6 @@ COPY gradle gradle
 COPY sling-bootstrap-lib sling-bootstrap-lib
 COPY sling-comments-lib sling-comments-lib
 
-## Temporary hack..
-RUN mkdir -p sling-bootstrap-lib/build/classes/main && mkdir -p sling-comments-lib/build/classes/main
-
 ENTRYPOINT ["/app/gradlew"]
 
 CMD ["-q", "tasks", "--all"]
