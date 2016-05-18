@@ -86,7 +86,7 @@ A publishing platform based on Apache Sling
     }
 
     task startBundle << {
-        project.deployBundle.uri = "http://sling:8080/system/console/bundles/app.$project.name"
+        project.deployBundle.uri = "http://sling:8080/system/console/bundles/$project.group.$project.name"
         project.deployBundle.requestBody.clear()
         project.deployBundle.requestBody.action = 'start'
         tasks.deployBundle.execute()
