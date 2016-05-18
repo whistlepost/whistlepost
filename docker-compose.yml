@@ -1,11 +1,28 @@
+whistlepost:
+  build: .
+  links:
+    - sling
+  command: build deployBundle startBundle
+  volumes_from:
+    - gradle-cache
 sling:
   image: apachesling/sling
-  mem_limit: 256m
-  ports:
-    - 8081:8080
+  mem_limit: 512m
   volumes_from:
     - sling-data
 sling-data:
   image: tianon/true
   volumes:
     - /opt/sling/sling
+haproxy:
+  image: tutum/haproxy
+  links:
+    - sling
+  ports:
+    - "80:80"
+    - "1936:1936"
+  mem_limit: 134217728
+gradle-cache:
+  image: cogniteev/echo:latest
+  volumes:
+    - /root/.gradle
