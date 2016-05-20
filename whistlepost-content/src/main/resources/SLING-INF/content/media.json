@@ -1,0 +1,5 @@
+{
+  "title":"Whistlepost Media Library",
+  "sling:resourceType":"whistlepost/page",
+  "jcr:primaryType":"nt:unstructured"
+}
