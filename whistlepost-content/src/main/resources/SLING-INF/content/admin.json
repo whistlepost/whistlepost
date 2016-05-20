@@ -1,0 +1,21 @@
+{
+  "title":"Whistlepost Administration",
+  "sling:resourceType":"wp/page/admin",
+  "jcr:primaryType":"nt:unstructured",
+  "users": {
+    "sling:resourceType":"wp/page/user-list",
+    "1": {
+      "username": "fortuna",
+      "active": "true",
+      "groups": ["1"]
+    }
+  },
+  "groups": {
+    "1": {
+      "id": "administrators"
+    },
+    "2": {
+      "id": "editors"
+    }
+  }
+}
