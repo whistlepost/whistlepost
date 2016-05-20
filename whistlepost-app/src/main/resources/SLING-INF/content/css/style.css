@@ -1,0 +1,35 @@
+body {
+    /*min-height: 2000px;*/
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+
+.wp-navbar-header {
+    background-image: url("../images/logo.png");
+    background-size: 42px 42px;
+    background-repeat: no-repeat;
+}
+
+.wp-navbar-brand {
+    padding-left: 65px;
+}
+
+.wp-navbar-link-em a {
+    color: crimson !important;
+}
+
+.wp-list-nostyle {
+    list-style: none;
+    padding-left: 0;
+}
+
+a.page-section {
+    display: block;
+    position: relative;
+    top: -55px;
+    visibility: hidden;
+}
+
+footer {
+    text-align: center;
+}

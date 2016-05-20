@@ -1,5 +1,5 @@
 include 'sling-bootstrap-lib'
 //include 'sling-analytics-lib'
 include 'sling-comments-lib'
-//include 'sling-sample-app'
-//include 'sling-sample-content'
+include 'whistlepost-app'
+include 'whistlepost-content'
