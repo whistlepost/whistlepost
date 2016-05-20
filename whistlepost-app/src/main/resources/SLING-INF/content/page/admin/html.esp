@@ -12,7 +12,10 @@
     <title><%= currentNode.title %></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/libs/whistlepost/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/apps/wp/css/style.css" rel="stylesheet">
+    <link href="/apps/wp/css/grid.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">

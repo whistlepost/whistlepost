@@ -11,6 +11,7 @@
     }
   },
   "groups": {
+    "sling:resourceType":"wp/page/group-list",
     "1": {
       "id": "administrators"
     },
