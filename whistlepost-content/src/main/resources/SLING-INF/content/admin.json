@@ -3,6 +3,7 @@
   "sling:resourceType":"wp/page/admin",
   "jcr:primaryType":"nt:unstructured",
   "users": {
+    "title":"Users - Whistlepost Administration",
     "sling:resourceType":"wp/page/user-list",
     "1": {
       "username": "fortuna",
@@ -11,6 +12,7 @@
     }
   },
   "groups": {
+    "title":"Groups - Whistlepost Administration",
     "sling:resourceType":"wp/page/group-list",
     "1": {
       "id": "administrators"
