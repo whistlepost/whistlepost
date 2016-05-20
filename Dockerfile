@@ -9,6 +9,8 @@ COPY gradle gradle
 
 COPY sling-bootstrap-lib sling-bootstrap-lib
 COPY sling-comments-lib sling-comments-lib
+COPY whistlepost-app whistlepost-app
+COPY whistlepost-content whistlepost-content
 
 ENTRYPOINT ["/app/gradlew"]
 
