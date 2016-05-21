@@ -43,9 +43,17 @@
 
     <div class="container">
 
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Media Library</h1>
+          <p class="lead">Upload and manage your site media.</p>
+
+          <h2>Upload media</h2>
+          <form method="POST" action="/content/wp/media/library" enctype="multipart/form-data">
+            <input type="file" name="*"/>
+            <input type="submit" value="Upload"/>
+          </form>
+        </div>
       </div>
 
     </div><!-- /.container -->
