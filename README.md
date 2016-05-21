@@ -11,15 +11,17 @@ Whistlepost is built on the Apache Sling platform, which applies the mantra that
 
 Whistlepost uses gradle to build and bundles. The following tasks are the most commonly used:
 
-* build # rebuild and package bundle jars
-* deployBundle # upload bundle jars to the configured OSGi (e.g. Apache Sling) environment
-* startBundle # start installed bundles in the configured OSGi environment
+    build # rebuild and package bundle jars
+    
+    deployBundle # upload bundle jars to the configured OSGi (e.g. Apache Sling) environment
+    
+    startBundle # start installed bundles in the configured OSGi environment
 
 ## Docker
 
 Through containerisation of the deployment stack development and testing productivity is greatly improved. The following
 commands are most commonly used when using Docker:
 
-* docker-compose up -d # start Apache Sling and deploy bundles
-* docker-compose build # rebuild container images to include local changes
-* docker-compose run --rm whistlepost # re-deploy any changes into the running Apache Sling environment
+    docker-compose up -d # start Apache Sling and deploy bundles
+    
+    docker-compose build && docker-compose run --rm whistlepost # re-deploy any changes into the running Apache Sling environment
