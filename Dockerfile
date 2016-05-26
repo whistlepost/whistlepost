@@ -4,7 +4,7 @@ FROM java:openjdk-8-jdk
 WORKDIR /app
 
 # Copying all gradle files necessary to install gradle with gradlew
-COPY gradlew build.gradle settings.gradle ./
+COPY gradlew build.gradle settings.gradle gradle.properties ./
 COPY gradle gradle
 
 COPY sling-bootstrap-lib sling-bootstrap-lib
