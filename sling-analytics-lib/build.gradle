@@ -1,5 +1,5 @@
 jar {
     manifest {
-        instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/libs/whistlepost/analytics;overwrite:=true'
+        instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/libs/wp-analytics;overwrite:=true'
     }
 }
