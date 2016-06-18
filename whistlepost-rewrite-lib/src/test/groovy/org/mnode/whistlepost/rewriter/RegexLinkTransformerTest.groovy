@@ -14,7 +14,7 @@ class RegexLinkTransformerTest extends Specification {
     def setup() {
         transformer = [
                 tags       : [a: 'href', link: 'rel', img: 'src'],
-                linkPattern: ~/^\/content\/whistlepost(\/.*)$/,
+                linkPattern: ~ '^/content/whistlepost(/.*)$',
                 replacement: '$1'
         ]
     }

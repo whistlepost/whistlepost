@@ -5,6 +5,8 @@
     "paths": ["/content"],
     "contentTypes": ["text/html"],
     "extensions": ["html"],
-    "enabled": true
+    "enabled": true,
+    "transformerTypes": ["wp-link-rewriter"],
+    "order": 0
   }
 }

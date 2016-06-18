@@ -8,14 +8,12 @@ import org.apache.sling.rewriter.Transformer
 import org.apache.sling.rewriter.TransformerFactory
 import org.osgi.service.component.ComponentContext
 
-import java.util.regex.Pattern
-
 /**
  * Created by fortuna on 30/05/2016.
  */
 @Component(metatype = true, label = 'Whistlepost Link Transformer', description = 'Rewrites links in response data')
 @Service(value = TransformerFactory.class)
-class LinkTransformerFactory implements TransformerFactory {
+class LinkTransformerFactory extends RegexLinkTransformer implements TransformerFactory {
 
     @Property(value = 'wp-link-rewriter', propertyPrivate = true)
     private static final String PIPELINE_TYPE = 'pipeline.type';
@@ -26,19 +24,15 @@ class LinkTransformerFactory implements TransformerFactory {
     @Property(label = "Replacement link", description = "Replacement string for links", value='$1')
     private static final String REPLACEMENT_STRING = "replacement.string";
 
-    Map tags = [:]
-    Pattern linkPattern
-    String replacement
-
     @Activate
     protected void activate(ComponentContext ctx) {
-        tags = [a: 'href', link: 'rel', img: 'src']
-        linkPattern = /"$ctx.properties[$LINK_PATTERN]"/
+        tags = [a: 'href', link: 'href', img: 'src']
+        linkPattern = ~ ctx.properties[LINK_PATTERN]
         replacement = ctx.properties[REPLACEMENT_STRING];
     }
 
     @Override
     Transformer createTransformer() {
-        return new RegexLinkTransformer(tags: tags, linkPattern: linkPattern, replacement: replacement)
+        this
     }
 }
