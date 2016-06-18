@@ -1,0 +1,12 @@
+{
+  "wp-link-rewriter": {
+    "generatorType": "html-generator",
+    "serializerType": "html-serializer",
+    "paths": ["/content"],
+    "contentTypes": ["text/html"],
+    "extensions": ["html"],
+    "enabled": true,
+    "transformerTypes": ["wp-link-rewriter"],
+    "order": 0
+  }
+}
