@@ -1,6 +1,9 @@
 language: java
 jdk:
   - oraclejdk8
-  #- oraclejdk7
-  #- openjdk7
 sudo: false
+deploy:
+  provider: script
+  script: scripts/deploy.sh
+  on:
+    branch: master
