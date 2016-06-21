@@ -26,7 +26,7 @@ class LinkTransformerFactory extends RegexLinkTransformer implements Transformer
 
     @Activate
     protected void activate(ComponentContext ctx) {
-        tags = [a: 'href', link: 'href', img: 'src']
+        tags = [a: 'href', link: 'href', img: 'src', form: 'action']
         linkPattern = ~ ctx.properties[LINK_PATTERN]
         replacement = ctx.properties[REPLACEMENT_STRING];
     }
