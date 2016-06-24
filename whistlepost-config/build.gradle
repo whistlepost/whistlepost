@@ -1,5 +1,5 @@
 jar {
   manifest {
-    instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/apps/wp/install;overwrite:=true'
+    instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/apps/wp;overwrite:=true'
   }
 }
