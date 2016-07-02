@@ -1,0 +1,19 @@
+plugins {
+    id 'com.craigburke.bower-installer' version '2.5.1'
+}
+
+bower {
+    installBase = 'src/main/resources/SLING-INF/content/bower_components'
+
+    'react'('15.2.0')
+    'react-bootstrap'('0.29.5')
+}
+
+jar {
+    manifest {
+        instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/libs/wp-reactjs;overwrite:=true;ignoreImportProviders:="json"'
+    }
+}
+
+tasks.jar.dependsOn bowerInstall
+tasks.clean.dependsOn bowerClean
