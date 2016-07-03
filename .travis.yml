@@ -1,3 +1,6 @@
+cache:
+  directories:
+    - $HOME/.gradle
 language: java
 jdk:
   - oraclejdk8
