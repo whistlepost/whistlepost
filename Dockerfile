@@ -10,8 +10,10 @@ COPY gradle gradle
 COPY sling-bootstrap-lib sling-bootstrap-lib
 COPY sling-comments-lib sling-comments-lib
 COPY whistlepost-rewrite-lib whistlepost-rewrite-lib
+COPY wp-reactjs-lib wp-reactjs-lib
 COPY whistlepost-app whistlepost-app
 COPY whistlepost-content whistlepost-content
+COPY whistlepost-config whistlepost-config
 
 ENTRYPOINT ["/app/gradlew"]
 
