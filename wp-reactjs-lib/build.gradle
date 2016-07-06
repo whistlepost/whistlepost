@@ -5,12 +5,13 @@ plugins {
 bower {
     installBase = 'src/main/resources/SLING-INF/content/bower_components'
 
-    'bootstrap-css'('3.3.6')
+    'react'('15.2.0')
+    'react-bootstrap'('0.29.5')
 }
 
 jar {
     manifest {
-        instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/libs/wp-bootstrap;overwrite:=true;ignoreImportProviders:="json"'
+        instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/libs/wp-reactjs;overwrite:=true;ignoreImportProviders:="json"'
     }
 }
 
