@@ -18,7 +18,7 @@ class LinkTransformerFactory extends RegexLinkTransformer implements Transformer
     @Property(value = 'wp-link-rewriter', propertyPrivate = true)
     private static final String PIPELINE_TYPE = 'pipeline.type';
 
-    @Property(label = 'Link Pattern', description = 'Regular expression for matching links', value='^/content/wp(/.*)$')
+    @Property(label = 'Link Pattern', description = 'Regular expression for matching links', value='^/content(/wp/.*)$')
     private static final String LINK_PATTERN = "pattern.link";
 
     @Property(label = "Replacement link", description = "Replacement string for links", value='$1')
