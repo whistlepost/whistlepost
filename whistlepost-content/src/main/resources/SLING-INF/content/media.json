@@ -3,11 +3,6 @@
   "sling:resourceType":"wp/page/media",
   "jcr:primaryType":"nt:unstructured",
   "library": {
-    "sling:resourceType":"wp/block/media-list",
-    "1": {
-      "filename": "blah",
-      "type": "pdf",
-      "lastModified": "2016-05-20 14:06:00.000Z"
-    }
+    "sling:resourceType":"wp/block/media-list"
   }
 }
