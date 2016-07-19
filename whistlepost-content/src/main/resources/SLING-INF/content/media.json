@@ -4,5 +4,8 @@
   "jcr:primaryType":"nt:unstructured",
   "library": {
     "sling:resourceType":"wp/block/media-list"
+  },
+  "placeholder": {
+    "sling:resourceType":"wp/media/placeholder"
   }
 }

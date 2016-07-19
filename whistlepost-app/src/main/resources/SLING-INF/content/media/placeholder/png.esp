@@ -1,0 +1,1 @@
+<% sling.response.sendRedirect("https://placehold.it" + request.requestPathInfo.suffix); %>
