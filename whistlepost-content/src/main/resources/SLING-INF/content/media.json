@@ -5,6 +5,9 @@
   "library": {
     "sling:resourceType":"wp/block/media-list"
   },
+  "s3": {
+    "sling:resourceType":"wp/media/s3"
+  },
   "placeholder": {
     "sling:resourceType":"wp/media/placeholder"
   }
