@@ -1,0 +1,11 @@
+apply plugin: 'groovy'
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.3'
+}
+
+jar {
+    manifest {
+        instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/libs/wp-rss;overwrite:=true'
+    }
+}
