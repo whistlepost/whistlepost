@@ -8,7 +8,7 @@ def limit = request.requestPathInfo.suffix ? request.requestPathInfo.suffix.subs
 
 def rss = new XmlSlurper().parseText(rssFeed)
 rss.channel.item.list().take(limit).each {
-    out.write("<li><a href=\"$it.link\" title=\"${it.description.text()}\">$it.title</a></li>")
+    out.write("<li><a href=\"$it.link\" title=\"${it.description.text().replaceAll('"', '&quot;')}\"  data-html=\"true\" rel=\"tooltip\">$it.title</a></li>")
 }
 if (currentNode.hasProperty('htmlUrl')) {
     out.write("<li><a href=\"${currentNode.getProperty('htmlUrl').string}\">More..</a></li>")
