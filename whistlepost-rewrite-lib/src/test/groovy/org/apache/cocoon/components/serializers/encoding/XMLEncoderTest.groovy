@@ -18,5 +18,16 @@ class XMLEncoderTest extends Specification {
 
         then: 'the encoded form is as expected'
         encoded == encoder.encode((char) 127808)
+
+        /*
+         * Condition not satisfied:
+         *
+         * encoded == encoder.encode((char) 127808)
+         * |       |  |       |
+         * |       |  |       &#xF340;
+         * |       |  org.apache.cocoon.components.serializers.encoding.XMLEncoder@71d44a3[X-W3C-XML]
+         * |       false
+         * &#xD83C;&#xDF40;
+         */
     }
 }
