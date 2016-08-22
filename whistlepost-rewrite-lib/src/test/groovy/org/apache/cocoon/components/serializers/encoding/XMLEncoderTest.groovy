@@ -1,10 +1,12 @@
 package org.apache.cocoon.components.serializers.encoding
 
+import spock.lang.Ignore
 import spock.lang.Specification
 
 /**
  * Created by fortuna on 19/08/2016.
  */
+@Ignore
 class XMLEncoderTest extends Specification {
 
     XMLEncoder encoder = []
