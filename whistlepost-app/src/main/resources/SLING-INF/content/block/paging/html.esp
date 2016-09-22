@@ -1,4 +1,4 @@
-<nav aria-label="Page navigation">
+<nav aria-label="Page navigation" style="text-align: center;">
     <ul class="pagination">
     <%
         var pagedList = request.resourceResolver.resolve(request.requestPathInfo.suffix);
