@@ -4,17 +4,26 @@
         var pagedList = request.resourceResolver.resolve(request.requestPathInfo.suffix);
         var pageSize = currentNode["pageSize"];
         var total = currentNode["total"];
+        var pageCount = Math.ceil(parseFloat(total)/pageSize);
         var currentPage = request.requestPathInfo.selectors.length > 0 ? parseInt(request.requestPathInfo.selectors[0]) : 1;
-
-        out.print("<li><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>");
-        for (var i = 1; i <= Math.ceil(parseFloat(total)/pageSize); i++) {
+        
+        if (currentPage == 1) {
+            out.print("<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>");
+        } else {
+            out.print("<li><a href=\"" + pagedList.path + ".html/" + (currentPage-1) * pageSize + "-" + Math.min(total, (currentPage-1) * pageSize + pageSize) + "?p=" + (currentPage-1) + "\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>");
+        }
+        for (var i = 1; i <= pageCount; i++) {
             if (i == currentPage) {
                 out.print("<li class=\"active\"><span>" + i + " <span class=\"sr-only\">(current)</span></li>");
             } else {
                 out.print("<li><a href=\"" + pagedList.path + ".html/" + (i-1) * pageSize + "-" + Math.min(total, (i-1) * pageSize + pageSize) + "?p=" + i + "\">" + i + "</a></li>");
             }
         }
-        out.print("<li><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>");
+        if (currentPage == pageCount) {
+            out.print("<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>");
+        } else {
+            out.print("<li><a href=\"" + pagedList.path + ".html/" + (currentPage+1) * pageSize + "-" + Math.min(total, (currentPage+1) * pageSize + pageSize) + "?p=" + (currentPage+1) + "\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>");
+        }
     %>
     </ul>
 </nav>
