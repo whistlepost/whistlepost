@@ -6,7 +6,6 @@ import spock.lang.Specification
 /**
  * Created by fortuna on 19/08/2016.
  */
-@Ignore
 class XMLEncoderTest extends Specification {
 
     XMLEncoder encoder = []
@@ -19,7 +18,8 @@ class XMLEncoderTest extends Specification {
         def encoded = emoji.chars.collect {encoder.encode(it)}.join('')
 
         then: 'the encoded form is as expected'
-        encoded == encoder.encode((char) 127808)
+        //encoded == encoder.encode((char) 127808)
+        encoded == (char) 127808
 
         /*
          * Condition not satisfied:
