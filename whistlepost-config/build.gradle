@@ -1,7 +1,7 @@
 dependencies {
   embed 'org.codehaus.groovy:groovy-all:2.4.3', 'org.apache.sling:org.apache.sling.rewriter:1.1.2',
           'org.apache.sling:org.apache.sling.commons.html:1.0.0',
-          'org.apache.cocoon:cocoon-serializers-charsets:1.0.2'
+          'org.apache.cocoon:cocoon-serializers-charsets:1.0.3-SNAPSHOT'
 }
 
 bundle {

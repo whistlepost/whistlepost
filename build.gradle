@@ -47,6 +47,9 @@ subprojects {
         maven {
             url 'https://oss.sonatype.org/content/repositories/snapshots/'
         }
+        maven {
+            url 'https://repository.apache.org/snapshots'
+        }
     }
 
     group = 'org.mnode.whistlepost'
