@@ -1,0 +1,13 @@
+{
+  "title":"$projectName",
+  "sling:resourceType":"$projectId/footer",
+  "jcr:primaryType":"nt:unstructured",
+  "copyright": "2016 Waranga News, Inc.",
+  "banner": {
+    "sling:resourceType":"wnews/block/banner",
+    "jcr:primaryType":"nt:unstructured",
+    "title": "Accommodation",
+    "href": "/content/wnews/accommodation.html",
+    "blockHtml": "<img src=\"/wp/media/library/wnews/waranga-accommodation.png\"/>"
+  }
+}

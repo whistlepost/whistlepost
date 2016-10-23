@@ -1,0 +1,6 @@
+<!-- Top banner -->
+<%
+    if (currentNode.banner) {
+        sling.include(currentNode.banner + ".html");
+    }
+%>

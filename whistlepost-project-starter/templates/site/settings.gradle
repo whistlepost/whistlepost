@@ -1,0 +1,4 @@
+include '$projectId-app'
+include '$projectId-content'
+include '$projectId-config'
+include '$projectId-media'

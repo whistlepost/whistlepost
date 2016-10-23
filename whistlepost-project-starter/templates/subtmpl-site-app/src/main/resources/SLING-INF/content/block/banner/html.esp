@@ -1,0 +1,5 @@
+<div class="container">
+    <a href="<%= currentNode.href %>" title="<%= currentNode.title %>">
+        <span class="wnews-banner"><%= currentNode.blockHtml %></span>
+    </a>
+</div>
