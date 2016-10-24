@@ -34,7 +34,7 @@ The following project properties may also be overridden:
 A common approach is to use the `GRADLE_OPTS` environment variable to override project build settings. The following
 values are useful when building Whistlepost:
 
-* --parallel (execute build in parallel)
+* -Dorg.gradle.parallel (execute build in parallel)
 * 
 
 ## Docker
