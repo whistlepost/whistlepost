@@ -6,6 +6,7 @@ def defaultProjectId = props.projectName.toLowerCase().split().join('-')
 props.projectId = ask("Define value for 'projectId' [$defaultProjectId]: ", defaultProjectId, "projectId")
 
 processTemplates "README.md", props
+processTemplates "settings.gradle", props
 processTemplates "**/build.gradle", props
 
 new File(projectDir, 'site-app').renameTo(new File(projectDir, "$props.projectId-app"))
