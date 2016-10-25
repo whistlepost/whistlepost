@@ -1,0 +1,55 @@
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'org.figurate:gradle-bundle-plugin:1.0.1-SNAPSHOT'
+        classpath 'org._10ne.gradle:rest-gradle-plugin:0.4.2', 'org.apache.httpcomponents:httpmime:4.3.6'
+    }
+}
+
+subprojects {
+    apply plugin: 'bundle'
+    apply plugin: 'org.tenne.rest'
+
+    repositories {
+        mavenCentral()
+    }
+
+    task installBundle(type: org._10ne.gradle.rest.RestTask) {
+        client.encoder.putAt('multipart/form-data', { body ->
+            MultipartEntityBuilder multipartRequestEntity = MultipartEntityBuilder.create()
+            body.each { part ->
+                if (part.value instanceof File) {
+                    multipartRequestEntity.addBinaryBody(part.key, part.value).build()
+                } else {
+                    multipartRequestEntity.addTextBody(part.key, part.value).build()
+                }
+            }
+            multipartRequestEntity.build()
+        })
+
+        httpMethod = 'post'
+        contentType = 'multipart/form-data'
+        uri = "\$sling_url/system/console/bundles"
+        username = sling_username
+        password = sling_password
+        requestBody = [action: 'install', bundlestartlevel: '20', bundlefile: file("\$buildDir/libs/\$jar.archiveName")]
+        requestHeaders = ['User-Agent': project.name, 'Cache-Control': 'no-cache']
+    }
+
+    task startBundle << {
+        project.installBundle.uri = "\$sling_url/system/console/bundles/app.\$project.name"
+        project.installBundle.requestBody.clear()
+        project.installBundle.requestBody.action = 'start'
+        tasks.installBundle.execute()
+    }
+}

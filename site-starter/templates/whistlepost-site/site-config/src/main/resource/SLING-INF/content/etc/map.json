@@ -1,0 +1,20 @@
+{
+  "http": {
+    "any_$projectDomain.80": {
+      "sling:match": ".+\.wnews\.org\.au\.80",
+      "sling:internalRedirect": "/content/wnews",
+      "apps": {
+        "sling:internalRedirect": "/apps"
+      },
+      "libs": {
+        "sling:internalRedirect": "/libs"
+      },
+      "system": {
+        "sling:internalRedirect": "/system"
+      },
+      "wp": {
+        "sling:internalRedirect": "/content/wp"
+      }
+    }
+  }
+}

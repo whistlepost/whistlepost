@@ -1,0 +1,5 @@
+jar {
+  manifest {
+    instruction 'Sling-Initial-Content', 'SLING-INF/content;overwrite:=false'
+  }
+}
