@@ -8,6 +8,7 @@ COPY gradlew build.gradle settings.gradle gradle.properties ./
 COPY gradle gradle
 
 COPY extensions extensions
+COPY site-starter site-starter
 COPY whistlepost-app whistlepost-app
 COPY whistlepost-content whistlepost-content
 COPY whistlepost-config whistlepost-config
