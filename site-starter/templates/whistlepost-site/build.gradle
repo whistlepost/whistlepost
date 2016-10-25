@@ -24,7 +24,7 @@ subprojects {
         mavenCentral()
     }
 
-    task deployBundle(type: org._10ne.gradle.rest.RestTask) {
+    task installBundle(type: org._10ne.gradle.rest.RestTask) {
         client.encoder.putAt('multipart/form-data', { body ->
             MultipartEntityBuilder multipartRequestEntity = MultipartEntityBuilder.create()
             body.each { part ->
@@ -47,9 +47,9 @@ subprojects {
     }
 
     task startBundle << {
-        project.deployBundle.uri = "\$sling_url/system/console/bundles/app.\$project.name"
-        project.deployBundle.requestBody.clear()
-        project.deployBundle.requestBody.action = 'start'
-        tasks.deployBundle.execute()
+        project.installBundle.uri = "\$sling_url/system/console/bundles/app.\$project.name"
+        project.installBundle.requestBody.clear()
+        project.installBundle.requestBody.action = 'start'
+        tasks.installBundle.execute()
     }
 }

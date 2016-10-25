@@ -8,7 +8,7 @@ This project uses gradle to build and bundles. The following tasks are the most 
 
     build # rebuild and package bundle jars
     
-    deployBundle # upload bundle jars to the configured OSGi (e.g. Apache Sling) environment
+    installBundle # upload bundle jars to the configured OSGi (e.g. Apache Sling) environment
     
     startBundle # start installed bundles in the configured OSGi environment
 
@@ -25,6 +25,6 @@ The following project properties may also be overridden:
 Through containerisation of the deployment stack development and testing productivity is greatly improved. The following
 commands are most commonly used when using Docker:
 
-    docker-compose up -d # start Apache Sling and deploy bundles
+    docker-compose up -d # start Apache Sling and install bundles
     
-    docker-compose build && docker-compose run --rm ${projectId} # re-deploy any changes into the running Apache Sling environment
+    docker-compose build && docker-compose run --rm ${projectId} # reinstall any changes into the running Apache Sling environment
