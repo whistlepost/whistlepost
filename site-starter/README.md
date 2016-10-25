@@ -1,24 +1,26 @@
-Lazybones template project
---------------------------
+# Whistlepost Site Starter
 
-You have just created a simple project for managing your own Lazybones project
-templates. You get a build file (`build.gradle`) and a directory for putting
-your templates in (`templates`).
+The Site Starter is a collection of [lazybones] templates used to bootstrap Whistlepost 
+site projects and components.
 
-To get started, simply create new directories under the `templates` directory
-and put the source of the different project templates into them. You can then
-package and install the templates locally with the command:
+## Prerequisites
 
-    ./gradlew installAllTemplates
+To use the Site Starter you must first install [lazybones]. The easiest way to do this
+is to install [sdkman] and run:
 
-You'll then be able to use Lazybones to create new projects from these templates.
-If you then want to distribute them, you will need to set up a Bintray account,
-populate the `repositoryUrl`, `repositoryUsername` and `repositoryApiKey` settings
-in `build.gradle`, add new Bintray packages in the repository via the Bintray
-UI, and finally publish the templates with
+    $ sdk install lazybones
 
-    ./gradlew publishAllTemplates
+## Templates
 
-You can find out more about creating templates on [the GitHub wiki][1].
+The following templates are available for creating a new Whistlepost site.
 
-[1]: https://github.com/pledbrook/lazybones/wiki/Template-developers-guide
+**Whistlepost Site**
+    
+This template creates a [gradle] project structure that includes three (3) sub-projects.
+    
+    
+[lazybones]: https://github.com/pledbrook/lazybones
+
+[sdkman]: http://sdkman.io/
+
+[gradle]: https://gradle.org/
