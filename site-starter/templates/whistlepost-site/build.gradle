@@ -42,7 +42,7 @@ subprojects {
         uri = "\$sling_url/system/console/bundles"
         username = sling_username
         password = sling_password
-        requestBody = [action: 'install', bundlestartlevel: '20', bundlefile: file("\$buildDir/libs/\$jar.archiveName")]
+        requestBody = [action: 'install', bundlestart: bundle_autostart, bundlestartlevel: '20', bundlefile: file("\$buildDir/libs/\$jar.archiveName")]
         requestHeaders = ['User-Agent': project.name, 'Cache-Control': 'no-cache']
     }
 
