@@ -1,5 +1,3 @@
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-
 buildscript {
     repositories {
         mavenCentral()
@@ -11,39 +9,25 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'org.figurate:gradle-bundle-plugin:1.0.1-SNAPSHOT'
-        classpath 'org._10ne.gradle:rest-gradle-plugin:0.4.2', 'org.apache.httpcomponents:httpmime:4.3.6'
+        classpath 'org.figurate:gradle-bundle-plugin:1.0.1-feature-bundle-install-SNAPSHOT'
     }
 }
 
 subprojects {
     apply plugin: 'bundle'
-    apply plugin: 'org.tenne.rest'
 
     repositories {
         mavenCentral()
     }
 
-    task installBundle(type: org._10ne.gradle.rest.RestTask) {
-        client.encoder.putAt('multipart/form-data', { body ->
-            MultipartEntityBuilder multipartRequestEntity = MultipartEntityBuilder.create()
-            body.each { part ->
-                if (part.value instanceof File) {
-                    multipartRequestEntity.addBinaryBody(part.key, part.value).build()
-                } else {
-                    multipartRequestEntity.addTextBody(part.key, part.value).build()
-                }
-            }
-            multipartRequestEntity.build()
-        })
-
-        httpMethod = 'post'
-        contentType = 'multipart/form-data'
+    task installBundle(type: org.figurate.gradle.plugin.bundle.BundleInstallTask) {
         uri = "\$sling_url/system/console/bundles"
         username = sling_username
         password = sling_password
-        requestBody = [action: 'install', bundlestartlevel: '20', bundlefile: file("\$buildDir/libs/\$jar.archiveName")]
-        requestHeaders = ['User-Agent': project.name, 'Cache-Control': 'no-cache']
+        bundlestart = bundle_autostart
+        bundlestartlevel = 20
+        bundlefile = file("$buildDir/libs/$jar.archiveName")
+        userAgent = project.name
     }
 
     task startBundle << {
