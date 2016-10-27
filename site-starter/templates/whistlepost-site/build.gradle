@@ -9,7 +9,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'org.figurate:gradle-bundle-plugin:1.0.1-feature-bundle-install-SNAPSHOT'
+        classpath 'org.figurate:gradle-bundle-plugin:1.0.1-SNAPSHOT'
     }
 }
 
