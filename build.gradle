@@ -62,8 +62,10 @@ A publishing platform based on Apache Sling
         uri = "http://$sling_host:$sling_port/system/console/bundles"
         username = sling_username
         password = sling_password
-        requestBody = [action: 'install', bundlestart: 'true', bundlestartlevel: '20', bundlefile: file("$buildDir/libs/$jar.archiveName")]
-        requestHeaders = ['User-Agent': project.name, 'Cache-Control': 'no-cache']
+        bundlestart = true
+        bundlestartlevel = 20
+        bundlefile = file("$buildDir/libs/$jar.archiveName")
+        userAgent = project.name
     }
 
     task startBundle << {
