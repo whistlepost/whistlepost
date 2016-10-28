@@ -28,7 +28,7 @@ scmVersion {
     versionCreator 'versionWithBranch'
 }
 
-subprojects {
+configure(subprojects.findAll {it.name ==~ /^(whistlepost-(app|config|content)|extensions\/.*)/}) {
 
     apply plugin: 'maven'
     apply plugin: 'signing'
