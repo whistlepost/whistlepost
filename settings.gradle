@@ -1,10 +1,18 @@
+def extensions = [
+    'sling-bootstrap-lib',
+    'sling-analytics-lib',
+    'sling-comments-lib',
+    'whistlepost-rewrite-lib',
+    'whistlepost-rss-lib'
+    //'wp-reactjs-lib'
+]
+
+include(extensions as String[])
+rootProject.children.each { extension ->
+    extension.projectDir = new File("$rootDir/extensions/$extension.name")
+}
+
 include 'whistlepost-app'
 include 'whistlepost-content'
 include 'whistlepost-config'
-include 'extensions/sling-bootstrap-lib'
-include 'extensions/sling-analytics-lib'
-include 'extensions/sling-comments-lib'
-include 'extensions/whistlepost-rewrite-lib'
-include 'extensions/whistlepost-rss-lib'
-//include 'extensions/wp-reactjs-lib'
 include 'site-starter'
