@@ -1,6 +1,24 @@
 # ${projectName}
 
-A site for sharing common emoji phrases
+Description: This is a placeholder description for a [Whistlepost](http://whistlepost.org) site project.
+
+## Subprojects
+
+This project consists of three (3) sub-projects that comprise the entire site.
+
+### ${projectId}-app
+
+The site application code resides in this project. HTML, CSS and JavaScript customisations may be
+implemented here.
+
+### ${projectId}-config
+
+Root-level site configuration can be found in this project. This will include things like mapping (/etc/map)
+
+### ${projectId}-content
+
+This project contains all the site content that is rendered using the application code.
+
 
 ## Build
 
