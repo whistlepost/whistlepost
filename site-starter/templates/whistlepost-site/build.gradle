@@ -9,7 +9,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'org.figurate:gradle-bundle-plugin:1.0.1-feature-bundle-install-SNAPSHOT'
+        classpath 'org.figurate:gradle-bundle-plugin:1.0.1-SNAPSHOT'
     }
 }
 
@@ -20,20 +20,9 @@ subprojects {
         mavenCentral()
     }
 
-    task installBundle(type: org.figurate.gradle.plugin.bundle.BundleInstallTask) {
+    bundleInstall {
         uri = "\$sling_url/system/console/bundles"
         username = sling_username
         password = sling_password
-        bundlestart = bundle_autostart
-        bundlestartlevel = 20
-        bundlefile = file("$buildDir/libs/$jar.archiveName")
-        userAgent = project.name
-    }
-
-    task startBundle << {
-        project.installBundle.uri = "\$sling_url/system/console/bundles/app.\$project.name"
-        project.installBundle.requestBody.clear()
-        project.installBundle.requestBody.action = 'start'
-        tasks.installBundle.execute()
     }
 }
