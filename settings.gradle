@@ -1,8 +1,3 @@
-include 'whistlepost-app'
-include 'whistlepost-content'
-include 'whistlepost-config'
-include 'site-starter'
-
 def extensions = [
     'sling-bootstrap-lib',
     'sling-analytics-lib',
@@ -16,3 +11,8 @@ include(extensions as String[])
 rootProject.children.each { extension ->
     extension.projectDir = new File("$rootDir/extensions/$extension.name")
 }
+
+include 'whistlepost-app'
+include 'whistlepost-content'
+include 'whistlepost-config'
+include 'site-starter'
