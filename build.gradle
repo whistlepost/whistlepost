@@ -59,7 +59,7 @@ A publishing platform based on Apache Sling
     tasks.processResources.dependsOn mkClassesDir
 
     bundleInstall {
-        uri = "http://$sling_host:$sling_port/system/console/bundles"
+        uri = "$sling_url/system/console/bundles"
         username = sling_username
         password = sling_password
     }
