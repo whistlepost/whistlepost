@@ -9,5 +9,8 @@
     "jcr:primaryType":"sling:OsgiConfig",
     "username": "admin",
     "password": "notadmin"
+  },
+  "org.apache.sling.rewriter.impl.components.HtmlSerializerFactory": {
+    "doctype-default": "xhtml5"
   }
 }
