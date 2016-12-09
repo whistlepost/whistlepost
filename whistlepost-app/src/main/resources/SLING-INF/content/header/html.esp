@@ -15,6 +15,7 @@
                 <li class="<%= request.requestPathInfo.suffix == '/admin' ? 'active' : '' %>"><a href="/content/wp/admin.html">Settings</a></li>
                 <li class="<%= request.requestPathInfo.suffix == '/users' ? 'active' : '' %>"><a href="/content/wp/admin/users.html">Users</a></li>
                 <li class="<%= request.requestPathInfo.suffix == '/groups' ? 'active' : '' %>"><a href="/content/wp/admin/groups.html">Groups</a></li>
+                <li class="<%= request.requestPathInfo.suffix == '/plugins' ? 'active' : '' %>"><a href="/content/wp/admin/plugins.html">Plugins</a></li>
                 <li class="wp-navbar-link-em dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Media Library <span class="caret"></span></a>
                     <ul class="dropdown-menu">
