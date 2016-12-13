@@ -18,11 +18,11 @@ import org.apache.felix.scr.annotations.Property
 import org.apache.felix.scr.annotations.Service
 import org.osgi.service.component.ComponentContext
 
-@Component(immediate = true, metatype = false, label = 'Whistlepost CORS Filter', description = 'Applies CORS headers where applicable')
+@Component(metatype = true, label = 'Whistlepost CORS Filter', description = 'Applies CORS headers where applicable')
 @Service(value = Filter.class)
-@Property(name = 'service.description', value = 'Whistlepost CORS Filter')
-@Property(name = "service.vendor", value = "Micronode")
-@Property(name = "sling.filter.scope", value = "request")
+@Property(name = 'service.description', value = 'Whistlepost CORS Filter', propertyPrivate = true)
+@Property(name = "service.vendor", value = "Micronode", propertyPrivate = true)
+@Property(name = "sling.filter.scope", value = "request", propertyPrivate = true)
 class CorsFilter implements Filter {
 
     @Property(label = 'Origin Pattern', description = 'Regular expression for matching request origin', value = /^.*\.example\.com$/)
