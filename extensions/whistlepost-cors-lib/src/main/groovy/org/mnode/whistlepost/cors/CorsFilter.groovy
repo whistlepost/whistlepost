@@ -41,10 +41,10 @@ class CorsFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         String origin = request.getHeader("Origin");
-        if (origin ==~ originPattern) {
+        //if (origin ==~ originPattern) {
             response.addHeader("Access-Control-Allow-Origin", origin);
             response.addHeader("Access-Control-Allow-Methods", 'GET, POST, OPTIONS')
-        }
+        //}
         chain.doFilter(request, response)
     }
     
