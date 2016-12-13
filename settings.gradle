@@ -3,8 +3,9 @@ def extensions = [
     'sling-analytics-lib',
     'sling-comments-lib',
     'whistlepost-rewrite-lib',
-    'whistlepost-rss-lib'
+    'whistlepost-rss-lib',
     //'wp-reactjs-lib'
+    'whistlepost-cors-lib'
 ]
 
 include(extensions as String[])
