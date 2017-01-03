@@ -1,3 +1,8 @@
+<%
+  /* hard-code the content type for error page as it may be accessed without an html extension */
+  response.contentType = "text/html"
+  response.status = 404
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
