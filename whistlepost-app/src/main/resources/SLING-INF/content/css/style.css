@@ -33,3 +33,10 @@ a.page-section {
 footer {
     text-align: center;
 }
+
+.wp-logo-bg {
+    background-image: url("../images/logo-60.png");
+    background-size: 48px;
+    background-repeat: no-repeat;
+    padding-left: 70px;
+}

@@ -5,7 +5,8 @@ def extensions = [
     'whistlepost-rewrite-lib',
     'whistlepost-rss-lib',
     //'wp-reactjs-lib'
-    'whistlepost-cors-lib'
+    'whistlepost-cors-lib',
+    'whistlepost-errorhandler-lib'
 ]
 
 include(extensions as String[])
