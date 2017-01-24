@@ -13,5 +13,9 @@
   "org.apache.sling.rewriter.impl.components.HtmlSerializerFactory": {
     "jcr:primaryType":"sling:OsgiConfig",
     "doctype-default": "xhtml5"
+  },
+  "org.apache.sling.jcr.resource.internal.JcrResourceResolverFactoryImpl": {
+    "jcr:primaryType":"sling:OsgiConfig",
+    "resource.resolver.mapping": ["/:/", "/content/:/", "/system/docroot/:/", "/content/wp/admin.html>/index.html"]
   }
 }
