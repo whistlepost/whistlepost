@@ -49,7 +49,7 @@
 
       <div class="starter-template">
         <h1>Whistlepost Installed Successfully</h1>
-        <p class="lead">Click <a href="/wp/admin">here</a> to administer the site.</p>
+        <p class="lead">Click <a href="/wp/admin.html">here</a> to administer the site.</p>
       </div>
 
     </div><!-- /.container -->
