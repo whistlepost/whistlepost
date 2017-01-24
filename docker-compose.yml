@@ -2,7 +2,7 @@ whistlepost:
   build: .
   links:
     - sling
-  command: build deployBundle startBundle
+  command: build bundleInstall
   volumes_from:
     - gradle-cache
 sling:

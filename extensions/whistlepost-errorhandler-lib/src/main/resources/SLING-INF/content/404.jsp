@@ -1,20 +1,18 @@
-<%
-  /* hard-code the content type for error page as it may be accessed without an html extension */
-  response.contentType = "text/html"
-  response.status = 404
-%>
 <!DOCTYPE html>
+<%@page session="false"%>
+<%@taglib prefix="sling" uri="http://sling.apache.org/taglibs/sling/1.0"%>
+<% response.setStatus(404); %>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/apps/wp/images/favicon.ico">
+    <link rel="icon" href="../../favicon.ico">
 
-    <title><%= currentNode.title %></title>
+    <title>Page Not Found (404) - Whistlepost</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/libs/wp-bootstrap/bower_components/bootstrap-css/bootstrap.min.css" rel="stylesheet">
@@ -34,27 +32,27 @@
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <!-- Sling -->
     <script src="/system/sling.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <% sling.include("header.html/" + currentNode.name); %>
+<%-- sling.include("header.html/" + currentNode.name); --%>
 
-    <div class="container">
+<div class="container">
 
-      <div class="starter-template">
-        <h1>Administration Pages</h1>
-        <p class="lead">Configure your site preferences here.<br> Hover over question marks for context-sensitive help.</p>
-      </div>
+    <div class="starter-template wp-logo-bg">
+        <h1>Requested Page Not Found</h1>
+        <a href="javascript:history.go(-1);">Return to previous page</a>
+    </div>
 
-    </div><!-- /.container -->
+</div><!-- /.container -->
 
-    <% sling.include("footer.html"); %>
-  </body>
+<%-- sling.include("footer.html"); --%>
+</body>
 </html>
