@@ -48,8 +48,8 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Administration Pages</h1>
-        <p class="lead">Configure your site preferences here.<br> Hover over question marks for context-sensitive help.</p>
+        <h1>Whistlepost Installed Successfully</h1>
+        <p class="lead">Click <a href="/wp/admin">here</a> to administer the site.</p>
       </div>
 
     </div><!-- /.container -->
