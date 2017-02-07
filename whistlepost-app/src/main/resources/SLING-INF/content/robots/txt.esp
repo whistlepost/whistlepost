@@ -1,8 +1,8 @@
 User-agent: <%= currentNode["user-agent"] %>
 <%
-  var allow = currentNode["allow"];
-  for (int i = 0; i < allow.length; i++) {
-    out.println("Allow: " + allow[i]);
+  var allowed = currentNode["allow"];
+  for (int i = 0; i < allowed.length; i++;) {
+    out.println("Allow: " + allowed[i]);
   }
 %>
 Sitemap: <%= currentNode["sitemap"] %>
