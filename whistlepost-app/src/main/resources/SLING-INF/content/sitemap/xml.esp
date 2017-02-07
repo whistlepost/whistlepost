@@ -11,7 +11,7 @@
   
   var uris = currentNode["uris"];
   for (var i = 0; i < uris.length; i++) {
-    out.println("<url><loc>" + uris[i] + "</loc><changefreq>" + changefreq + "</changefreq></url>");
+    out.println("<url><loc>" + urlBase + uris[i] + "</loc><changefreq>" + changefreq + "</changefreq></url>");
   }
 %>
 </urlset>
