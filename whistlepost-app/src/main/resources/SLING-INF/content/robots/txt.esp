@@ -1,0 +1,7 @@
+User-agent: <%= currentNode["user-agent"] %>
+<%
+  for (allow in currentNode["allows"]) {
+    out.println("Allow: " + allow);
+  }
+%>
+Sitemap: <%= currentNode["sitemap"] %>
