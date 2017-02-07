@@ -15,7 +15,7 @@ sling-data:
   volumes:
     - /opt/sling/sling
 haproxy:
-  image: tutum/haproxy
+  image: 'dockercloud/haproxy:latest'
   links:
     - sling
   ports:
