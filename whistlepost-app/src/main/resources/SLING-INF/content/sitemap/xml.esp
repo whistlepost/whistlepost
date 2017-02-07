@@ -9,8 +9,9 @@
   var urlBase = currentNode["url-base"];
   var changefreq = currentNode["change-frequency"];
   
-  for (uri in currentNode["uris"]) {
-    out.println("<url><loc>" + uri + "</loc><changefreq>" + changefreq + "</changefreq></url>");
+  var uris = currentNode["uris"];
+  for (int i = 0; i < uris.length; i++) {
+    out.println("<url><loc>" + uris[i] + "</loc><changefreq>" + changefreq + "</changefreq></url>");
   }
 %>
 </urlset>
