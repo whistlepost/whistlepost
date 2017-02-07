@@ -1,7 +1,8 @@
 User-agent: <%= currentNode["user-agent"] %>
 <%
   var allowed = currentNode["allow"];
-  for (int i = 0; i < allowed.length; i++;) {
+  var len = allowed.length;
+  for (int i = 0; i < len; i++) {
     out.println("Allow: " + allowed[i]);
   }
 %>
