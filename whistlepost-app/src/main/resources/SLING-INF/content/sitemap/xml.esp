@@ -10,8 +10,7 @@
   var changefreq = currentNode["change-frequency"];
   
   var uris = currentNode["uris"];
-  var len = uris.length;
-  for (int i = 0; i < len; i++) {
+  for (var i = 0; i < uris.length; i++) {
     out.println("<url><loc>" + uris[i] + "</loc><changefreq>" + changefreq + "</changefreq></url>");
   }
 %>
