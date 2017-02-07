@@ -10,7 +10,7 @@
   var changefreq = currentNode["change-frequency"];
   
   for (uri in currentNode["uris"]) {
-    out.println("<url><loc>" + uri.location + "</loc><changefreq>" + changefreq + "</changefreq></url>");
+    out.println("<url><loc>" + uri + "</loc><changefreq>" + changefreq + "</changefreq></url>");
   }
 %>
 </urlset>

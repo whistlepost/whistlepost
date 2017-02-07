@@ -1,7 +1,7 @@
 User-agent: <%= currentNode["user-agent"] %>
 <%
-  for (allow in currentNode["allows"]) {
-    out.println("Allow: " + allow);
+  for (allowed in currentNode["allow"]) {
+    out.println("Allow: " + allowed);
   }
 %>
 Sitemap: <%= currentNode["sitemap"] %>
