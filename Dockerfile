@@ -1,4 +1,4 @@
-FROM java:openjdk-8-jdk
+FROM openjdk:8
 
 # Set the WORKDIR. All following commands will be run in this directory.
 WORKDIR /app
