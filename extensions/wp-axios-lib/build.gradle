@@ -1,0 +1,18 @@
+plugins {
+    id 'com.craigburke.bower-installer' version '2.5.1'
+}
+
+bower {
+    installBase = 'src/main/resources/SLING-INF/content/bower_components'
+
+    'axios'('0.16.1')
+}
+
+jar {
+    manifest {
+        instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/libs/wp-axios;overwrite:=true;ignoreImportProviders:="json"'
+    }
+}
+
+tasks.jar.dependsOn bowerInstall
+tasks.clean.dependsOn bowerClean
