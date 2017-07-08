@@ -16,6 +16,6 @@
   },
   "org.apache.sling.jcr.resource.internal.JcrResourceResolverFactoryImpl": {
     "jcr:primaryType":"sling:OsgiConfig",
-    "resource.resolver.mapping": ["/:/", "/content/:/", "/system/docroot/:/", "/content/wp/index.html>/index2.html"]
+    "resource.resolver.mapping": ["/:/", "(?!/content/wp/)/content/[a-zA-Z0-9]+/:/", "/content/:/", "/system/docroot/:/", "/content/wp/index.html>/index2.html"]
   }
 }
