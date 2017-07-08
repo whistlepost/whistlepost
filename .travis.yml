@@ -9,4 +9,4 @@ deploy:
   provider: script
   script: scripts/install.sh
   on:
-    branch: ^release/.*
+    tags: true
