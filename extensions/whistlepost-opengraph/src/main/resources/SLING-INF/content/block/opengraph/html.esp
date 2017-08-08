@@ -1,3 +1,10 @@
+<meta property="og:url" content="<%= resource.resourceResolver.map(request, currentNode.path) %>.html" />
+<% if (currentNode.tile) { %>
+<meta property="og:title" content="<%= currentNode.title %>" />
+<% } %>
+<% if (currentNode.type) { %>
+<meta property="og:type" content="<%= currentNode.type %>" />
+<% } %>
 <% if (currentNode.media) { %>
 <meta property="og:image" content="<%= resource.resourceResolver.map(request, '/wp/media/' + currentNode.media) %>" />
 <% } %>
