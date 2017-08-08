@@ -1,10 +1,15 @@
 <meta property="og:url" content="<%= resource.resourceResolver.map(request, currentNode.path) %>.html" />
-<% if (currentNode.tile) { %>
-<meta property="og:title" content="<%= currentNode.title %>" />
+<%
+    var title = resource.valueMap.get('title', resource.parent.valueMap.get('title'));
+    var type = resource.valueMap.get('type', resource.parent.valueMap.get('type'));
+    var media = resource.valueMap.get('media', resource.parent.valueMap.get('media'));
+%>
+<% if (tile) { %>
+<meta property="og:title" content="<%= title %>" />
 <% } %>
-<% if (currentNode.type) { %>
-<meta property="og:type" content="<%= currentNode.type %>" />
+<% if (type) { %>
+<meta property="og:type" content="<%= type %>" />
 <% } %>
-<% if (currentNode.media) { %>
-<meta property="og:image" content="<%= resource.resourceResolver.map(request, '/wp/media/' + currentNode.media) %>" />
+<% if (media) { %>
+<meta property="og:image" content="<%= resource.resourceResolver.map(request, '/wp/media/' + media) %>" />
 <% } %>
