@@ -1,7 +1,7 @@
 <meta property="og:url" content="<%= resource.resourceResolver.map(request, resource.path) %>.html" />
 <%
     var title = resource.valueMap.get('title', resource.parent.valueMap.get('title'));
-    var type = resource.valueMap.get('type', resource.parent.valueMap.get('type'));
+    var type = resource.valueMap.get('opengraph_type', resource.parent.valueMap.get('opengraph_type'));
     var media = resource.valueMap.get('media', resource.parent.valueMap.get('media'));
 %>
 <% if (tile) { %>
