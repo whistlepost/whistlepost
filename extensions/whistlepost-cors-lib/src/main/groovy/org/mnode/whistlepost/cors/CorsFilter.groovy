@@ -1,22 +1,15 @@
 package org.mnode.whistlepost.cors
 
-import java.util.regex.Pattern
-
-import javax.servlet.Filter
-import javax.servlet.FilterConfig
-import javax.servlet.FilterChain
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
-import javax.servlet.ServletRequest
-import javax.servlet.ServletResponse
-import javax.servlet.ServletException
-
 import org.apache.felix.scr.annotations.Activate
 import org.apache.felix.scr.annotations.Component
-import org.apache.felix.scr.annotations.Properties
 import org.apache.felix.scr.annotations.Property
 import org.apache.felix.scr.annotations.Service
 import org.osgi.service.component.ComponentContext
+
+import javax.servlet.*
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
+import java.util.regex.Pattern
 
 @Component(metatype = true, label = 'Whistlepost CORS Filter', description = 'Applies CORS headers where applicable')
 @Service(value = Filter.class)
@@ -32,7 +25,7 @@ class CorsFilter implements Filter {
 
     @Activate
     protected void activate(ComponentContext ctx) {
-        originPattern =~ ctx.properties[ORIGIN_PATTERN]
+        originPattern = ~ ctx.properties[ORIGIN_PATTERN]
     }
     
     void init(FilterConfig config) {}

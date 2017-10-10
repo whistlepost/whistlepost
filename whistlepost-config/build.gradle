@@ -2,7 +2,9 @@ dependencies {
   embed 'org.codehaus.groovy:groovy-all:2.4.3', 'org.apache.sling:org.apache.sling.rewriter:1.1.2',
           'org.apache.sling:org.apache.sling.commons.html:1.0.0',
           'org.apache.cocoon:cocoon-serializers-charsets:1.0.3-SNAPSHOT',
-          'org.apache.sling:org.apache.sling.urlrewriter:0.0.2', 'org.apache.servicemix.bundles:org.apache.servicemix.bundles.urlrewritefilter:4.0.4_1'
+          'org.apache.sling:org.apache.sling.urlrewriter:0.0.2',
+          'org.apache.servicemix.bundles:org.apache.servicemix.bundles.urlrewritefilter:4.0.4_1',
+          'org.apache.sling:org.apache.sling.commons.osgi:2.4.0'
 }
 
 bundle {
