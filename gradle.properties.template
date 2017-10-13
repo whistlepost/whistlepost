@@ -1,0 +1,9 @@
+sling_url=http://sling:8080
+sling_username=admin
+sling_password=admin
+
+sonatype_username=
+sonatype_password=
+
+bintray_user=
+bintray_key=
