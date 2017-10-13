@@ -6,7 +6,10 @@ def extensions = [
     'whistlepost-rss-lib',
     //'wp-reactjs-lib'
     'whistlepost-cors-lib',
-    'whistlepost-errorhandler-lib'
+    'whistlepost-errorhandler-lib',
+    'whistlepost-headers-lib',
+//    'whistlepost-jsonld',
+    'whistlepost-opengraph'
 ]
 
 include(extensions as String[])

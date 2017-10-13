@@ -1,0 +1,14 @@
+apply plugin: 'groovy'
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.3',
+            'javax.servlet:javax.servlet-api:3.1.0',
+            'org.apache.sling:org.apache.sling.commons.osgi:2.4.0'
+}
+
+jar {
+    manifest {
+        instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/libs/wp-headers;overwrite:=true'
+        instruction 'Service-Component', 'OSGI-INF/org.mnode.whistlepost.headers.HeadersFilter.xml'
+    }
+}

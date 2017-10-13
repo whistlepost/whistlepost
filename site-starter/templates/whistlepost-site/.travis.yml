@@ -4,6 +4,6 @@ jdk:
 sudo: false
 deploy:
   provider: script
-  script: scripts/deploy.sh
+  script: scripts/install.sh
   on:
     branch: master
