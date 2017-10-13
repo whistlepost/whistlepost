@@ -36,6 +36,7 @@ configure(subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}) {
 
     apply plugin: 'maven'
     apply plugin: 'maven-publish'
+    apply plugin: 'jacoco'
     apply plugin: 'signing'
     apply plugin: 'bundle'
 
@@ -69,6 +70,13 @@ A publishing platform based on Apache Sling
         password = sling_password
     }
 
+    jacocoTestReport {
+        reports {
+            xml.enabled true
+            html.enabled false
+        }
+    }
+
     javadoc {
         if (JavaVersion.current().isJava8Compatible()) {
             options.addStringOption('Xdoclint:none', '-quiet')
@@ -91,21 +99,21 @@ A publishing platform based on Apache Sling
         archives sourcesJar
     }
 
+    signing {
+        required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
+        sign configurations.archives
+    }
+
     ext {
         isReleaseVersion = !version.endsWith("SNAPSHOT")
 
         // sonatype credentials
-        sonatypeUsername = project.hasProperty('sonatype_username') ? project.getProperty('sonatype_username') : ''
-        sonatypePassword = project.hasProperty('sonatype_password') ? project.getProperty('sonatype_password') : ''
+        sonatype_username = project.hasProperty('sonatype_username') ? project.getProperty('sonatype_username') : ''
+        sonatype_password = project.hasProperty('sonatype_password') ? project.getProperty('sonatype_password') : ''
 
         // bintray credentials
         bintray_user = project.hasProperty('bintray_user') ? project.getProperty('bintray_user') : ''
         bintray_key = project.hasProperty('bintray_key') ? project.getProperty('bintray_key') : ''
-    }
-
-    signing {
-        required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
-        sign configurations.archives
     }
 
     uploadArchives {
