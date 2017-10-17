@@ -1,0 +1,6 @@
+{
+  "title":"@projectName@",
+  "sling:resourceType":"/libs/wp-analytics",
+  "gaTrackingId": "UA-XXXXXX-XX",
+  "jcr:primaryType":"nt:unstructured"
+}

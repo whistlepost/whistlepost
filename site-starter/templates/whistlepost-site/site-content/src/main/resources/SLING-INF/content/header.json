@@ -1,9 +1,9 @@
 {
-  "title":"$projectName",
-  "sling:resourceType":"$projectId/header",
+  "title":"@projectName@",
+  "sling:resourceType":"@projectId@/header",
   "jcr:primaryType":"nt:unstructured",
   "banner": {
-    "sling:resourceType":"$projectId/block/banner",
+    "sling:resourceType":"@projectId@/block/banner",
     "jcr:primaryType":"nt:unstructured",
     "title": "Trades and Services",
     "href": "/content/wnews/trades-and-services.html",

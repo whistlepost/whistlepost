@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 buildscript {
     repositories {
         mavenCentral()
@@ -18,6 +20,22 @@ subprojects {
 
     repositories {
         mavenCentral()
+    }
+
+    task mkClassesDir << {
+        new File("$buildDir/classes/main").mkdirs()
+    }
+    tasks.processResources.dependsOn mkClassesDir
+
+    processResources {
+        filter ReplaceTokens, tokens: [
+            "projectName": project.property('projectName'),
+            "projectId": project.property('projectId'),
+            "projectUrl": project.property('projectUrl'),
+            "projectDomain": (project.property('projectUrl') =~ /(?:https?:\\/\\/)(.*)/)[0][1],
+            "organization": project.property('organization'),
+            "year": Calendar.instance.get(Calendar.YEAR) as String
+        ]
     }
 
     bundleInstall {
