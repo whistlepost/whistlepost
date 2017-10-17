@@ -1,8 +1,8 @@
 {
-  "title":"$projectName",
-  "sling:resourceType":"$projectId/footer",
+  "title":"@projectName@",
+  "sling:resourceType":"@projectId@/footer",
   "jcr:primaryType":"nt:unstructured",
-  "copyright": "2016 Waranga News, Inc.",
+  "copyright": "@year@ @organization@",
   "banner": {
     "sling:resourceType":"wnews/block/banner",
     "jcr:primaryType":"nt:unstructured",
