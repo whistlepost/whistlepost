@@ -13,7 +13,7 @@ buildscript {
 apply plugin: "uk.co.cacoethes.lazybones-templates"
 
 lazybones {
-    repositoryName = "micronode/maven"
+    repositoryName = "micronode/whistlepost"
 
     repositoryUsername = project.bintray_user
     repositoryApiKey = project.bintray_key
