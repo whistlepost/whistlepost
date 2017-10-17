@@ -52,7 +52,7 @@ configure(subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}) { subpro
         }
     }
 
-    group = 'org.mnode.whistlepost'
+    group = 'org.whistlepost'
     version = rootProject.scmVersion.version
     description = '''
 A publishing platform based on Apache Sling
