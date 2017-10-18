@@ -16,14 +16,14 @@
     <title><%= currentNode.title %></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/libs/wp-bootstrap/bower_components/bootstrap-css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="/libs/wp-bootstrap/bower_components/bootstrap-css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="/libs/wp-bootstrap4/css/bootstrap.min.css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="/libs/wp-bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/apps/@projectId@/css/style.css" rel="stylesheet">
-    <link href="/apps/@projectId@/css/grid.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,18 +32,31 @@
     <![endif]-->
 
     <!-- Sling -->
-    <script src="/system/sling.js"></script>
+    <!--<script src="/system/sling.js"></script>-->
 </head>
 
 <body>
-<% sling.include("header.html/" + currentNode.name); %>
+<div class="site-wrapper">
 
-<div class="container">
+    <div class="site-wrapper-inner">
 
-    <h1>Welcome to @projectName@!</h1>
+        <div class="cover-container">
+            <% sling.include("header.html/" + currentNode.name); %>
 
-</div> <!-- /container -->
+            <div class="inner cover">
+                <h1 class="cover-heading">Welcome to @projectName@!</h1>
+                <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+                </p>
+            </div>
 
-<% sling.include("footer.html"); %>
+            <% sling.include("footer.html"); %>
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>
