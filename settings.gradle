@@ -8,7 +8,7 @@ def extensions = [
     'whistlepost-cors-lib',
     'whistlepost-errorhandler-lib',
     'whistlepost-headers-lib',
-//    'whistlepost-jsonld',
+    'whistlepost-jsonld',
     'whistlepost-opengraph',
     'whistlepost-bootstrap4-lib'
 ]
