@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "bootstrap-4": "^4.0.0"
+  },
+  "name": "whistlepost-bootstrap4-lib",
+  "version": "1.0.0",
+  "description": "Bootstrap 4 extension for Whistlepost and Apache Sling",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Micronode",
+  "license": "Apache-2.0"
+}

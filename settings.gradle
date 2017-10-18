@@ -9,7 +9,8 @@ def extensions = [
     'whistlepost-errorhandler-lib',
     'whistlepost-headers-lib',
 //    'whistlepost-jsonld',
-    'whistlepost-opengraph'
+    'whistlepost-opengraph',
+    'whistlepost-bootstrap4-lib'
 ]
 
 include(extensions as String[])
