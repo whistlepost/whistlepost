@@ -1,13 +1,14 @@
 function calculateOffset(pageVal, data) {
     data.offset = 0;
+	data.limit = Number.MAX_SAFE_INTEGER;
 
 	if (pageVal) {
 		var range = pageVal.substring(1).split("-")
 		if (range.length > 1) {
-			data.offset = Math.min(parseInt(range[0]) * data.pageSize, data.total - 1);
-			data.limit = Math.min(parseInt(range[1]) * data.pageSize + data.pageSize, data.total);
+			data.offset = Math.min((parseInt(range[0]) - 1) * data.pageSize, data.total - 1);
+			data.limit = parseInt(range[1]);
 		} else {
-			data.offset = Math.min(parseInt(range[0]) * data.pageSize, data.total - 1);
+			data.offset = Math.min((parseInt(range[0]) - 1) * data.pageSize, data.total - 1);
 		}
 	}
 }
