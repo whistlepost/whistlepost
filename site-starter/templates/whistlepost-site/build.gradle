@@ -23,7 +23,7 @@ subprojects {
     }
 
     task mkClassesDir << {
-        new File("$buildDir/classes/main").mkdirs()
+        new File("\$buildDir/classes/main").mkdirs()
     }
     tasks.processResources.dependsOn mkClassesDir
 
