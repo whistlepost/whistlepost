@@ -22,8 +22,9 @@ subprojects {
         mavenCentral()
     }
 
-    task mkClassesDir << {
+    task mkClassesDir doLast {
         new File("\$buildDir/classes/main").mkdirs()
+        new File("\$buildDir/osgi-classes").mkdirs()
     }
     tasks.processResources.dependsOn mkClassesDir
 

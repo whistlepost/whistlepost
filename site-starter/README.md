@@ -17,7 +17,16 @@ The following templates are available for creating a new Whistlepost site.
 **Whistlepost Site**
     
 This template creates a [gradle] project structure that includes three (3) sub-projects.
-    
+
+## Publishing templates
+
+To install locally:
+
+	$ echo <version> > templates/whistlepost-site/VERSION && ../gradlew installAllTemplates
+
+To publish to bintray:
+
+	$ ../gradlew publishAllTemplates # or use the publish-site-starter.sh script    
     
 [lazybones]: https://github.com/pledbrook/lazybones
 

@@ -12,6 +12,7 @@ props.projectId = ask("Define value for 'projectId' [$defaultProjectId]: ", defa
 processTemplates "README.md", props
 processTemplates "settings.gradle", props
 processTemplates "**/build.gradle", props
+processTemplates "**/gradle.properties", props
 
 new File(projectDir, 'site-app').renameTo(new File(projectDir, "$props.projectId-app"))
 new File(projectDir, 'site-content').renameTo(new File(projectDir, "$props.projectId-content"))
