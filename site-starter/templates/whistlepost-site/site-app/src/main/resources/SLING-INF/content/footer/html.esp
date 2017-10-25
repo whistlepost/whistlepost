@@ -1,6 +1,6 @@
 <div class="mastfoot">
     <div class="inner">
-        <p>&copy; <%= currentNode.copyright %></p>
+        <p>Created with <a href="http://whistlepost.org" target="_blank">Whistlepost</a> | &copy; <%= currentNode.copyright %></p>
     </div>
 </div>
 
