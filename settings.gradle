@@ -10,8 +10,8 @@ def extensions = [
     'whistlepost-headers-lib',
     'whistlepost-jsonld',
     'whistlepost-opengraph',
-    'whistlepost-paging-lib',
-    'whistlepost-bootstrap4-lib'
+    'whistlepost-paging',
+    'whistlepost-bootstrap4'
 ]
 
 include(extensions as String[])
