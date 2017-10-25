@@ -5,7 +5,7 @@ plugins {
 clientDependencies {
     registry 'realBower', type:'bower', url:'https://registry.bower.io'
     realBower {
-        installDir = 'src/main/resources/SLING-INF/content/bower_components'
+        installDir = "$project.buildDir/resources/main/SLING-INF/content/bower_components"
 
         'bootstrap-css'(project.property('bootstrapVersion'))
     }
