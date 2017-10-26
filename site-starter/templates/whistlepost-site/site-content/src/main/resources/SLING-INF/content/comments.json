@@ -1,0 +1,6 @@
+{
+  "title":"@projectName@",
+  "sling:resourceType":"wp-comments",
+  "disqusShortName": "@disqusShortName@",
+  "jcr:primaryType":"nt:unstructured"
+}
