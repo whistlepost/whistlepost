@@ -5,3 +5,6 @@ build/
 *.iml
 gradle.properties
 !/site-starter/templates/whistlepost-site/gradle.properties
+node_modules/
+yarn.lock
+package-lock.json
