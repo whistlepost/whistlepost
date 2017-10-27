@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -19,14 +20,39 @@ module.exports = {
 	  {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          'file-loader'
+		  {
+            loader: 'file-loader',
+            options: {
+            	'outputPath': 'resources/main/SLING-INF/content/images/',
+            	'useRelativePath': true
+			}
+          }
         ]
       },
 	  {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
-          'file-loader'
+		  {
+            loader: 'file-loader',
+            options: {
+            	'outputPath': 'resources/main/SLING-INF/content/fonts/',
+            	'useRelativePath': true
+			}
+          }
         ]
+      },
+	  {
+        test: require.resolve('jquery'),
+        use: [
+        	{
+			  loader: 'expose-loader',
+			  options: 'jQuery'
+		    },
+		    {
+				loader: 'expose-loader',
+				options: '$'
+			}
+		]
       }
     ]
   },
