@@ -1,13 +1,48 @@
-Whistlepost
-===========
+# Whistlepost - Web Publishing Platform
 
-A content management system (CMS) designed to be as simple as Jekyll, as flexible as Adobe AEM, and as robust as Wordpress.
+[Apache Sling]: http://sling.apache.org/
+[Jekyll]: https://jekyllrb.com/
+[Wordpress]: https://wordpress.org/
+[Adobe AEM]: https://docs.adobe.com/
 
-# Architecture
+[Lazybones]: https://github.com/pledbrook/lazybones
+[SDKMAN]: http://sdkman.io/
 
-Whistlepost is built on the Apache Sling platform, which applies the mantra that everything is a resource.
+[Introduction]: #introduction
+
+[Getting Started]: #getting-started
+
+
+#### Table of Contents
+
+1. [Introduction - What is Whistlepost?][Introduction]
+
+## Introduction
+
+Whistlepose is content management system (CMS) designed to be as simple as [Jekyll], as flexible as [Adobe AEM],
+and as robust as [Wordpress].
+
+Whistlepost is built on the [Apache Sling] platform, which applies the mantra that everything is a resource.
 The benefit of this approach is that is separates the structure of the content from the structure of the site itself, 
 which allows both (UX/UI) designers and (content) developers to focus on what is most important to them.
+
+## Getting Started
+
+Whistlepost provides a [Lazybones] project template that is probably the simplest way to create a new Whistlepost site.
+The following steps outline how to use it:
+
+1. Install [Lazybones] via [SDKMAN]:
+
+	```$ curl -s "https://get.sdkman.io" | bash && sdk install lazybones```
+
+1. Include the Whistlepost repository in configuration:
+
+	```$ lazybones set bintrayRepositories = [micronode/whistlepost, pledbrook/lazybones-templates]```
+
+1. Create a new site skeleton using the Whistlepost template:
+
+	```$ lazybones create whistlepost-site <site directory>```
+	  
 
 # Build
 
