@@ -10,8 +10,8 @@ def extensions = [
     'whistlepost-headers-lib',
     'whistlepost-jsonld',
     'whistlepost-opengraph',
-    'whistlepost-paging',
-    'whistlepost-gallery'
+    'whistlepost-paging'
+//    'whistlepost-gallery'
 //    'whistlepost-bootstrap4'
 ]
 
