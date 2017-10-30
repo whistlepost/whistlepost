@@ -24,3 +24,10 @@ lazybones {
     licenses = ["Apache-2.0"]
     vcsUrl = "https://github.com/micronode/whistlepost"
 }
+
+task wrapper(type: Wrapper) {
+    scriptFile = "${project.projectDir}/templates/whistlepost-site/gradlew"
+    jarFile = "${project.projectDir}/templates/whistlepost-site/gradle/wrapper/gradle-wrapper.jar"
+}
+
+packageAllTemplates.dependsOn wrapper

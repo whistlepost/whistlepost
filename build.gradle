@@ -11,6 +11,7 @@ buildscript {
 
     dependencies {
         classpath 'org.figurate:gradle-bundle-plugin:1.0.1-SNAPSHOT'
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
 
@@ -18,6 +19,8 @@ plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.8.1'
     id "com.jfrog.bintray" version "1.7.3" apply false
 }
+
+apply plugin: 'docker'
 
 scmVersion {
     tag {
@@ -29,7 +32,9 @@ scmVersion {
     ]
 }
 
-configure(subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}) { subproject ->
+def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
+
+configure(bundleprojects) { subproject ->
 
     apply plugin: 'com.jfrog.bintray'
     apply plugin: 'maven'
@@ -216,3 +221,20 @@ A publishing platform based on Apache Sling
     }
 }
 
+docker {
+    baseImage "apachesling/sling:9"
+    maintainer 'Ben Fortuna "fortuna@micronode.com"'
+}
+
+task buildDocker(type: Docker) {
+    applicationName = 'micronode/whistlepost'
+    tagVersion = scmVersion.version
+    push true
+    apiUsername = project.property('docker_apiUsername')
+    apiPassword = project.property('docker_apiPassword')
+    apiEmail = project.property('docker_apiEmail')
+    bundleprojects.each {
+        addFile it.jar.archivePath, '/opt/sling/sling/startup/10/'
+    }
+    bundleprojects.each { dependsOn("${it.name}:jar") }
+}

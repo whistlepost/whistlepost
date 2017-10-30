@@ -2,7 +2,7 @@
   "title":"@projectName@",
   "sling:resourceType":"@projectId@/footer",
   "jcr:primaryType":"nt:unstructured",
-  "copyright": "@year@ @organization@",
+  "copyright": "@currentYear@ @organization@",
   "banner": {
     "sling:resourceType":"wnews/block/banner",
     "jcr:primaryType":"nt:unstructured",
