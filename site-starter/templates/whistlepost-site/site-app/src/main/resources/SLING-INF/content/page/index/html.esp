@@ -15,9 +15,7 @@
 
     <title><%= currentNode.title %></title>
 
-    <link href="/apps/wp/css/whistlepost.bundle.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="/apps/@projectId@/css/style.css" rel="stylesheet">
+    <link href="/apps/@projectId@/css/@projectId@.bundle.css" rel="stylesheet">
 
     <!-- Sling -->
     <!--<script src="/system/sling.js"></script>-->

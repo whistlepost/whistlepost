@@ -5,6 +5,6 @@
 </div>
 
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="/apps/wp/js/whistlepost.bundle.js"></script>
+<script src="/apps/@projectId@/js/@projectId@.bundle.js"></script>
 
 <% sling.include("analytics.google.html"); %>
