@@ -50,6 +50,12 @@ One of the challenges of the modern Web developer is managing all the dependenci
 static assets. The Whistlepost site template includes [Webpack] support by default making it simple to define
 such dependencies and reduce the chance of conflicts. 
 
+### Reusable Code Library
+
+Whistlepost provides an extensive list of code snippets that may be incorporated in a site with very little
+effort. These extensions use well-known patterns and third-party libraries to add support for a wide range
+of common website features. 
+
 ### Containerisation
 
 A modern approach to testing, and increasingly deployment of websites includes containerisation frameworks
