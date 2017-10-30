@@ -13,7 +13,10 @@ processTemplates "README.md", props
 processTemplates "settings.gradle", props
 processTemplates "**/build.gradle", props
 processTemplates "**/gradle.properties", props
+processTemplates "site-app/package.json", props
+processTemplates "site-app/webpack.config.js", props
 
+new File(projectDir, 'site-app/src/main/resources/SLING-INF/content/js/site.js').renameTo(new File(projectDir, "site-app/src/main/resources/SLING-INF/content/js/${props.projectId}.js"))
 new File(projectDir, 'site-app').renameTo(new File(projectDir, "$props.projectId-app"))
 new File(projectDir, 'site-content').renameTo(new File(projectDir, "$props.projectId-content"))
 new File(projectDir, 'site-config').renameTo(new File(projectDir, "$props.projectId-config"))
