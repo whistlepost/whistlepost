@@ -230,9 +230,9 @@ task buildDocker(type: Docker) {
     applicationName = 'micronode/whistlepost'
     tagVersion = scmVersion.version
     push true
-    apiUsername = 'benfortuna'
-    apiPassword = '~p%Up9:['
-    apiEmail = 'benfortuna@gmail.com'
+    apiUsername = project.property('docker_apiUsername')
+    apiPassword = project.property('docker_apiPassword')
+    apiEmail = project.property('docker_apiEmail')
     bundleprojects.each {
         addFile it.jar.archivePath, '/opt/sling/sling/startup/10/'
     }
