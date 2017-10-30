@@ -1,0 +1,1 @@
+<a href="https://facebook.com/<%= currentNode.facebook %>" target="_blank" title="Connect with us on Facebook"><span class="fa fa-facebook-square" style="font-size:1.2em;"></span></a>

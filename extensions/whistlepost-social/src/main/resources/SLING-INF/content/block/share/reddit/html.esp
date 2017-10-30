@@ -1,0 +1,1 @@
+<a target="_blank" href="//www.reddit.com/submit?url=<%= currentNode.url %>"><span class="fa fa-reddit" style="font-size:1.2em;">

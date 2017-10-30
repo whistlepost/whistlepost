@@ -1,0 +1,1 @@
+<a href="https://www.flickr.com/photos/<% currentNode.flickr %>" target="_blank" title="Check out our Flickr Photostream"><span class="fa fa-flickr" style="font-size:1.2em;"></span></a>
