@@ -12,8 +12,11 @@ buildscript {
     }
     dependencies {
         classpath 'org.figurate:gradle-bundle-plugin:1.0.1-SNAPSHOT'
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
+
+apply plugin: 'docker'
 
 subprojects {
     apply plugin: 'bundle'
@@ -46,4 +49,17 @@ subprojects {
         username = sling_username
         password = sling_password
     }
+}
+
+docker {
+    baseImage "micronode/whistlepost:latest"
+    maintainer project.property('organization')
+}
+
+task buildDocker(type: Docker) {
+    applicationName = project.property('projectId')
+    subprojects.each {
+        addFile it.jar.archivePath, '/opt/sling/sling/startup/20/'
+    }
+    subprojects.each { dependsOn("\${it.name}:jar") }
 }
