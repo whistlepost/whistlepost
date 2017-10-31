@@ -1,0 +1,22 @@
+plugins {
+    id "com.moowork.node" version "1.2.0"
+}
+
+node {
+    download = true
+}
+
+task copyNodeFiles(type: Copy) {
+    from 'node_modules/bootstrap/dist'
+    into 'build/resources/main/SLING-INF/content'
+}
+
+jar {
+    manifest {
+        instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/libs/wp-bootstrap4;overwrite:=true;ignoreImportProviders:="json"'
+    }
+}
+
+copyNodeFiles.dependsOn yarn
+processResources.dependsOn copyNodeFiles
+clean.dependsOn yarn_cache_clean

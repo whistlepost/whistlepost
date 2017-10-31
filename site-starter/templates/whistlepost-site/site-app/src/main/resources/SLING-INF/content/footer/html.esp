@@ -1,24 +1,10 @@
+<div class="mastfoot">
+    <div class="inner">
+        <p>Created with <a href="http://whistlepost.org" target="_blank">Whistlepost</a> | &copy; <%= currentNode.copyright %></p>
+    </div>
+</div>
 
-<!-- Bottom banner -->
-<%
-if (currentNode.banner) {
-    sling.include(currentNode.banner + ".html");
-}
-%>
-
-<hr style="text-align: center; width: 70%">
-
-<footer>
-    <p>&copy; <%= currentNode.copyright %></p>
-</footer>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="/libs/wp-bootstrap/bower_components/bootstrap-css/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/libs/wp-bootstrap/js/ie10-viewport-bug-workaround.js"></script>
-<script src="/libs/wp-rss/js/tooltip.js"></script>
+<script src="/apps/@projectId@/js/@projectId@.bundle.js"></script>
+
 <% sling.include("analytics.google.html"); %>

@@ -1,5 +1,5 @@
 def extensions = [
-    'sling-bootstrap-lib',
+//    'sling-bootstrap-lib',
     'sling-analytics-lib',
     'sling-comments-lib',
     'whistlepost-rewrite-lib',
@@ -8,8 +8,11 @@ def extensions = [
     'whistlepost-cors-lib',
     'whistlepost-errorhandler-lib',
     'whistlepost-headers-lib',
-//    'whistlepost-jsonld',
-    'whistlepost-opengraph'
+    'whistlepost-jsonld',
+    'whistlepost-opengraph',
+    'whistlepost-paging'
+//    'whistlepost-gallery'
+//    'whistlepost-bootstrap4'
 ]
 
 include(extensions as String[])

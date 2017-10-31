@@ -10,17 +10,17 @@ buildscript {
     }
 
     dependencies {
-        classpath group: 'pl.allegro.tech.build', name: 'axion-release-plugin', version: '1.7.1'
         classpath 'org.figurate:gradle-bundle-plugin:1.0.1-SNAPSHOT'
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
 
 plugins {
-    id "org.sonarqube" version "1.2"
-    id "com.jfrog.bintray" version "1.7.3"
+    id 'pl.allegro.tech.build.axion-release' version '1.8.1'
+    id "com.jfrog.bintray" version "1.7.3" apply false
 }
 
-apply plugin: 'pl.allegro.tech.build.axion-release'
+apply plugin: 'docker'
 
 scmVersion {
     tag {
@@ -28,12 +28,15 @@ scmVersion {
     }
     versionCreator 'versionWithBranch'
     branchVersionCreator = [
-            'master': 'simple'
+        'master': 'simple'
     ]
 }
 
-configure(subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}) {
+def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
 
+configure(bundleprojects) { subproject ->
+
+    apply plugin: 'com.jfrog.bintray'
     apply plugin: 'maven'
     apply plugin: 'maven-publish'
     apply plugin: 'jacoco'
@@ -54,13 +57,14 @@ configure(subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}) {
         }
     }
 
-    group = 'org.mnode.whistlepost'
+    group = 'org.whistlepost'
     version = rootProject.scmVersion.version
     description = '''
 A publishing platform based on Apache Sling
 '''
-    task mkClassesDir << {
+    task mkClassesDir doLast {
       new File("$buildDir/classes/main").mkdirs()
+      new File("$buildDir/osgi-classes").mkdirs()
     }
     tasks.processResources.dependsOn mkClassesDir
 
@@ -131,7 +135,7 @@ A publishing platform based on Apache Sling
                 pom.project {
                     name 'Whistlepost'
                     packaging 'jar'
-                    description project.description
+                    description subproject.description
                     url 'https://whistlepost.org'
 
                     scm {
@@ -165,8 +169,8 @@ A publishing platform based on Apache Sling
                 artifact javadocJar
                 artifact sourcesJar
                 pom.withXml {
-                    asNode().appendNode('name', project.name)
-                    asNode().appendNode('description', project.description)
+                    asNode().appendNode('name', subproject.name)
+                    asNode().appendNode('description', subproject.description)
                     asNode().appendNode('url', 'http://whistlepost.org')
 
                     def scmNode = asNode().appendNode('scm')
@@ -175,7 +179,7 @@ A publishing platform based on Apache Sling
                     scmNode.appendNode('developerConnection', 'scm:git@github.com:micronode/whistlepost.git')
 
                     def licenseNode = asNode().appendNode('licenses').appendNode('license')
-                    licenseNode.appendNode('name', 'iCal4j - License')
+                    licenseNode.appendNode('name', 'Whistlepost - License')
                     licenseNode.appendNode('url', 'https://raw.githubusercontent.com/micronode/whistlepost/master/LICENSE')
                     licenseNode.appendNode('distribution', 'repo')
 
@@ -191,16 +195,16 @@ A publishing platform based on Apache Sling
         user = bintray_user
         key = bintray_key
         pkg {
-            repo = 'maven'
-            name = project.name
+            repo = 'whistlepost'
+            name = subproject.name
             userOrg = 'micronode'
             licenses = ['BSD']
             vcsUrl = 'https://github.com/micronode/whistlepost.git'
             version {
                 name = scmVersion.version
-                desc = "iCal4j $scmVersion.version"
+                desc = "Whistlepost $scmVersion.version"
                 released  = new Date()
-                vcsTag = "ical4j-$scmVersion.version"
+                vcsTag = "whistlepost-$scmVersion.version"
                 gpg {
                     sign = isReleaseVersion
                 }
@@ -208,7 +212,7 @@ A publishing platform based on Apache Sling
                     sync = isReleaseVersion
                     user = sonatype_username //OSS user token: mandatory
                     password = sonatype_password //OSS user password: mandatory
-//                close = '0' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
+                    close = '0' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
                 }
             }
         }
@@ -217,3 +221,20 @@ A publishing platform based on Apache Sling
     }
 }
 
+docker {
+    baseImage "apachesling/sling:9"
+    maintainer 'Ben Fortuna "fortuna@micronode.com"'
+}
+
+task buildDocker(type: Docker) {
+    applicationName = 'micronode/whistlepost'
+    tagVersion = scmVersion.version
+    push false //true
+    apiUsername = project.property('docker_apiUsername')
+    apiPassword = project.property('docker_apiPassword')
+    apiEmail = project.property('docker_apiEmail')
+    bundleprojects.each {
+        addFile it.jar.archivePath, "/opt/sling/sling/startup/${project.property('bundleStartLevel')}/"
+    }
+    bundleprojects.each { dependsOn("${it.name}:jar") }
+}

@@ -13,7 +13,7 @@ buildscript {
 apply plugin: "uk.co.cacoethes.lazybones-templates"
 
 lazybones {
-    repositoryName = "micronode/maven"
+    repositoryName = "micronode/whistlepost"
 
     repositoryUsername = project.bintray_user
     repositoryApiKey = project.bintray_key
@@ -24,3 +24,10 @@ lazybones {
     licenses = ["Apache-2.0"]
     vcsUrl = "https://github.com/micronode/whistlepost"
 }
+
+task wrapper(type: Wrapper) {
+    scriptFile = "${project.projectDir}/templates/whistlepost-site/gradlew"
+    jarFile = "${project.projectDir}/templates/whistlepost-site/gradle/wrapper/gradle-wrapper.jar"
+}
+
+packageAllTemplates.dependsOn wrapper

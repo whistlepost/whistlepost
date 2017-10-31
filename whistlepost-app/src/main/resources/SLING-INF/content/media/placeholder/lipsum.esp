@@ -1,0 +1,3 @@
+<script>
+  $("#<%= request.requestPathInfo.selectors[0] %>").load("https://baconipsum.com/api/?type=all-meat&format=<%= request.requestPathInfo.suffix.substring(1) %>");
+</script>

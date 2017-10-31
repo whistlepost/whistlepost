@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 buildscript {
     repositories {
         mavenCentral()
@@ -10,8 +12,11 @@ buildscript {
     }
     dependencies {
         classpath 'org.figurate:gradle-bundle-plugin:1.0.1-SNAPSHOT'
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
+
+apply plugin: 'docker'
 
 subprojects {
     apply plugin: 'bundle'
@@ -20,9 +25,41 @@ subprojects {
         mavenCentral()
     }
 
+    task mkClassesDir doLast {
+        new File("\$buildDir/classes/main").mkdirs()
+        new File("\$buildDir/osgi-classes").mkdirs()
+    }
+    tasks.processResources.dependsOn mkClassesDir
+
+    processResources {
+        filter ReplaceTokens, tokens: [
+            "projectName": project.property('projectName'),
+            "projectId": project.property('projectId'),
+            "projectUrl": project.property('projectUrl'),
+            "projectDomain": (project.property('projectUrl') =~ /(?:https?:\\/\\/)(.*)/)[0][1],
+            "organization": project.property('organization'),
+            "gaTrackingId": project.property('gaTrackingId'),
+            "disqusShortName": project.property('disqusShortName'),
+            "currentYear": Calendar.instance.get(Calendar.YEAR) as String
+        ]
+    }
+
     bundleInstall {
         uri = "\$sling_url/system/console/bundles"
         username = sling_username
         password = sling_password
     }
+}
+
+docker {
+    baseImage "micronode/whistlepost:latest"
+    maintainer project.property('organization')
+}
+
+task buildDocker(type: Docker) {
+    applicationName = project.property('projectId')
+    subprojects.each {
+        addFile it.jar.archivePath, "/opt/sling/sling/startup/${project.property('bundleStartLevel')}/"
+    }
+    subprojects.each { dependsOn("\${it.name}:jar") }
 }

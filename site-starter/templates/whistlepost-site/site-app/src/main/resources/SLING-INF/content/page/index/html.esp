@@ -11,38 +11,37 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/apps/$projectId/favicon.ico">
+    <link rel="icon" href="/apps/@projectId@/favicon.ico">
 
     <title><%= currentNode.title %></title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/libs/wp-bootstrap/bower_components/bootstrap-css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="/libs/wp-bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/apps/$projectId/css/style.css" rel="stylesheet">
-    <link href="/apps/$projectId/css/grid.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="/apps/@projectId@/css/@projectId@.bundle.css" rel="stylesheet">
 
     <!-- Sling -->
-    <script src="/system/sling.js"></script>
+    <!--<script src="/system/sling.js"></script>-->
 </head>
 
 <body>
-<% sling.include("header.html/" + currentNode.name); %>
+<div class="site-wrapper">
 
-<div class="container">
+    <div class="site-wrapper-inner">
 
+        <div class="cover-container">
+            <% sling.include("header.html/" + currentNode.name); %>
 
-</div> <!-- /container -->
+            <div class="inner cover">
+                <h1 class="cover-heading">Welcome to @projectName@!</h1>
 
-<% sling.include("footer.html"); %>
+                <div id="content"/>
+            </div>
+
+            <% sling.include("footer.html"); %>
+            <% sling.include("/wp/media/placeholder.content.lipsum/html&paras=3"); %>
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>

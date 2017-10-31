@@ -19,7 +19,8 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 deploy:
   provider: script
-  script: ./gradlew -Prelease.customUsername=$GIT_USER -Prelease.customPassword=$GIT_PASSWORD -Prelease.disableChecks -Prelease.pushTagsOnly release bintrayUpload
+  script: scripts/tag-release.sh && scripts/publish-site-starter.sh && scripts/publish-docker-image.sh
+  skip_cleanup: true
   on:
     branch: master
     jdk: oraclejdk8

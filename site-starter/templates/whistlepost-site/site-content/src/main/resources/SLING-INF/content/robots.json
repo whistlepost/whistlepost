@@ -1,0 +1,7 @@
+{
+    "sling:resourceType":"wp/robots",
+    "jcr:primaryType":"nt:unstructured",
+    "user-agent": "*",
+    "allow": ["/"],
+    "sitemap": "@projectUrl@/sitemap.xml"
+}

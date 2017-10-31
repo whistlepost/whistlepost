@@ -8,7 +8,7 @@ dependencies {
 }
 
 bundle {
-  embedPath = 'SLING-INF/content/install'
+  embedPath = "SLING-INF/content/install/${project.property('embed.bundleStartLevel')}"
 }
 
 jar {
