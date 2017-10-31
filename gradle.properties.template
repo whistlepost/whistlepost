@@ -12,4 +12,4 @@ docker_apiUsername=
 docker_apiPassword=
 docker_apiEmail=
 
-bundleStartLevel=10
+bundleStartLevel=20
