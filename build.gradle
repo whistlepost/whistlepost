@@ -212,7 +212,7 @@ A publishing platform based on Apache Sling
                     sync = isReleaseVersion
                     user = sonatype_username //OSS user token: mandatory
                     password = sonatype_password //OSS user password: mandatory
-                    close = '0' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
+//                    close = '0' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
                 }
             }
         }
@@ -229,7 +229,7 @@ docker {
 task buildDocker(type: Docker) {
     applicationName = 'micronode/whistlepost'
     tagVersion = scmVersion.version
-    push false //true
+    push true
     apiUsername = project.property('docker_apiUsername')
     apiPassword = project.property('docker_apiPassword')
     apiEmail = project.property('docker_apiEmail')
