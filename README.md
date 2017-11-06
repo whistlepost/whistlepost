@@ -12,6 +12,7 @@
 [SDKMAN]: http://sdkman.io/
 
 [Google Analytics]: https://analytics.google.com/analytics
+[Disqus]: https://disqus.com
 
 [Introduction]: #introduction
 
@@ -101,18 +102,34 @@ third-party libraries and services.
 
 ### Analytics
 
-The analytics extension provides support for adding [Google Analytics] integration to your site. 
+The analytics extension provides support for adding analytics integration to your site. 
 
-1. Sign up to [Google Analytics] to obtain a tracking ID (e.g. UA-XXXXXX-XX)
+1. To add support for [Google Analytics] sign up to obtain a [tracking ID](https://support.google.com/analytics/answer/7372977?hl=en) (e.g. UA-XXXXXX-XX)
 
 1. Add your tracking ID to the `gradle.properties` configuration file
 
-		gaTrackingId=UA-XXXXXX-XX
+		gaTrackingCode=UA-XXXXXX-XX
 
 1. Include the analytics content node in each page you want to track. This will render the appropriate
-code snippet to include the analytics tracker on your page.
+ [tracking code](https://support.google.com/analytics/answer/6086097?hl=en) to include analytics on your page.
  
-	A common approach is to add the code in a shared footer page fragment that is included in all pages
+	A common approach is to add the node in a shared footer page fragment that is included in all pages
 (as demonstrated in the file `<projectId-app>/src/main/resources/SLING-INF/content/footer/html.esp`)
 
 		<% sling.include("analytics.google.html"); %>
+
+### Comments
+
+The comments extension provides integration with well-known commenting solutions for web sites.
+
+1. To add integration with [Disqus] sign up to create a [short name](https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-).
+
+1. Add the short name in your `gradle.properties` configuration
+
+		 disqusShortName=myorg-projectId
+
+1. Include the comments content node at the bottom of the page where comments should appear. Ensure the current path
+is appended to the request URI
+
+		<% sling.include("comments.disqus.html/" + currentNode.path); %>
+		
