@@ -13,6 +13,9 @@
 
 [Google Analytics]: https://analytics.google.com/analytics
 [Disqus]: https://disqus.com
+[JSON-LD]: https://json-ld.org
+[Opengraph]: http://ogp.me
+
 
 [Introduction]: #introduction
 
@@ -132,4 +135,37 @@ The comments extension provides integration with well-known commenting solutions
 is appended to the request URI
 
 		<% sling.include("comments.disqus.html/" + currentNode.path); %>
+
+### Cross-origin Resource Sharing (CORS) Filter
+
+The CORS filter extension adds HTTP response headers to allow for making AJAX requests to other sites
+
+### Error Handler
+
+The error handler extension overrides the default error handling to provide a more user-friendly response that
+also suppresses the details of the underlying technology implementation.
+
+### HTTP Headers
+
+The HTTP header extension supports the addition of configurable HTTP response headers.
+
+### JSON-LD
+
+The JSON-LD extension provides support for rich metadata through the rendering of well-known [JSON-LD] structures.  
+
+### Opengraph
+
+The Opengraph extension provides support for rich metadata through rendering well-known [Opengraph] meta tags.
+
+### Paging
+
+The paging extension adds support for rendering paging for list pages.
+
+### Link Rewriting
+
+The link rewriting extension supports rewriting links in the HTML response to allow for reverse proxying, etc.
+
+### RSS Feeds
+
+The RSS feed extension provides support for including RSS feeds in page content.
 		
