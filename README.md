@@ -11,11 +11,15 @@
 [Lazybones]: https://github.com/pledbrook/lazybones
 [SDKMAN]: http://sdkman.io/
 
+[Google Analytics]: https://analytics.google.com/analytics
+
 [Introduction]: #introduction
 
 [Features]: #features
 
 [Getting Started]: #getting-started
+
+[Extensions]: #extensions
 
 
 #### Table of Contents
@@ -23,6 +27,7 @@
 1. [Introduction - What is Whistlepost?][Introduction]
 2. [Features][Features]
 2. [Getting Started][Getting Started]
+2. [Extensions][Extensions]
 
 ## Introduction
 
@@ -70,58 +75,44 @@ The following steps outline how to use it:
 
 1. Install [Lazybones] via [SDKMAN]:
 
-	```$ curl -s "https://get.sdkman.io" | bash```
+		$ curl -s "https://get.sdkman.io" | bash
 	
-	```$ source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk install lazybones```
+		$ source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk install lazybones
 
 1. Include the Whistlepost repository in configuration:
 
-	```$ lazybones set bintrayRepositories = [micronode/whistlepost, pledbrook/lazybones-templates]```
+		$ lazybones set bintrayRepositories = [micronode/whistlepost, pledbrook/lazybones-templates]
 
 1. Create a new site skeleton using the Whistlepost template:
 
-	```$ lazybones create whistlepost-site <site directory>```
+		$ lazybones create whistlepost-site <site directory>
 
 1. Build and run your new site in Docker:
 
-	```$ ./gradlew buildDocker && docker run --rm -p 8080:8080 <projectId>```
+		$ ./gradlew buildDocker && docker run --rm -p 8080:8080 <projectId>
 
 1. Open site in browser: `http://localhost:8080/<projectId>`
 	  
 
-# Build
+## Extensions
 
-Whistlepost uses gradle to build and bundles. The following tasks are the most commonly used:
+Whistlepost Extensions provide libraries of reusable code that make it simple to integrate your site with
+third-party libraries and services.
 
-    build # rebuild and package bundle jars
-    
-    deployBundle # upload bundle jars to the configured OSGi (e.g. Apache Sling) environment
-    
-    startBundle # start installed bundles in the configured OSGi environment
+### Analytics
 
-## Project properties
+The analytics extension provides support for adding [Google Analytics] integration to your site. 
 
-The following project properties may also be overridden:
+1. Sign up to [Google Analytics] to obtain a tracking ID (e.g. UA-XXXXXX-XX)
 
-    sling_host # the host environment name
-    
-    sling_port # the host environment port
-    
-    sling_username # the host environment user
-    
-    sling_password # the host environment password
+1. Add your tracking ID to the `gradle.properties` configuration file
 
-A common approach is to use the `GRADLE_OPTS` environment variable to override project build settings. The following
-values are useful when building Whistlepost:
+		gaTrackingId=UA-XXXXXX-XX
 
-* -Dorg.gradle.parallel (execute build in parallel)
-* 
+1. Include the analytics content node in each page you want to track. This will render the appropriate
+code snippet to include the analytics tracker on your page.
+ 
+	A common approach is to add the code in a shared footer page fragment that is included in all pages
+(as demonstrated in the file `<projectId-app>/src/main/resources/SLING-INF/content/footer/html.esp`)
 
-## Docker
-
-Through containerisation of the deployment stack development and testing productivity is greatly improved. The following
-commands are most commonly used when using Docker:
-
-    docker-compose up -d # start Apache Sling and deploy bundles
-    
-    docker-compose build && docker-compose run --rm whistlepost # re-deploy any changes into the running Apache Sling environment
+		<% sling.include("analytics.google.html"); %>
