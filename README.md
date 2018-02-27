@@ -11,11 +11,19 @@
 [Lazybones]: https://github.com/pledbrook/lazybones
 [SDKMAN]: http://sdkman.io/
 
+[Google Analytics]: https://analytics.google.com/analytics
+[Disqus]: https://disqus.com
+[JSON-LD]: https://json-ld.org
+[Opengraph]: http://ogp.me
+
+
 [Introduction]: #introduction
 
 [Features]: #features
 
 [Getting Started]: #getting-started
+
+[Extensions]: #extensions
 
 
 #### Table of Contents
@@ -23,6 +31,7 @@
 1. [Introduction - What is Whistlepost?][Introduction]
 2. [Features][Features]
 2. [Getting Started][Getting Started]
+2. [Extensions][Extensions]
 
 ## Introduction
 
@@ -70,50 +79,93 @@ The following steps outline how to use it:
 
 1. Install [Lazybones] via [SDKMAN]:
 
-	```$ curl -s "https://get.sdkman.io" | bash && sdk install lazybones```
+		$ curl -s "https://get.sdkman.io" | bash
+	
+		$ source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk install lazybones
 
 1. Include the Whistlepost repository in configuration:
 
-	```$ lazybones set bintrayRepositories = [micronode/whistlepost, pledbrook/lazybones-templates]```
+		$ lazybones set bintrayRepositories = [micronode/whistlepost, pledbrook/lazybones-templates]
 
 1. Create a new site skeleton using the Whistlepost template:
 
-	```$ lazybones create whistlepost-site <site directory>```
+		$ lazybones create whistlepost-site <site directory>
+
+1. Build and run your new site in Docker:
+
+		$ ./gradlew buildDocker && docker run --rm -p 8080:8080 <projectId>
+
+1. Open site in browser: `http://localhost:8080/<projectId>`
 	  
 
-# Build
+## Extensions
 
-Whistlepost uses gradle to build and bundles. The following tasks are the most commonly used:
+Whistlepost Extensions provide libraries of reusable code that make it simple to integrate your site with
+third-party libraries and services.
 
-    build # rebuild and package bundle jars
-    
-    deployBundle # upload bundle jars to the configured OSGi (e.g. Apache Sling) environment
-    
-    startBundle # start installed bundles in the configured OSGi environment
+### Analytics
 
-## Project properties
+The analytics extension provides support for adding analytics integration to your site. 
 
-The following project properties may also be overridden:
+1. To add support for [Google Analytics] sign up to obtain a [tracking ID](https://support.google.com/analytics/answer/7372977?hl=en) (e.g. UA-XXXXXX-XX)
 
-    sling_host # the host environment name
-    
-    sling_port # the host environment port
-    
-    sling_username # the host environment user
-    
-    sling_password # the host environment password
+1. Add your tracking ID to the `gradle.properties` configuration file
 
-A common approach is to use the `GRADLE_OPTS` environment variable to override project build settings. The following
-values are useful when building Whistlepost:
+		gaTrackingCode=UA-XXXXXX-XX
 
-* -Dorg.gradle.parallel (execute build in parallel)
-* 
+1. Include the analytics content node in each page you want to track. This will render the appropriate
+ [tracking code](https://support.google.com/analytics/answer/6086097?hl=en) to include analytics on your page.
+ 
+	A common approach is to add the node in a shared footer page fragment that is included in all pages
+(as demonstrated in the file `<projectId-app>/src/main/resources/SLING-INF/content/footer/html.esp`)
 
-## Docker
+		<% sling.include("analytics.google.html"); %>
 
-Through containerisation of the deployment stack development and testing productivity is greatly improved. The following
-commands are most commonly used when using Docker:
+### Comments
 
-    docker-compose up -d # start Apache Sling and deploy bundles
-    
-    docker-compose build && docker-compose run --rm whistlepost # re-deploy any changes into the running Apache Sling environment
+The comments extension provides integration with well-known commenting solutions for web sites.
+
+1. To add integration with [Disqus] sign up to create a [short name](https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-).
+
+1. Add the short name in your `gradle.properties` configuration
+
+		 disqusShortName=myorg-projectId
+
+1. Include the comments content node at the bottom of the page where comments should appear. Ensure the current path
+is appended to the request URI
+
+		<% sling.include("comments.disqus.html/" + currentNode.path); %>
+
+### Cross-origin Resource Sharing (CORS) Filter
+
+The CORS filter extension adds HTTP response headers to allow for making AJAX requests to other sites
+
+### Error Handler
+
+The error handler extension overrides the default error handling to provide a more user-friendly response that
+also suppresses the details of the underlying technology implementation.
+
+### HTTP Headers
+
+The HTTP header extension supports the addition of configurable HTTP response headers.
+
+### JSON-LD
+
+The JSON-LD extension provides support for rich metadata through the rendering of well-known [JSON-LD] structures.  
+
+### Opengraph
+
+The Opengraph extension provides support for rich metadata through rendering well-known [Opengraph] meta tags.
+
+### Paging
+
+The paging extension adds support for rendering paging for list pages.
+
+### Link Rewriting
+
+The link rewriting extension supports rewriting links in the HTML response to allow for reverse proxying, etc.
+
+### RSS Feeds
+
+The RSS feed extension provides support for including RSS feeds in page content.
+		

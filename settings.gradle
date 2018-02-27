@@ -1,10 +1,8 @@
 def extensions = [
-//    'sling-bootstrap-lib',
     'sling-analytics-lib',
     'sling-comments-lib',
     'whistlepost-rewrite-lib',
     'whistlepost-rss-lib',
-    //'wp-reactjs-lib'
     'whistlepost-cors-lib',
     'whistlepost-errorhandler-lib',
     'whistlepost-headers-lib',
@@ -12,7 +10,6 @@ def extensions = [
     'whistlepost-opengraph',
     'whistlepost-paging'
 //    'whistlepost-gallery'
-//    'whistlepost-bootstrap4'
 ]
 
 include(extensions as String[])
