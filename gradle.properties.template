@@ -11,5 +11,6 @@ bintray_key=
 docker_apiUsername=
 docker_apiPassword=
 docker_apiEmail=
+docker_push=false
 
 bundleStartLevel=20

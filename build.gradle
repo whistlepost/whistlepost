@@ -229,7 +229,7 @@ docker {
 task buildDocker(type: Docker) {
     applicationName = 'micronode/whistlepost'
     tagVersion = scmVersion.version
-    push true
+    push 'true' == project.property('docker_push')
     apiUsername = project.property('docker_apiUsername')
     apiPassword = project.property('docker_apiPassword')
     apiEmail = project.property('docker_apiEmail')
