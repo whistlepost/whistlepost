@@ -12,6 +12,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
+                <li class="<%= request.requestPathInfo.suffix == '/articles' ? 'active' : '' %>"><a href="/content/wp/admin/articles/create.html">Articles</a></li>
                 <li class="<%= request.requestPathInfo.suffix == '/users' ? 'active' : '' %>"><a href="/content/wp/admin/users.html">Users</a></li>
                 <li class="<%= request.requestPathInfo.suffix == '/groups' ? 'active' : '' %>"><a href="/content/wp/admin/groups.html">Groups</a></li>
                 <li class="<%= request.requestPathInfo.suffix == '/plugins' ? 'active' : '' %>"><a href="/content/wp/admin/plugins.html">Plugins</a></li>
