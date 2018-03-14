@@ -4,11 +4,7 @@ dependencies {
           'org.apache.cocoon:cocoon-serializers-charsets:1.0.3-SNAPSHOT',
           'org.apache.sling:org.apache.sling.urlrewriter:0.0.2',
           'org.apache.servicemix.bundles:org.apache.servicemix.bundles.urlrewritefilter:4.0.4_1',
-          'org.apache.sling:org.apache.sling.commons.osgi:2.4.0',
-          'org.apache.sling:org.apache.sling.nosql.generic:1.1.0',
-          'org.apache.sling:org.apache.sling.nosql.mongodb-resourceprovider:1.1.0',
-          'org.mongodb:mongo-java-driver:3.1.1'
-
+          'org.apache.sling:org.apache.sling.commons.osgi:2.4.0'
 }
 
 bundle {
