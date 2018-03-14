@@ -1,0 +1,9 @@
+{
+  "org.apache.sling.nosql.mongodb.resourceprovider.MongoDBNoSqlResourceProviderFactory.factory.config-@projectId@": {
+    "jcr:primaryType":"sling:OsgiConfig",
+    "connectionString": "@mongo.connectionString@",
+    "database": "@mongo.database@",
+    "collection": "@mongo.collection@",
+    "provider.roots": ["@mongo.provider.roots@"]
+  }
+}
