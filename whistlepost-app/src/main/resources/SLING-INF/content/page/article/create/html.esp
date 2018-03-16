@@ -15,11 +15,19 @@
 
     <!-- Sling -->
     <script src="/system/sling.js"></script>
+    <script>
+        function parsePars(val) {
+            var pars = val.split('\n')
+            for (var i in pars) {
+                $('#create_article').append('<input type="hidden" name="pars" value="' + pars[i] + '" />');
+            }
+        }
+    </script>
 </head>
 
 <body>
 
-<% sling.include("/wp/header.html/" + currentNode.name); %>
+<% sling.include("/content/wp/header.html/" + currentNode.name); %>
 
 <div class="container">
 
@@ -30,24 +38,28 @@
 
             <h2>Create Article</h2>
             <hr/>
-            <form method="POST" action="/content/wp/article/add" enctype="multipart/form-data">
-                Title <input type="text" value=""/><br/>
-                Published Date <input type="date" value=""/><br/>
-                Image <input type="file" name="*"/><br/>
-                Content <input type="textarea" value=""/><br/>
-                Feature <input type="checkbox" value=""/><br/>
-                Published <input type="checkbox" value=""/><br/>
-                <input type="submit" value="Add"/>
+            <form id="create_article" method="post" action="<%= currentNode.rootPath %>/*" enctype="multipart/form-data" accept-charset="UTF-8 ANSI">
+                <input type="text" name="title" value="" placeholder="Title"/><br/>
+                Published Date <input type="date" name="date" value=""/><br/>
+                <!--Image <input type="file" name="*"/><br/>-->
+                <input type="text" name="media" placeholder="Image URL"/> <br/>
+                <textarea id="content" placeholder="Article content goes here.."></textarea><br/>
+                Feature <input type="checkbox" name="feature" value="true"/><br/>
+                Published <input type="checkbox" name="published" value="true"/><br/>
+                <input type="submit" value="Add" onclick="javascript:parsePars(content.value)"/>
+
+                <input type="hidden" name="sling:resourceType" value="<%= currentNode.pageType %>"/>
+                <input type="hidden" name=":redirect" value="<%= currentNode.rootPath %>/*.html"/>
             </form>
 
-            <p class="block-title">Articles</p>
-            <% sling.include("/wp/articles.text.html"); %>
+            <p class="block-title">Related Articles</p>
+            <% sling.include(currentNode.rootPath + ".text.html"); %>
 
         </div>
     </div>
 
 </div><!-- /.container -->
 
-<% sling.include("/wp/footer.html"); %>
+<% sling.include("/content/wp/footer.html"); %>
 </body>
 </html>
