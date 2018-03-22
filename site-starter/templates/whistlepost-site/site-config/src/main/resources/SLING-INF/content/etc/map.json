@@ -1,7 +1,7 @@
 {
   "http": {
     "any_@projectDomain@.80": {
-      "sling:match": ".+@projectDomain@.80",
+      "sling:match": "^http.+@projectDomain@.80",
       "sling:internalRedirect": "/content/@projectId@",
       "apps": {
         "sling:internalRedirect": "/apps"
