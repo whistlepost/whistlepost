@@ -29,7 +29,7 @@
           <p class="lead">Upload and manage your site media.</p>
 
           <h2>Upload media</h2>
-          <form method="POST" action="/content/wp/media/library" enctype="multipart/form-data">
+          <form method="post" action="/content/wp/media/library" enctype="multipart/form-data">
             <input type="file" name="*"/>
             <input type="submit" value="Upload"/>
           </form>
