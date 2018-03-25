@@ -40,6 +40,10 @@ subprojects {
             "organization": project.property('organization'),
             "gaTrackingId": project.property('gaTrackingId'),
             "disqusShortName": project.property('disqusShortName'),
+            "mongo.connectionString": project.property('mongo.connectionString'),
+            "mongo.database": project.property('mongo.database'),
+            "mongo.collection": project.property('mongo.collection'),
+            "mongo.provider.roots": project.property('mongo.provider.roots').split(',').collect {"/content/$projectId/\$it"}.join('","'),
             "currentYear": Calendar.instance.get(Calendar.YEAR) as String
         ]
     }

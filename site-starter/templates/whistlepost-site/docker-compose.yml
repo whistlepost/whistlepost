@@ -1,0 +1,8 @@
+whistlepost:
+  image: ${projectId}
+  ports:
+    - 8081:8080
+  links:
+    - mongo
+mongo:
+  image: mongo:latest

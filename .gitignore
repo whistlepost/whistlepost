@@ -6,6 +6,7 @@ build/
 gradle.properties
 !/whistlepost-config/gradle.properties
 !/site-starter/templates/whistlepost-site/gradle.properties
+!/site-starter/templates/whistlepost-site/site-config/gradle.properties
 node_modules/
 yarn.lock
 package-lock.json
