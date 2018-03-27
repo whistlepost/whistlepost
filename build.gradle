@@ -118,6 +118,11 @@ A publishing platform based on Apache Sling
         // bintray credentials
         bintray_user = project.hasProperty('bintray_user') ? project.getProperty('bintray_user') : ''
         bintray_key = project.hasProperty('bintray_key') ? project.getProperty('bintray_key') : ''
+
+        // common dependencies..
+        slingApiVersion = '2.11.0'
+        servletApiVersion = '3.1.0'
+        awsJavaSdkVersion = '1.11.302'
     }
 
     uploadArchives {

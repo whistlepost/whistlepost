@@ -5,9 +5,10 @@ dependencies {
             'org.slf4j:slf4j-api:1.7.21'
 
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4', 'net.sourceforge.nekohtml:nekohtml:1.9.22',
-            'org.apache.cocoon:cocoon-serializers-charsets:1.0.3-SNAPSHOT', 'javax.servlet:javax.servlet-api:3.1.0'
+            'org.apache.cocoon:cocoon-serializers-charsets:1.0.3-SNAPSHOT',
+            "javax.servlet:javax.servlet-api:$servletApiVersion"
 
-    testRuntime 'org.apache.sling:org.apache.sling.api:2.11.0',
+    testRuntime "org.apache.sling:org.apache.sling.api:$slingApiVersion",
             'ch.qos.logback:logback-classic:1.1.7'
 
 }
