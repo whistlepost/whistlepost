@@ -1,3 +1,13 @@
+<%
+    if (currentSession.userID != 'anonymous') {
+        sling.include("/content/@projectId@/admin/navbar.html");
+%>
+<style>
+body { padding-top: 50px };
+</style>
+<%
+    }
+%>
 
 <div class="masthead clearfix">
     <div class="inner">

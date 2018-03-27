@@ -1,0 +1,44 @@
+{
+  "title":"Whistlepost Administration",
+  "sling:resourceType":"wp/page/admin",
+  "jcr:primaryType":"nt:unstructured",
+  "articles": {
+    "title":"Articles",
+    "sling:resourceType":"wp/page/article-list",
+    "create": {
+      "title":"Articles",
+      "sling:resourceType":"wp/page/article/create"
+    },
+    "edit": {
+      "title":"Articles",
+      "sling:resourceType":"wp/page/article/edit"
+    }
+  },
+  "users": {
+    "title":"Users",
+    "sling:resourceType":"wp/page/user-list",
+    "1": {
+      "username": "fortuna",
+      "active": "true",
+      "groups": ["1"]
+    }
+  },
+  "groups": {
+    "title":"Groups",
+    "sling:resourceType":"wp/page/group-list",
+    "1": {
+      "id": "administrators"
+    },
+    "2": {
+      "id": "editors"
+    }
+  },
+  "plugins": {
+    "title":"Plugins",
+    "sling:resourceType":"wp/page/plugins"
+  },
+  "navbar": {
+    "title":"Admin",
+    "sling:resourceType":"wp/block/admin/navbar"
+  }
+}
