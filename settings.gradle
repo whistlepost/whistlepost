@@ -1,4 +1,6 @@
 def extensions = [
+    'sling-dynamodb-resourceprovider',
+    'sling-s3-resourceprovider',
     'sling-analytics-lib',
     'sling-comments-lib',
     'whistlepost-rewrite-lib',
