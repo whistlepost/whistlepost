@@ -1,0 +1,8 @@
+dependencies {
+    compile 'org.apache.sling:org.apache.sling.nosql.generic:1.1.0',
+            'org.apache.sling:org.apache.sling.commons.osgi:2.4.0',
+            'org.slf4j:slf4j-api:1.7.21',
+            "com.amazonaws:aws-java-sdk-dynamodb:$awsJavaSdkVersion"
+
+    embed "com.amazonaws:aws-java-sdk-dynamodb:$awsJavaSdkVersion"
+}
