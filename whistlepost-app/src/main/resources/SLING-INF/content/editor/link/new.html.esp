@@ -1,0 +1,9 @@
+<form id="create_link" method="post" action="<%= currentNode.rootPath %>/*" enctype="multipart/form-data" accept-charset="UTF-8 ANSI">
+    <input type="text" name="title" value="" placeholder="Title"/><br/>
+    <input type="text" name="media" placeholder="URL"/> <br/>
+    Published <input type="checkbox" name="published" value="true"/><br/>
+    <input type="submit" value="Add" />
+
+    <input type="hidden" name="sling:resourceType" value="<%= currentNode.pageType %>"/>
+    <input type="hidden" name=":redirect" value="<%= currentNode.rootPath %>/*.html"/>
+</form>
