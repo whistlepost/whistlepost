@@ -1,0 +1,15 @@
+{
+  "title":"@projectName@ Editors",
+  "sling:resourceType":"wp/page/list",
+  "jcr:primaryType":"nt:unstructured",
+  "list": {
+    "sling:resourceType":"wp/block/editor-list",
+    "article": {
+      "sling:resourceType": "wp/editor/article",
+      "title":"Article Editor",
+      "description": "Create and edit news and blog articles",
+      "rootPath": "/content/@projectId@/articles",
+      "pageType": "@projectId@/page/article"
+    }
+  }
+}

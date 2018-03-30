@@ -1,6 +1,6 @@
 <%
-    var rootPath = request.getParameter('rootPath');
-    var pageType = request.getParameter('pageType');
+    var rootPath = currentNode.rootPath;
+    var pageType = currentNode.pageType;
 %>
 
 <form id="create_article" method="post" action="<%= rootPath %>/*" enctype="multipart/form-data" accept-charset="UTF-8 ANSI">
