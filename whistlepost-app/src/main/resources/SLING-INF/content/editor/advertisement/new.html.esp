@@ -1,0 +1,17 @@
+<%
+var rootPath = currentNode.rootPath;
+var pageType = currentNode.pageType;
+%>
+
+<form id="create_advertisement" method="post" action="<%= rootPath %>/*" enctype="multipart/form-data" accept-charset="UTF-8 ANSI">
+    <input type="text" name="title" value="" placeholder="Title"/><br/>
+    <input type="text" name="media" placeholder="Image URL"/> <br/>
+    <input type="text" name="website" placeholder="Website"/> <br/>
+    <input type="text" name="telephone" placeholder="Telephone"/> <br/>
+    <input type="text" name="openingHours" placeholder="Opening hours"/> <br/>
+    Published <input type="checkbox" name="published" value="true"/><br/>
+    <input type="submit" value="Add"/>
+
+    <input type="hidden" name="sling:resourceType" value="<%= pageType %>"/>
+    <input type="hidden" name=":redirect" value="<%= rootPath %>/*.html"/>
+</form>
