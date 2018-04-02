@@ -15,6 +15,10 @@ props.mongo_database = ask('MongoDB Database? [sling]: ', 'sling', 'mongo_databa
 props.mongo_collection = ask('MongoDB Collection? [resources]: ', 'resources', 'mongo_collection')
 props.mongo_providerRoots = ask('MongoDB Provider Roots? [articles]: ', 'articles', 'mongo_providerRoots')
 
+// media library configuration
+props.media_location = ask('Media Library Location? [/opt/sling/media]: ', '/opt/sling/media', 'media_location')
+props.media_providerRoot = ask('Media Library Provider Root? [media/library]: ', 'media/library', 'media_providerRoot')
+
 processTemplates "README.md", props
 processTemplates "settings.gradle", props
 processTemplates "**/build.gradle", props
