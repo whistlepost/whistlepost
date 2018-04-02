@@ -2,17 +2,13 @@
   "title":"Whistlepost Administration",
   "sling:resourceType":"wp/page/admin",
   "jcr:primaryType":"nt:unstructured",
-  "articles": {
-    "title":"Articles",
-    "sling:resourceType":"wp/page/article-list",
-    "create": {
-      "title":"Articles",
-      "sling:resourceType":"wp/page/article/create"
-    },
-    "edit": {
-      "title":"Articles",
-      "sling:resourceType":"wp/page/article/edit"
-    }
+  "create": {
+    "title":"Create",
+    "sling:resourceType":"wp/page/create"
+  },
+  "edit": {
+    "title":"Edit",
+    "sling:resourceType":"wp/page/edit"
   },
   "users": {
     "title":"Users",
@@ -36,5 +32,9 @@
   "plugins": {
     "title":"Plugins",
     "sling:resourceType":"wp/page/plugins"
+  },
+  "navbar": {
+    "title":"Admin",
+    "sling:resourceType":"wp/block/admin/navbar"
   }
 }
