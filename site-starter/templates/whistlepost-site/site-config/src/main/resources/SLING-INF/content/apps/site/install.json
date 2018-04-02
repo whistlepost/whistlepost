@@ -5,5 +5,11 @@
     "database": "@mongo.database@",
     "collection": "@mongo.collection@",
     "provider.roots": ["@mongo.provider.roots@"]
+  },
+  "org.apache.sling.fsprovider.internal.FsResourceProvider-@projectId@": {
+    "jcr:primaryType":"sling:OsgiConfig",
+    "provider.file": "/opt/sling/media",
+    "provider.root": "/content/@projectId@/media/library",
+    "provider.fs.mode": "FILES_FOLDERS"
   }
 }
