@@ -17,5 +17,14 @@
   "org.apache.sling.jcr.resource.internal.JcrResourceResolverFactoryImpl": {
     "jcr:primaryType":"sling:OsgiConfig",
     "resource.resolver.mapping": ["/:/", "(?!/content/wp/)/content/[a-zA-Z0-9]+/:/", "/content/:/", "/system/docroot/:/", "/content/wp/index.html>/index2.html"]
+  },
+  "org.apache.sling.commons.log.LogManager": {
+    "jcr:primaryType":"sling:OsgiConfig",
+    "org.apache.sling.commons.log.file": "",
+    "org.apache.sling.commons.log.level": "info"
+  },
+  "org.apache.sling.commons.log.LogManager.factory.writer-wp": {
+    "jcr:primaryType":"sling:OsgiConfig",
+    "org.apache.sling.commons.log.file": ""
   }
 }

@@ -1,0 +1,5 @@
+{
+  "title":"@projectName@ - Articles",
+  "sling:resourceType":"wp/block/article-list",
+  "jcr:primaryType":"nt:unstructured"
+}

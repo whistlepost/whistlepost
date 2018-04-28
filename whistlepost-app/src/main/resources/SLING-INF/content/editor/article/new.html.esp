@@ -1,0 +1,18 @@
+<%
+    var rootPath = currentNode.rootPath;
+    var pageType = currentNode.pageType;
+%>
+
+<form id="create_article" method="post" action="<%= rootPath %>/*" enctype="multipart/form-data" accept-charset="UTF-8 ANSI">
+    <input type="text" name="title" value="" placeholder="Title"/><br/>
+    Published Date <input type="date" name="date" value=""/><br/>
+    <!--Image <input type="file" name="*"/><br/>-->
+    <input type="text" name="media" placeholder="Image URL"/> <br/>
+    <textarea id="content" placeholder="Article content goes here.."></textarea><br/>
+    Feature <input type="checkbox" name="feature" value="true"/><br/>
+    Published <input type="checkbox" name="published" value="true"/><br/>
+    <input type="submit" value="Add" onclick="javascript:parseTextarea(this.form.id, content.value, 'pars')"/>
+
+    <input type="hidden" name="sling:resourceType" value="<%= pageType %>"/>
+    <input type="hidden" name=":redirect" value="<%= rootPath %>/*.html"/>
+</form>

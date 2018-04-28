@@ -1,0 +1,14 @@
+<form id="create_recipe" method="post" action="<%= currentNode.rootPath %>/*" enctype="multipart/form-data" accept-charset="UTF-8 ANSI">
+    <input type="text" name="title" value="" placeholder="Title"/><br/>
+    Published Date <input type="date" name="date" value=""/><br/>
+    <!--Image <input type="file" name="*"/><br/>-->
+    <input type="text" name="media" placeholder="Image URL"/> <br/>
+    <textarea id="pars_txt" placeholder="Article content goes here.."></textarea><br/>
+    <textarea id="ingredients_txt" placeholder="List ingredients here.."></textarea><br/>
+    <textarea id="method_txt" placeholder="List method here.."></textarea><br/>
+    Published <input type="checkbox" name="published" value="true"/><br/>
+    <input type="submit" value="Add" onclick="javascript:parseTextarea(this.form.id, pars_txt.value, 'pars'); parseTextarea(this.form.id, ingredients_txt.value, 'ingredients'); parseTextarea(this.form.id, method_txt.value, 'method');"/>
+
+    <input type="hidden" name="sling:resourceType" value="<%= currentNode.pageType %>"/>
+    <input type="hidden" name=":redirect" value="<%= currentNode.rootPath %>/*.html"/>
+</form>

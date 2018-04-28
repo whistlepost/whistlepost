@@ -1,0 +1,8 @@
+whistlepost:
+  image: micronode/whistlepost:1.1.0-feature-dynamodb-resource-SNAPSHOT
+  ports:
+    - 8081:8080
+  links:
+    - mongo
+mongo:
+  image: mongo:latest

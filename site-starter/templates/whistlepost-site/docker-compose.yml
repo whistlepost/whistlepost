@@ -1,0 +1,15 @@
+version: "3"
+services:
+  whistlepost:
+    image: ${projectId}
+    ports:
+      - "8081:8080"
+    links:
+      - mongo
+    volumes:
+      - "media:/opt/sling/media"
+  mongo:
+    image: mongo:latest
+
+volumes:
+  media:

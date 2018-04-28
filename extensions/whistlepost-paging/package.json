@@ -1,0 +1,17 @@
+{
+  "name": "whistlepost-paging",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main/resources/SLING-INF/content/js/paging.js",
+  "scripts": {
+    "buildWebpack": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+  },
+  "dependencies": {
+    "lodash": "^4.17.5"
+  }
+}

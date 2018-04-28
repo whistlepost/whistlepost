@@ -2,5 +2,5 @@
   "title":"Whistlepost",
   "sling:resourceType":"wp/footer",
   "jcr:primaryType":"nt:unstructured",
-  "copyright": "2016 Micronode, Inc."
+  "copyright": "2018 Micronode, Inc."
 }
