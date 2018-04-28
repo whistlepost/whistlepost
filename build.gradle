@@ -209,7 +209,7 @@ A publishing platform based on Apache Sling
                     sign = isReleaseVersion
                 }
                 mavenCentralSync {
-                    sync = isReleaseVersion
+                    sync = false//isReleaseVersion
                     user = sonatype_username //OSS user token: mandatory
                     password = sonatype_password //OSS user password: mandatory
 //                    close = '0' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
@@ -236,5 +236,7 @@ task buildDocker(type: Docker) {
     bundleprojects.each {
         addFile it.jar.archivePath, "/opt/sling/sling/startup/${project.property('bundleStartLevel')}/"
     }
+//    addFile 'sling.properties', '/opt/sling/'
     bundleprojects.each { dependsOn("${it.name}:jar") }
+//    defaultCommand = ["java", "-jar", "org.apache.sling.starter.jar", "-f", "-", "-l", "WARN"]
 }
