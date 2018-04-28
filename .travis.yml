@@ -5,7 +5,9 @@ cache:
   directories:
     #- $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-sudo: false
+sudo: required
+services:
+  - docker
 dist: trusty
 language: java
 jdk:
