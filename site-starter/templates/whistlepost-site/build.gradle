@@ -61,7 +61,7 @@ docker {
 }
 
 task buildDocker(type: Docker) {
-    applicationName = project.property('projectId')
+    applicationName = "${project.property('organization').toLowerCase()}/${project.property('projectId')}"
     subprojects.each {
         addFile it.jar.archivePath, "/opt/sling/sling/startup/\${project.property('bundleStartLevel')}/"
     }
