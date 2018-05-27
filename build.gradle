@@ -222,7 +222,7 @@ A publishing platform based on Apache Sling
 }
 
 docker {
-    baseImage "apache/sling:latest"
+    baseImage "apache/sling:9"
     maintainer 'Ben Fortuna "fortuna@micronode.com"'
 }
 
