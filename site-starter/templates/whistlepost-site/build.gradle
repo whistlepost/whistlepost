@@ -56,12 +56,16 @@ subprojects {
 }
 
 docker {
-    baseImage "micronode/whistlepost:1.0.1"
+    baseImage "micronode/whistlepost:1.1.1"
     maintainer project.property('organization')
 }
 
 task buildDocker(type: Docker) {
-    applicationName = project.property('projectId')
+    applicationName = "${project.property('organization').toLowerCase()}/${project.property('projectId')}"
+    push 'true' == project.property('docker_push')
+    apiUsername = project.property('docker_apiUsername')
+    apiPassword = project.property('docker_apiPassword')
+    apiEmail = project.property('docker_apiEmail')
     subprojects.each {
         addFile it.jar.archivePath, "/opt/sling/sling/startup/\${project.property('bundleStartLevel')}/"
     }
