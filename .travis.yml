@@ -19,6 +19,8 @@ script:
   - ./gradlew build jacocoTestReport
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+before_deploy:
+  - sudo apt install --only-upgrade docker-ce -y
 deploy:
   provider: script
   script: scripts/tag-release.sh && scripts/publish-site-starter.sh && scripts/publish-docker-image.sh
