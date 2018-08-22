@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./gradlew wrapper --gradle-version=4.9 --distribution-type=bin
+./gradlew wrapper --gradle-version=$1 --distribution-type=bin
