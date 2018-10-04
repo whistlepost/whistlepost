@@ -26,7 +26,7 @@
   "org.apache.sling.commons.log.LogManager.factory.writer-wp": {
     "jcr:primaryType":"sling:OsgiConfig",
     "org.apache.sling.commons.log.file": ""
-  }
+  },
   "org.apache.sling.jcr.base.internal.LoginAdminWhitelist.fragment-wp": {
     "jcr:primaryType":"sling:OsgiConfig",
     "whitelist.name": "whistlepost",
