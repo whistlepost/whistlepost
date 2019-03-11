@@ -25,7 +25,8 @@ before_deploy:
   - sudo apt install --only-upgrade docker-ce -y
 deploy:
   provider: script
-  script: scripts/tag-release.sh && scripts/publish-site-starter.sh && scripts/publish-docker-image.sh
+#  script: scripts/tag-release.sh && scripts/publish-site-starter.sh && scripts/publish-docker-image.sh
+  script: scripts/install.sh
   skip_cleanup: true
   on:
     branch: master
