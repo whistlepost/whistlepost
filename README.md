@@ -1,4 +1,4 @@
-# Whistlepost - Web Publishing Platform
+# Whistlepost - Digital content authoring and publishing
 
 [Apache Sling]: http://sling.apache.org/
 [Jekyll]: https://jekyllrb.com/
