@@ -35,8 +35,7 @@
 
 ## Introduction
 
-Whistlepose is content management system (CMS) designed to be as simple as [Jekyll], as flexible as [Adobe Experience Manager],
-and as robust as [Wordpress].
+Whistlepost is content management system (CMS) designed to be as simple as [Jekyll], as flexible as [Adobe Experience Manager], and as robust as [Wordpress].
 
 Whistlepost is built on the [Apache Sling] platform, which applies the mantra that everything is a resource.
 The benefit of this approach is that is separates the structure of the content from the structure of the site itself, 
