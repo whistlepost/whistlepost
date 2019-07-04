@@ -1,9 +1,10 @@
 {
-  "org.apache.sling.urlrewriter.internal.SlingUrlRewriteFilter": {
+  "org.apache.felix.http.sslfilter.SslFilter": {
     "jcr:primaryType":"sling:OsgiConfig",
-    "service.ranking": 100,
-    "sling.filter.scope": ["REQUEST", "FORWARD"],
-    "org.apache.sling.urlrewriter.rewrite.rules": "<?xml version=\"1.0\" encoding=\"utf-8\"?><!DOCTYPE urlrewrite PUBLIC \"-//tuckey.org//DTD UrlRewrite 4.0//EN\" \"http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd\"><urlrewrite><rule><from>^/$</from><to type=\"redirect\">%{context-path}/index.html</to></rule><rule><from>^/wp/?$</from><to type=\"redirect\">%{context-path}/wp/admin.html</to></rule></urlrewrite>"
+    "ssl-forward.header": "X-Forwarded-Proto",
+    "ssl-forward.value": "https",
+    "ssl-forward-cert.header": "X-Forwarded-SSL-Certificate",
+    "rewrite.absolute.urls": "false"
   },
   "org.apache.felix.webconsole.internal.servlet.OsgiManager": {
     "jcr:primaryType":"sling:OsgiConfig",
@@ -31,5 +32,23 @@
     "jcr:primaryType":"sling:OsgiConfig",
     "whitelist.name": "whistlepost",
     "whitelist.bundles": ["org.apache.sling.rewriter"]
+  },
+  "org.apache.sling.fsprovider.internal.FsResourceProvider-apps": {
+    "jcr:primaryType": "sling:OsgiConfig",
+    "provider.file": "/wp/apps",
+    "provider.root": "/apps",
+    "provider.fs.mode": "INITIAL_CONTENT",
+    "provider.initial.content.import.options": "overwrite",
+    "provider.checkinterval": "1000",
+    "provider.cache.size": "10000"
+  },
+  "org.apache.sling.fsprovider.internal.FsResourceProvider-content": {
+    "jcr:primaryType": "sling:OsgiConfig",
+    "provider.file": "/wp/content",
+    "provider.root": "/content",
+    "provider.fs.mode": "INITIAL_CONTENT",
+    "provider.initial.content.import.options": "overwrite",
+    "provider.checkinterval": "1000",
+    "provider.cache.size": "10000"
   }
 }
