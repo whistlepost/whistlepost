@@ -1,6 +1,9 @@
 # Whistlepost - Digital content authoring and publishing
 
 [Apache Sling]: http://sling.apache.org/
+[template engines]: https://sling.apache.org/documentation/bundles/scripting.html
+[content management]: https://sling.apache.org/documentation/bundles.html#resource-providers
+
 [Jekyll]: https://jekyllrb.com/
 [Wordpress]: https://wordpress.org/
 [Adobe Experience Manager]: https://docs.adobe.com/
@@ -35,40 +38,21 @@
 
 ## Introduction
 
-Whistlepost is content management system (CMS) designed to be as simple as [Jekyll], as flexible as [Adobe Experience Manager], and as robust as [Wordpress].
-
-Whistlepost is built on the [Apache Sling] platform, which applies the mantra that everything is a resource.
+Whistlepost is a Web content rendering engine similar to [Jekyll]. It is built on [Apache Sling], the same platform  on which [Adobe Experience Manager] is built. [Apache Sling] platform, which applies the mantra that everything is a resource.
 The benefit of this approach is that is separates the structure of the content from the structure of the site itself, 
 which allows both (UX/UI) designers and (content) developers to focus on what is most important to them.
 
 ## Features
 
-Whistlepost includes default support for a selection of features popular with Web
-developers today, such that the overhead of configuring the development environment
-is significantly reduced.
+The primary focus of Whistlepost is the separation of UI and content. Whistlepost doesn't impose restrictions on how the UI is built,
+nor does it dictate how and where content is managed.
 
-### Enterprise-grade Content Management
+The key features of Whistlepost include:
 
-Whistlepost is built on the same engine used to power [Adobe Experience Manager], meaning the all the benefits of
-a rock-solid Content Management System are realised.
-
-### Static Asset Management
-
-One of the challenges of the modern Web developer is managing all the dependencies and potential conflicts in
-static assets. The Whistlepost site template includes [Webpack] support by default making it simple to define
-such dependencies and reduce the chance of conflicts. 
-
-### Reusable Code Library
-
-Whistlepost provides an extensive list of code snippets that may be incorporated in a site with very little
-effort. These extensions use well-known patterns and third-party libraries to add support for a wide range
-of common website features. 
-
-### Containerisation
-
-A modern approach to testing, and increasingly deployment of websites includes containerisation frameworks
-such as [Docker]. Whistlepost provides Docker containers for both the platform and websites built using the
-site template, offering the flexibility to decide how to deploy your site.
+* Support for multiple [template engines] including JSP, Thymeleaf and HTL (Sightly)
+* Multiple [content management] solutions including NoSQL (e.g. MongoDB), AWS S3, Filesystem, etc.
+* Extensions provide additional functionality to support additional site integrations (e.g. OpenGraph, json-ld, etc.)
+* Built for containerisation (i.e. Docker) with support for horizontal scaling and multi-tenant solutions.
 
 
 ## Getting Started
