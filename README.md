@@ -57,29 +57,38 @@ The key features of Whistlepost include:
 
 ## Getting Started
 
-Whistlepost provides a [Lazybones] project template that is probably the simplest way to create a new Whistlepost site.
-The following steps outline how to use it:
+### Prerequisites
 
-1. Install [Lazybones] via [SDKMAN]:
+The only requirements to deploy and test a Whistlepost site locally are [Docker] and a good text editor.
 
-		$ curl -s "https://get.sdkman.io" | bash
-	
-		$ source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk install lazybones
+### Creating a new site
 
-1. Include the Whistlepost repository in configuration:
+1. *Create a project.* Use the yeoman site generator to create a default directory structure
+2. *Run Docker.* Use docker-compose to deploy and test locally
+3. *Develop the UI.* Modify and test static page fragments for UI and layout adjustments
+4. *Author site content.* Define content and add template tags to render dynamic page elements
 
-		$ lazybones set bintrayRepositories = [micronode/whistlepost, pledbrook/lazybones-templates]
+### Migrating a static site
 
-1. Create a new site skeleton using the Whistlepost template:
+1. Create directories for both application (ie. HTML, CSS, JavaScript) and content.
+2. Create a Whistlepost `docker-compose.yml` file
+3. Deploy locally and adjust static content to render correctly (eg. Prefix absolute paths with "/apps/")
+4. Define content and add template tags to render dynamic content
 
-		$ lazybones create whistlepost-site <site directory>
+### Migrating an Adobe AEM/Sling site
 
-1. Build and run your new site in Docker:
-
-		$ ./gradlew buildDocker && docker run --rm -p 8080:8080 <projectId>
-
-1. Open site in browser: `http://localhost:8080/<projectId>`
+1. Define a `Dockerfile` that extends from the Whistlepost image to load additional required bundles
+1. Define a `docker-compose.yml` file with volumes for app and content directories
+2. Deploy locally and adjust content to render correctly
 	  
+### Migrating a Jekyll site
+
+1. Create directories for both application (ie. HTML, CSS, JavaScript) and content.
+2. Relocate Jekyll HTML and static assets to the application directory
+3. Refactor Jekyll config files as JSON files in the content directory
+4. Create a Whistlepost `docker-compose.yml` file
+5. Deploy locally and adjust static content to render correctly (eg. Prefix absolute paths with "/apps/")
+6. Replace Jekyll Liquid template tags with your preferred template tags
 
 ## Extensions
 
