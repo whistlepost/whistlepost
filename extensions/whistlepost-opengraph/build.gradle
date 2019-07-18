@@ -1,5 +1,4 @@
-jar {
-    manifest {
-        instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/libs/wp-opengraph;overwrite:=true'
-    }
+dependencies {
+    compile "org.apache.sling:org.apache.sling.api:$slingApiVersion",
+        "org.apache.sling:org.apache.sling.models.api:1.3.6"
 }

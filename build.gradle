@@ -1,16 +1,11 @@
+import aQute.bnd.gradle.Bundle
+
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
-        }
-        maven {
-            url 'https://plugins.gradle.org/m2/'
-        }
     }
-
     dependencies {
-        classpath 'org.figurate:gradle-bundle-plugin:1.0.2'
+        classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:4.2.0'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
@@ -32,48 +27,40 @@ scmVersion {
     ]
 }
 
+ext {
+    groovyVersion = '2.4.5'
+    slingApiVersion = '2.11.0'
+}
+
 def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
 
 configure(bundleprojects) { subproject ->
-
     apply plugin: 'com.jfrog.bintray'
     apply plugin: 'maven'
     apply plugin: 'maven-publish'
+    apply plugin: 'java'
     apply plugin: 'jacoco'
     apply plugin: 'signing'
-    apply plugin: 'bundle'
+    apply plugin: 'biz.aQute.bnd.builder'
 
-    sourceCompatibility = 1.7
-    targetCompatibility = 1.7
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
     repositories {
         mavenCentral()
-        // sonatype snapshots
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots/'
-        }
-        maven {
-            url 'https://repository.apache.org/snapshots'
-        }
     }
 
-    group = 'org.whistlepost'
+    group = 'org.mnode.whistlepost'
     version = rootProject.scmVersion.version
     description = '''
 A publishing platform based on Apache Sling
 '''
-    task mkClassesDir doLast {
-      new File("$buildDir/classes/main").mkdirs()
-      new File("$buildDir/osgi-classes").mkdirs()
-    }
-    tasks.processResources.dependsOn mkClassesDir
 
-    bundleInstall {
-        uri = "$sling_url/system/console/bundles"
-        username = sling_username
-        password = sling_password
+    task bundle(type: Bundle) {
+        from sourceSets.main.output
+        bndfile = 'bnd.bnd'
     }
-
+    
     jacocoTestReport {
         reports {
             xml.enabled true
@@ -96,9 +83,11 @@ A publishing platform based on Apache Sling
         from sourceSets.main.allSource
         classifier = 'sources'
     }
-
+    
+    jar.enabled = false
+    
     artifacts {
-        archives jar
+        archives bundle
         archives javadocJar
         archives sourcesJar
     }
@@ -222,7 +211,8 @@ A publishing platform based on Apache Sling
 }
 
 docker {
-    baseImage "apache/sling:9"
+//    baseImage docker_base_image
+    baseImage 'apache/sling:11'
     maintainer 'Ben Fortuna "fortuna@micronode.com"'
 }
 
@@ -233,10 +223,22 @@ task buildDocker(type: Docker) {
     apiUsername = project.property('docker_apiUsername')
     apiPassword = project.property('docker_apiPassword')
     apiEmail = project.property('docker_apiEmail')
+    /*
+    runCommand 'mkdir -p /opt/sling'
+    runCommand "wget https://repo1.maven.org/maven2/org/apache/sling/org.apache.sling.starter/${sling_version}/org.apache.sling.starter-${sling_version}.jar -O /opt/sling/org.apache.sling.starter.jar"
+//    runCommand 'apt-get update && apt-get install -y --no-install-recommends curl'
+//    runCommand "curl https://repo1.maven.org/maven2/org/apache/sling/org.apache.sling.starter/${sling_version}/org.apache.sling.starter-${sling_version}.jar -o /opt/sling/org.apache.sling.starter.jar"
+    workingDir '/opt/sling'
+    exposePort 8080
+    volume '/opt/sling/sling'
+    setEnvironment 'SLING_OPTS', "''"
+    defaultCommand(['java', '-jar', 'org.apache.sling.starter.jar'])
+     */
+
     bundleprojects.each {
         addFile it.jar.archivePath, "/opt/sling/sling/startup/${project.property('bundleStartLevel')}/"
     }
 //    addFile 'sling.properties', '/opt/sling/'
-    bundleprojects.each { dependsOn("${it.name}:jar") }
+    bundleprojects.each { dependsOn("${it.name}:bundle") }
 //    defaultCommand = ["java", "-jar", "org.apache.sling.starter.jar", "-f", "-", "-l", "WARN"]
 }

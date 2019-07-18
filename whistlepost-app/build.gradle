@@ -2,6 +2,10 @@ plugins {
   id "com.moowork.node" version "1.2.0"
 }
 
+dependencies {
+  compile "org.codehaus.groovy:groovy-all:$rootProject.groovyVersion"
+}
+
 node {
   download = true
 }
@@ -10,12 +14,6 @@ task buildWebpack(type: NpmTask) {
   args = ['run', 'buildWebpack']
 }
 
-jar {
-  manifest {
-    instruction 'Sling-Initial-Content', 'SLING-INF/content;path:=/apps/wp;overwrite:=true'
-  }
-}
-
-jar.dependsOn buildWebpack
+bundle.dependsOn buildWebpack
 buildWebpack.dependsOn yarn
 clean.dependsOn yarn_cache_clean
