@@ -1,5 +1,7 @@
 # Whistlepost - Digital content authoring and publishing
 
+[separation of concerns]: https://en.wikipedia.org/wiki/Separation_of_concerns
+
 [Apache Sling]: http://sling.apache.org/
 [template engines]: https://sling.apache.org/documentation/bundles/scripting.html
 [content management]: https://sling.apache.org/documentation/bundles.html#resource-providers
@@ -38,9 +40,15 @@
 
 ## Introduction
 
-Whistlepost is a Web content rendering engine similar to [Jekyll]. It is built on [Apache Sling], the same platform  on which [Adobe Experience Manager] is built. [Apache Sling] platform, which applies the mantra that everything is a resource.
-The benefit of this approach is that is separates the structure of the content from the structure of the site itself, 
-which allows both (UX/UI) designers and (content) developers to focus on what is most important to them.
+Whistlepost is a templating engine for Web sites, that helps to manage site structure and content independently of the presentation. Often
+we think of modularity and encapsulation as important design principles for software that is more secure, reliable and easier to maintain.
+This is often expressed as a [separation of concerns], and is the basis for the Whistlepost platform.
+
+### Apache Sling
+
+Whistlepost is built on [Apache Sling], which has a unique approach to content management in that it provides separation of not only the presentation and content but also the content structure itself. This helps to coneptualise the relationship between content without being distracted by the presentation.
+
+Whilst Whistlepost shares the same basis as [Adobe Experience Manager], it's focus is more aligned to the popular [Jekyll] template engine, which is more concerned with the content rendering than lifecycle management. Whistlepost is designed to make it easy to "drop in" to a new or existing site to assist with the separation of the UI and content concerns. This is especially beneficial as sites grow larger and more unweildly over time, and allows both (UX/UI) designers and (content) developers to focus on what is most important to them.
 
 ## Features
 
