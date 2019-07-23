@@ -8,7 +8,7 @@
 
 [Jekyll]: https://jekyllrb.com/
 [Wordpress]: https://wordpress.org/
-[Adobe Experience Manager]: https://docs.adobe.com/
+[Adobe Experience Manager]: https://en.wikipedia.org/wiki/Day_Software
 
 [Webpack]: https://webpack.github.io
 [Docker]: https://www.docker.com
@@ -48,7 +48,7 @@ This is often expressed as a [separation of concerns], and is the basis for the 
 
 Whistlepost is built on [Apache Sling], which has a unique approach to content management in that it provides separation of not only the presentation and content but also the content structure itself. This helps to conceptualise the relationship between content and structure without being distracted by the presentation.
 
-Whilst Whistlepost shares the same basis as [Adobe Experience Manager], it's focus is more aligned to the popular [Jekyll] template engine, which is more concerned with content rendering than lifecycle management. Whistlepost is designed to make it easy to "drop in" to a new or existing site to assist with the separation of the UI and content concerns. This is especially beneficial as sites grow larger and more unweildly over time, and allows both (UX/UI) designers and (content) developers to focus on what is most important to them.
+Whilst Whistlepost shares the same origins as [Adobe Experience Manager], it's focus is more aligned to the popular [Jekyll] template engine, which is more concerned with content rendering than lifecycle management. Whistlepost is designed to make it easy to "drop in" to a new or existing site to assist with the separation of the UI and content concerns. This is especially beneficial as sites grow larger and more unweildly over time, and allows both (UX/UI) designers and (content) developers to focus on what is most important to them.
 
 ## Features
 
