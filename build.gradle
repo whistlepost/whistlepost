@@ -210,13 +210,8 @@ A publishing platform based on Apache Sling
     }
 }
 
-docker {
-//    baseImage docker_base_image
-    baseImage 'apache/sling:11'
-    maintainer 'Ben Fortuna "fortuna@micronode.com"'
-}
-
 task buildDocker(type: Docker) {
+    dockerfile = 'Dockerfile'
     applicationName = 'micronode/whistlepost'
     tagVersion = scmVersion.version
     push 'true' == project.property('docker_push')
