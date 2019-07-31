@@ -40,9 +40,11 @@
 
 ## Introduction
 
-Whistlepost is a templating engine for Web sites, that helps to manage site structure and content independently of the presentation. Often
-we think of modularity and encapsulation as important design principles for software that is more secure, reliable and easier to maintain.
-This is often expressed as a [separation of concerns], and is the basis for the Whistlepost platform.
+Whistlepost is a templating engine for Web sites, that helps to manage site structure and content independently of the presentation. The
+goal is to provide many of the benefits of a Content Management System (CMS) without the management overhead.
+
+Often we think of modularity and encapsulation as important design principles for software that is more secure, reliable and easier to
+maintain. This is often expressed as a [separation of concerns], which is the basis for the Whistlepost platform.
 
 ### Apache Sling
 
