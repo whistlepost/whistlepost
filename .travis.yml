@@ -17,6 +17,7 @@ jdk:
 env:
   - GRADLE_OPTS="-Xmx512m -XX:MaxPermSize=256m"
 script:
+  - echo "$ORG_GRADLE_PROJECT_docker_apiPassword" | docker login -u "$ORG_GRADLE_PROJECT_docker_apiUsername" --password-stdin
   - ./gradlew build buildDocker jacocoTestReport
 #after_success:
 #  - bash <(curl -s https://codecov.io/bash)
