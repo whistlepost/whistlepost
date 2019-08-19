@@ -85,6 +85,7 @@ A publishing platform based on Apache Sling
     }
     
     jar.enabled = false
+    build.dependsOn bundle
     
     artifacts {
         archives bundle
