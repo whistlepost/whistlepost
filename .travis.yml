@@ -17,17 +17,17 @@ jdk:
 env:
   - GRADLE_OPTS="-Xmx512m -XX:MaxPermSize=256m"
 script:
-  - echo "$ORG_GRADLE_PROJECT_docker_apiPassword" | docker login -u "$ORG_GRADLE_PROJECT_docker_apiUsername" --password-stdin
-  - ./gradlew build buildDocker jacocoTestReport
+  - ./gradlew build jacocoTestReport
 #after_success:
 #  - bash <(curl -s https://codecov.io/bash)
 before_deploy:
   - sudo apt install --only-upgrade docker-ce -y
+  - echo "$ORG_GRADLE_PROJECT_docker_apiPassword" | docker login -u "$ORG_GRADLE_PROJECT_docker_apiUsername" --password-stdin
 deploy:
   provider: script
 #  script: scripts/tag-release.sh && scripts/publish-site-starter.sh && scripts/publish-docker-image.sh
-  script: scripts/install.sh
+  script: ./gradlew buildDocker
   skip_cleanup: true
   on:
     branch: master
-    jdk: oraclejdk8
+    jdk: openjdk11
