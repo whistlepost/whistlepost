@@ -1,1 +1,2 @@
 Sling-Initial-Content: SLING-INF/content;path:=/apps/wp;overwrite:=true;ignoreImportProviders:="jar"
+Automatic-Module-Name: org.mnode.whistlepost.config
