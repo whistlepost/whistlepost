@@ -1,0 +1,2 @@
+Sling-Initial-Content: SLING-INF/content;path:=/libs/${project.name};overwrite:=true
+Automatic-Module-Name: org.mnode.whistlepost.rewrite

@@ -1,0 +1,2 @@
+Sling-Initial-Content: SLING-INF/content;path:=/apps/sling/servlet/errorhandler;overwrite:=true
+Automatic-Module-Name: org.mnode.whistlepost.errorhandler
