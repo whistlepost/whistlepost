@@ -5,8 +5,8 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - /mnt/doprod1-docker/innersource/src/app:/wp/apps/innersource:ro
-      - /mnt/doprod1-docker/innersource/src/content:/wp/content/innersource:ro
+      - /mnt/doprod1-docker/whistlepost/innersource/src/app:/wp/apps/innersource:ro
+      - /mnt/doprod1-docker/whistlepost/innersource/src/content:/wp/content/innersource:ro
 
   autoheal:
     restart: always
