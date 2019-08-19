@@ -1,6 +1,7 @@
 target/
 .gradle/
 build/
+out/
 .idea/
 *.iml
 gradle.properties
@@ -8,5 +9,4 @@ gradle.properties
 !/site-starter/templates/whistlepost-site/gradle.properties
 !/site-starter/templates/whistlepost-site/site-config/gradle.properties
 node_modules/
-yarn.lock
 package-lock.json
