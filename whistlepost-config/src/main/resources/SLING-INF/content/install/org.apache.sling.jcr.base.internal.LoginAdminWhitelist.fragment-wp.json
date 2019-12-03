@@ -1,0 +1,5 @@
+{
+  "jcr:primaryType":"sling:OsgiConfig",
+  "whitelist.name": "whistlepost",
+  "whitelist.bundles": ["org.apache.sling.rewriter"]
+}

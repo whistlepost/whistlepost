@@ -1,0 +1,9 @@
+{
+  "jcr:primaryType": "sling:OsgiConfig",
+  "provider.file": "/wp/content",
+  "provider.root": "/content",
+  "provider.fs.mode": "INITIAL_CONTENT",
+  "provider.initial.content.import.options": "overwrite",
+  "provider.checkinterval": "1000",
+  "provider.cache.size": "10000"
+}
