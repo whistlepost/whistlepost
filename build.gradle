@@ -5,8 +5,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:4.2.0'
-        classpath 'se.transmode.gradle:gradle-docker:1.2'
+        classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:4.2.0',
+                "org.apache.sling:org.apache.sling.bnd.models:1.0.0",
+                'se.transmode.gradle:gradle-docker:1.2'
     }
 }
 
