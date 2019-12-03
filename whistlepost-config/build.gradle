@@ -40,7 +40,9 @@ dependencies {
           // nosql providers..
           'org.apache.sling:org.apache.sling.nosql.generic:1.1.0',
           'org.apache.sling:org.apache.sling.nosql.mongodb-resourceprovider:1.1.0',
-          'org.mongodb:mongo-java-driver:3.1.1'
+          'org.mongodb:mongo-java-driver:3.1.1',
+          // sling query
+          'org.apache.sling:org.apache.sling.query:4.0.2'
 }
 
 bundle {
