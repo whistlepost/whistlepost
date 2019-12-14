@@ -3,9 +3,9 @@ const webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-  entry: './src/main/resources/SLING-INF/assets/js/whistlepost.js',
+  entry: './src/main/resources/assets/js/whistlepost.js',
   output: {
-    filename: 'resources/main/SLING-INF/assets/js/whistlepost.bundle.js',
+    filename: 'resources/main/assets/js/whistlepost.bundle.js',
     path: path.resolve(__dirname, 'build')
   },
   module: {
@@ -23,7 +23,7 @@ module.exports = {
 		  {
             loader: 'file-loader',
             options: {
-            	'outputPath': 'resources/main/SLING-INF/assets/images/',
+            	'outputPath': 'resources/main/assets/images/',
             	'useRelativePath': true
 			}
           }
@@ -35,7 +35,7 @@ module.exports = {
 		  {
             loader: 'file-loader',
             options: {
-            	'outputPath': 'resources/main/SLING-INF/assets/fonts/',
+            	'outputPath': 'resources/main/assets/fonts/',
             	'useRelativePath': true
 			}
           }
@@ -57,6 +57,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin("resources/main/SLING-INF/assets/css/whistlepost.bundle.css"),
+    new ExtractTextPlugin("resources/main/assets/css/whistlepost.bundle.css"),
   ]
 };

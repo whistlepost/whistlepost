@@ -1,5 +1,5 @@
 Sling-Initial-Content: SLING-INF/content;path:=/apps/wp;overwrite:=true
-Sling-Bundle-Resources: SLING-INF/assets;path:=/assets/wp
+Sling-Bundle-Resources: /assets/wp;path:=/assets
 Automatic-Module-Name: org.mnode.whistlepost.app
 -plugin.slingmodels = org.apache.sling.bnd.models.ModelsScannerPlugin;generatePackagesHeader=true
 Export-Package = org.mnode.whistlepost*
