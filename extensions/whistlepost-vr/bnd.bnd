@@ -1,0 +1,3 @@
+Sling-Initial-Content: SLING-INF/content;path:=/libs/${project.name};overwrite:=true
+Sling-Bundle-Resources: /assets/libs/whistlepost-vr;path:=/assets
+Automatic-Module-Name: org.mnode.whistlepost.vr

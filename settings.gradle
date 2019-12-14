@@ -8,10 +8,10 @@ def extensions = [
 //    'whistlepost-headers',
     'whistlepost-jsonld',
     'whistlepost-opengraph',
-    'whistlepost-paging',
     'whistlepost-scripting-groovy-markup',
-    'whistlepost-scripting-liquid'
+    'whistlepost-scripting-liquid',
 //    'whistlepost-gallery'
+    'whistlepost-vr',
 ]
 
 include(extensions as String[])
