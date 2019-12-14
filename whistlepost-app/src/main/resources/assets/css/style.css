@@ -5,7 +5,7 @@ body {
 }
 
 .wp-navbar-header {
-    background-image: url("/apps/wp/images/logo.png");
+    background-image: url("/assets/wp/images/logo.png");
     background-size: 42px 42px;
     background-repeat: no-repeat;
 }
@@ -35,7 +35,7 @@ footer {
 }
 
 .wp-logo-bg {
-    background-image: url("/apps/wp/images/logo-60.png");
+    background-image: url("/assets/wp/images/logo-60.png");
     background-size: 48px;
     background-repeat: no-repeat;
     padding-left: 70px;
