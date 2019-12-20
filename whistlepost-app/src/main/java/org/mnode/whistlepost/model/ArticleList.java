@@ -8,6 +8,7 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,16 +59,29 @@ public class ArticleList extends Page {
         return (int) Math.ceil((float) $(list).children().asList().size() / pageSize);
     }
 
+    public Iterable<Integer> getPageNumbers() {
+        List<Integer> pageNumbers = new ArrayList<>();
+        for (int i = 1; i <= getPageCount(); i++) {
+            if (i == 1 || i == getPageCount() || (i > getCurrentPage() - 3 && i < getCurrentPage() + 3)) {
+                pageNumbers.add(i);
+            } else if (pageNumbers.lastIndexOf(-1) < pageNumbers.size() - 1) {
+                // add separator..
+                pageNumbers.add(-1);
+            }
+        }
+        return pageNumbers;
+    }
+
     public boolean hasPrevious() {
         return currentPage > 1;
     }
 
     public boolean hasNext() {
-        return currentPage < getPageCount() - 1;
+        return currentPage < getPageCount();
     }
 
     public Iterable<Article> getArticles() {
-        int offset = Math.min(currentPage * pageSize, $(list).children().asList().size() - 1);
+        int offset = Math.min((currentPage - 1) * pageSize, $(list).children().asList().size() - 1);
 
         List<Resource> filtered;
         if (limit > 0) {
