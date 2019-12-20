@@ -1,7 +1,7 @@
 def extensions = [
     'whistlepost-analytics',
     'whistlepost-comments',
-//    'whistlepost-rewrite',
+    'whistlepost-rewrite',
     'whistlepost-rss',
 //    'whistlepost-cors',
     'whistlepost-errorhandler',

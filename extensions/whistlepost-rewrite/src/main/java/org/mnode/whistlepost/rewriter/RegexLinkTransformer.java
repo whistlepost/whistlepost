@@ -1,7 +1,5 @@
 package org.mnode.whistlepost.rewriter;
 
-import groovy.lang.Reference;
-import groovy.util.logging.Slf4j;
 import org.apache.sling.rewriter.DefaultTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,8 +7,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.AttributesImpl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -23,7 +19,7 @@ public class RegexLinkTransformer extends DefaultTransformer {
 
     private static final Logger LOG = LoggerFactory.getLogger(RegexLinkTransformer.class);
 
-    private Map<String, String> tags = new LinkedHashMap<();
+    private Map<String, String> tags = new LinkedHashMap<>();
 
     private Pattern linkPattern;
 
@@ -41,17 +37,16 @@ public class RegexLinkTransformer extends DefaultTransformer {
 
     private Attributes transform(final Attributes attributes, String key) {
         LOG.info("Transforming [" + key + "]");
-        final AttributesImpl transformedAttrs = (AttributesImpl) new ArrayList<Attributes>(Arrays.asList(attributes));
-        for (final Reference<Integer> i = new Reference<int>(0); ; i.get() < attributes.getLength() ;){
-            if (attributes.getLocalName(i.get()).equals(key)) {
-                Matcher matcher = linkPattern.matcher(attributes.getValue(i.get()));
+
+        final AttributesImpl transformedAttrs = new AttributesImpl(attributes);
+        for (int i = 0; i < attributes.getLength(); i++){
+            if (attributes.getLocalName(i).equals(key)) {
+                Matcher matcher = linkPattern.matcher(attributes.getValue(i));
                 if (matcher.matches()) {
-                    transformedAttrs.setValue(i.get(), matcher.replaceFirst(replacement));
-                    LOG.info("Transformed [" + attributes.getValue(i.get()) + "] -> [" + transformedAttrs.getValue(i.get()) + "]");
+                    transformedAttrs.setValue(i, matcher.replaceFirst(replacement));
+                    LOG.info("Transformed [" + attributes.getValue(i) + "] -> [" + transformedAttrs.getValue(i) + "]");
                 }
-
             }
-
         }
 
         return transformedAttrs;
