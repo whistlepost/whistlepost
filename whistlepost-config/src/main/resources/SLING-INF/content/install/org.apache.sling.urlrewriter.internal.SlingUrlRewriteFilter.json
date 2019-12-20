@@ -1,0 +1,6 @@
+{
+  "jcr:primaryType":"sling:OsgiConfig",
+  "service.ranking": 100,
+  "sling.filter.scope": ["REQUEST", "FORWARD"],
+  "org.apache.sling.urlrewriter.rewrite.rules": "<?xml version=\"1.0\" encoding=\"utf-8\"?><!DOCTYPE urlrewrite PUBLIC \"-//tuckey.org//DTD UrlRewrite 4.0//EN\" \"http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd\"><urlrewrite><rule><from>^/$</from><to type=\"redirect\">%{context-path}/index.html</to></rule><rule><from>^/wp/?$</from><to type=\"redirect\">%{context-path}/wp/admin.html</to></rule></urlrewrite>"
+}
