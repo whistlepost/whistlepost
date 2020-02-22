@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<div data-th-fragment="section-list(sections)">
+    <th:block data-th-each="section : ${sections}">
+        <div data-th-replace="/apps/wp/page/fragments/page.html::section(${section})">
+        </div>
+    </th:block>
+</div>
+
+<section data-th-fragment="section(section)">
+    <a data-th-name="${section.name}" class="page-section"></a>
+    <h1 data-th-text="${section.title}">[TITLE]</h1>
+
+    <th:block data-th-each="par : ${section.pars}">
+        <p data-th-utext="${par}">[BODY]</p>
+    </th:block>
+
+    <div data-th-each="innersection : ${section.sections}">
+        <a data-th-name="${innersection.name}" class="page-section"></a>
+        <h4 data-th-text="${innersection.title}">[TITLE]</h4>
+        <th:block data-th-each="par : ${innersection.pars}">
+            <p data-th-utext="${par}">[BODY]</p>
+        </th:block>
+
+        <div data-th-each="innersection2 : ${innersection.sections}">
+            <a data-th-name="${innersection2.name}" class="page-section"></a>
+            <h4 data-th-text="${innersection2.title}">[TITLE]</h4>
+            <th:block data-th-each="par : ${innersection2.pars}">
+                <p data-th-utext="${par}">[BODY]</p>
+            </th:block>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>
