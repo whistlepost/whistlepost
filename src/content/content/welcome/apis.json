@@ -1,0 +1,13 @@
+{
+  "title":"APIs",
+  "description": "Managing APIs with Whistlepost",
+  "sling:resourceType":"wp/page/default",
+  "jcr:primaryType":"nt:unstructured",
+  "sections": {
+    "introduction": {
+      "pars": [
+        ""
+      ]
+    }
+  }
+}

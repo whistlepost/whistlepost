@@ -1,0 +1,16 @@
+{
+  "title":"About",
+  "description": "Origins of Whistlepost",
+  "sling:resourceType":"wp/page/default",
+  "jcr:primaryType":"nt:unstructured",
+  "sections": {
+    "introduction": {
+      "title": "Introduction",
+      "pars": [
+        "Whistlepost is a templating engine for Web sites, that helps to manage site structure and content independently of the presentation.",
+        "The key features of Whistlepost include:",
+        "<ul><li>Support for multiple [template engines] including JSP, Thymeleaf and HTL (Sightly)</li><li>Multiple [content management] solutions including NoSQL (e.g. MongoDB), AWS S3, Filesystem, etc.</li><li>Extensions provide additional functionality to support additional site integrations (e.g. OpenGraph, json-ld, etc.)</li><li>Built for containerisation (i.e. Docker) with support for horizontal scaling and multi-tenant solutions.</li><ul>"
+      ]
+    }
+  }
+}

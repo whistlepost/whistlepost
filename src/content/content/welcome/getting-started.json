@@ -1,0 +1,15 @@
+{
+  "title":"Getting Started",
+  "description": "Getting started with Whistlepost",
+  "sling:resourceType":"wp/page/default",
+  "jcr:primaryType":"nt:unstructured",
+  "sections": {
+    "installation": {
+      "title": "Installation",
+      "pars": [
+        "Creating a Whistlepost site requires a basic directory structure as follows:",
+        "<ul><li>src/ <ul><li>app/ <code># page templates</code></li><li>assets/ <code># static resource files (e.g. css, images, javascript)</code></li><li>config/ <code># Apache Sling configuration</code></li><li>content/ <code># site content</code></li></ul></li><li>app.bnd <code># App bundle definition</code></li><li>build.gradle <code># Gradle build configuration</code></li><li>config.bnd <code># Configuration bundle definition</code></li><li>content.bnd <code># Content bundle definition</code></li><li>docker-compose.yml <code># Docker configuration for local testing</code></li></ul>"
+      ]
+    }
+  }
+}

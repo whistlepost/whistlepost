@@ -1,0 +1,13 @@
+{
+  "title":"Site Templates",
+  "description": "Whistlepost Site Templates",
+  "sling:resourceType":"wp/page/default",
+  "jcr:primaryType":"nt:unstructured",
+  "sections": {
+    "introduction": {
+      "pars": [
+        ""
+      ]
+    }
+  }
+}
