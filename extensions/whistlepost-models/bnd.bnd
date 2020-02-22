@@ -1,0 +1,3 @@
+Automatic-Module-Name: org.mnode.whistlepost.models
+-plugin.slingmodels = org.apache.sling.bnd.models.ModelsScannerPlugin;generatePackagesHeader=true
+Export-Package = org.mnode.whistlepost*

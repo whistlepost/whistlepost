@@ -2,18 +2,13 @@ package org.mnode.whistlepost.model;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class})
 public class Article extends Page {
-
-    @SlingObject
-    protected ResourceResolver resourceResolver;
 
     public String getSummary() {
         if (getPars().length > 0) {
@@ -41,11 +36,7 @@ public class Article extends Page {
 
         String sidebar = resource.getValueMap().get("sidebar", String.class);
         if (sidebar != null) {
-            if (sidebar.startsWith("/")) {
-                sidebarResource = resourceResolver.getResource(sidebar);
-            } else {
-                sidebarResource = resourceResolver.getResource(resource.getParent(), sidebar);
-            }
+            sidebarResource = getResource(sidebar);
         }
 
         if (sidebarResource != null) {
