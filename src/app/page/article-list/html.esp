@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/assets/wp/images/favicon.ico">
+
+    <title><%= currentNode.title %></title>
+
+    <link href="/assets/wp/css/whistlepost.bundle.css" rel="stylesheet">
+
+    <!-- Sling -->
+    <script src="/system/sling.js"></script>
+</head>
+
+<body>
+
+<% sling.include("/wp/header.html/" + currentNode.name); %>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Authoring</h1>
+            <p class="lead">Create and manage articles</p>
+
+            <p class="block-title">Articles</p>
+            <% sling.include("/wp/articles.text.html"); %>
+
+        </div>
+    </div>
+
+</div><!-- /.container -->
+
+<% sling.include("/wp/footer.html"); %>
+</body>
+</html>

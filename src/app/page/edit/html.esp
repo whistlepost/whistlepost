@@ -1,0 +1,46 @@
+<%
+    var editor = request.resourceResolver.resolve(request.requestPathInfo.suffix).adaptTo(javax.jcr.Node);
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/assets/wp/images/favicon.ico">
+
+    <title><%= editor.title %></title>
+
+    <link href="/assets/wp/css/whistlepost.bundle.css" rel="stylesheet">
+
+    <!-- Sling -->
+    <script src="/system/sling.js"></script>
+</head>
+
+<body>
+
+<% sling.include("/content/wp/header.html/" + editor.name); %>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1><%= editor.title %></h1>
+            <p class="lead"><%= editor.description %></p>
+
+                <hr/>
+                <% sling.include(editor.path + ".edit.html"); %>
+
+                <p class="block-title">Related Articles</p>
+                <% sling.include(editor.rootPath + ".text.html"); %>
+        </div>
+    </div>
+
+</div><!-- /.container -->
+
+<% sling.include("/content/wp/footer.html"); %>
+</body>
+</html>
