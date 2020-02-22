@@ -2,6 +2,7 @@ def extensions = [
     'whistlepost-analytics',
     'whistlepost-comments',
     'whistlepost-httpgateway',
+    'whistlepost-models',
     'whistlepost-rewrite',
     'whistlepost-rss',
 //    'whistlepost-cors',
@@ -19,8 +20,3 @@ include(extensions as String[])
 rootProject.children.each { extension ->
     extension.projectDir = new File("$rootDir/extensions/$extension.name")
 }
-
-include 'whistlepost-app'
-include 'whistlepost-content'
-include 'whistlepost-config'
-include 'site-starter'
