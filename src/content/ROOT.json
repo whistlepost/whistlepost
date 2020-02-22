@@ -1,0 +1,11 @@
+{
+  "sling:resourceType": "sling:redirect",
+  "sling:target": "/success.html",
+  "content" : {
+    "sling:resourceType": "sling:redirect",
+    "sling:target": "/success.html",
+    "success": {
+      "sling:resourceType": "wp/page/success"
+    }
+  }
+}

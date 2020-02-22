@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-th-with="page=${request.adaptTo(@org.mnode.whistlepost.model.PageList@class)}">
+
+<head data-th-replace="/apps/wp/page/fragments/head.html::default">
+</head>
+
+<body>
+
+<div class="container app">
+    <header data-th-replace="/apps/wp/page/fragments/masthead.html::default">
+    </header>
+
+    <nav>
+        <h2>Contents</h2>
+        <ul>
+            <li data-th-each="contents : ${page.pages}">
+                <a data-th-href="|${contents.path}.html|" data-th-text="${contents.title}" target="content">[CONTENTS]</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <iframe name="content" data-th-src="|${page.pages[0].path}.html|" style="border: 0; height: 100%; width: 100%;"></iframe>
+    </main>
+
+</div>
+
+</body>
+</html>

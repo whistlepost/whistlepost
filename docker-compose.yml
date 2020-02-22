@@ -1,12 +1,14 @@
 version: "3"
 services:
   whistlepost:
-    image: "micronode/whistlepost:1.1.5-develop-SNAPSHOT"
+    image: "micronode/whistlepost:1.1.5-feature-refactoring-SNAPSHOT"
     ports:
       - "8080:8080"
     volumes:
-      - /mnt/doprod1-docker/whistlepost/innersource/src/app:/wp/apps/innersource:ro
-      - /mnt/doprod1-docker/whistlepost/innersource/src/content:/wp/content/innersource:ro
+      - ./src/app:/wp/apps/wp:ro
+      - ./src/assets:/wp/assets/wp:ro
+      - ./src/content/content/welcome:/wp/content/welcome:ro
+      - ./src/content/content/wp-admin:/wp/content/wp-admin:ro
 
   autoheal:
     restart: always

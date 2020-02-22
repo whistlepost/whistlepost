@@ -1,0 +1,13 @@
+{
+  "title":"Extensions",
+  "description": "Whistlepost Extensions",
+  "sling:resourceType":"wp/page/default",
+  "jcr:primaryType":"nt:unstructured",
+  "sections": {
+    "introduction": {
+      "pars": [
+        ""
+      ]
+    }
+  }
+}

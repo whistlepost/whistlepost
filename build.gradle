@@ -5,8 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:4.2.0',
-                "org.apache.sling:org.apache.sling.bnd.models:1.0.0",
+        classpath "org.apache.sling:org.apache.sling.bnd.models:1.0.0",
                 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
@@ -14,9 +13,20 @@ buildscript {
 plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.8.1'
     id "com.jfrog.bintray" version "1.7.3" apply false
+    id "biz.aQute.bnd.builder" version "5.0.0"
+    id "com.moowork.node" version "1.3.1"
 }
 
+apply plugin: 'java'
 apply plugin: 'docker'
+
+repositories {
+    mavenCentral()
+    // snapshot of cocoon-seralizers-charsets
+    maven {
+        url 'https://repository.apache.org/snapshots'
+    }
+}
 
 scmVersion {
     tag {
@@ -31,6 +41,93 @@ scmVersion {
 ext {
     groovyVersion = '2.4.5'
     slingApiVersion = '2.11.0'
+}
+
+node {
+    download = true
+}
+
+configurations {
+    embed
+    embed.transitive = false
+}
+
+dependencies {
+    embed 'org.apache.sling:org.apache.sling.rewriter:1.1.2',
+            'org.apache.sling:org.apache.sling.commons.html:1.0.0',
+            'org.apache.cocoon:cocoon-serializers-charsets:1.0.3-SNAPSHOT',
+            'org.apache.sling:org.apache.sling.urlrewriter:0.0.2',
+            'org.apache.servicemix.bundles:org.apache.servicemix.bundles.urlrewritefilter:4.0.4_1',
+
+            // filesystem resource provider
+            'org.apache.sling:org.apache.sling.fsresource:2.1.16',
+
+            // groovy
+            'org.codehaus.groovy:groovy:2.4.5',
+            'org.codehaus.groovy:groovy-jsr223:2.4.5',
+            'org.codehaus.groovy:groovy-json:2.4.5',
+            'org.codehaus.groovy:groovy-xml:2.4.5',
+//          'org.codehaus.groovy:groovy-jmx:2.5.7',
+//          'org.codehaus.groovy:groovy-servlet:2.5.7',
+            'org.codehaus.groovy:groovy-templates:2.4.5',
+            'org.apache.sling:org.apache.sling.scripting.groovy:1.0.2',
+            'org.apache.sling:org.apache.sling.scripting.core:2.0.58',
+
+            // thymeleaf
+            'org.attoparser:attoparser:2.0.2.RELEASE',
+            'org.unbescape:unbescape:1.1.4.RELEASE',
+            'org.apache.servicemix.bundles:org.apache.servicemix.bundles.ognl:3.2_1',
+            'org.javassist:javassist:3.20.0-GA',
+            'org.apache.servicemix.bundles:org.apache.servicemix.bundles.thymeleaf:3.0.11.RELEASE_1',
+            'org.apache.sling:org.apache.sling.scripting.thymeleaf:2.0.0',
+
+            // liquid
+            'org.jsoup:jsoup:1.10.3',
+            'org.antlr:antlr4-runtime:4.7.1',
+
+            // nosql providers..
+            'org.apache.sling:org.apache.sling.nosql.generic:1.1.0',
+            'org.apache.sling:org.apache.sling.nosql.mongodb-resourceprovider:1.1.0',
+            'org.mongodb:mongo-java-driver:3.1.1',
+
+            // sling query
+            'org.apache.sling:org.apache.sling.query:4.0.2'
+}
+
+task buildWebpack(type: NpmTask) {
+    args = ['run', 'buildWebpack']
+}
+
+task bundleApp(type: Bundle) {
+    archiveBaseName = "whistlepost-app-$scmVersion.version"
+    bndfile = 'app.bnd'
+    from('src/app') { into 'SLING-INF/content' }
+    from('src/assets') { into 'assets' }
+}
+
+task bundleConfig(type: Bundle) {
+    archiveBaseName = "whistlepost-config-$scmVersion.version"
+    bndfile = 'config.bnd'
+    from('src/config') { into 'SLING-INF/content' }
+    into("SLING-INF/content/install/${bundleStartLevel}") {
+        from configurations.embed
+    }
+}
+
+task bundleContent(type: Bundle) {
+    archiveBaseName = "whistlepost-content-$scmVersion.version"
+    bndfile = 'content.bnd'
+    from('src/content') { into 'SLING-INF/content' }
+}
+
+bundleApp.dependsOn buildWebpack
+buildWebpack.dependsOn yarn
+clean.dependsOn yarn_cache_clean
+
+artifacts {
+    archives bundleApp
+    archives bundleConfig
+    archives bundleContent
 }
 
 def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
@@ -61,7 +158,7 @@ A publishing platform based on Apache Sling
         from sourceSets.main.output
         bndfile = 'bnd.bnd'
     }
-    
+
     jacocoTestReport {
         reports {
             xml.enabled true
@@ -84,7 +181,7 @@ A publishing platform based on Apache Sling
         from sourceSets.main.allSource
         classifier = 'sources'
     }
-    
+
     jar.enabled = false
     build.dependsOn bundle
     
@@ -217,26 +314,18 @@ task buildDocker(type: Docker) {
     dockerfile = 'Dockerfile'
     applicationName = 'micronode/whistlepost'
     tagVersion = scmVersion.version
-    push 'true' == project.property('docker_push')
-    apiUsername = project.property('docker_apiUsername')
-    apiPassword = project.property('docker_apiPassword')
-    apiEmail = project.property('docker_apiEmail')
-    /*
-    runCommand 'mkdir -p /opt/sling'
-    runCommand "wget https://repo1.maven.org/maven2/org/apache/sling/org.apache.sling.starter/${sling_version}/org.apache.sling.starter-${sling_version}.jar -O /opt/sling/org.apache.sling.starter.jar"
-//    runCommand 'apt-get update && apt-get install -y --no-install-recommends curl'
-//    runCommand "curl https://repo1.maven.org/maven2/org/apache/sling/org.apache.sling.starter/${sling_version}/org.apache.sling.starter-${sling_version}.jar -o /opt/sling/org.apache.sling.starter.jar"
-    workingDir '/opt/sling'
-    exposePort 8080
-    volume '/opt/sling/sling'
-    setEnvironment 'SLING_OPTS', "''"
-    defaultCommand(['java', '-jar', 'org.apache.sling.starter.jar'])
-     */
+    push 'true' == docker_push
+    apiUsername = docker_apiUsername
+    apiPassword = docker_apiPassword
+    apiEmail = docker_apiEmail
+
+    addFile bundleApp.archiveFile.get() as String, "/opt/sling/sling/startup/${bundleStartLevel}/"
+    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/sling/startup/${bundleStartLevel}/"
+    addFile bundleContent.archiveFile.get() as String, "/opt/sling/sling/startup/${bundleStartLevel}/"
 
     bundleprojects.each {
-        addFile it.jar.archivePath, "/opt/sling/sling/startup/${project.property('bundleStartLevel')}/"
+        def startLevel = project.hasProperty("${it.name}.bundleStartLevel") ? project.property("${it.name}.bundleStartLevel") : bundleStartLevel
+        addFile it.jar.archivePath, "/opt/sling/sling/startup/${startLevel}/"
     }
-//    addFile 'sling.properties', '/opt/sling/'
     bundleprojects.each { dependsOn("${it.name}:bundle") }
-//    defaultCommand = ["java", "-jar", "org.apache.sling.starter.jar", "-f", "-", "-l", "WARN"]
 }
