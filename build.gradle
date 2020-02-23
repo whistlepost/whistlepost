@@ -329,3 +329,4 @@ task buildDocker(type: Docker) {
     }
     bundleprojects.each { dependsOn("${it.name}:bundle") }
 }
+buildDocker.dependsOn build
