@@ -10,15 +10,15 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/apps/wp/images/favicon.ico">
+    <link rel="icon" href="/assets/wp/images/favicon.ico">
 
     <title>Page Not Found (404) - Whistlepost</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/libs/wp-bootstrap/bower_components/bootstrap-css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="/apps/wp/css/style.css" rel="stylesheet">
-    <link href="/apps/wp/css/grid.css" rel="stylesheet">
+    <link href="/assets/wp/css/style.css" rel="stylesheet">
+    <link href="/assets/wp/css/grid.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
