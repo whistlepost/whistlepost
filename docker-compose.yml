@@ -1,7 +1,7 @@
 version: "3"
 services:
   whistlepost:
-    image: "micronode/whistlepost:1.1.5-feature-refactoring-SNAPSHOT"
+    image: "micronode/whistlepost:1.1.5-develop-SNAPSHOT"
     ports:
       - "8080:8080"
     volumes:
