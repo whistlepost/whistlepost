@@ -19,16 +19,17 @@ props.mongo_providerRoots = ask('MongoDB Provider Roots? [articles]: ', 'article
 props.media_location = ask('Media Library Location? [/opt/sling/media]: ', '/opt/sling/media', 'media_location')
 props.media_providerRoot = ask('Media Library Provider Root? [media/library]: ', 'media/library', 'media_providerRoot')
 
+props.whistlepostVersion = project.rootProject.version
+
 processTemplates "README.md", props
 processTemplates "settings.gradle", props
-processTemplates "**/build.gradle", props
-processTemplates "**/gradle.properties", props
-processTemplates "site-app/package.json", props
-processTemplates "site-app/webpack.config.js", props
+processTemplates "build.gradle", props
+processTemplates "gradle.properties", props
+processTemplates "package.json", props
+processTemplates "webpack.config.js", props
 processTemplates "docker-compose.yml", props
 
-new File(projectDir, 'site-app/src/main/resources/SLING-INF/content/js/site.js').renameTo(new File(projectDir, "site-app/src/main/resources/SLING-INF/content/js/${props.projectId}.js"))
-new File(projectDir, 'site-app').renameTo(new File(projectDir, "$props.projectId-app"))
-new File(projectDir, 'site-content').renameTo(new File(projectDir, "$props.projectId-content"))
-new File(projectDir, 'site-config/src/main/resources/SLING-INF/content/apps/site').renameTo(new File(projectDir, "site-config/src/main/resources/SLING-INF/content/apps/${props.projectId}"))
-new File(projectDir, 'site-config').renameTo(new File(projectDir, "$props.projectId-config"))
+new File(projectDir, 'src/app/js/site.js').renameTo(new File(projectDir, "src/app/js/${props.projectId}.js"))
+new File(projectDir, 'src/config/apps/site').renameTo(new File(projectDir, "src/config/apps/${props.projectId}"))
+new File(projectDir, 'src/config/etc/map/http/site.80.json').renameTo(new File(projectDir, "src/config/etc/map/http/${props.projectDomain}.80.json"))
+new File(projectDir, 'src/config/etc/map/http/any_site.80.json').renameTo(new File(projectDir, "src/config/etc/map/http/any_${props.projectDomain}.80.json"))

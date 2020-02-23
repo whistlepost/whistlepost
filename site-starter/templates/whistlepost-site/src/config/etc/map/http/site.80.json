@@ -1,0 +1,3 @@
+{
+  "sling:redirect": "http://www.@projectDomain@/"
+}
