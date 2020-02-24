@@ -15,28 +15,28 @@
       "title": "Dynamic Container",
       "pars": [
         "The Dynamic Container layout provides a common layout that will automatically adjust the number of rows and columns based on the viewport size.",
-        "<div class='container dynamic'><div style='background:red;padding-bottom:150px'>[CARD 1]</div><div style='background:orange;padding-bottom:150px'>[CARD 2]</div><div style='background:pink;padding-bottom:150px'>[CARD 3]</div><div style='background:yellow;padding-bottom:150px'>[CARD 4]</div><div style='background:blue;padding-bottom:150px'>[CARD 5]</div><div style='background:green;padding-bottom:150px'>[CARD 6]</div></div>"
+        "<div class='wp-layout dynamic'><div style='background:red;padding-bottom:150px'>[CARD 1]</div><div style='background:orange;padding-bottom:150px'>[CARD 2]</div><div style='background:pink;padding-bottom:150px'>[CARD 3]</div><div style='background:yellow;padding-bottom:150px'>[CARD 4]</div><div style='background:blue;padding-bottom:150px'>[CARD 5]</div><div style='background:green;padding-bottom:150px'>[CARD 6]</div></div>"
       ]
     },
     "application": {
       "title": "Application Container",
       "pars": [
         "The Application layout provides a common layout for web applications: a header, footer and side navigation.",
-        "<div class='container app'><header style='background:red'>[HEADER]</header><nav style='background:yellow'>[NAV]</nav><main style='background:blue'>[MAIN]</main><footer style='background:red'>[FOOTER]</footer></div>"
+        "<div class='wp-layout app' style='height: 100vh;'><header style='background:red'>[HEADER]</header><nav style='background:yellow'>[NAV]</nav><main style='background:blue'>[MAIN]</main><footer style='background:red'>[FOOTER]</footer></div>"
       ]
     },
     "application-with-sidebar": {
       "title": "Application Container with Sidebar",
       "pars": [
         "A slight variation on the Application container layout adds a sidebar on the right.",
-        "<div class='container app with-sidebar'><header style='background:red'>[HEADER]</header><nav style='background:yellow'>[NAV]</nav><main style='background:blue'>[MAIN]</main><aside style='background:green'>[ASIDE]</aside><footer style='background:red'>[FOOTER]</footer></div>"
+        "<div class='wp-layout app with-sidebar' style='height: 100vh;'><header style='background:red'>[HEADER]</header><nav style='background:yellow'>[NAV]</nav><main style='background:blue'>[MAIN]</main><aside style='background:green'>[ASIDE]</aside><footer style='background:red'>[FOOTER]</footer></div>"
       ]
     },
     "holygrail": {
       "title": "Holy Grail Container",
       "pars": [
         "The Holy Grail layout provides one of the most popular layouts, including header, footer, sidebar and top navigation.",
-        "<div class='container holygrail'><header style='background:red'>[HEADER]</header><nav style='background:yellow'>[NAV]</nav><main style='background:blue'>[MAIN]</main><aside style='background:green'>[ASIDE]</aside><footer style='background:red'>[FOOTER]</footer></div>"
+        "<div class='wp-layout holygrail' style='height: 100vh;'><header style='background:red'>[HEADER]</header><nav style='background:yellow'>[NAV]</nav><main style='background:blue'>[MAIN]</main><aside style='background:green'>[ASIDE]</aside><footer style='background:red'>[FOOTER]</footer></div>"
       ]
     }
   }

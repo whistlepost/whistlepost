@@ -6,7 +6,7 @@
 
 <body>
 
-<div class="container app">
+<div class="wp-layout app">
     <header data-th-replace="/apps/wp/page/fragments/masthead.html::default">
     </header>
 
@@ -19,7 +19,7 @@
         </ul>
     </nav>
 
-    <main>
+    <main style="height: 100vh;">
         <iframe name="content" data-th-src="|${page.pages[0].path}.html|" style="border: 0; height: 100%; width: 100%;"></iframe>
     </main>
 

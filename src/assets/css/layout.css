@@ -1,16 +1,15 @@
-.container {
+.wp-layout {
   display: grid;
   grid-gap: 10px;
-  height: 100vh;
 }
 
-.container.dynamic {
+.wp-layout.dynamic {
     /* https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-grid/ */
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     align-items:center;
 }
 
-.container.app {
+.wp-layout.app {
   grid-template-areas:
     "header header"
     "nav main"
@@ -21,7 +20,7 @@
   grid-template-rows: auto 1fr auto;
 }
 
-.container.app.with-sidebar {
+.wp-layout.app.with-sidebar {
   grid-template-areas:
     "header header header"
     "nav main aside"
@@ -32,7 +31,7 @@
   grid-template-rows: auto 1fr auto;
 }
 
-.container.holygrail {
+.wp-layout.holygrail {
   grid-template-areas:
     "header header"
     "nav nav"
@@ -68,7 +67,7 @@ footer {
 
 @media (max-width: 768px) {
 
-    .container.app {
+    .wp-layout.app {
       grid-template-areas:
         "header"
         "nav"
@@ -80,7 +79,7 @@ footer {
       grid-template-rows: auto auto 1fr auto;
     }
 
-    .container.app.with-sidebar {
+    .wp-layout.app.with-sidebar {
       grid-template-areas:
         "header"
         "nav"
@@ -93,7 +92,7 @@ footer {
       grid-template-rows: auto auto 1fr auto auto;
     }
 
-    .container.holygrail{
+    .wp-layout.holygrail{
       grid-template-areas:
         "header"
         "nav"
