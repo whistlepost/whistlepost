@@ -1,3 +1,4 @@
 ScriptEngine-Name: ${project.name}
 ScriptEngine-Version: ${project.version}
 Automatic-Module-Name: org.mnode.whistlepost.scripting.groovy.markup
+Bundle-Category: whistlepost
