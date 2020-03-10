@@ -16,7 +16,7 @@
     "footer footer";
 
   /* maximise content area */
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr auto;
 }
 
@@ -27,7 +27,7 @@
     "footer footer footer";
 
   /* maximise content area */
-  grid-template-columns: 200px 1fr 200px;
+  grid-template-columns: auto 1fr auto;
   grid-template-rows: auto 1fr auto;
 }
 
@@ -39,7 +39,7 @@
     "footer footer";
 
   /* maximise content area */
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: 1fr auto;
   grid-template-rows: auto auto 1fr auto;
 }
 
