@@ -12,11 +12,7 @@
 
     <nav>
         <h2>Contents</h2>
-        <ul>
-            <li data-th-each="contents : ${page.pages}">
-                <a data-th-href="|${contents.path}.html|" data-th-text="${contents.title}" target="content">[CONTENTS]</a>
-            </li>
-        </ul>
+        <div data-th-replace="/apps/wp/page/fragments/toc.html::page-list(${page.pages}, 'content')"></div>
     </nav>
 
     <main style="height: 100vh;">
