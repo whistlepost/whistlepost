@@ -43,25 +43,25 @@
   grid-template-rows: auto auto 1fr auto;
 }
 
-header {
+.wp-layout > header {
   grid-area: header;
 }
 
-nav {
+.wp-layout > nav {
   grid-area: nav;
   margin-left: 0.5rem;
 }
 
-main {
+.wp-layout > main {
   grid-area: main;
 }
 
-aside {
+.wp-layout > aside {
   grid-area: aside;
   margin-right: 0.5rem;
 }
 
-footer {
+.wp-layout > footer {
   grid-area: footer;
 }
 
@@ -109,7 +109,7 @@ footer {
         auto; /* Footer */
     }
 
-    nav, aside {
+    .wp-layout > nav, .wp-layout > aside {
       margin: 0;
     }
 }
