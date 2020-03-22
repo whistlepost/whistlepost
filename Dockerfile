@@ -1,8 +1,12 @@
-FROM openjdk:8-jre-alpine
+#ARG OPENJDK_VERSION=12-alpine
+ARG OPENJDK_VERSION=8-jre-alpine
+FROM openjdk:${OPENJDK_VERSION}
 
 LABEL maintainer="Ben Fortuna <fortuna@micronode.com>"
 
 ARG SLING_VERSION=11
+ARG JAVA_OPTS='-XX:MaxRAM=768m -Xmx384m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap'
+ARG SLING_OPTS=''
 
 RUN mkdir -p /opt/sling
 RUN wget https://repo1.maven.org/maven2/org/apache/sling/org.apache.sling.starter/${SLING_VERSION}/org.apache.sling.starter-${SLING_VERSION}.jar -O /opt/sling/org.apache.sling.starter.jar
@@ -15,9 +19,6 @@ RUN wget https://repo1.maven.org/maven2/org/apache/sling/org.apache.sling.starte
 WORKDIR /opt/sling/
 EXPOSE 8080
 VOLUME /opt/sling/sling
-
-ENV JAVA_OPTS -XX:MaxRAM=768m -Xmx384m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
-ENV SLING_OPTS ''
 
 CMD exec java $JAVA_OPTS -jar org.apache.sling.starter.jar $SLING_OPTS
 
