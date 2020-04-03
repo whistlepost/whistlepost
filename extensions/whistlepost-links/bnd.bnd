@@ -1,0 +1,3 @@
+Sling-Initial-Content: SLING-INF/content;path:=/libs/wp-links;overwrite:=true
+Automatic-Module-Name: org.mnode.whistlepost.links
+Bundle-Category: whistlepost
