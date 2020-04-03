@@ -1,4 +1,4 @@
-Automatic-Module-Name: org.mnode.whistlepost.models
+Automatic-Module-Name: org.mnode.whistlepost.pages
 -plugin.slingmodels = org.apache.sling.bnd.models.ModelsScannerPlugin;generatePackagesHeader=true
 Export-Package = org.mnode.whistlepost*
 Bundle-Category: whistlepost

@@ -15,6 +15,6 @@ public class PageList extends Page {
     private List<String> list;
 
     public Iterable<Page> getPages() {
-        return list.stream().map(p -> getResource(p).adaptTo(Page.class)).collect(Collectors.toList());
+        return list.stream().map(p -> getPage(p)).collect(Collectors.toList());
     }
 }

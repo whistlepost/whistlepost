@@ -66,12 +66,26 @@ public class Page {
         Resource r = null;
         if (resourceRef != null) {
             if (resourceRef.startsWith("/")) {
-                r = resourceResolver.getResource(resourceRef);
+                r = resourceResolver.resolve(resourceRef);
             } else {
                 r = resourceResolver.getResource(this.resource.getParent(), resourceRef);
             }
         }
         return r;
+    }
+
+    /**
+     * Inspect value map to determine appropriate page type to adapt to.
+     * @param resourceRef
+     * @return
+     */
+    protected Page getPage(String resourceRef) {
+        Resource r = getResource(resourceRef);
+        if (r.getValueMap().containsKey("list")) {
+            return r.adaptTo(PageList.class);
+        } else {
+            return r.adaptTo(Page.class);
+        }
     }
 
     /**
