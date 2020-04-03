@@ -1,0 +1,7 @@
+{
+  "jcr:primaryType":"sling:OsgiConfig",
+  "provider.roots": ["content/wp-admin"],
+  "connectionString": "mongo:27017",
+  "database": "sling",
+  "collection": "resources"
+}
