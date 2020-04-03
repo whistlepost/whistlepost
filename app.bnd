@@ -1,5 +1,7 @@
 Sling-Initial-Content: SLING-INF/content;path:=/apps/wp;overwrite:=true
 Sling-Bundle-Resources: /assets/wp;path:=/assets
 Automatic-Module-Name: org.mnode.whistlepost.app
+Bundle-Name: Whistlepost Core Application
+Bundle-SymbolicName: org.mnode.whistlepost-app
 Bundle-Category: whistlepost
 Bundle-Version: ${project.version}

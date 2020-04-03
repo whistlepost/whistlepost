@@ -1,3 +1,5 @@
 Sling-Initial-Content: SLING-INF/content;path:=/libs/${project.name};overwrite:=true
 Automatic-Module-Name: org.mnode.whistlepost.httpgateway
+Bundle-Name: Whistlepost Extension - HTTP Gateway
+Bundle-SymbolicName: org.mnode.whistlepost-httpgateway
 Bundle-Category: whistlepost
