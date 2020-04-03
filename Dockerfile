@@ -20,6 +20,6 @@ WORKDIR /opt/sling/
 EXPOSE 8080
 VOLUME /opt/sling/sling
 
-CMD exec java $JAVA_OPTS -jar org.apache.sling.starter.jar $SLING_OPTS
+CMD exec java -Dsling.fileinstall.dir=/opt/sling/bundles/ $JAVA_OPTS -jar org.apache.sling.starter.jar $SLING_OPTS
 
 HEALTHCHECK CMD wget -O- localhost:8080/system/health.txt?httpStatus=CRITICAL:503
