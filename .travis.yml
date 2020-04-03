@@ -11,8 +11,7 @@ services:
 dist: bionic
 language: java
 jdk:
-  - oraclejdk8
-#  - openjdk8
+  - openjdk8
   - openjdk11
 env:
   - GRADLE_OPTS="-Xmx512m -XX:MaxPermSize=256m"
