@@ -36,6 +36,10 @@ scmVersion {
     branchVersionCreator = [
         'master': 'simple'
     ]
+    nextVersion {
+        suffix = 'pre'
+        separator = '-'
+    }
 }
 
 group = 'micronode'
