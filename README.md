@@ -1,9 +1,14 @@
-# Whistlepost - Web Publishing Platform
+# Whistlepost - Digital content authoring and publishing
+
+[separation of concerns]: https://en.wikipedia.org/wiki/Separation_of_concerns
 
 [Apache Sling]: http://sling.apache.org/
+[template engines]: https://sling.apache.org/documentation/bundles/scripting.html
+[content management]: https://sling.apache.org/documentation/bundles.html#resource-providers
+
 [Jekyll]: https://jekyllrb.com/
 [Wordpress]: https://wordpress.org/
-[Adobe Experience Manager]: https://docs.adobe.com/
+[Adobe Experience Manager]: https://en.wikipedia.org/wiki/Day_Software
 
 [Webpack]: https://webpack.github.io
 [Docker]: https://www.docker.com
@@ -35,68 +40,65 @@
 
 ## Introduction
 
-Whistlepose is content management system (CMS) designed to be as simple as [Jekyll], as flexible as [Adobe Experience Manager],
-and as robust as [Wordpress].
+Whistlepost is a templating engine for Web sites, that helps to manage site structure and content independently of the presentation. The
+goal is to provide many of the benefits of a Content Management System (CMS) without the management overhead.
 
-Whistlepost is built on the [Apache Sling] platform, which applies the mantra that everything is a resource.
-The benefit of this approach is that is separates the structure of the content from the structure of the site itself, 
-which allows both (UX/UI) designers and (content) developers to focus on what is most important to them.
+Often we think of modularity and encapsulation as important design principles for software that is more secure, reliable and easier to
+maintain. This is often expressed as a [separation of concerns], which is the basis for the Whistlepost platform.
+
+### Apache Sling
+
+Whistlepost is built on [Apache Sling], which has a unique approach to content management in that it provides separation of not only the presentation and content but also the content structure itself. This helps to conceptualise the relationship between content and structure without being distracted by the presentation.
+
+Whilst Whistlepost shares the same origins as [Adobe Experience Manager], it's focus is more aligned to the popular [Jekyll] template engine, which is more concerned with content rendering than lifecycle management. Whistlepost is designed to make it easy to "drop in" to a new or existing site to assist with the separation of the UI and content concerns. This is especially beneficial as sites grow larger and more unweildly over time, and allows both (UX/UI) designers and (content) developers to focus on what is most important to them.
 
 ## Features
 
-Whistlepost includes default support for a selection of features popular with Web
-developers today, such that the overhead of configuring the development environment
-is significantly reduced.
+The primary focus of Whistlepost is the separation of UI and content. Whistlepost doesn't impose restrictions on how the UI is built,
+nor does it dictate how and where content is managed.
 
-### Enterprise-grade Content Management
+The key features of Whistlepost include:
 
-Whistlepost is built on the same engine used to power [Adobe Experience Manager], meaning the all the benefits of
-a rock-solid Content Management System are realised.
-
-### Static Asset Management
-
-One of the challenges of the modern Web developer is managing all the dependencies and potential conflicts in
-static assets. The Whistlepost site template includes [Webpack] support by default making it simple to define
-such dependencies and reduce the chance of conflicts. 
-
-### Reusable Code Library
-
-Whistlepost provides an extensive list of code snippets that may be incorporated in a site with very little
-effort. These extensions use well-known patterns and third-party libraries to add support for a wide range
-of common website features. 
-
-### Containerisation
-
-A modern approach to testing, and increasingly deployment of websites includes containerisation frameworks
-such as [Docker]. Whistlepost provides Docker containers for both the platform and websites built using the
-site template, offering the flexibility to decide how to deploy your site.
+* Support for multiple [template engines] including JSP, Thymeleaf and HTL (Sightly)
+* Multiple [content management] solutions including NoSQL (e.g. MongoDB), AWS S3, Filesystem, etc.
+* Extensions provide additional functionality to support additional site integrations (e.g. OpenGraph, json-ld, etc.)
+* Built for containerisation (i.e. Docker) with support for horizontal scaling and multi-tenant solutions.
 
 
 ## Getting Started
 
-Whistlepost provides a [Lazybones] project template that is probably the simplest way to create a new Whistlepost site.
-The following steps outline how to use it:
+### Prerequisites
 
-1. Install [Lazybones] via [SDKMAN]:
+The only requirements to deploy and test a Whistlepost site locally are [Docker] and a good text editor.
 
-		$ curl -s "https://get.sdkman.io" | bash
-	
-		$ source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk install lazybones
+### Creating a new site
 
-1. Include the Whistlepost repository in configuration:
+1. *Create a project.* Use the yeoman site generator to create a default directory structure
+2. *Run Docker.* Use docker-compose to deploy and test locally
+3. *Develop the UI.* Modify and test static page fragments for UI and layout adjustments
+4. *Author site content.* Define content and add template tags to render dynamic page elements
 
-		$ lazybones set bintrayRepositories = [micronode/whistlepost, pledbrook/lazybones-templates]
+### Migrating a static site
 
-1. Create a new site skeleton using the Whistlepost template:
+1. Create directories for both application (ie. HTML, CSS, JavaScript) and content.
+2. Create a Whistlepost `docker-compose.yml` file
+3. Deploy locally and adjust static content to render correctly (eg. Prefix absolute paths with "/apps/")
+4. Define content and add template tags to render dynamic content
 
-		$ lazybones create whistlepost-site <site directory>
+### Migrating an Adobe AEM/Sling site
 
-1. Build and run your new site in Docker:
-
-		$ ./gradlew buildDocker && docker run --rm -p 8080:8080 <projectId>
-
-1. Open site in browser: `http://localhost:8080/<projectId>`
+1. Define a `Dockerfile` that extends from the Whistlepost image to load additional required bundles
+1. Define a `docker-compose.yml` file with volumes for app and content directories
+2. Deploy locally and adjust content to render correctly
 	  
+### Migrating a Jekyll site
+
+1. Create directories for both application (ie. HTML, CSS, JavaScript) and content.
+2. Relocate Jekyll HTML and static assets to the application directory
+3. Refactor Jekyll config files as JSON files in the content directory
+4. Create a Whistlepost `docker-compose.yml` file
+5. Deploy locally and adjust static content to render correctly (eg. Prefix absolute paths with "/apps/")
+6. Replace Jekyll Liquid template tags with your preferred template tags
 
 ## Extensions
 

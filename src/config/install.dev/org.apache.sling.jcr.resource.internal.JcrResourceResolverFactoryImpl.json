@@ -1,0 +1,11 @@
+{
+  "jcr:primaryType":"sling:OsgiConfig",
+  "resource.resolver.mapping": [
+    "/:/",
+    "(?!/content/wp/)/content/[a-zA-Z0-9]+/:/",
+    "/content/:/",
+    "/system/docroot/:/",
+    "/content/wp/index.html>/index2.html"
+  ],
+  "resource.resolver.optimize.alias.resolution": false
+}

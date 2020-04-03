@@ -1,0 +1,6 @@
+{
+  "jcr:primaryType":"sling:OsgiConfig",
+  "servletPath": "/system/health",
+  "disabled": false,
+  "cors.accessControlAllowOrigin": "localhost"
+}

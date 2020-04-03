@@ -1,8 +1,19 @@
-whistlepost:
-  image: micronode/whistlepost:1.1.0-feature-dynamodb-resource-SNAPSHOT
-  ports:
-    - 8081:8080
-  links:
-    - mongo
-mongo:
-  image: mongo:latest
+version: "3"
+services:
+  whistlepost:
+    image: "micronode/whistlepost:1.1.5-develop-SNAPSHOT"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src/app:/wp/apps/wp:ro
+      - ./src/assets:/wp/assets/wp:ro
+      - ./src/content/content/welcome:/wp/content/welcome:ro
+      - ./src/content/content/wp-admin:/wp/content/wp-admin:ro
+
+  autoheal:
+    restart: always
+    image: willfarrell/autoheal
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

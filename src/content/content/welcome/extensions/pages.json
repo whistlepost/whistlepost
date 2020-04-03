@@ -1,0 +1,13 @@
+{
+  "title":"Pages",
+  "description": "Whistlepost Page Models",
+  "sling:resourceType":"wp/page/default",
+  "jcr:primaryType":"nt:unstructured",
+  "sections": {
+    "introduction": {
+      "pars": [
+        "Enhanced page models to support hierarchy and paging."
+      ]
+    }
+  }
+}

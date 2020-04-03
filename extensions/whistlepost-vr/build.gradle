@@ -1,0 +1,13 @@
+apply plugin: 'com.moowork.node'
+
+node {
+  download = true
+}
+
+task buildWebpack(type: NpmTask) {
+  args = ['run', 'buildWebpack']
+}
+
+bundle.dependsOn buildWebpack
+buildWebpack.dependsOn yarn
+clean.dependsOn yarn_cache_clean

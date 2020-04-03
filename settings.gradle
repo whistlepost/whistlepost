@@ -1,23 +1,25 @@
 def extensions = [
-    'sling-analytics-lib',
-    'sling-comments-lib',
-    'whistlepost-rewrite-lib',
-    'whistlepost-rss-lib',
-    'whistlepost-cors-lib',
-    'whistlepost-errorhandler-lib',
-    'whistlepost-headers-lib',
-    'whistlepost-jsonld',
-    'whistlepost-opengraph',
-    'whistlepost-paging'
+//    'whistlepost-analytics',
+//    'whistlepost-calendar',
+//    'whistlepost-comments',
+//    'whistlepost-cors',
+    'whistlepost-errorhandler',
+//    'whistlepost-feeds',
+//    'whistlepost-graphql',
+//    'whistlepost-headers',
+    'whistlepost-httpgateway',
+//    'whistlepost-jsonld',
+    'whistlepost-links',
+//    'whistlepost-material',
+//    'whistlepost-opengraph',
+    'whistlepost-pages',
+    'whistlepost-scripting-groovy-markup',
+    'whistlepost-scripting-liquid',
 //    'whistlepost-gallery'
+    'whistlepost-vr',
 ]
 
 include(extensions as String[])
 rootProject.children.each { extension ->
     extension.projectDir = new File("$rootDir/extensions/$extension.name")
 }
-
-include 'whistlepost-app'
-include 'whistlepost-content'
-include 'whistlepost-config'
-include 'site-starter'

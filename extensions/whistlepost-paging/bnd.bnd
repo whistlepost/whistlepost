@@ -1,0 +1,5 @@
+Sling-Initial-Content: SLING-INF/content;path:=/libs/${project.name};overwrite:=true
+Automatic-Module-Name: org.mnode.whistlepost.paging
+-plugin.slingmodels = org.apache.sling.bnd.models.ModelsScannerPlugin;generatePackagesHeader=true
+Export-Package = org.mnode.whistlepost.paging
+Bundle-Category: whistlepost

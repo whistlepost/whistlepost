@@ -1,0 +1,4 @@
+{
+  "jcr:primaryType":"sling:OsgiConfig",
+  "doctype-default": "xhtml5"
+}

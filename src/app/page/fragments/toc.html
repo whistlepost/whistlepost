@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<div data-th-fragment="page-list(pages, target)">
+    <ul>
+        <li data-th-each="page : ${pages}">
+            <a data-th-href="|${page.path}.html|" data-th-text="${page.title}" data-th-target="${target}">[CONTENTS]</a>
+            <th:block data-th-if="${page.class.name == 'org.mnode.whistlepost.model.PageList'}">
+                <div data-th-replace="/apps/wp/page/fragments/toc.html::page-list(${page.pages}, ${target})"></div>
+            </th:block>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

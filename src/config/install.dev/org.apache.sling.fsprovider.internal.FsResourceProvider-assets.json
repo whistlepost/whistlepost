@@ -1,0 +1,9 @@
+{
+  "jcr:primaryType": "sling:OsgiConfig",
+  "provider.file": "/wp/assets",
+  "provider.root": "/assets",
+  "provider.fs.mode": "FILES_FOLDERS",
+  "provider.initial.content.import.options": "overwrite",
+  "provider.checkinterval": "1000",
+  "provider.cache.size": "10000"
+}

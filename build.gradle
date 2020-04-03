@@ -1,26 +1,32 @@
+import aQute.bnd.gradle.Bundle
+
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
-        }
-        maven {
-            url 'https://plugins.gradle.org/m2/'
-        }
     }
-
     dependencies {
-        classpath 'org.figurate:gradle-bundle-plugin:1.0.2'
-        classpath 'se.transmode.gradle:gradle-docker:1.2'
+        classpath "org.apache.sling:org.apache.sling.bnd.models:1.0.0",
+                'se.transmode.gradle:gradle-docker:1.2'
     }
 }
 
 plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.8.1'
     id "com.jfrog.bintray" version "1.7.3" apply false
+    id "biz.aQute.bnd.builder" version "5.0.0"
+    id "com.moowork.node" version "1.3.1"
 }
 
+apply plugin: 'java'
 apply plugin: 'docker'
+
+repositories {
+    mavenCentral()
+    // snapshot of cocoon-seralizers-charsets
+    maven {
+        url 'https://repository.apache.org/snapshots'
+    }
+}
 
 scmVersion {
     tag {
@@ -32,46 +38,157 @@ scmVersion {
     ]
 }
 
+group = 'micronode'
+version = scmVersion.version
+description = '''
+A publishing platform based on Apache Sling
+'''
+
+ext {
+    groovyVersion = '2.4.5'
+    slingApiVersion = '2.11.0'
+    jacksonVersion = '2.10.0'
+}
+
+node {
+    download = true
+}
+
+configurations {
+    embed
+    embed.transitive = false
+}
+
+dependencies {
+    embed 'org.apache.sling:org.apache.sling.rewriter:1.1.2',
+            'org.apache.sling:org.apache.sling.commons.html:1.0.0',
+            'org.apache.cocoon:cocoon-serializers-charsets:1.0.3-SNAPSHOT',
+            'org.apache.sling:org.apache.sling.urlrewriter:0.0.2',
+            'org.apache.servicemix.bundles:org.apache.servicemix.bundles.urlrewritefilter:4.0.4_1',
+
+            // filesystem resource provider
+            'org.apache.sling:org.apache.sling.fsresource:2.1.16',
+
+            // groovy
+            "org.codehaus.groovy:groovy:$groovyVersion",
+            "org.codehaus.groovy:groovy-jsr223:$groovyVersion",
+            "org.codehaus.groovy:groovy-json:$groovyVersion",
+            "org.codehaus.groovy:groovy-templates:$groovyVersion",
+            'org.apache.sling:org.apache.sling.scripting.groovy:1.0.2',
+            'org.apache.sling:org.apache.sling.scripting.core:2.0.58',
+
+            // thymeleaf
+            'org.attoparser:attoparser:2.0.2.RELEASE',
+            'org.unbescape:unbescape:1.1.4.RELEASE',
+            'org.apache.servicemix.bundles:org.apache.servicemix.bundles.ognl:3.2_1',
+            'org.javassist:javassist:3.20.0-GA',
+            'org.apache.servicemix.bundles:org.apache.servicemix.bundles.thymeleaf:3.0.11.RELEASE_1',
+            'org.apache.sling:org.apache.sling.scripting.thymeleaf:2.0.2',
+
+            // liquid
+            'org.jsoup:jsoup:1.10.3',
+            'org.antlr:antlr4-runtime:4.7.1',
+
+            // nosql providers..
+            'org.apache.sling:org.apache.sling.nosql.generic:1.1.0',
+            'org.apache.sling:org.apache.sling.nosql.mongodb-resourceprovider:1.1.0',
+            'org.mongodb:mongo-java-driver:3.1.1',
+
+            // sling query
+            'org.apache.sling:org.apache.sling.query:4.0.2',
+
+            // icalendar
+            "org.codehaus.groovy:groovy:2.5.4",
+            'org.apache.aries.spifly:org.apache.aries.spifly.dynamic.bundle:1.2.3',
+            'org.ow2.asm:asm-all:5.2',
+//            'org.apache.aries:org.apache.aries.util:1.1.3',
+            'org.mnode.ical4j:ical4j:4.0.0-alpha2',
+            'org.threeten:threeten-extra:1.5.0',
+            'javax.cache:cache-api:1.1.1',
+            'org.ehcache:ehcache:3.4.0',
+
+            // graphql
+            'com.graphql-java:graphql-java:13.0',
+            'com.graphql-java:java-dataloader:2.1.1',
+            'org.reactivestreams:reactive-streams:1.0.2',
+            'com.graphql-java-kickstart:graphql-java-servlet:9.1.0',
+            'com.graphql-java-kickstart:graphql-java-kickstart:9.1.0',
+
+            // websocket
+            'javax.websocket:javax.websocket-api:1.1',
+
+            // json
+            "com.fasterxml.jackson.core:jackson-core:$jacksonVersion",
+            "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion",
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion",
+
+            // felix java12 support..
+            'org.apache.felix:org.apache.felix.webconsole.plugins.memoryusage:1.0.10',
+
+            // sling starter..
+            'org.apache.sling:org.apache.sling.starter.content:1.0.8'
+}
+
+task buildWebpack(type: NpmTask) {
+    args = ['run', 'buildWebpack']
+}
+
+task bundleApp(type: Bundle) {
+    archiveBaseName = "whistlepost-app"
+    bndfile = 'app.bnd'
+    from('src/app') { into 'SLING-INF/content' }
+    from('src/assets') { into 'assets' }
+}
+
+task bundleConfig(type: Bundle) {
+    archiveBaseName = "whistlepost-config"
+    bndfile = 'config.bnd'
+    from('src/config') { into 'SLING-INF/content' }
+    into("SLING-INF/content/install/${config_bundleStartLevel}") {
+        from configurations.embed
+    }
+}
+
+task bundleContent(type: Bundle) {
+    archiveBaseName = "whistlepost-content"
+    bndfile = 'content.bnd'
+    from('src/content') { into 'SLING-INF/content' }
+}
+
+jar.enabled = false
+bundleApp.dependsOn buildWebpack
+buildWebpack.dependsOn yarn
+clean.dependsOn yarn_cache_clean
+
+artifacts {
+    archives bundleApp
+    archives bundleConfig
+    archives bundleContent
+}
+
 def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
 
 configure(bundleprojects) { subproject ->
-
     apply plugin: 'com.jfrog.bintray'
     apply plugin: 'maven'
     apply plugin: 'maven-publish'
+    apply plugin: 'java'
     apply plugin: 'jacoco'
     apply plugin: 'signing'
-    apply plugin: 'bundle'
+    apply plugin: 'biz.aQute.bnd.builder'
 
-    sourceCompatibility = 1.7
-    targetCompatibility = 1.7
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
     repositories {
         mavenCentral()
-        // sonatype snapshots
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots/'
-        }
-        maven {
-            url 'https://repository.apache.org/snapshots'
-        }
     }
-
-    group = 'org.whistlepost'
     version = rootProject.scmVersion.version
-    description = '''
-A publishing platform based on Apache Sling
-'''
-    task mkClassesDir doLast {
-      new File("$buildDir/classes/main").mkdirs()
-      new File("$buildDir/osgi-classes").mkdirs()
-    }
-    tasks.processResources.dependsOn mkClassesDir
 
-    bundleInstall {
-        uri = "$sling_url/system/console/bundles"
-        username = sling_username
-        password = sling_password
+    task bundle(type: Bundle) {
+        from sourceSets.main.output
+        bndfile = 'bnd.bnd'
     }
 
     jacocoTestReport {
@@ -88,24 +205,22 @@ A publishing platform based on Apache Sling
     }
 
     task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
+        archiveClassifier = 'javadoc'
         from 'build/docs/javadoc'
     }
 
     task sourcesJar(type: Jar) {
         from sourceSets.main.allSource
-        classifier = 'sources'
+        archiveClassifier = 'sources'
     }
 
+    jar.enabled = false
+    build.dependsOn bundle
+    
     artifacts {
-        archives jar
+        archives bundle
         archives javadocJar
         archives sourcesJar
-    }
-
-    signing {
-        required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
-        sign configurations.archives
     }
 
     ext {
@@ -191,6 +306,12 @@ A publishing platform based on Apache Sling
         }
     }
 
+    signing {
+        required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
+        //sign configurations.archives
+        sign publishing.publications.mavenArtifacts
+    }
+
     bintray {
         user = bintray_user
         key = bintray_key
@@ -221,22 +342,25 @@ A publishing platform based on Apache Sling
     }
 }
 
-docker {
-    baseImage "apache/sling:9"
-    maintainer 'Ben Fortuna "fortuna@micronode.com"'
-}
-
 task buildDocker(type: Docker) {
-    applicationName = 'micronode/whistlepost'
+    dockerfile = 'Dockerfile'
+    applicationName = 'whistlepost'
     tagVersion = scmVersion.version
-    push 'true' == project.property('docker_push')
-    apiUsername = project.property('docker_apiUsername')
-    apiPassword = project.property('docker_apiPassword')
-    apiEmail = project.property('docker_apiEmail')
+    push 'true' == docker_push
+    apiUsername = docker_apiUsername
+    apiPassword = docker_apiPassword
+    apiEmail = docker_apiEmail
+
+    addFile 'sling.properties', '/opt/sling/'
+    addFile bundleApp.archiveFile.get() as String, "/opt/sling/bundles/install/${bundleStartLevel}/"
+    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/bundles/install/${config_bundleStartLevel}/"
+    addFile bundleContent.archiveFile.get() as String, "/opt/sling/bundles/install/${content_bundleStartLevel}/"
+
     bundleprojects.each {
-        addFile it.jar.archivePath, "/opt/sling/sling/startup/${project.property('bundleStartLevel')}/"
+        def startLevel = project.hasProperty("${it.name}_bundleStartLevel") ? project.property("${it.name}_bundleStartLevel") : bundleStartLevel
+        def runMode = project.hasProperty("${it.name}_runMode") ? project.property("${it.name}_runMode") : ''
+        addFile it.jar.archivePath, "/opt/sling/bundles/install${ runMode ? '.' + runMode : ''}/${startLevel}/"
     }
-//    addFile 'sling.properties', '/opt/sling/'
-    bundleprojects.each { dependsOn("${it.name}:jar") }
-//    defaultCommand = ["java", "-jar", "org.apache.sling.starter.jar", "-f", "-", "-l", "WARN"]
+    bundleprojects.each { dependsOn("${it.name}:bundle") }
 }
+buildDocker.dependsOn build

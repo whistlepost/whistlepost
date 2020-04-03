@@ -13,4 +13,13 @@ docker_apiPassword=
 docker_apiEmail=
 docker_push=false
 
-bundleStartLevel=20
+bundleStartLevel=10
+config_bundleStartLevel=2
+content_bundleStartLevel=2
+
+whistlepost-links_runMode=prod
+
+# container settings..
+#docker_base_image = openjdk:11-slim
+docker_base_image = openjdk:8-jre-alpine
+sling_version = 11

@@ -1,0 +1,14 @@
+{
+  "title":"Site Templates",
+  "description": "Whistlepost Site Templates",
+  "sling:resourceType":"wp/page/default",
+  "jcr:primaryType":"nt:unstructured",
+  "sections": {
+    "introduction": {
+      "pars": [
+        "Whistlepost includes a set of quick starter templates for common site and application design patterns.",
+        "These templates are available via Yeoman NPM packages, and can be installed via a single command line."
+      ]
+    }
+  }
+}

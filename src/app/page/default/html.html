@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" data-th-with="page=${request.adaptTo(@org.mnode.whistlepost.model.SectionList@class)}">
+
+<head data-th-replace="/apps/wp/page/fragments/head.html::default">
+</head>
+
+<body>
+
+<main>
+    <div data-th-replace="/apps/wp/page/fragments/page.html::section-list(${page.sections})">
+    </div>
+</main>
+
+</body>
+</html>

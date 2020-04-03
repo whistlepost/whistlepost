@@ -1,0 +1,14 @@
+{
+  "title":"Scripting",
+  "description": "Whistlepost Scripting",
+  "sling:resourceType":"wp/page/default",
+  "jcr:primaryType":"nt:unstructured",
+  "list": ["groovy-markup", "liquid"],
+  "sections": {
+    "introduction": {
+      "pars": [
+        ""
+      ]
+    }
+  }
+}
