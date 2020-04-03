@@ -35,15 +35,15 @@ import org.osgi.service.metatype.annotations.Option;
             type = AttributeType.PASSWORD)
     String oauth_token() default "";
 
-    @AttributeDefinition(name = "sling.servlet.resourceTypes", description = "Password for Basic authentication")
-    String[] sling_servlet_resourceTypes() default {"sling/api"};
+    @AttributeDefinition(name = "sling.servlet.resourceTypes", description = "Sling resource types to handle")
+    String[] sling_servlet_resourceTypes() default {"wp-http/api"};
 
-    @AttributeDefinition(name = "sling.servlet.methods", description = "Password for Basic authentication")
+    @AttributeDefinition(name = "sling.servlet.methods", description = "HTTP methods to handle")
     String[] sling_servlet_methods() default {"GET"};
 
-    @AttributeDefinition(name = "sling.servlet.extensions", description = "Password for Basic authentication")
+    @AttributeDefinition(name = "sling.servlet.extensions", description = "Sling request extensions to handle")
     String[] sling_servlet_extensions() default {"json"};
 
-    @AttributeDefinition(name = "sling.servlet.selectors", description = "Password for Basic authentication")
+    @AttributeDefinition(name = "sling.servlet.selectors", description = "Sling request selectors to handle")
     String[] sling_servlet_selectors() default {};
 }
