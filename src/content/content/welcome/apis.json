@@ -6,7 +6,7 @@
   "sections": {
     "introduction": {
       "pars": [
-        ""
+        "Designing and managing APIs can be a complex activity. Whistlepost helps to iteratively design and mock APIs based on the needs of the user interface."
       ]
     }
   }

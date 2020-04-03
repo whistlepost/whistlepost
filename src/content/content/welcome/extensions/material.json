@@ -1,0 +1,13 @@
+{
+  "title":"Material",
+  "description": "Whistlepost Material Web Components",
+  "sling:resourceType":"wp/page/default",
+  "jcr:primaryType":"nt:unstructured",
+  "sections": {
+    "introduction": {
+      "pars": [
+        "Web components for Material Design."
+      ]
+    }
+  }
+}

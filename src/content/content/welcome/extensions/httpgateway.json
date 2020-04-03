@@ -1,12 +1,12 @@
 {
-  "title":"Extensions",
-  "description": "Whistlepost Extensions",
+  "title":"HTTP Gateway",
+  "description": "Whistlepost HTTP Gateway",
   "sling:resourceType":"wp/page/default",
   "jcr:primaryType":"nt:unstructured",
   "sections": {
     "introduction": {
       "pars": [
-        ""
+        "An API facade to support routing and simplied API management."
       ]
     }
   }

@@ -2,6 +2,6 @@
   "title":"Welcome to Whistlepost",
   "sling:resourceType":"wp/page/toc",
   "jcr:primaryType":"nt:unstructured",
-  "list": ["about", "prerequisites", "getting-started", "templates", "layouts", "webpack", "docker", "apis", "extensions"],
+  "list": ["about", "prerequisites", "getting-started", "templates", "layouts", "webpack", "docker", "apis", "extensions/index"],
   "defaultContentsPage": "layouts"
 }
