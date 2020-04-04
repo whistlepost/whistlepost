@@ -11,8 +11,8 @@ buildscript {
 }
 
 plugins {
-    id 'pl.allegro.tech.build.axion-release' version '1.8.1'
-    id "com.jfrog.bintray" version "1.7.3" apply false
+    id 'pl.allegro.tech.build.axion-release' version '1.10.2'
+    id "com.jfrog.bintray" version "1.8.4" apply false
     id "biz.aQute.bnd.builder" version "5.0.0"
     id "com.moowork.node" version "1.3.1"
 }
@@ -47,6 +47,9 @@ version = scmVersion.version
 description = '''
 A publishing platform based on Apache Sling
 '''
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 ext {
     groovyVersion = '2.4.5'
@@ -174,176 +177,7 @@ artifacts {
 def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
 
 configure(bundleprojects) { subproject ->
-    apply plugin: 'com.jfrog.bintray'
-    apply plugin: 'maven'
-    apply plugin: 'maven-publish'
-    apply plugin: 'java'
-    apply plugin: 'jacoco'
-    apply plugin: 'signing'
-    apply plugin: 'biz.aQute.bnd.builder'
-
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-
-    repositories {
-        mavenCentral()
-    }
-    version = rootProject.scmVersion.version
-
-    task bundle(type: Bundle) {
-        from sourceSets.main.output
-        bndfile = 'bnd.bnd'
-    }
-
-    jacocoTestReport {
-        reports {
-            xml.enabled true
-            html.enabled false
-        }
-    }
-
-    javadoc {
-        if (JavaVersion.current().isJava8Compatible()) {
-            options.addStringOption('Xdoclint:none', '-quiet')
-        }
-    }
-
-    task javadocJar(type: Jar, dependsOn: javadoc) {
-        archiveClassifier = 'javadoc'
-        from 'build/docs/javadoc'
-    }
-
-    task sourcesJar(type: Jar) {
-        from sourceSets.main.allSource
-        archiveClassifier = 'sources'
-    }
-
-    jar.enabled = false
-    build.dependsOn bundle
-    
-    artifacts {
-        archives bundle
-        archives javadocJar
-        archives sourcesJar
-    }
-
-    ext {
-        isReleaseVersion = !version.endsWith("SNAPSHOT")
-
-        // sonatype credentials
-        sonatype_username = project.hasProperty('sonatype_username') ? project.getProperty('sonatype_username') : ''
-        sonatype_password = project.hasProperty('sonatype_password') ? project.getProperty('sonatype_password') : ''
-
-        // bintray credentials
-        bintray_user = project.hasProperty('bintray_user') ? project.getProperty('bintray_user') : ''
-        bintray_key = project.hasProperty('bintray_key') ? project.getProperty('bintray_key') : ''
-    }
-
-    uploadArchives {
-        repositories {
-            mavenDeployer {
-                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                    authentication(userName: sonatype_username, password: sonatype_password)
-                }
-                snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
-                    authentication(userName: sonatype_username, password: sonatype_password)
-                }
-
-                pom.project {
-                    name 'Whistlepost'
-                    packaging 'jar'
-                    description subproject.description
-                    url 'https://whistlepost.org'
-
-                    scm {
-                        url 'https://github.com/micronode/whistlepost'
-                        connection 'scm:git@github.com:micronode/whistlepost.git'
-                        developerConnection 'scm:git@github.com:micronode/whistlepost.git'
-                    }
-
-                    licenses {
-                        license {
-                            name 'Whistlepost - License'
-                            url 'https://raw.githubusercontent.com/micronode/whistlepost/master/LICENSE'
-                            distribution 'repo'
-                        }
-                    }
-
-                    developers {
-                        developer {
-                            id 'fortuna'
-                            name 'Ben Fortuna'
-                        }
-                    }
-                }
-            }
-        }
-    }
-    publishing {
-        publications {
-            mavenArtifacts(MavenPublication) {
-                from components.java
-                artifact javadocJar
-                artifact sourcesJar
-                pom.withXml {
-                    asNode().appendNode('name', subproject.name)
-                    asNode().appendNode('description', subproject.description)
-                    asNode().appendNode('url', 'http://whistlepost.org')
-
-                    def scmNode = asNode().appendNode('scm')
-                    scmNode.appendNode('url', 'https://github.com/micronode/whistlepost')
-                    scmNode.appendNode('connection', 'scm:git@github.com:micronode/whistlepost.git')
-                    scmNode.appendNode('developerConnection', 'scm:git@github.com:micronode/whistlepost.git')
-
-                    def licenseNode = asNode().appendNode('licenses').appendNode('license')
-                    licenseNode.appendNode('name', 'Whistlepost - License')
-                    licenseNode.appendNode('url', 'https://raw.githubusercontent.com/micronode/whistlepost/master/LICENSE')
-                    licenseNode.appendNode('distribution', 'repo')
-
-                    def developerNode = asNode().appendNode('developers').appendNode('developer')
-                    developerNode.appendNode('id', 'fortuna')
-                    developerNode.appendNode('name', 'Ben Fortuna')
-                }
-            }
-        }
-    }
-
-    signing {
-        required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
-        //sign configurations.archives
-        sign publishing.publications.mavenArtifacts
-    }
-
-    bintray {
-        user = bintray_user
-        key = bintray_key
-        pkg {
-            repo = 'whistlepost'
-            name = subproject.name
-            userOrg = 'micronode'
-            licenses = ['BSD']
-            vcsUrl = 'https://github.com/micronode/whistlepost.git'
-            version {
-                name = scmVersion.version
-                desc = "Whistlepost $scmVersion.version"
-                released  = new Date()
-                vcsTag = "whistlepost-$scmVersion.version"
-                gpg {
-                    sign = isReleaseVersion
-                }
-                mavenCentralSync {
-                    sync = false//isReleaseVersion
-                    user = sonatype_username //OSS user token: mandatory
-                    password = sonatype_password //OSS user password: mandatory
-//                    close = '0' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
-                }
-            }
-        }
-//    configurations = ['archives']
-        publications = ['mavenArtifacts']
-    }
+    apply from: "$rootDir/extension.gradle"
 }
 
 task buildDocker(type: Docker) {
