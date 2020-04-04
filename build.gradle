@@ -194,9 +194,13 @@ task buildDocker(type: Docker) {
     addFile bundleConfig.archiveFile.get() as String, "/opt/sling/bundles/install/${config_bundleStartLevel}/"
     addFile bundleContent.archiveFile.get() as String, "/opt/sling/bundles/install/${content_bundleStartLevel}/"
 
+    def runModes = [
+            'whistlepost-links': 'prod'
+    ]
+
     bundleprojects.each {
         def startLevel = project.hasProperty("${it.name}_bundleStartLevel") ? project.property("${it.name}_bundleStartLevel") : bundleStartLevel
-        def runMode = project.hasProperty("${it.name}_runMode") ? project.property("${it.name}_runMode") : ''
+        def runMode = project.hasProperty("${it.name}_runMode") ? project.property("${it.name}_runMode") : runModes[it.name]
         addFile it.jar.archivePath, "/opt/sling/bundles/install${ runMode ? '.' + runMode : ''}/${startLevel}/"
     }
     bundleprojects.each { dependsOn("${it.name}:bundle") }
