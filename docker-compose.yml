@@ -1,14 +1,21 @@
 version: "3"
 services:
   whistlepost:
-    image: "micronode/whistlepost:1.1.5-develop-SNAPSHOT"
+    image: "micronode/whistlepost:1.2.0-alpha2"
     ports:
       - "8080:8080"
+    environment:
+      - JAVA_OPTS=-Dsling.run.modes=prod
     volumes:
       - ./src/app:/wp/apps/wp:ro
       - ./src/assets:/wp/assets/wp:ro
       - ./src/content/content/welcome:/wp/content/welcome:ro
       - ./src/content/content/wp-admin:/wp/content/wp-admin:ro
+#    links:
+#      - mongo
+#
+#  mongo:
+#    image: mongo:3.0.7
 
   autoheal:
     restart: always
