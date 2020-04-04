@@ -158,15 +158,15 @@ bintray {
     key = bintray_key
     pkg {
         repo = 'whistlepost'
-        name = name
+        name = project.name
         userOrg = 'micronode'
         licenses = ['BSD']
         vcsUrl = 'https://github.com/micronode/whistlepost.git'
         version {
-            name = scmVersion.version
-            desc = "Whistlepost $scmVersion.version"
+            name = rootProject.version
+            desc = "Whistlepost $rootProject.version"
             released  = new Date()
-            vcsTag = "whistlepost-$scmVersion.version"
+            vcsTag = "whistlepost-$rootProject.version"
             gpg {
                 sign = isReleaseVersion
             }
