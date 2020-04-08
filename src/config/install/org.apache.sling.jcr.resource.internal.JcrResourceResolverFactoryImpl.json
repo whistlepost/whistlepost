@@ -6,6 +6,5 @@
     "/content/:/",
     "/system/docroot/:/",
     "/content/wp/index.html>/index2.html"
-  ],
-  "resource.resolver.optimize.alias.resolution": false
+  ]
 }

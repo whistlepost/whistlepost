@@ -195,7 +195,7 @@ task buildDocker(type: Docker) {
     addFile bundleContent.archiveFile.get() as String, "/opt/sling/bundles/install/${content_bundleStartLevel}/"
 
     def runModes = [
-            'whistlepost-links': 'prod'
+            'whistlepost-links': 'proxied'
     ]
 
     bundleprojects.each {
