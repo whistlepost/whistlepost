@@ -15,7 +15,7 @@
     "file-loader": "^1.1.5",
     "html5shiv": "^3.7.3",
     "husky": "^4.2.3",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "style-loader": "^0.19.0",
     "webpack": "^3.8.1"
   },
