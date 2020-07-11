@@ -1,9 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const GoogleFontsPlugin = require("@beyonk/google-fonts-webpack-plugin")
+const GoogleFontsPlugin = require('google-fonts-plugin')
 
 module.exports = {
+  mode: 'development',
   entry: './src/assets/js/whistlepost.js',
   output: {
     filename: 'js/whistlepost.bundle.js',
@@ -57,15 +57,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-        filename: "css/whistlepost.bundle.css"
-    }),
     new GoogleFontsPlugin({
 		fonts: [
 			{ family: "Roboto" }
 		],
-		path: 'fonts/',
 		filename: 'css/fonts.css'
-	})
+	}),
+    new MiniCssExtractPlugin({
+        filename: "css/whistlepost.bundle.css"
+    })
   ]
 };

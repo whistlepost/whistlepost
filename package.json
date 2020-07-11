@@ -20,11 +20,10 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "@beyonk/google-fonts-webpack-plugin": "^1.2.3",
     "babylon": "^6.18.0",
     "bootstrap": "^4.5.0",
     "expose-loader": "^0.7.3",
-    "google-fonts-webpack-plugin": "^0.4.4",
+    "google-fonts-plugin": "^5.0.2",
     "jquery-ui": "^1.12.1",
     "mini-css-extract-plugin": "^0.9.0",
     "popper.js": "^1.16.1",
