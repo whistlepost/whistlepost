@@ -1,0 +1,15 @@
+/* === Roboto - regular */
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("./fonts//Roboto-Regular.eot");
+	src: local("Roboto"),
+		local("Roboto-Regular"),
+		url("./fonts//Roboto-Regular.eot") format("embedded-opentype"),
+		url("./fonts//Roboto-Regular.woff2") format("woff2"),
+		url("./fonts//Roboto-Regular.woff") format("woff"),
+		url("./fonts//Roboto-Regular.ttf") format("truetype"),
+		url("./fonts//Roboto-Regular.svg") format("svg");
+}
