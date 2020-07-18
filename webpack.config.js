@@ -1,9 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-const GoogleFontsPlugin = require("google-fonts-webpack-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const GoogleFontsPlugin = require('google-fonts-plugin')
 
 module.exports = {
+  mode: 'development',
   entry: './src/assets/js/whistlepost.js',
   output: {
     filename: 'js/whistlepost.bundle.js',
@@ -13,10 +13,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
 	  {
         test: /\.(png|svg|jpg|gif)$/,
@@ -60,13 +57,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin("css/whistlepost.bundle.css"),
     new GoogleFontsPlugin({
 		fonts: [
 			{ family: "Roboto" }
 		],
-		path: 'fonts/',
 		filename: 'css/fonts.css'
-	})
+	}),
+    new MiniCssExtractPlugin({
+        filename: "css/whistlepost.bundle.css"
+    })
   ]
 };

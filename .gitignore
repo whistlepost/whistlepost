@@ -10,3 +10,6 @@ gradle.properties
 !/site-starter/templates/whistlepost-site/site-config/gradle.properties
 node_modules/
 package-lock.json
+*.bundle.js
+*.bundle.css
+*.log

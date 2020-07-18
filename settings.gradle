@@ -1,5 +1,6 @@
 def extensions = [
 //    'whistlepost-analytics',
+    'whistlepost-authz',
 //    'whistlepost-calendar',
 //    'whistlepost-comments',
 //    'whistlepost-cors',

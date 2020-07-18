@@ -56,4 +56,19 @@ public class Article extends Page {
         return Arrays.stream(related).map(p -> resourceResolver.getResource(resource.getParent(), p).adaptTo(Article.class))
                 .collect(Collectors.toList());
     }
+
+    public Advertisement getAdvert() {
+        Resource advertResource = null;
+
+        String advert = resource.getValueMap().get("advert", String.class);
+        if (advert != null) {
+            advertResource = getResource(advert);
+        }
+
+        if (advertResource != null) {
+            return advertResource.adaptTo(Advertisement.class);
+        } else {
+            return null;
+        }
+    }
 }
