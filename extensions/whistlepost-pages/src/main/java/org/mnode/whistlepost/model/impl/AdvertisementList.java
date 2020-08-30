@@ -1,22 +1,31 @@
-package org.mnode.whistlepost.model;
+package org.mnode.whistlepost.model.impl;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.apache.sling.models.annotations.injectorspecific.InjectionStrategy.OPTIONAL;
 import static org.apache.sling.query.SlingQuery.$;
 
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class})
-public class AdvertisementList extends Page {
+public class AdvertisementList extends AbstractModel {
+
+    @Inject
+    private String title;
+
+    @SlingObject(injectionStrategy = OPTIONAL)
+    protected SlingHttpServletRequest request;
 
     @ChildResource
     private Resource list;
@@ -52,9 +61,9 @@ public class AdvertisementList extends Page {
 
     public String getTitle() {
         if (getCurrentPage() > 1) {
-            return String.format("%s | %s", super.getTitle(), getCurrentPage());
+            return String.format("%s | %s", title, getCurrentPage());
         } else {
-            return super.getTitle();
+            return title;
         }
     }
 
