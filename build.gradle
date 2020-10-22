@@ -53,6 +53,8 @@ A publishing platform based on Apache Sling
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
+
 ext {
     groovyVersion = '2.4.5'
     slingApiVersion = '2.11.0'
@@ -67,6 +69,9 @@ node {
 configurations {
     embed
     embed.transitive = false
+    
+    bundles
+    bundles.transitive = false
 }
 
 dependencies {
@@ -149,6 +154,8 @@ dependencies {
         'org.apache.httpcomponents:httpclient-osgi:4.5.11',
         'org.apache.httpcomponents:httpcore-osgi:4.4.13',
         'org.jboss.logging:jboss-logging:3.4.1.Final'
+
+    bundles bundleprojects
 }
 
 task buildWebpack(type: NpmTask) {
@@ -166,9 +173,6 @@ task bundleConfig(type: Bundle) {
     archiveBaseName = "whistlepost-config"
     bndfile = 'config.bnd'
     from('src/config') { into 'SLING-INF/content' }
-    into("SLING-INF/content/install/${config_bundleStartLevel}") {
-        from configurations.embed
-    }
 }
 
 task bundleContent(type: Bundle) {
@@ -177,18 +181,27 @@ task bundleContent(type: Bundle) {
     from('src/content') { into 'SLING-INF/content' }
 }
 
+task copyDeps(type: Copy) {
+    from configurations.embed
+    into 'build/deps'
+}
+
+task copyExt(type: Copy) {
+    from configurations.bundles
+    into 'build/extensions'
+}
+
 jar.enabled = false
 bundleApp.dependsOn buildWebpack
 buildWebpack.dependsOn yarn
 clean.dependsOn yarn_cache_clean
+assemble.dependsOn copyDeps, copyExt
 
 artifacts {
     archives bundleApp
     archives bundleConfig
     archives bundleContent
 }
-
-def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
 
 configure(bundleprojects) { subproject ->
     apply from: "$rootDir/extension.gradle"
@@ -204,9 +217,9 @@ task buildDocker(type: Docker) {
     apiEmail = docker_apiEmail
 
     addFile 'sling.properties', '/opt/sling/'
-    addFile bundleApp.archiveFile.get() as String, "/opt/sling/bundles/install/${bundleStartLevel}/"
-    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/bundles/install/${config_bundleStartLevel}/"
-    addFile bundleContent.archiveFile.get() as String, "/opt/sling/bundles/install/${content_bundleStartLevel}/"
+    addFile bundleApp.archiveFile.get() as String, "/opt/sling/wp/install/${bundleStartLevel}/"
+    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/wp/install/${config_bundleStartLevel}/"
+    addFile bundleContent.archiveFile.get() as String, "/opt/sling/wp/install/${content_bundleStartLevel}/"
 
     def runModes = [
             'whistlepost-links': 'proxied'
@@ -215,7 +228,7 @@ task buildDocker(type: Docker) {
     bundleprojects.each {
         def startLevel = project.hasProperty("${it.name}_bundleStartLevel") ? project.property("${it.name}_bundleStartLevel") : bundleStartLevel
         def runMode = project.hasProperty("${it.name}_runMode") ? project.property("${it.name}_runMode") : runModes[it.name]
-        addFile it.jar.archivePath, "/opt/sling/bundles/install${ runMode ? '.' + runMode : ''}/${startLevel}/"
+        addFile it.jar.archivePath, "/opt/sling/wp/install${ runMode ? '.' + runMode : ''}/${startLevel}/"
     }
     bundleprojects.each { dependsOn("${it.name}:bundle") }
 }
