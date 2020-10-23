@@ -60,6 +60,10 @@ ext {
     slingApiVersion = '2.11.0'
     jacksonVersion = '2.10.0'
     keycloakVersion = '10.0.2'
+
+    bundleStartLevel=20
+    config_bundleStartLevel=10
+    content_bundleStartLevel=15
 }
 
 node {
