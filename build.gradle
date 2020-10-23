@@ -211,10 +211,10 @@ task buildDocker(type: Docker) {
     dockerfile = 'Dockerfile'
     applicationName = 'whistlepost'
     tagVersion = scmVersion.version
-    push 'true' == docker_push
-    apiUsername = docker_apiUsername
-    apiPassword = docker_apiPassword
-    apiEmail = docker_apiEmail
+    push project.hasProperty('docker_push') && 'true' == docker_push
+    apiUsername = project.hasProperty('docker_apiUsername') ? docker_apiUsername : ''
+    apiPassword = project.hasProperty('docker_apiPassword') ? docker_apiPassword : ''
+    apiEmail = project.hasProperty('docker_apiEmail') ? docker_apiEmail : ''
 
     addFile 'sling.properties', '/opt/sling/'
     addFile bundleApp.archiveFile.get() as String, "/opt/sling/wp/install/${bundleStartLevel}/"
