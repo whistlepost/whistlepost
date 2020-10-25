@@ -22,7 +22,7 @@ public class DefaultBlock implements BlockResource {
         if (editor.getPars() != null) {
             return "<p>" + String.join("</p><p>", editor.getPars()) + "</p>";
         } else {
-            return "";
+            return editor.getContent();
         }
     }
 }
