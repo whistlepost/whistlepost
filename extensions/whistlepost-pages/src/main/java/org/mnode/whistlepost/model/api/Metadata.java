@@ -6,7 +6,6 @@ import org.apache.sling.models.annotations.Optional;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.time.Instant;
 
 /**
  * Page metadata includes a mandatory title and optional descrition and author.
@@ -46,8 +45,8 @@ public interface Metadata {
      * Accessor for optional published date
      * @return the page published date as an instant
      */
-    @Inject @Optional
-    Instant getPublishedDate();
+    @Inject @Optional @Named("date")
+    String getPublishedDate();
 
     /**
      * Accessor for optional image
