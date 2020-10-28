@@ -16,7 +16,7 @@ def extensions = [
 //    'whistlepost-opengraph',
     'whistlepost-pages',
     'whistlepost-scripting-groovy-markup',
-//    'whistlepost-scripting-liquid',
+    'whistlepost-scripting-liquid',
 //    'whistlepost-gallery'
     'whistlepost-vr',
 ]

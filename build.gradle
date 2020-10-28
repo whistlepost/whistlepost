@@ -159,7 +159,7 @@ dependencies {
         'org.apache.httpcomponents:httpcore-osgi:4.4.13',
         'org.jboss.logging:jboss-logging:3.4.1.Final'
 
-    bundles bundleprojects
+    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-(links|scripting-liquid)).*/)}
 }
 
 task buildWebpack(type: NpmTask) {
