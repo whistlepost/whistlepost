@@ -1,0 +1,3 @@
+{
+  "sling:scripting": ["html=Thymeleaf"]
+}

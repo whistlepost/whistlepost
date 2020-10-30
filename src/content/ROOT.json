@@ -7,6 +7,5 @@
     "success": {
       "sling:resourceType": "wp/page/success"
     }
-  },
-  "sling:scripting": ["html=Thymeleaf"]
+  }
 }
