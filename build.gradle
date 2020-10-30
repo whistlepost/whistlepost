@@ -163,7 +163,8 @@ dependencies {
     // aem commons..
 //    embed "com.adobe.acs:acs-aem-commons-bundle:4.8.6"
 
-    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-(links|scripting-liquid)).*/)}
+//    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-(links|scripting-liquid)).*/)}
+    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-scripting-liquid).*/)}
 }
 
 task buildWebpack(type: NpmTask) {
