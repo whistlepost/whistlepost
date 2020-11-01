@@ -58,7 +58,7 @@ def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/
 ext {
     groovyVersion = '2.4.5'
     slingApiVersion = '2.11.0'
-    jacksonVersion = '2.10.0'
+    jacksonVersion = '2.11.3'
     keycloakVersion = '10.0.2'
 
     bundleStartLevel=20
