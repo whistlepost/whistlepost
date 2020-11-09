@@ -76,6 +76,9 @@ configurations {
     
     bundles
     bundles.transitive = false
+
+    agent
+    agent.transitive = false
 }
 
 dependencies {
@@ -165,6 +168,8 @@ dependencies {
 
 //    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-(links|scripting-liquid)).*/)}
     bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-scripting-liquid).*/)}
+
+    agent "io.prometheus.jmx:jmx_prometheus_javaagent:0.14.0"
 }
 
 task buildWebpack(type: NpmTask) {
@@ -200,11 +205,17 @@ task copyExt(type: Copy) {
     into 'build/extensions'
 }
 
+task copyAgent(type: Copy) {
+    from configurations.agent
+    from('jmx_prometheus.yml')
+    into 'build/agent'
+}
+
 jar.enabled = false
 bundleApp.dependsOn buildWebpack
 buildWebpack.dependsOn yarn
 clean.dependsOn yarn_cache_clean
-assemble.dependsOn copyDeps, copyExt
+assemble.dependsOn copyDeps, copyExt, copyAgent
 
 artifacts {
     archives bundleApp
