@@ -28,6 +28,7 @@ repositories {
     maven {
         url 'https://repository.apache.org/snapshots'
     }
+    mavenLocal()
 }
 
 scmVersion {
@@ -106,6 +107,7 @@ dependencies {
         'org.apache.servicemix.bundles:org.apache.servicemix.bundles.ognl:3.2.1_1',
         'org.javassist:javassist:3.27.0-GA',
 //        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.thymeleaf:3.0.11.RELEASE_1',
+        'org.thymeleaf:thymeleaf:3.0.12-SNAPSHOT',
         'org.apache.sling:org.apache.sling.scripting.thymeleaf:2.0.2'
 
     // liquid
@@ -230,25 +232,29 @@ configure(bundleprojects) { subproject ->
 task buildDocker(type: Docker) {
     dockerfile = 'Dockerfile'
     applicationName = 'whistlepost'
-    tagVersion = scmVersion.version
+//    tagVersion = scmVersion.version
     push project.hasProperty('docker_push') && 'true' == docker_push
     apiUsername = project.hasProperty('docker_apiUsername') ? docker_apiUsername : ''
     apiPassword = project.hasProperty('docker_apiPassword') ? docker_apiPassword : ''
     apiEmail = project.hasProperty('docker_apiEmail') ? docker_apiEmail : ''
 
     addFile 'sling.properties', '/opt/sling/'
-    addFile bundleApp.archiveFile.get() as String, "/opt/sling/wp/install/${bundleStartLevel}/"
-    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/wp/install/${config_bundleStartLevel}/"
-    addFile bundleContent.archiveFile.get() as String, "/opt/sling/wp/install/${content_bundleStartLevel}/"
+    addFile bundleApp.archiveFile.get() as String, "/opt/sling/wp/install/2/"
+    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/wp/install/2/"
+    addFile bundleContent.archiveFile.get() as String, "/opt/sling/wp/install/2/"
 
     def runModes = [
             'whistlepost-links': 'proxied'
     ]
 
+    configurations.embed.each {
+        addFile it, "/opt/sling/wp/install/27/"
+    }
+
     bundleprojects.each {
-        def startLevel = project.hasProperty("${it.name}_bundleStartLevel") ? project.property("${it.name}_bundleStartLevel") : bundleStartLevel
+//        def startLevel = project.hasProperty("${it.name}_bundleStartLevel") ? project.property("${it.name}_bundleStartLevel") : bundleStartLevel
         def runMode = project.hasProperty("${it.name}_runMode") ? project.property("${it.name}_runMode") : runModes[it.name]
-        addFile it.jar.archivePath, "/opt/sling/wp/install${ runMode ? '.' + runMode : ''}/${startLevel}/"
+        addFile it.jar.archivePath, "/opt/sling/wp/install${ runMode ? '.' + runMode : ''}/15/"
     }
     bundleprojects.each { dependsOn("${it.name}:bundle") }
 }
