@@ -232,7 +232,7 @@ configure(bundleprojects) { subproject ->
 task buildDocker(type: Docker) {
     dockerfile = 'Dockerfile'
     applicationName = 'whistlepost'
-//    tagVersion = scmVersion.version
+    tagVersion = 'latest'
     push project.hasProperty('docker_push') && 'true' == docker_push
     apiUsername = project.hasProperty('docker_apiUsername') ? docker_apiUsername : ''
     apiPassword = project.hasProperty('docker_apiPassword') ? docker_apiPassword : ''
