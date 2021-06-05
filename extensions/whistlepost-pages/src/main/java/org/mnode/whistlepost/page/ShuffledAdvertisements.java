@@ -24,6 +24,6 @@ public class ShuffledAdvertisements extends AbstractFilteredList<Advertisement> 
         List<Advertisement> all = toList();
         Collections.shuffle(all);
         return all.subList((getCurrentPage() - 1) * getPageSize(),
-                (getCurrentPage() - 1) * getPageSize() + Math.min(getPageSize() - 1, all.size()));
+                (getCurrentPage() - 1) * getPageSize() + Math.min(getPageSize(), all.size()));
     }
 }
