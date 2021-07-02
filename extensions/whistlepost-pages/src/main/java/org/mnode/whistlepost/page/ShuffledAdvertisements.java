@@ -14,6 +14,10 @@ public class ShuffledAdvertisements extends AbstractFilteredList<Advertisement> 
         super("nt:unstructured[published=true]", Advertisement.class);
     }
 
+    public ShuffledAdvertisements(String filter) {
+        super(filter, Advertisement.class);
+    }
+
     public Iterable<Advertisement> getShuffled() {
         List<Advertisement> all = toList();
         Collections.shuffle(all);
