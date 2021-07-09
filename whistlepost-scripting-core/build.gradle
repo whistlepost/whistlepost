@@ -1,0 +1,11 @@
+configurations {
+    bundles {
+        transitive = false
+        canBeConsumed = true
+        canBeResolved = false
+    }
+}
+
+dependencies {
+    bundles 'org.apache.sling:org.apache.sling.scripting.core:2.0.60'
+}

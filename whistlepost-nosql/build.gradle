@@ -1,0 +1,16 @@
+configurations {
+    bundles {
+        transitive = false
+        canBeConsumed = true
+        canBeResolved = false
+    }
+}
+
+dependencies {
+
+    // nosql providers..
+    bundles 'org.apache.sling:org.apache.sling.nosql.generic:1.1.0',
+            'org.apache.sling:org.apache.sling.nosql.mongodb-resourceprovider:1.1.0',
+            'org.mongodb:mongo-java-driver:3.1.1'
+
+}

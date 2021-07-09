@@ -2,6 +2,14 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    bundles {
+        transitive = false
+        canBeConsumed = true
+        canBeResolved = false
+    }
+}
+
 dependencies {
 
     // sling models
@@ -14,4 +22,7 @@ dependencies {
 
     // sling query
     compile 'org.apache.sling:org.apache.sling.query:4.0.2'
+
+    // sling query
+    bundles 'org.apache.sling:org.apache.sling.query:4.0.2'
 }

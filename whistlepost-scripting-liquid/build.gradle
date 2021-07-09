@@ -9,10 +9,13 @@
 //    id "biz.aQute.bnd.builder" version "4.2.0"
 //}
 
-//configurations {
-//    embed
-//    embed.transitive = false
-//}
+configurations {
+    bundles {
+        transitive = false
+        canBeConsumed = true
+        canBeResolved = false
+    }
+}
 
 //repositories {
 //    mavenCentral()
@@ -28,6 +31,8 @@ dependencies {
             'nl.big-o:liqp:0.7.8'
 
 //    embed 'nl.big-o:liqp:0.7.8'
+
+    bundles 'org.jsoup:jsoup:1.10.3', 'org.antlr:antlr4-runtime:4.9.1'
 }
 
 //task bundle(type: Bundle) {

@@ -56,24 +56,13 @@ targetCompatibility = 1.8
 
 def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
 
-ext {
-    groovyVersion = '2.4.5'
-    slingApiVersion = '2.11.0'
-    jacksonVersion = '2.11.3'
-    keycloakVersion = '10.0.2'
-
-    bundleStartLevel=20
-    config_bundleStartLevel=10
-    content_bundleStartLevel=15
-}
-
 node {
     download = true
 }
 
 configurations {
     embed
-    embed.transitive = false
+//    embed.transitive = false
     
     bundles
     bundles.transitive = false
@@ -83,69 +72,30 @@ configurations {
 }
 
 dependencies {
-    embed 'org.apache.sling:org.apache.sling.rewriter:1.1.2',
-        'org.apache.sling:org.apache.sling.commons.html:1.0.0',
-        'org.apache.cocoon:cocoon-serializers-charsets:1.0.3-SNAPSHOT',
-        'org.apache.sling:org.apache.sling.urlrewriter:0.0.2',
-        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.urlrewritefilter:4.0.4_1',
-        'org.apache.sling:org.apache.sling.scripting.core:2.0.60'
+    embed 'com.google.guava:guava:15.0'
+
+    // tika parsers
+//    embed 'org.xerial:sqlite-jdbc:3.34.0',
+//            'org.apache.pdfbox:jbig2-imageio:3.0.3'
 
     // filesystem resource provider
     embed 'org.apache.sling:org.apache.sling.fsresource:2.1.16'
 
-    // groovy
-    embed "org.codehaus.groovy:groovy:$groovyVersion",
-        "org.codehaus.groovy:groovy-jsr223:$groovyVersion",
-        "org.codehaus.groovy:groovy-json:$groovyVersion",
-        "org.codehaus.groovy:groovy-templates:$groovyVersion",
-        'org.apache.sling:org.apache.sling.scripting.groovy:1.0.2',
-        'org.apache.sling:org.apache.sling.scripting.core:2.0.58'
-
-    // thymeleaf
-    embed 'org.attoparser:attoparser:2.0.5.RELEASE',
-        'org.unbescape:unbescape:1.1.6.RELEASE',
-        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.ognl:3.2.1_1',
-        'org.javassist:javassist:3.27.0-GA',
-//        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.thymeleaf:3.0.11.RELEASE_1',
-//        'org.thymeleaf:thymeleaf:3.0.12-SNAPSHOT',
-        'org.apache.sling:org.apache.sling.scripting.thymeleaf:2.0.2'
-
-    // liquid
-    embed 'org.jsoup:jsoup:1.10.3', 'org.antlr:antlr4-runtime:4.7.1'
-
-    // nosql providers..
-    embed 'org.apache.sling:org.apache.sling.nosql.generic:1.1.0',
-        'org.apache.sling:org.apache.sling.nosql.mongodb-resourceprovider:1.1.0',
-        'org.mongodb:mongo-java-driver:3.1.1'
-
-    // sling query
-    embed 'org.apache.sling:org.apache.sling.query:4.0.2'
-
-    // icalendar
-    embed "org.codehaus.groovy:groovy:2.5.4",
-        'org.apache.aries.spifly:org.apache.aries.spifly.dynamic.bundle:1.2.3',
-        'org.ow2.asm:asm-all:5.2',
-//            'org.apache.aries:org.apache.aries.util:1.1.3',
-        'org.mnode.ical4j:ical4j:4.0.0-alpha2',
-        'org.threeten:threeten-extra:1.5.0',
-        'javax.cache:cache-api:1.1.1',
-        'org.ehcache:ehcache:3.4.0'
-
-    // graphql
-    embed 'com.graphql-java:graphql-java:13.0',
-        'com.graphql-java:java-dataloader:2.1.1',
-        'org.reactivestreams:reactive-streams:1.0.2',
-        'com.graphql-java-kickstart:graphql-java-servlet:9.1.0',
-        'com.graphql-java-kickstart:graphql-java-kickstart:9.1.0'
+    embed project(path: ':whistlepost-scripting-core', configuration: 'bundles')
+    embed project(path: ':whistlepost-scripting-groovy', configuration: 'bundles')
+    embed project(path: ':whistlepost-scripting-thymeleaf', configuration: 'bundles')
+    embed project(path: ':whistlepost-scripting-liquid', configuration: 'bundles')
+    embed project(path: ':whistlepost-authz', configuration: 'bundles')
+    embed project(path: ':whistlepost-json', configuration: 'bundles')
+    embed project(path: ':whistlepost-nosql', configuration: 'bundles')
+    embed project(path: ':whistlepost-pages', configuration: 'bundles')
+    embed project(path: ':whistlepost-graphql', configuration: 'bundles')
+    embed project(path: ':whistlepost-rewriter', configuration: 'bundles')
+    embed project(path: ':whistlepost-icalendar', configuration: 'bundles')
 
     // websocket
-    embed 'javax.websocket:javax.websocket-api:1.1'
+//    embed 'javax.websocket:javax.websocket-api:1.1'
 
-    // json
-    embed "com.fasterxml.jackson.core:jackson-core:$jacksonVersion",
-        "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion",
-        "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
-        "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
 
     // felix java12 support..
     embed 'org.apache.felix:org.apache.felix.webconsole.plugins.memoryusage:1.0.10'
@@ -153,17 +103,6 @@ dependencies {
     // sling starter..
     embed 'org.apache.sling:org.apache.sling.starter.content:1.0.8'
 
-    // keycloak..
-    embed "org.keycloak:keycloak-servlet-filter-adapter:$keycloakVersion",
-        "org.keycloak:keycloak-servlet-adapter-spi:$keycloakVersion",
-        "org.keycloak:keycloak-adapter-spi:$keycloakVersion",
-        "org.keycloak:keycloak-adapter-core:$keycloakVersion",
-        "org.keycloak:keycloak-core:$keycloakVersion",
-        "org.keycloak:keycloak-common:$keycloakVersion",
-        "org.keycloak:keycloak-authz-client:$keycloakVersion",
-        'org.apache.httpcomponents:httpclient-osgi:4.5.11',
-        'org.apache.httpcomponents:httpcore-osgi:4.4.13',
-        'org.jboss.logging:jboss-logging:3.4.1.Final'
 
     // aem commons..
 //    embed "com.adobe.acs:acs-aem-commons-bundle:4.8.6"
@@ -179,20 +118,20 @@ task buildWebpack(type: NpmTask) {
 }
 
 task bundleApp(type: Bundle) {
-    archiveBaseName = "whistlepost-app"
+    archiveBaseName.set("whistlepost-app")
     bndfile = 'app.bnd'
     from('src/app') { into 'SLING-INF/content' }
     from('src/assets') { into 'assets' }
 }
 
 task bundleConfig(type: Bundle) {
-    archiveBaseName = "whistlepost-config"
+    archiveBaseName.set("whistlepost-config")
     bndfile = 'config.bnd'
     from('src/config') { into 'SLING-INF/content' }
 }
 
 task bundleContent(type: Bundle) {
-    archiveBaseName = "whistlepost-content"
+    archiveBaseName.set("whistlepost-content")
     bndfile = 'content.bnd'
     from('src/content') { into 'SLING-INF/content' }
 }
@@ -248,7 +187,8 @@ task buildDocker(type: Docker) {
     ]
 
     configurations.embed.each {
-        addFile it, "/opt/sling/wp/install/27/"
+//        addFile it, "/opt/sling/wp/install/27/"
+        addFile it, "/opt/sling/bundles/"
     }
 
     bundleprojects.each {
