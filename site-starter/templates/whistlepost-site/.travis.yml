@@ -1,9 +1,0 @@
-language: java
-jdk:
-  - oraclejdk8
-sudo: false
-deploy:
-  provider: script
-  script: scripts/install.sh
-  on:
-    branch: master

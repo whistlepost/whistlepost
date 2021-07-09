@@ -1,5 +1,0 @@
-{
-  "title":"@projectName@",
-  "sling:resourceType":"@projectId@/page/index",
-  "jcr:primaryType":"nt:unstructured"
-}

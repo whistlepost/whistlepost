@@ -1,9 +1,0 @@
-{
-    "sling:resourceType":"wp/sitemap",
-    "jcr:primaryType":"nt:unstructured",
-    "change-frequency": "weekly",
-    "url-base": "@projectUrl@",
-    "uris": [
-        "/index.html"
-    ]
-}

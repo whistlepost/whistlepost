@@ -1,27 +1,34 @@
-def extensions = [
-    'whistlepost-analytics',
-    'whistlepost-authz',
-//    'whistlepost-calendar',
-//    'whistlepost-comments',
-//    'whistlepost-cors',
-    'whistlepost-editor',
-    'whistlepost-errorhandler',
-//    'whistlepost-feeds',
-//    'whistlepost-graphql',
-//    'whistlepost-headers',
-    'whistlepost-httpgateway',
-//    'whistlepost-jsonld',
-    'whistlepost-links',
-//    'whistlepost-material',
-//    'whistlepost-opengraph',
-    'whistlepost-pages',
-    'whistlepost-scripting-groovy-markup',
-    'whistlepost-scripting-liquid',
-//    'whistlepost-gallery'
-    'whistlepost-vr',
-]
+rootProject.name = 'whistlepost'
 
-include(extensions as String[])
-rootProject.children.each { extension ->
-    extension.projectDir = new File("$rootDir/extensions/$extension.name")
-}
+include 'whistlepost-scripting-core'
+include 'whistlepost-scripting-thymeleaf'
+include 'whistlepost-scripting-groovy'
+include 'whistlepost-scripting-liquid'
+include 'whistlepost-authz'
+include 'whistlepost-json'
+include 'whistlepost-nosql'
+include 'whistlepost-pages'
+include 'whistlepost-graphql'
+include 'whistlepost-rewriter'
+include 'whistlepost-icalendar'
+
+include 'whistlepost-analytics'
+//    'whistlepost-comments'
+//    'whistlepost-cors'
+include 'whistlepost-editor'
+include 'whistlepost-errorhandler'
+//    'whistlepost-feeds'
+//    'whistlepost-headers'
+include 'whistlepost-httpgateway'
+//    'whistlepost-jsonld'
+include 'whistlepost-links'
+//    'whistlepost-material'
+//    'whistlepost-opengraph'
+//    'whistlepost-gallery'
+include 'whistlepost-vr'
+
+//rootProject.children.each { extension ->
+//    extension.projectDir = new File("$rootDir/extensions/$extension.name")
+//}
+
+//include 'features'

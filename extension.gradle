@@ -26,6 +26,7 @@ repositories {
     mavenCentral()
 }
 
+group = 'org.mnode.whistlepost'
 version = rootProject.scmVersion.version
 
 task bundle(type: Bundle) {
@@ -74,57 +75,6 @@ configurations {
 
 ext {
     isReleaseVersion = !version.endsWith("SNAPSHOT")
-
-    // sonatype credentials
-    sonatype_username = project.hasProperty('sonatype_username') ? project.getProperty('sonatype_username') : ''
-    sonatype_password = project.hasProperty('sonatype_password') ? project.getProperty('sonatype_password') : ''
-
-    // bintray credentials
-    bintray_user = project.hasProperty('bintray_user') ? project.getProperty('bintray_user') : ''
-    bintray_key = project.hasProperty('bintray_key') ? project.getProperty('bintray_key') : ''
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: sonatype_username, password: sonatype_password)
-            }
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
-                authentication(userName: sonatype_username, password: sonatype_password)
-            }
-
-            pom.project {
-                name 'Whistlepost'
-                packaging 'jar'
-                description description
-                url 'https://whistlepost.org'
-
-                scm {
-                    url 'https://github.com/micronode/whistlepost'
-                    connection 'scm:git@github.com:micronode/whistlepost.git'
-                    developerConnection 'scm:git@github.com:micronode/whistlepost.git'
-                }
-
-                licenses {
-                    license {
-                        name 'Whistlepost - License'
-                        url 'https://raw.githubusercontent.com/micronode/whistlepost/master/LICENSE'
-                        distribution 'repo'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id 'fortuna'
-                        name 'Ben Fortuna'
-                    }
-                }
-            }
-        }
-    }
 }
 
 publishing {
@@ -157,36 +107,7 @@ publishing {
 }
 
 signing {
-    required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
+    required { isReleaseVersion }
     //sign configurations.archives
     sign publishing.publications.mavenArtifacts
-}
-
-bintray {
-    user = bintray_user
-    key = bintray_key
-    pkg {
-        repo = 'whistlepost'
-        name = project.name
-        userOrg = 'micronode'
-        licenses = ['BSD']
-        vcsUrl = 'https://github.com/micronode/whistlepost.git'
-        version {
-            name = rootProject.version
-            desc = "Whistlepost $rootProject.version"
-            released  = new Date()
-            vcsTag = "whistlepost-$rootProject.version"
-            gpg {
-                sign = isReleaseVersion
-            }
-            mavenCentralSync {
-                sync = false//isReleaseVersion
-                user = sonatype_username //OSS user token: mandatory
-                password = sonatype_password //OSS user password: mandatory
-//                    close = '0' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
-            }
-        }
-    }
-//    configurations = ['archives']
-    publications = ['mavenArtifacts']
 }
