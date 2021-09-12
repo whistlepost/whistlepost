@@ -14,6 +14,10 @@ public class ShuffledAdvertisements extends AbstractFilteredList<Advertisement> 
         super("nt:unstructured[published=true]", Advertisement.class);
     }
 
+    public ShuffledAdvertisements(String filter) {
+        super(filter, Advertisement.class);
+    }
+
     public Iterable<Advertisement> getShuffled() {
         List<Advertisement> all = toList();
         Collections.shuffle(all);
@@ -24,6 +28,6 @@ public class ShuffledAdvertisements extends AbstractFilteredList<Advertisement> 
         List<Advertisement> all = toList();
         Collections.shuffle(all);
         return all.subList((getCurrentPage() - 1) * getPageSize(),
-                (getCurrentPage() - 1) * getPageSize() + Math.min(getPageSize() - 1, all.size()));
+                (getCurrentPage() - 1) * getPageSize() + Math.min(getPageSize(), all.size()));
     }
 }
