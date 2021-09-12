@@ -1,32 +1,35 @@
-package org.mnode.whistlepost.model;
+package org.mnode.whistlepost.model.request;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.apache.sling.query.SlingQuery.$;
 
-@Model(adaptables = {Resource.class, SlingHttpServletRequest.class})
-public class ArticleList extends Page {
+@Model(adaptables = {SlingHttpServletRequest.class})
+public class Paging {
 
-    @ChildResource
+    @SlingObject
+    private SlingHttpServletRequest request;
+//    private RequestPathInfo requestPathInfo;
+
+    @ChildResource @Via("resource")
     private Resource list;
+
+    @Inject @Via("resource")
+    private int pageSize;
 
     private List<Resource> publishedResources;
 
     private int currentPage;
-
-    @ValueMapValue @Default(intValues = 6)
-    private int pageSize;
 
     private int limit = -1;
 
@@ -48,22 +51,50 @@ public class ArticleList extends Page {
         publishedResources = $(list).children("nt:unstructured[published=true]").asList();
     }
 
-    public String getTitle() {
-        if (getCurrentPage() > 1) {
-            return String.format("%s | %s", super.getTitle(), getCurrentPage());
-        } else {
-            return super.getTitle();
-        }
-    }
-
+    /**
+     * Returns the current page index based on the request.
+     * @return a positive integer between 1 and {@link #getPageCount()}
+     */
     public int getCurrentPage() {
         return currentPage;
     }
 
+    /**
+     * Convenience method to indicate if there are page indexes prior to the current page.
+     * @return true if the current page is greater than 1
+     */
+    public boolean hasPrevious() {
+        return currentPage > 1;
+    }
+
+    /**
+     * Convenience method to indicate if there are page indexes after to the current page.
+     * @return true if the current page is less than {{@link #getPageCount()}}
+     */
+    public boolean hasNext() {
+        return currentPage < getPageCount();
+    }
+
+    /**
+     * Returns the total number of page indexes based on items per page.
+     * @return a positive integer greater than zero
+     */
     public int getPageCount() {
         return (int) Math.ceil((float) publishedResources.size() / pageSize);
     }
 
+    /**
+     * Returns the configured number of items per page.
+     * @return a positive integer
+     */
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    /**
+     * Returns a list of page indexes based on the total published resources.
+     * @return a non-empty list of integers (starting with 1)
+     */
     public Iterable<Integer> getPageNumbers() {
         List<Integer> pageNumbers = new ArrayList<>();
         for (int i = 1; i <= getPageCount(); i++) {
@@ -75,29 +106,5 @@ public class ArticleList extends Page {
             }
         }
         return pageNumbers;
-    }
-
-    public boolean hasPrevious() {
-        return currentPage > 1;
-    }
-
-    public boolean hasNext() {
-        return currentPage < getPageCount();
-    }
-
-    public Iterable<Article> getArticles() {
-        int offset = Math.min((currentPage - 1) * pageSize, publishedResources.size() - 1);
-
-        if (!publishedResources.isEmpty()) {
-            List<Resource> filtered;
-            if (limit > 0) {
-                filtered = publishedResources.subList(offset, Math.min(offset + limit, publishedResources.size()));
-            } else {
-                filtered = publishedResources.subList(offset, Math.min(offset + pageSize, publishedResources.size()));
-            }
-            return filtered.stream().map(r -> r.adaptTo(Article.class)).collect(Collectors.toList());
-        } else {
-            return Collections.emptyList();
-        }
     }
 }

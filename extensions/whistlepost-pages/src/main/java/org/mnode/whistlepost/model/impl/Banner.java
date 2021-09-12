@@ -1,4 +1,4 @@
-package org.mnode.whistlepost.model;
+package org.mnode.whistlepost.model.impl;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
@@ -7,7 +7,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import java.net.URI;
 
 @Model(adaptables = {Resource.class})
-public class Banner {
+public class Banner extends AbstractModel {
 
     @ValueMapValue
     private URI bannerUrl;

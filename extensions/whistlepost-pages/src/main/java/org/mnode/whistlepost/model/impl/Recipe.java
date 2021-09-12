@@ -1,19 +1,19 @@
-package org.mnode.whistlepost.model;
+package org.mnode.whistlepost.model.impl;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 
+import javax.inject.Inject;
+
 @Model(adaptables = {Resource.class, SlingHttpServletRequest.class})
-public class Recipe extends Article {
+public class Recipe extends AbstractModel {
 
-    public String[] getIngredients() {
-        return resource.getValueMap().get("ingredients", new String[] {});
-    }
+    @Inject
+    private String[] ingredients;
 
-    public String[] getMethod() {
-        return resource.getValueMap().get("method", new String[] {});
-    }
+    @Inject
+    private String[] method;
 
     public Recipe getSidebar() {
         String sidebar = resource.getValueMap().get("sidebar", String.class);

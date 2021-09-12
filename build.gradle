@@ -11,7 +11,7 @@ buildscript {
 }
 
 plugins {
-    id 'pl.allegro.tech.build.axion-release' version '1.10.2'
+    id 'pl.allegro.tech.build.axion-release' version '1.12.1'
     id "com.jfrog.bintray" version "1.8.4" apply false
     id "net.ltgt.errorprone" version "1.2.1" apply false
     id "biz.aQute.bnd.builder" version "5.1.1"
@@ -28,6 +28,7 @@ repositories {
     maven {
         url 'https://repository.apache.org/snapshots'
     }
+    mavenLocal()
 }
 
 scmVersion {
@@ -53,11 +54,17 @@ A publishing platform based on Apache Sling
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
+
 ext {
     groovyVersion = '2.4.5'
     slingApiVersion = '2.11.0'
-    jacksonVersion = '2.10.0'
+    jacksonVersion = '2.11.3'
     keycloakVersion = '10.0.2'
+
+    bundleStartLevel=20
+    config_bundleStartLevel=10
+    content_bundleStartLevel=15
 }
 
 node {
@@ -67,6 +74,12 @@ node {
 configurations {
     embed
     embed.transitive = false
+    
+    bundles
+    bundles.transitive = false
+
+    agent
+    agent.transitive = false
 }
 
 dependencies {
@@ -74,7 +87,8 @@ dependencies {
         'org.apache.sling:org.apache.sling.commons.html:1.0.0',
         'org.apache.cocoon:cocoon-serializers-charsets:1.0.3-SNAPSHOT',
         'org.apache.sling:org.apache.sling.urlrewriter:0.0.2',
-        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.urlrewritefilter:4.0.4_1'
+        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.urlrewritefilter:4.0.4_1',
+        'org.apache.sling:org.apache.sling.scripting.core:2.0.60'
 
     // filesystem resource provider
     embed 'org.apache.sling:org.apache.sling.fsresource:2.1.16'
@@ -88,11 +102,12 @@ dependencies {
         'org.apache.sling:org.apache.sling.scripting.core:2.0.58'
 
     // thymeleaf
-    embed 'org.attoparser:attoparser:2.0.2.RELEASE',
-        'org.unbescape:unbescape:1.1.4.RELEASE',
-        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.ognl:3.2_1',
-        'org.javassist:javassist:3.20.0-GA',
-        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.thymeleaf:3.0.11.RELEASE_1',
+    embed 'org.attoparser:attoparser:2.0.5.RELEASE',
+        'org.unbescape:unbescape:1.1.6.RELEASE',
+        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.ognl:3.2.1_1',
+        'org.javassist:javassist:3.27.0-GA',
+//        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.thymeleaf:3.0.11.RELEASE_1',
+//        'org.thymeleaf:thymeleaf:3.0.12-SNAPSHOT',
         'org.apache.sling:org.apache.sling.scripting.thymeleaf:2.0.2'
 
     // liquid
@@ -149,6 +164,14 @@ dependencies {
         'org.apache.httpcomponents:httpclient-osgi:4.5.11',
         'org.apache.httpcomponents:httpcore-osgi:4.4.13',
         'org.jboss.logging:jboss-logging:3.4.1.Final'
+
+    // aem commons..
+//    embed "com.adobe.acs:acs-aem-commons-bundle:4.8.6"
+
+//    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-(links|scripting-liquid)).*/)}
+    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-scripting-liquid).*/)}
+
+    agent "io.prometheus.jmx:jmx_prometheus_javaagent:0.14.0"
 }
 
 task buildWebpack(type: NpmTask) {
@@ -166,9 +189,6 @@ task bundleConfig(type: Bundle) {
     archiveBaseName = "whistlepost-config"
     bndfile = 'config.bnd'
     from('src/config') { into 'SLING-INF/content' }
-    into("SLING-INF/content/install/${config_bundleStartLevel}") {
-        from configurations.embed
-    }
 }
 
 task bundleContent(type: Bundle) {
@@ -177,18 +197,33 @@ task bundleContent(type: Bundle) {
     from('src/content') { into 'SLING-INF/content' }
 }
 
+task copyDeps(type: Copy) {
+    from configurations.embed
+    into 'build/deps'
+}
+
+task copyExt(type: Copy) {
+    from configurations.bundles
+    into 'build/extensions'
+}
+
+task copyAgent(type: Copy) {
+    from configurations.agent
+    from('jmx_prometheus.yml')
+    into 'build/agent'
+}
+
 jar.enabled = false
 bundleApp.dependsOn buildWebpack
 buildWebpack.dependsOn yarn
 clean.dependsOn yarn_cache_clean
+assemble.dependsOn copyDeps, copyExt, copyAgent
 
 artifacts {
     archives bundleApp
     archives bundleConfig
     archives bundleContent
 }
-
-def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
 
 configure(bundleprojects) { subproject ->
     apply from: "$rootDir/extension.gradle"
@@ -197,25 +232,29 @@ configure(bundleprojects) { subproject ->
 task buildDocker(type: Docker) {
     dockerfile = 'Dockerfile'
     applicationName = 'whistlepost'
-    tagVersion = scmVersion.version
-    push 'true' == docker_push
-    apiUsername = docker_apiUsername
-    apiPassword = docker_apiPassword
-    apiEmail = docker_apiEmail
+    tagVersion = 'latest'
+    push project.hasProperty('docker_push') && 'true' == docker_push
+    apiUsername = project.hasProperty('docker_apiUsername') ? docker_apiUsername : ''
+    apiPassword = project.hasProperty('docker_apiPassword') ? docker_apiPassword : ''
+    apiEmail = project.hasProperty('docker_apiEmail') ? docker_apiEmail : ''
 
     addFile 'sling.properties', '/opt/sling/'
-    addFile bundleApp.archiveFile.get() as String, "/opt/sling/bundles/install/${bundleStartLevel}/"
-    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/bundles/install/${config_bundleStartLevel}/"
-    addFile bundleContent.archiveFile.get() as String, "/opt/sling/bundles/install/${content_bundleStartLevel}/"
+    addFile bundleApp.archiveFile.get() as String, "/opt/sling/wp/install/2/"
+    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/wp/install/2/"
+    addFile bundleContent.archiveFile.get() as String, "/opt/sling/wp/install/2/"
 
     def runModes = [
             'whistlepost-links': 'proxied'
     ]
 
+    configurations.embed.each {
+        addFile it, "/opt/sling/wp/install/27/"
+    }
+
     bundleprojects.each {
-        def startLevel = project.hasProperty("${it.name}_bundleStartLevel") ? project.property("${it.name}_bundleStartLevel") : bundleStartLevel
+//        def startLevel = project.hasProperty("${it.name}_bundleStartLevel") ? project.property("${it.name}_bundleStartLevel") : bundleStartLevel
         def runMode = project.hasProperty("${it.name}_runMode") ? project.property("${it.name}_runMode") : runModes[it.name]
-        addFile it.jar.archivePath, "/opt/sling/bundles/install${ runMode ? '.' + runMode : ''}/${startLevel}/"
+        addFile it.jar.archivePath, "/opt/sling/wp/install${ runMode ? '.' + runMode : ''}/15/"
     }
     bundleprojects.each { dependsOn("${it.name}:bundle") }
 }
