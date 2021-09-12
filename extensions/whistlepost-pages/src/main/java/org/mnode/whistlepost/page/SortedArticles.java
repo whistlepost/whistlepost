@@ -28,6 +28,6 @@ public class SortedArticles extends AbstractFilteredList<DefaultArticle> {
         List<DefaultArticle> all = toList();
         Collections.sort(all, comparator.reversed());
         return all.subList((getCurrentPage() - 1) * getPageSize(),
-                (getCurrentPage() - 1) * getPageSize() + Math.min(getPageSize() - 1, all.size()));
+                (getCurrentPage() - 1) * getPageSize() + Math.min(getPageSize(), all.size()));
     }
 }
