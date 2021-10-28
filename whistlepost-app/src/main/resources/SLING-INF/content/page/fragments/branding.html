@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<header data-th-fragment="masthead" data-th-with="branding=${resource.adaptTo(@org.whistlepost.model.Branding@class)}">
+    <a href="/content/welcome/index.html">
+        <img class="pure-img" data-th-src="${branding.image}" data-th-alt="${branding.altText}">
+    </a>
+</header>
+
+</body>
+</html>

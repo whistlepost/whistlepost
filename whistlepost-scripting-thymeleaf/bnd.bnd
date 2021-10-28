@@ -1,0 +1,4 @@
+Automatic-Module-Name: org.whistlepost.scripting.thymeleaf
+Bundle-Name: Whistlepost Scripting - Thymeleaf
+Bundle-SymbolicName: org.whistlepost.scripting.thymeleaf
+Bundle-Category: whistlepost

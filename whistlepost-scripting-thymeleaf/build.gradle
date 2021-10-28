@@ -1,15 +1,7 @@
-configurations {
-    bundles {
-        transitive = false
-        canBeConsumed = true
-        canBeResolved = false
-    }
-}
-
 dependencies {
     bundles 'org.attoparser:attoparser:2.0.5.RELEASE',
             'org.unbescape:unbescape:1.1.6.RELEASE',
-            'org.apache.servicemix.bundles:org.apache.servicemix.bundles.ognl:3.2.21_1',
+            'org.apache.servicemix.bundles:org.apache.servicemix.bundles.ognl:3.2.1_1',
             'org.javassist:javassist:3.28.0-GA',
             'org.apache.servicemix.bundles:org.apache.servicemix.bundles.thymeleaf:3.0.12.RELEASE_1',
 //        'org.thymeleaf:thymeleaf:3.0.12.RELEASE',

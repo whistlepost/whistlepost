@@ -1,0 +1,116 @@
+.wp-layout {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.wp-layout.dynamic {
+    /* https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-grid/ */
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    align-items:center;
+}
+
+.wp-layout.app {
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "footer footer";
+
+  /* maximise content area */
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+.wp-layout.app.with-sidebar {
+  grid-template-areas:
+    "header header header"
+    "nav main aside"
+    "footer footer footer";
+
+  /* maximise content area */
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+}
+
+.wp-layout.holygrail {
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "main aside"
+    "footer footer";
+
+  /* maximise content area */
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
+}
+
+.wp-layout > header {
+  grid-area: header;
+}
+
+.wp-layout > nav {
+  grid-area: nav;
+  margin-left: 0.5rem;
+}
+
+.wp-layout > main {
+  grid-area: main;
+}
+
+.wp-layout > aside {
+  grid-area: aside;
+  margin-right: 0.5rem;
+  max-width: 18vw;
+}
+
+.wp-layout > footer {
+  grid-area: footer;
+}
+
+@media (max-width: 768px) {
+
+    .wp-layout.app {
+      grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
+
+      /* maximise content area */
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr auto;
+    }
+
+    .wp-layout.app.with-sidebar {
+      grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "aside"
+        "footer";
+
+      /* maximise content area */
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr auto auto;
+    }
+
+    .wp-layout.holygrail{
+      grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "aside"
+        "footer";
+
+      grid-template-columns: 1fr;
+      grid-template-rows:
+        auto /* Header */
+        minmax(75px, auto) /* Nav */
+        1fr /* Content */
+        minmax(75px, auto) /* Sidebar */
+        auto; /* Footer */
+    }
+
+    .wp-layout > nav, .wp-layout > aside {
+      margin: 0;
+    }
+}

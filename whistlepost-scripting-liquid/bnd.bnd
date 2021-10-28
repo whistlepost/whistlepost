@@ -1,7 +1,7 @@
 ScriptEngine-Name: ${project.name}
 ScriptEngine-Version: ${project.version}
 -includeresource.lib liqp-0.7.8.jar;lib:=true
-Automatic-Module-Name: org.mnode.whistlepost.scripting.liquid
-Bundle-Name: Whistlepost Extension - Liquid Scripting
-Bundle-SymbolicName: org.mnode.whistlepost-scripting-liquid
+Automatic-Module-Name: org.whistlepost.scripting.liquid
+Bundle-Name: Whistlepost Scripting - Liquid
+Bundle-SymbolicName: org.whistlepost.scripting.liquid
 Bundle-Category: whistlepost

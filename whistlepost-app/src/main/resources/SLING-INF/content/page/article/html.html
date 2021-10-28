@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-th-with="layout=${resolver.resolve(request, '/content/layout').adaptTo(@org.whistlepost.model.Layout@class)}">
+
+<th:block data-sling-include="${resource}" data-sling-resourceType="'wp/head'">
+</th:block>
+
+<body>
+
+<div class="wp-layout holygrail">
+  <th:block data-sling-include="${resolver.resolve(request, layout.header)}" data-sling-addSelectors="'header'">
+  </th:block>
+
+  <main>
+<!--    <section data-th-replace="/apps/wp/page/fragments/article.html::full">-->
+<!--    </section>-->
+
+    <th:block data-sling-include="${resolver.resolve(request, layout.navigation)}" data-sling-addSelectors="'columns'">
+    </th:block>
+  </main>
+
+  <aside>
+    <th:block data-sling-include="${resolver.resolve(request, layout.sidebar)}" data-sling-addSelectors="'sidebar'">
+    </th:block>
+  </aside>
+
+  <th:block data-sling-include="${resolver.resolve(request, layout.footer)}" data-sling-addSelectors="'footer'">
+  </th:block>
+</div>
+</body>
+</html>

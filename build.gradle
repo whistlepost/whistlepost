@@ -1,5 +1,3 @@
-import aQute.bnd.gradle.Bundle
-
 buildscript {
     repositories {
         mavenCentral()
@@ -11,16 +9,39 @@ buildscript {
 }
 
 plugins {
-    id 'pl.allegro.tech.build.axion-release' version '1.12.1'
-    id "com.jfrog.bintray" version "1.8.4" apply false
-    id "net.ltgt.errorprone" version "1.2.1" apply false
-    id "biz.aQute.bnd.builder" version "5.1.1"
+    id 'pl.allegro.tech.build.axion-release' version '1.13.1'
+    id 'net.ltgt.errorprone' version "1.2.1" apply false
+    id 'biz.aQute.bnd.builder' version "5.1.1" apply false
     id 'org.javamodularity.moduleplugin' version '1.7.0' apply false
-    id "com.github.node-gradle.node" version "2.2.4"
 }
 
 apply plugin: 'java'
 apply plugin: 'docker'
+
+configure(subprojects) {
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+    apply plugin: 'signing'
+    apply plugin: 'biz.aQute.bnd.builder'
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    group = 'org.mnode.whistlepost'
+    version = rootProject.scmVersion.version
+
+    configurations {
+        bundles {
+            transitive = false
+            canBeConsumed = true
+            canBeResolved = false
+        }
+    }
+}
 
 repositories {
     mavenCentral()
@@ -33,16 +54,14 @@ repositories {
 
 scmVersion {
     tag {
-        prefix = 'whistlepost'
+        prefix = 'whistlepost-'
     }
     versionCreator 'versionWithBranch'
-    branchVersionCreator = [
-        'master': 'simple'
-    ]
-    nextVersion {
-        suffix = 'pre'
-        separator = '-'
-    }
+    branchVersionCreator = ['master': 'simple']
+//    nextVersion {
+//        suffix = 'pre'
+//        separator = '-'
+//    }
 }
 
 group = 'micronode'
@@ -51,14 +70,8 @@ description = '''
 A publishing platform based on Apache Sling
 '''
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+//def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
 
-def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
-
-node {
-    download = true
-}
 
 configurations {
     embed
@@ -81,59 +94,33 @@ dependencies {
     // filesystem resource provider
     embed 'org.apache.sling:org.apache.sling.fsresource:2.1.16'
 
+//    embed project(path: ':whistlepost-content', configuration: 'bundles')
+    embed project(path: ':whistlepost-config', configuration: 'bundles')
     embed project(path: ':whistlepost-scripting-core', configuration: 'bundles')
     embed project(path: ':whistlepost-scripting-groovy', configuration: 'bundles')
     embed project(path: ':whistlepost-scripting-thymeleaf', configuration: 'bundles')
     embed project(path: ':whistlepost-scripting-liquid', configuration: 'bundles')
-    embed project(path: ':whistlepost-authz', configuration: 'bundles')
-    embed project(path: ':whistlepost-json', configuration: 'bundles')
-    embed project(path: ':whistlepost-nosql', configuration: 'bundles')
-    embed project(path: ':whistlepost-pages', configuration: 'bundles')
-    embed project(path: ':whistlepost-graphql', configuration: 'bundles')
+//    embed project(path: ':whistlepost-authz', configuration: 'bundles')
+//    embed project(path: ':whistlepost-nosql', configuration: 'bundles')
+    embed project(path: ':whistlepost-models-core', configuration: 'bundles')
+    embed project(path: ':whistlepost-models-pages', configuration: 'bundles')
+    embed project(path: ':whistlepost-models-schema', configuration: 'bundles')
+//    embed project(path: ':whistlepost-graphql', configuration: 'bundles')
     embed project(path: ':whistlepost-rewriter', configuration: 'bundles')
-    embed project(path: ':whistlepost-icalendar', configuration: 'bundles')
+//    embed project(path: ':whistlepost-icalendar', configuration: 'bundles')
 
     // websocket
 //    embed 'javax.websocket:javax.websocket-api:1.1'
 
-
-    // felix java12 support..
-    embed 'org.apache.felix:org.apache.felix.webconsole.plugins.memoryusage:1.0.10'
-
-    // sling starter..
-    embed 'org.apache.sling:org.apache.sling.starter.content:1.0.8'
 
 
     // aem commons..
 //    embed "com.adobe.acs:acs-aem-commons-bundle:4.8.6"
 
 //    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-(links|scripting-liquid)).*/)}
-    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-scripting-liquid).*/)}
+//    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-scripting-liquid).*/)}
 
     agent "io.prometheus.jmx:jmx_prometheus_javaagent:0.14.0"
-}
-
-task buildWebpack(type: NpmTask) {
-    args = ['run', 'buildWebpack']
-}
-
-task bundleApp(type: Bundle) {
-    archiveBaseName.set("whistlepost-app")
-    bndfile = 'app.bnd'
-    from('src/app') { into 'SLING-INF/content' }
-    from('src/assets') { into 'assets' }
-}
-
-task bundleConfig(type: Bundle) {
-    archiveBaseName.set("whistlepost-config")
-    bndfile = 'config.bnd'
-    from('src/config') { into 'SLING-INF/content' }
-}
-
-task bundleContent(type: Bundle) {
-    archiveBaseName.set("whistlepost-content")
-    bndfile = 'content.bnd'
-    from('src/content') { into 'SLING-INF/content' }
 }
 
 task copyDeps(type: Copy) {
@@ -142,7 +129,7 @@ task copyDeps(type: Copy) {
 }
 
 task copyExt(type: Copy) {
-    from configurations.bundles
+    from subprojects.collect { it.tasks.withType(Jar) }
     into 'build/extensions'
 }
 
@@ -153,20 +140,11 @@ task copyAgent(type: Copy) {
 }
 
 jar.enabled = false
-bundleApp.dependsOn buildWebpack
-buildWebpack.dependsOn yarn
-clean.dependsOn yarn_cache_clean
 assemble.dependsOn copyDeps, copyExt, copyAgent
 
-artifacts {
-    archives bundleApp
-    archives bundleConfig
-    archives bundleContent
-}
-
-configure(bundleprojects) { subproject ->
-    apply from: "$rootDir/extension.gradle"
-}
+//configure(bundleprojects) { subproject ->
+//    apply from: "$rootDir/extension.gradle"
+//}
 
 task buildDocker(type: Docker) {
     dockerfile = 'Dockerfile'
@@ -178,9 +156,9 @@ task buildDocker(type: Docker) {
     apiEmail = project.hasProperty('docker_apiEmail') ? docker_apiEmail : ''
 
     addFile 'sling.properties', '/opt/sling/'
-    addFile bundleApp.archiveFile.get() as String, "/opt/sling/wp/install/2/"
-    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/wp/install/2/"
-    addFile bundleContent.archiveFile.get() as String, "/opt/sling/wp/install/2/"
+//    addFile bundleApp.archiveFile.get() as String, "/opt/sling/wp/install/2/"
+//    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/wp/install/2/"
+//    addFile bundleContent.archiveFile.get() as String, "/opt/sling/wp/install/2/"
 
     def runModes = [
             'whistlepost-links': 'proxied'
@@ -191,11 +169,11 @@ task buildDocker(type: Docker) {
         addFile it, "/opt/sling/bundles/"
     }
 
-    bundleprojects.each {
+    subprojects.each {
 //        def startLevel = project.hasProperty("${it.name}_bundleStartLevel") ? project.property("${it.name}_bundleStartLevel") : bundleStartLevel
         def runMode = project.hasProperty("${it.name}_runMode") ? project.property("${it.name}_runMode") : runModes[it.name]
         addFile it.jar.archivePath, "/opt/sling/wp/install${ runMode ? '.' + runMode : ''}/15/"
     }
-    bundleprojects.each { dependsOn("${it.name}:bundle") }
+//    subprojects.each { dependsOn("${it.name}:bundle") }
 }
 buildDocker.dependsOn build

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<footer data-th-fragment="default"
+        data-th-with="meta=${resolver.resolve(request, '/content/metadata').adaptTo(@org.whistlepost.model.Metadata@class)}">
+
+    <nav data-th-replace="/apps/wp/page/fragments/footer.html::footer-nav">
+    </nav>
+
+    <hr style="text-align: center; width: 50%">
+
+    <p>
+        Created with
+        <a href="http://whistlepost.org" target="_blank">Whistlepost</a> | &copy;
+        <span data-th-text="${meta.copyright}">[Placeholder]</span>
+    </p>
+</footer>
+
+</body>
+</html>

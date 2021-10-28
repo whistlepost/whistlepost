@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        width="297mm"
+        height="210mm"
+        id="svg2"
+        version="1.1"
+        inkscape:version="1.0beta2 (2b71d25, 2019-12-03)"
+        sodipodi:docname="whistlepost-studios.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="624.78595"
+     inkscape:cy="443.22841"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1440"
+     inkscape:window-height="810"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     units="mm">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3809"
+       inkscape:export-filename="/home/fortuna/whistlepost/etc/artwork/logo-60.png"
+       inkscape:export-xdpi="25.105263"
+       inkscape:export-ydpi="25.105263"
+       transform="translate(-160,-272.36218)">
+      <path
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:connector-curvature="0"
+         id="path3788"
+         d="m 300,692.36218 h 120 l 40,-140 h -40 l 20,-40 H 280 l 20,40 h -40 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text2987"
+         y="658.4231"
+         x="295.75635"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:Pothana2000;-inkscape-font-specification:'Pothana2000 Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="658.4231"
+           x="295.75635"
+           id="tspan2989"
+           sodipodi:role="line"
+           style="font-size:120px;line-height:1.25">W</tspan></text>
+    </g>
+    <text
+       transform="scale(1.0493219,0.95299642)"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90.2461px;line-height:1.25;font-family:Georgia;-inkscape-font-specification:'Georgia Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.705048"
+       x="298.73383"
+       y="321.34094"
+       id="text263"><tspan
+         style="stroke-width:0.705048"
+         sodipodi:role="line"
+         id="tspan301"
+         x="298.73383"
+         y="321.34094">Whistlepost</tspan><tspan
+         style="stroke-width:0.705048"
+         sodipodi:role="line"
+         id="tspan303"
+         x="298.73383"
+         y="434.14859">   Studios</tspan></text>
+  </g>
+</svg>

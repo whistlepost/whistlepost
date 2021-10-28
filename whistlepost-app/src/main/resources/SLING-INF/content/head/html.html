@@ -1,0 +1,15 @@
+<head data-th-with="branding=${resolver.resolve(request, '/content/branding').adaptTo(@org.whistlepost.model.Branding@class)}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--    <title data-th-text="${page.title}">[TITLE]</title>-->
+    <th:block data-th-if="${branding.favicon}">
+        <link data-th-href="${branding.favicon}" rel="icon">
+    </th:block>
+    <th:block data-th-unless="${branding.favicon}">
+        <link href="/assets/wp/images/favicon.ico" rel="icon">
+    </th:block>
+    <link href="/assets/wp/css/whistlepost.bundle.css" rel="stylesheet">
+    <link href="/assets/wp/css/fonts.css" rel="stylesheet">
+</head>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-th-with="page=${request.adaptTo(@org.mnode.whistlepost.model.Advertisement@class)}">
+<head data-th-replace="/apps/wp/page/fragments/editor.html::head">
+</head>
+<body>
+<h1>Advertisement Editor</h1>
+
+<div>
+    <form method="POST">
+        <div class="form-group">
+            <label for="adTitle">Title</label>
+            <input type="text" class="form-control" id="adTitle" name="title" aria-describedby="titleHelp" placeholder="Enter title">
+            <small id="titleHelp" class="form-text text-muted">Advertisement heading text</small>
+        </div>
+
+        <div class="form-group">
+            <label for="adMedia">Media</label>
+            <input type="text" class="form-control" id="adMedia" name="media" aria-describedby="mediaHelp">
+            <small id="mediaHelp" class="form-text text-muted">Advertisement image</small>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="publishedStatus" name="published" aria-describedby="publishedHelp"/>
+            <label class="form-check-label" for="publishedStatus">Published</label>
+            <small id="publishedHelp" class="form-text text-muted">Published status</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+
+        <input type="hidden" name=":redirect" value="*.html"/>
+
+        <!-- used by Sling when decoding request parameters -->
+        <input type="hidden" name="_charset_" value="UTF-8"/>
+    </form>
+</div>
+
+<!-- code of step 2 comes here -->
+<script>Sling.wizard();</script>
+<script src="/assets/wp/js/whistlepost.bundle.js"></script>
+</body>
+</html>

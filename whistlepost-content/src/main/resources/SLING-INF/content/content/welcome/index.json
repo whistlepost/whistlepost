@@ -1,0 +1,35 @@
+{
+  "title":"Welcome to Whistlepost",
+  "sling:resourceType":"wp/page/toc",
+  "jcr:primaryType":"nt:unstructured",
+  "toc": {
+    "about": {
+      "path": "/content/welcome/about"
+    },
+    "prerequisites": {
+      "path": "/content/welcome/prerequisites"
+    },
+    "getting-started": {
+      "path": "/content/welcome/getting-started"
+    },
+    "templates": {
+      "path": "/content/welcome/templates"
+    },
+    "layouts": {
+      "path": "/content/welcome/layouts"
+    },
+    "webpack": {
+      "path": "/content/welcome/webpack"
+    },
+    "docker": {
+      "path": "/content/welcome/docker"
+    },
+    "apis": {
+      "path": "/content/welcome/apis"
+    },
+    "extensions": {
+      "path": "/content/welcome/extensions/index"
+    }
+  },
+  "defaultContentsPage": "/content/welcome/layouts"
+}

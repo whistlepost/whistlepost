@@ -1,15 +1,3 @@
-repositories {
-    mavenCentral()
-}
-
-configurations {
-    bundles {
-        transitive = false
-        canBeConsumed = true
-        canBeResolved = false
-    }
-}
-
 dependencies {
 
     compile 'org.osgi:osgi.core:6.0.0',

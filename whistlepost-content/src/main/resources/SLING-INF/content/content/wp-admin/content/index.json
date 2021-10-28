@@ -1,0 +1,15 @@
+{
+  "title":"Content Editor",
+  "description": "Tools for managing site content",
+  "sling:resourceType":"wp/page/site-list",
+  "jcr:primaryType":"nt:unstructured",
+  "sections": {
+    "sites": {
+      "title": "Site List",
+      "pars": [
+        ""
+      ]
+    }
+  }
+
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<article class="feature-article link wnews-article" data-th-fragment="summary(resource)" data-th-with="article=${resource.adaptTo(@org.whistlepost.model.schema.CreativeWork@class)}">
+    <h1 data-th-text="${article.title}">[TITLE]</h1>
+    <p class="date-published" data-th-text="${article.datePublished}">[DATE]</p>
+
+    <div data-th-if="${not #strings.isEmpty(article.image)}">
+        <img class="pure-img" data-th-src="${article.image}" data-th-alt="|${article.title} image|"/>
+    </div>
+
+    <p data-th-text="${article.abstract}">[SUMMARY]</p>
+    <a data-th-href="|${resolver.map(request, article.resource.path)}.html|"><span class="link"></span></a>
+</article>
+
+<article data-th-fragment="full" data-th-with="article=${request.adaptTo(@org.whistlepost.model.schema.CreativeWork@class)}">
+    <h1 data-th-text="${article.title}">[TITLE]</h1>
+    <p class="date-published" data-th-text="${article.datePublished}">[DATE]</p>
+
+    <div data-th-if="${not #strings.isEmpty(article.image)}">
+        <img class="pure-img" data-th-src="${article.image}" data-th-alt="|${article.title} image|"/>
+    </div>
+
+    <div data-th-utext="${article.text}">
+    </div>
+</article>
+
+<div class="wp-layout dynamic" data-th-fragment="summary-list(resource, exclude)" data-th-with="list=${resource.adaptTo(@org.whistlepost.model.schema.list.CreativeWorkList@class)}">
+<!--    <p data-th-text="${list.numberOfItems}"></p>-->
+    <th:block data-th-each="article : ${list.getSortedPage()}">
+        <th:block data-th-unless="${article.resource.path == exclude.path}">
+            <div data-th-replace="/apps/wp/page/fragments/article.html::summary(${article.resource})">
+            </div>
+        </th:block>
+    </th:block>
+</div>
+
+<div data-th-fragment="link-list(resource)" data-th-with="list=${resource.adaptTo(@org.whistlepost.model.schema.list.CreativeWorkList@class)}">
+    <h3>
+        <a data-th-href="|${list.resource.path}.html|"><span data-th-utext="${list.title}">[COLUMN]</span></a>
+    </h3>
+    <ul style="list-style:none; padding-left:0;">
+        <th:block data-th-each="article : ${list.getSortedPage()}">
+            <li style="margin-bottom:5px;">
+                <a data-th-href="|${article.resource.path}.html|"><span data-th-utext="${article.title}">[ARTICLE]</span></a>
+            </li>
+        </th:block>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "jcr:primaryType":"sling:OsgiConfig",
+  "resource.resolver.mapping": [
+    "/$1:(?!\\/)(content\\/.*)\\.json",
+    "/:/",
+    "(?!/content/wp/)/content/[a-zA-Z0-9]+/:/",
+    "/content/:/",
+    "/system/docroot/:/"
+  ]
+}

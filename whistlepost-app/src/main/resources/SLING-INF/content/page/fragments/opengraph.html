@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<th:block data-th-fragment="default" data-th-with="og=${resource.adaptTo(@org.whistlepost.model.OpenGraph@class)}">
+    <meta property="og:url" data-th-content="${og.url}" />
+    <meta property="og:title" data-th-content="${og.title}" />
+    <meta property="og:type" content="article" />
+<th:block data-th-if="${not #strings.isEmpty(og.image)}">
+    <meta property="og:image:secure_url" data-th-content="${og.image}"/>
+</th:block>
+</th:block>
+
+</head>
+<body>
+</body>
+</html>
