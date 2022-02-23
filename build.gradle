@@ -11,11 +11,19 @@ buildscript {
 plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.13.1'
     id 'net.ltgt.errorprone' version "1.2.1" apply false
-    id 'biz.aQute.bnd.builder' version "5.1.1" apply false
-    id 'org.javamodularity.moduleplugin' version '1.7.0' apply false
+    id 'biz.aQute.bnd.builder' version "$bndVersion" apply false
+    id 'org.javamodularity.moduleplugin' version '1.8.10' apply false
 }
 
-apply plugin: 'java'
+scmVersion {
+    tag {
+        prefix = 'whistlepost-'
+    }
+    versionCreator 'versionWithBranch'
+    branchVersionCreator = ['master': 'simple']
+}
+
+//apply plugin: 'java'
 apply plugin: 'docker'
 
 configure(subprojects) {
@@ -23,15 +31,16 @@ configure(subprojects) {
     apply plugin: 'maven-publish'
     apply plugin: 'signing'
     apply plugin: 'biz.aQute.bnd.builder'
+    apply plugin: 'org.javamodularity.moduleplugin'
 
     repositories {
         mavenCentral()
     }
 
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    sourceCompatibility = 8
+    targetCompatibility = 8
 
-    group = 'org.mnode.whistlepost'
+    group = 'org.whistlepost'
     version = rootProject.scmVersion.version
 
     configurations {
@@ -40,6 +49,50 @@ configure(subprojects) {
             canBeConsumed = true
             canBeResolved = false
         }
+    }
+
+    publishing {
+        publications {
+            "$name"(MavenPublication) {
+                from components.java
+                pom.withXml {
+                    asNode().appendNode('name', name)
+                    asNode().appendNode('description', description)
+                    asNode().appendNode('url', 'https://www.whistlepost.org')
+
+                    def scmNode = asNode().appendNode('scm')
+                    scmNode.appendNode('url', 'https://github.com/whistlepost/whistlepost')
+                    scmNode.appendNode('connection', 'scm:git@github.com:whistlepost/whistlepost.git')
+                    scmNode.appendNode('developerConnection', 'scm:git@github.com:whistlepost/whistlepost.git')
+
+                    def licenseNode = asNode().appendNode('licenses').appendNode('license')
+                    licenseNode.appendNode('name', 'Apache License')
+                    licenseNode.appendNode('url', 'https://raw.githubusercontent.com/whistlepost/whistlepost/master/LICENSE')
+                    licenseNode.appendNode('distribution', 'repo')
+
+                    def developerNode = asNode().appendNode('developers').appendNode('developer')
+                    developerNode.appendNode('id', 'fortuna')
+                    developerNode.appendNode('name', 'Ben Fortuna')
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name = "OSSRH"
+                url = version.endsWith('SNAPSHOT') ? "https://s01.oss.sonatype.org/content/repositories/snapshots/" :
+                        "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                credentials {
+                    username = System.getenv("MAVEN_USERNAME")
+                    password = System.getenv("MAVEN_PASSWORD")
+                }
+            }
+        }
+    }
+
+    signing {
+        required { isReleaseVersion }
+        sign publishing.publications[name]
     }
 }
 
@@ -52,23 +105,11 @@ repositories {
     mavenLocal()
 }
 
-scmVersion {
-    tag {
-        prefix = 'whistlepost-'
-    }
-    versionCreator 'versionWithBranch'
-    branchVersionCreator = ['master': 'simple']
-//    nextVersion {
-//        suffix = 'pre'
-//        separator = '-'
-//    }
-}
-
-group = 'micronode'
-version = scmVersion.version
-description = '''
-A publishing platform based on Apache Sling
-'''
+//group = 'micronode'
+//version = scmVersion.version
+//description = '''
+//A publishing platform based on Apache Sling
+//'''
 
 //def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
 
@@ -139,8 +180,8 @@ task copyAgent(type: Copy) {
     into 'build/agent'
 }
 
-jar.enabled = false
-assemble.dependsOn copyDeps, copyExt, copyAgent
+//jar.enabled = false
+//assemble.dependsOn copyDeps, copyExt, copyAgent
 
 //configure(bundleprojects) { subproject ->
 //    apply from: "$rootDir/extension.gradle"
@@ -176,4 +217,4 @@ task buildDocker(type: Docker) {
     }
 //    subprojects.each { dependsOn("${it.name}:bundle") }
 }
-buildDocker.dependsOn build
+//buildDocker.dependsOn build
