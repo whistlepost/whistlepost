@@ -43,6 +43,10 @@ configure(subprojects) {
     group = 'org.whistlepost'
     version = rootProject.scmVersion.version
 
+    ext {
+        isReleaseVersion = !version.endsWith("SNAPSHOT")
+    }
+
     configurations {
         bundles {
             transitive = false
