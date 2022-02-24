@@ -3,7 +3,7 @@ dependencies {
             "org.codehaus.groovy:groovy-jsr223:$groovyVersion",
             "org.codehaus.groovy:groovy-json:$groovyVersion",
             "org.codehaus.groovy:groovy-templates:$groovyVersion",
-            'org.apache.sling:org.apache.sling.scripting.groovy:1.0.2'
+            'org.apache.sling:org.apache.sling.scripting.groovy:1.2.0'
 
     compileOnly 'org.apache.sling:org.apache.sling.scripting.api:2.2.0',
             'org.apache.sling:org.apache.sling.commons.classloader:1.4.4',
