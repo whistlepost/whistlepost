@@ -9,7 +9,7 @@ buildscript {
 }
 
 plugins {
-    id 'pl.allegro.tech.build.axion-release' version '1.13.1'
+    id 'pl.allegro.tech.build.axion-release' version '1.13.3'
     id 'net.ltgt.errorprone' version "1.2.1" apply false
     id 'biz.aQute.bnd.builder' version "$bndVersion" apply false
     id 'org.javamodularity.moduleplugin' version '1.8.10' apply false
@@ -21,6 +21,11 @@ scmVersion {
     }
     versionCreator 'versionWithBranch'
     branchVersionCreator = ['master': 'simple']
+    branchVersionCreator = ['feature/refactor-20211028': 'simple']
+    nextVersion {
+        suffix = 'pre'
+        separator = '-'
+    }
 }
 
 //apply plugin: 'java'

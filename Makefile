@@ -1,16 +1,22 @@
 SHELL:=/bin/bash
 include .env
 
-.PHONY: all gradlew clean build tag push up down karaf changelog currentVersion markNextVersion \
+NEXT_VERSION=$(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+CHANGE_JUSTIFICATION=$(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+
+.PHONY: all gradlew clean build changelog currentVersion markNextVersion listApiChanges approveApiChanges \
 	verify release publish
 
-all: build
+all: test
 
 gradlew:
 	./gradlew wrapper --gradle-version=$(GRADLE_VERSION) --distribution-type=bin
 
 clean:
 	./gradlew clean #&& docker rmi $(REGISTRY)/$(IMAGE_NAME)
+
+test:
+	./gradlew test
 
 build:
 	./gradlew build
