@@ -1,6 +1,7 @@
-package org.mnode.whistlepost.rewriter
+package org.whistlepost.rewriter
 
 import org.cyberneko.html.parsers.SAXParser
+import org.whistlepost.rewriter.RegexLinkTransformer
 import org.xml.sax.*
 import spock.lang.Specification
 

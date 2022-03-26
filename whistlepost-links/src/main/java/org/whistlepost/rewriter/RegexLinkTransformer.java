@@ -1,4 +1,4 @@
-package org.mnode.whistlepost.rewriter;
+package org.whistlepost.rewriter;
 
 import org.apache.sling.rewriter.DefaultTransformer;
 import org.slf4j.Logger;

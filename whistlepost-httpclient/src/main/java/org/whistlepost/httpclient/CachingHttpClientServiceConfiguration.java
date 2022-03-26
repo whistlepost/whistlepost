@@ -1,4 +1,4 @@
-package org.mnode.whistlepost.httpgateway;
+package org.whistlepost.httpclient;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;

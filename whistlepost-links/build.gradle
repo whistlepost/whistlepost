@@ -4,9 +4,11 @@ repositories {
         url 'https://oss.sonatype.org/content/repositories/snapshots/'
     }
     maven {
-        url 'https://repository.apache.org/snapshots'
+        url 'http://repository.apache.org/content/groups/snapshots/'
     }
 }
+
+apply plugin: 'groovy'
 
 dependencies {
     compile 'org.osgi:osgi.core:6.0.0',

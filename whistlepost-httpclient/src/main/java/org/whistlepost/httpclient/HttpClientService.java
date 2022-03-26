@@ -1,29 +1,27 @@
-package org.mnode.whistlepost.httpgateway;
+package org.whistlepost.httpclient;
 
 import org.apache.http.Header;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.osgi.services.CachingHttpClientBuilderFactory;
+import org.apache.http.osgi.services.HttpClientBuilderFactory;
 import org.apache.http.util.EntityUtils;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.metatype.annotations.Designate;
 
 import java.io.IOException;
 import java.net.URI;
 import java.util.Arrays;
 
-@Component(service = CachingHttpClientService.class, property = {
+@Component(service = HttpClientService.class, property = {
         "service.description=Whistlepost HTTP Client",
         "service.vendor=Micronode"
 })
-@Designate(ocd = CachingHttpClientServiceConfiguration.class)
-public class CachingHttpClientService {
+public class HttpClientService {
 
     @Reference
-    private CachingHttpClientBuilderFactory httpClientBuilder;
+    private HttpClientBuilderFactory httpClientBuilder;
 
     public String doGet(URI uri, CredentialsProvider credentialsProvider, Header... defaultHeaders) throws IOException {
         try (CloseableHttpClient httpClient =

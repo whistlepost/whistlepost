@@ -1,4 +1,4 @@
-package org.mnode.whistlepost.httpgateway;
+package org.whistlepost.httpclient;
 
 import org.apache.http.Header;
 import org.apache.http.HttpHeaders;

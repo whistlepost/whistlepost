@@ -1,4 +1,4 @@
-package org.mnode.whistlepost.authz;
+package org.whistlepost.keycloak;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;

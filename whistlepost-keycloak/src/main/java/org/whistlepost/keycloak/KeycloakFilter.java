@@ -1,4 +1,4 @@
-package org.mnode.whistlepost.authz;
+package org.whistlepost.keycloak;
 
 import org.keycloak.adapters.servlet.KeycloakOIDCFilter;
 import org.osgi.framework.BundleContext;

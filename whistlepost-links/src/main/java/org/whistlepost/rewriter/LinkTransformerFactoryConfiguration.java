@@ -1,4 +1,4 @@
-package org.mnode.whistlepost.rewriter;
+package org.whistlepost.rewriter;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
