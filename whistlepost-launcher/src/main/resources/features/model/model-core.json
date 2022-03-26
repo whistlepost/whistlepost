@@ -1,0 +1,8 @@
+{
+  "bundles": [
+    {
+      "id": "org.whistlepost:whistlepost-models-core:${whistlepost.version}",
+      "start-order": "20"
+    }
+  ]
+}

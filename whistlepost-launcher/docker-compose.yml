@@ -1,0 +1,35 @@
+version: "3"
+services:
+  whistlepost:
+    image: "apache/sling:11"
+    ports:
+      - "8080:8080"
+    environment:
+      - JAVA_OPTS=-Dsling.run.modes=prod -Dsling.fileinstall.dir=/opt/sling/wp/install,/opt/sling/bundles
+    volumes:
+      - ./sling.properties:/opt/sling/sling.properties
+#      - ./build/deps:/opt/sling/wp/install/2
+#      - ./build/libs:/opt/sling/wp/install/10
+#      - ./build/extensions:/opt/sling/wp/install/20
+##      - /Users/fortuna/Development/thymeleaf/target:/opt/sling/wp/install/27
+#      - /Users/fortuna/Development/wnews-sling/build/libs:/opt/sling/bundles/wnews-sling
+#      - ./src/app:/wp/apps/wp:ro
+#      - ./src/assets:/wp/assets/wp:ro
+#      - ./src/content/content/welcome:/wp/content/welcome:ro
+#      - ./src/content/content/wp-admin:/wp/content/wp-admin:ro
+#    links:
+#      - mongo
+#
+#  mongo:
+#    image: mongo:3.0.7
+
+  autoheal:
+    restart: always
+    image: willfarrell/autoheal
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+      - AUTOHEAL_INTERVAL=30
+      - AUTOHEAL_START_PERIOD=120
+      - AUTOHEAL_DEFAULT_STOP_TIMEOUT=60
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

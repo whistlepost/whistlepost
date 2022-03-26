@@ -2,38 +2,16 @@ rootProject.name = 'whistlepost'
 
 include 'whistlepost-app'
 include 'whistlepost-content'
-include 'whistlepost-config'
 
 include 'whistlepost-models-core'
 include 'whistlepost-models-pages'
 include 'whistlepost-models-schema'
 
-include 'whistlepost-scripting-core'
-include 'whistlepost-scripting-thymeleaf'
 include 'whistlepost-scripting-groovy'
 include 'whistlepost-scripting-liquid'
-//include 'whistlepost-authz'
-//include 'whistlepost-nosql'
-//include 'whistlepost-graphql'
 include 'whistlepost-rewriter'
+include 'whistlepost-httpclient'
 include 'whistlepost-icalendar'
+include 'whistlepost-keycloak'
 
-//include 'whistlepost-analytics'
-//    'whistlepost-comments'
-//    'whistlepost-cors'
-//include 'whistlepost-editor'
-//    'whistlepost-feeds'
-//    'whistlepost-headers'
-//include 'whistlepost-httpgateway'
-//    'whistlepost-jsonld'
 include 'whistlepost-links'
-//    'whistlepost-material'
-//    'whistlepost-opengraph'
-//    'whistlepost-gallery'
-//include 'whistlepost-theme-vr'
-
-//rootProject.children.each { extension ->
-//    extension.projectDir = new File("$rootDir/extensions/$extension.name")
-//}
-
-//include 'features'

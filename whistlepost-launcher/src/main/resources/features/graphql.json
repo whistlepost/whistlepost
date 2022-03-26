@@ -1,0 +1,6 @@
+{
+  "configurations": {
+    "graphql.kickstart.servlet.OsgiGraphQLHttpServlet-default": {
+    }
+  }
+}

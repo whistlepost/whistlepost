@@ -1,0 +1,32 @@
+{
+  "bundles": [
+    {
+      "id": "org.codehaus.groovy:groovy:${groovy.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.ow2.asm:asm-all:5.2",
+      "start-order": "20"
+    },
+    {
+      "id": "org.mnode.ical4j:ical4j:4.0.0-alpha2",
+      "start-order": "20"
+    },
+    {
+      "id": "org.threeten:threeten-extra:1.5.0",
+      "start-order": "20"
+    },
+    {
+      "id": "javax.cache:cache-api:1.1.1",
+      "start-order": "20"
+    },
+    {
+      "id": "org.ehcache:ehcache:3.4.0",
+      "start-order": "20"
+    },
+    {
+      "id": "org.whistlepost:whistlepost-icalendar:${whistlepost.version}",
+      "start-order": "20"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "prototype": {
+    "id": "org.apache.sling:org.apache.sling.starter:slingosgifeature:oak_tar:12",
+    "removals": {
+      "bundles": [
+      ],
+      "configurations": [
+      ]
+    }
+  }
+}

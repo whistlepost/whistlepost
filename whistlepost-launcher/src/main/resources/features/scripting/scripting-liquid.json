@@ -1,0 +1,21 @@
+{
+  "bundles": [
+    {
+      "id": "org.jsoup:jsoup:1.14.3",
+      "start-order": "20"
+    },
+    {
+      "id": "org.antlr:antlr4-runtime:4.9.1",
+      "start-order": "20"
+    },
+    {
+      "id": "org.whistlepost:whistlepost-scripting-liquid:${whistlepost.version}",
+      "start-order": "20"
+    }
+  ],
+  "configurations": {
+    "org.whistlepost.scripting.liquid.LiquidScriptEngineFactory": {
+      "service.ranking": 100
+    }
+  }
+}

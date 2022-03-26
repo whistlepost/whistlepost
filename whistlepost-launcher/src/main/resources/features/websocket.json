@@ -1,0 +1,8 @@
+{
+  "bundles": [
+    {
+      "id": "javax.websocket:javax.websocket-api:1.1",
+      "start-order": "20"
+    }
+  ]
+}

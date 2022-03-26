@@ -1,0 +1,8 @@
+{
+  "bundles": [
+    {
+      "id": "org.apache.felix:org.apache.felix.webconsole.plugins.memoryusage:1.0.10",
+      "start-order": "20"
+    }
+  ]
+}

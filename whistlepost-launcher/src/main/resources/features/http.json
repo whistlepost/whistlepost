@@ -1,0 +1,10 @@
+{
+  "configurations": {
+    "org.apache.felix.http.sslfilter.SslFilter": {
+      "ssl-forward.header": "X-Forwarded-Proto",
+      "ssl-forward.value": "https",
+      "ssl-forward-cert.header": "X-Forwarded-SSL-Certificate",
+      "rewrite.absolute.urls": "false"
+    }
+  }
+}

@@ -140,18 +140,18 @@ dependencies {
     embed 'org.apache.sling:org.apache.sling.fsresource:2.1.16'
 
 //    embed project(path: ':whistlepost-content', configuration: 'bundles')
-    embed project(path: ':whistlepost-config', configuration: 'bundles')
-    embed project(path: ':whistlepost-scripting-core', configuration: 'bundles')
-    embed project(path: ':whistlepost-scripting-groovy', configuration: 'bundles')
-    embed project(path: ':whistlepost-scripting-thymeleaf', configuration: 'bundles')
-    embed project(path: ':whistlepost-scripting-liquid', configuration: 'bundles')
+//    embed project(path: ':whistlepost-config', configuration: 'bundles')
+//    embed project(path: ':whistlepost-scripting-core', configuration: 'bundles')
+//    embed project(path: ':whistlepost-scripting-groovy', configuration: 'bundles')
+//    embed project(path: ':whistlepost-scripting-thymeleaf', configuration: 'bundles')
+//    embed project(path: ':whistlepost-scripting-liquid', configuration: 'bundles')
 //    embed project(path: ':whistlepost-authz', configuration: 'bundles')
 //    embed project(path: ':whistlepost-nosql', configuration: 'bundles')
-    embed project(path: ':whistlepost-models-core', configuration: 'bundles')
-    embed project(path: ':whistlepost-models-pages', configuration: 'bundles')
-    embed project(path: ':whistlepost-models-schema', configuration: 'bundles')
+//    embed project(path: ':whistlepost-models-core', configuration: 'bundles')
+//    embed project(path: ':whistlepost-models-pages', configuration: 'bundles')
+//    embed project(path: ':whistlepost-models-schema', configuration: 'bundles')
 //    embed project(path: ':whistlepost-graphql', configuration: 'bundles')
-    embed project(path: ':whistlepost-rewriter', configuration: 'bundles')
+//    embed project(path: ':whistlepost-rewriter', configuration: 'bundles')
 //    embed project(path: ':whistlepost-icalendar', configuration: 'bundles')
 
     // websocket

@@ -1,0 +1,28 @@
+{
+  "bundles": [
+    {
+      "id": "org.codehaus.groovy:groovy:${groovy.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.codehaus.groovy:groovy-jsr223:${groovy.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.codehaus.groovy:groovy-json:${groovy.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.codehaus.groovy:groovy-templates:${groovy.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.apache.sling:org.apache.sling.scripting.groovy:1.2.0",
+      "start-order": "20"
+    },
+    {
+      "id": "org.whistlepost:whistlepost-scripting-groovy:${whistlepost.version}",
+      "start-order": "20"
+    }
+  ]
+}

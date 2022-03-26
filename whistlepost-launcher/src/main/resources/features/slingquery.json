@@ -1,0 +1,12 @@
+{
+  "bundles": [
+    {
+      "id": "org.apache.sling:org.apache.sling.query:4.0.2",
+      "start-order": "20"
+    },
+    {
+      "id": "commons-lang:commons-lang:2.6",
+      "start-order": "20"
+    }
+  ]
+}

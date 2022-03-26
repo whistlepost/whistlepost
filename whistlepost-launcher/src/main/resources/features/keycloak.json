@@ -1,0 +1,44 @@
+{
+  "bundles": [
+    {
+      "id": "org.keycloak:keycloak-servlet-filter-adapter:${keycloak.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.keycloak:keycloak-servlet-adapter-spi:${keycloak.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.keycloak:keycloak-adapter-spi:${keycloak.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.keycloak:keycloak-adapter-core:${keycloak.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.keycloak:keycloak-core:${keycloak.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.keycloak:keycloak-common:${keycloak.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.keycloak:keycloak-authz-client:${keycloak.version}",
+      "start-order": "20"
+    },
+    {
+      "id": "org.apache.httpcomponents:httpclient-osgi:4.5.11",
+      "start-order": "20"
+    },
+    {
+      "id": "org.apache.httpcomponents:httpcore-osgi:4.4.13",
+      "start-order": "20"
+    },
+    {
+      "id": "org.jboss.logging:jboss-logging:3.4.1.Final",
+      "start-order": "20"
+    }
+  ]
+}

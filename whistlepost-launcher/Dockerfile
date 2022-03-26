@@ -7,6 +7,7 @@ LABEL maintainer="Ben Fortuna <fortuna@micronode.com>"
 ARG SLING_VERSION=11
 
 ENV BUNDLE_PATHS=/opt/sling/wp/install,/opt/sling/bundles
+#ENV BUNDLE_PATHS=/opt/sling/bundles
 ENV JAVA_OPTS='-XX:MaxRAM=768m -Xmx384m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap'
 ENV SLING_OPTS=''
 
