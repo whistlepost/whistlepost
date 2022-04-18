@@ -76,7 +76,7 @@
                 <configuration>
                     <features>src/main/resources/features</features>
                     <featuresExcludes>logging.json</featuresExcludes>
-                    <replacePropertyVariables>groovy.version,keycloak.version,jackson.version</replacePropertyVariables>
+                    <replacePropertyVariables>whistlepost.version,groovy.version,keycloak.version,jackson.version</replacePropertyVariables>
                     <framework>
                         <groupId>org.apache.felix</groupId>
                         <artifactId>org.apache.felix.framework</artifactId>
@@ -234,7 +234,7 @@
             <id>maven-snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
             <snapshots>
-<!--                <updatePolicy>always</updatePolicy>-->
+                <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
     </repositories>
@@ -305,7 +305,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <slingfeature-maven-plugin.version>1.4.2</slingfeature-maven-plugin.version>
         <sling-kickstart-maven-plugin.version>0.0.8</sling-kickstart-maven-plugin.version>
-        <whistlepost.version>1.2.3-SNAPSHOT</whistlepost.version>
+        <whistlepost.version>2.0.0-alpha1-SNAPSHOT</whistlepost.version>
         <groovy.version>3.0.9</groovy.version>
         <oak.version>1.26.0</oak.version>
         <keycloak.version>10.0.2</keycloak.version>
