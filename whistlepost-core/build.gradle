@@ -11,7 +11,7 @@ dependencies {
     // sling query
     compile "org.apache.sling:org.apache.sling.query:$slingQueryVersion"
 
-    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile "org.slf4j:slf4j-api:$slf4jVersion"
 
     // sling query
     bundles "org.apache.sling:org.apache.sling.query:$slingQueryVersion"

@@ -2,4 +2,4 @@
 
 # Whistlepost Core Model
 
-This project provides a [Sling Models] implementation for common Whistlepost resources.
+This project provides a [Sling Models] collection of Whistlepost site elements.
