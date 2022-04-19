@@ -1,8 +1,10 @@
+apply plugin: 'groovy'
+
 dependencies {
 
     // sling models
     compile "org.apache.sling:org.apache.sling.api:$slingApiVersion",
-            "org.apache.sling:org.apache.sling.models.api:$slingModelsVersion",
+            "org.apache.sling:org.apache.sling.models.api:$slingModelsApiVersion",
             "javax:javaee-api:$javaEEVersion"
 
     // sling validation
@@ -11,8 +13,24 @@ dependencies {
     // sling query
     compile "org.apache.sling:org.apache.sling.query:$slingQueryVersion"
 
+    testCompile "org.codehaus.groovy:groovy:$groovyVersion"
+
+    testImplementation platform("org.spockframework:spock-bom:2.0-M4-groovy-3.0"),
+            "org.spockframework:spock-core",
+            "org.slf4j:slf4j-log4j12:$slf4jVersion",
+            "org.apache.logging.log4j:log4j:$log4jVersion"
+
+    // sling mocks
+    testImplementation "org.apache.sling:org.apache.sling.testing.sling-mock.junit5:$slingMocksVersion",
+            "org.apache.sling:org.apache.sling.models.impl:$slingModelsImplVersion",
+            "org.apache.felix:org.apache.felix.http.whiteboard:4.0.0"
+
     compile "org.slf4j:slf4j-api:$slf4jVersion"
 
     // sling query
     bundles "org.apache.sling:org.apache.sling.query:$slingQueryVersion"
+}
+
+test {
+    useJUnitPlatform()
 }
