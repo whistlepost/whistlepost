@@ -1,5 +1,0 @@
-{
-  "title":"Whistlepost",
-  "sling:resourceType":"wp/page/index",
-  "jcr:primaryType":"nt:unstructured"
-}
