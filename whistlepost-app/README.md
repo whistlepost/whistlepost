@@ -71,7 +71,7 @@ The following core fragments are included:
 
 ### Schema.org Fragments
 
-Additionally Model Fragments are provided to support [Schema.org] entities:
+Additional Model Fragments are provided to support [Schema.org] entities:
 
 ## Pages
 
