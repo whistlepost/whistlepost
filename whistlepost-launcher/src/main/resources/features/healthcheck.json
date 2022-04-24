@@ -1,9 +1,0 @@
-{
-  "configurations": {
-    "org.apache.sling.hc.core.impl.servlet.HealthCheckExecutorServlet": {
-      "servletPath": "/system/health",
-      "disabled": false,
-      "cors.accessControlAllowOrigin": "localhost"
-    }
-  }
-}

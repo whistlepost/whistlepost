@@ -1,7 +1,0 @@
-{
-    "configurations":{
-        "org.apache.sling.commons.log.LogManager":{
-            "org.apache.sling.commons.log.file":""
-        }
-    }
-}
