@@ -37,6 +37,9 @@ verify:
 release: verify
 	./gradlew release
 
+install:
+	./gradlew publishToMavenLocal
+
 publish:
 	./gradlew publish
 
