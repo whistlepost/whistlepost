@@ -4,7 +4,8 @@
 </head>
 <body>
 
-<article class="feature-article link wnews-article" data-th-fragment="summary(resource)" data-th-with="article=${resource.adaptTo(@org.whistlepost.model.schema.CreativeWork@class)}">
+<article class="feature-article link wnews-article"
+         data-th-fragment="summary(resource)" data-th-with="article=${resource.adaptTo(@org.whistlepost.model.schema.CreativeWork@class)}">
     <h1 data-th-text="${article.title}">[TITLE]</h1>
     <p class="date-published" data-th-text="${article.datePublished}">[DATE]</p>
 
@@ -28,7 +29,8 @@
     </div>
 </article>
 
-<div class="wp-layout dynamic" data-th-fragment="summary-list(resource, exclude)" data-th-with="list=${resource.adaptTo(@org.whistlepost.model.schema.list.CreativeWorkList@class)}">
+<div class="wp-layout dynamic"
+     data-th-fragment="summary-list(resource, exclude)" data-th-with="list=${resource.adaptTo(@org.whistlepost.model.schema.list.CreativeWorkList@class)}">
 <!--    <p data-th-text="${list.numberOfItems}"></p>-->
     <th:block data-th-each="article : ${list.getSortedPage()}">
         <th:block data-th-unless="${article.resource.path == exclude.path}">

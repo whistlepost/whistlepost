@@ -1,4 +1,5 @@
-<footer data-th-fragment="default"
+<!-- HTML fragment to render legal info in the site footer -->
+<div data-th-fragment="default"
         data-th-with="legal=${resource.adaptTo(@org.whistlepost.model.Legal@class)}">
 
     <nav data-th-replace="/apps/wp/page/fragments/navigation.html::footer-nav">
@@ -11,4 +12,4 @@
         <a href="http://whistlepost.org" target="_blank">Whistlepost</a> | &copy;
         <span data-th-text="${legal.copyright}">[Placeholder]</span>
     </p>
-</footer>
+</div>

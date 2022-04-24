@@ -1,3 +1,4 @@
 {
-  "sling:scripting": ["html=Thymeleaf"]
+  "sling:scripting": ["html=Thymeleaf"],
+  "sling:resourceSuperType": "wp/head/v1"
 }

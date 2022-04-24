@@ -1,4 +1,4 @@
 {
   "sling:scripting": ["html=Thymeleaf"],
-  "sling:resourceSuperType": "wp/legal/v1"
+  "sling:resourceSuperType": "wp/list/v1"
 }
