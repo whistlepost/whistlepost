@@ -1,0 +1,21 @@
+{
+  "sling:resourceType": "wp/nav",
+  "header": [
+    "content/past-issues/current.json",
+    "content/subscribe.json",
+    "content/about.json"
+  ],
+  "columns": [
+    "content/wildlife/2021.json",
+    "content/recipes/2021.json",
+    "content/gardening/2021.json",
+    "content/history/2021.json",
+    "content/kids/2021.json",
+    "content/firstpeoples/2021.json"
+  ],
+  "footer": [
+    "content/advertising.json",
+    "content/subscribe.json",
+    "content/contact.json"
+  ]
+}
