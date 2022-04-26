@@ -1,6 +1,8 @@
-Automatic-Module-Name: org.whistlepost.models-core
+Automatic-Module-Name: org.whistlepost.core
 -plugin.slingmodels = org.apache.sling.bnd.models.ModelsScannerPlugin;generatePackagesHeader=true
 Export-Package = org.whistlepost*
-Bundle-Name: Whistlepost Models - Core
-Bundle-SymbolicName: org.whistlepost.models-core
+Bundle-Name: Whistlepost Core
+Bundle-Description: Core models and supporting classes for Whistlepost
+Bundle-SymbolicName: org.whistlepost.core
 Bundle-Category: whistlepost
+Bundle-Version: ${project.version}

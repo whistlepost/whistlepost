@@ -1,6 +1,7 @@
 Sling-Initial-Content: SLING-INF/content;path:=/;overwrite:=false
-Automatic-Module-Name: org.whistlepost.core.content
-Bundle-Name: Whistlepost Core - Content
-Bundle-SymbolicName: org.whistlepost.core-content
+Automatic-Module-Name: org.whistlepost.content
+Bundle-Name: Whistlepost Content
+Bundle-Description: Configuration of Whistlepost resources
+Bundle-SymbolicName: org.whistlepost.content
 Bundle-Category: whistlepost
 Bundle-Version: ${project.version}
