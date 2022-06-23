@@ -1,4 +1,0 @@
-Sling-Initial-Content: SLING-INF/content;path:=/libs/${project.name};overwrite:=true
-Sling-Bundle-Resources: /assets/libs/wp-analytics;path:=/assets
-Automatic-Module-Name: org.mnode.whistlepost.analytics
-Bundle-Category: whistlepost

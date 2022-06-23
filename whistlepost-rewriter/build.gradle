@@ -1,9 +1,0 @@
-dependencies {
-
-    bundles "org.apache.sling:org.apache.sling.rewriter:$slingRewriterVersion",
-        'org.apache.sling:org.apache.sling.commons.html:1.1.0',
-        'org.apache.cocoon:cocoon-serializers-charsets:1.0.3-SNAPSHOT',
-        'org.apache.sling:org.apache.sling.urlrewriter:0.0.2',
-        'org.apache.servicemix.bundles:org.apache.servicemix.bundles.urlrewritefilter:4.0.4_1'
-
-}

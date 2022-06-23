@@ -1,5 +1,0 @@
-Sling-Initial-Content: SLING-INF/content;path:=/apps/sling/servlet/errorhandler;overwrite:=true
-Automatic-Module-Name: org.mnode.whistlepost.errorhandler
-Bundle-Name: Whistlepost Extension - Error Handler
-Bundle-SymbolicName: org.mnode.whistlepost-errorhandler
-Bundle-Category: whistlepost
