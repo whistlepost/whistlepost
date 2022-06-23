@@ -2,16 +2,8 @@ rootProject.name = 'whistlepost'
 
 include 'whistlepost-app'
 include 'whistlepost-content'
-
-include 'whistlepost-core'
-//include 'whistlepost-models-pages'
-//include 'whistlepost-models-schema'
+include 'whistlepost-model'
+include 'whistlepost-models-pages'
 
 include 'whistlepost-scripting-groovy'
-//include 'whistlepost-scripting-liquid'
-//include 'whistlepost-rewriter'
-//include 'whistlepost-httpclient'
-//include 'whistlepost-icalendar'
-//include 'whistlepost-keycloak'
-
-//include 'whistlepost-links'
+include 'whistlepost-scripting-liquid'
