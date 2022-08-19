@@ -1,8 +1,0 @@
-{
-  "title": "Layout",
-  "header": "content/branding.json",
-  "sidebar": "content/advertisements/2021.json",
-  "footer": "content/legal",
-  "navigation": "/content/navigation",
-  "sling:resourceType": "wp/layout"
-}
