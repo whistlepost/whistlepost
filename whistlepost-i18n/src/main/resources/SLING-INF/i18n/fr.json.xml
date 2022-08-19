@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node>
+    <name>fr.json</name>
+    <mixinNodeType>mix:language</mixinNodeType>
+    <property>
+        <name>jcr:language</name>
+        <value>fr</value>
+        <type>String</type>
+    </property>
+</node>

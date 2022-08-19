@@ -1,0 +1,10 @@
+{
+  "dateOfBirth": "Date Of Birth",
+  "name": "Name",
+  "firstName": "Vorname",
+  "lastName": "Last Name",
+  "gender": "Gender",
+  "summary": "Summary",
+  "description": "Description",
+  "copyright": "Copyright"
+}

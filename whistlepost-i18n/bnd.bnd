@@ -1,0 +1,7 @@
+Sling-Initial-Content: SLING-INF/content;path:=/apps/wp;overwrite:=true;ignoreImportProviders:="jar"
+Sling-Initial-Content: SLING-INF/i18n;overwrite:=true;ignoreImportProviders:=json;path:=/apps/wp/i18n
+Automatic-Module-Name: org.whistlepost.i18n
+Bundle-Name: Whistlepost I18n
+Bundle-SymbolicName: org.whistlepost.i18n
+Bundle-Category: whistlepost
+Bundle-Version: ${project.version}
