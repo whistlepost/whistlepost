@@ -1,0 +1,7 @@
+Automatic-Module-Name: org.whistlepost.servlet
+Bundle-Name: Whistlepost Servlet
+Bundle-Description: Servlet and filter support for whistlepost applications
+Bundle-SymbolicName: org.whistlepost.servlet
+Bundle-Category: whistlepost
+Bundle-Version: ${project.version}
+Export-Package = org.whistlepost.servlet*
