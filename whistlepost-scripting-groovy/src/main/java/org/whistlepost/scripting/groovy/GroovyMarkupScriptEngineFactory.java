@@ -1,4 +1,4 @@
-package org.whistlepost.scripting.groovy.markup;
+package org.whistlepost.scripting.groovy;
 
 import groovy.text.TemplateEngine;
 import groovy.text.markup.MarkupTemplateEngine;

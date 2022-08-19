@@ -1,4 +1,4 @@
-package org.whistlepost.scripting.groovy.markup;
+package org.whistlepost.scripting.groovy;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
