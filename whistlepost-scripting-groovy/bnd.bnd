@@ -1,6 +1,0 @@
-ScriptEngine-Name: ${project.name}
-ScriptEngine-Version: ${project.version}
-Automatic-Module-Name: org.whistlepost.scripting.groovy
-Bundle-Name: Whistlepost Scripting - Groovy Markup
-Bundle-SymbolicName: org.whistlepost.scripting.groovy
-Bundle-Category: whistlepost

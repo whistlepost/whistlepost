@@ -1,7 +1,0 @@
-ScriptEngine-Name: ${project.name}
-ScriptEngine-Version: ${project.version}
--includeresource.lib liqp-0.8.2.jar;lib:=true,strftime4j-1.0.5.jar;lib:=true
-Automatic-Module-Name: org.whistlepost.scripting.liquid
-Bundle-Name: Whistlepost Scripting - Liquid
-Bundle-SymbolicName: org.whistlepost.scripting.liquid
-Bundle-Category: whistlepost
