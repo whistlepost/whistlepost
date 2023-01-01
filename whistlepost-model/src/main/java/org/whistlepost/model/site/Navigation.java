@@ -4,6 +4,8 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ResourcePath;
+import org.apache.sling.models.caconfig.annotations.ContextAwareConfiguration;
+import org.whistlepost.config.BrandingConfig;
 import org.whistlepost.model.Page;
 
 import javax.inject.Inject;
@@ -24,4 +26,7 @@ public interface Navigation {
 
     @Inject @Named("sitemap")
     List<Page> getSitemapNav();
+
+    @ContextAwareConfiguration
+    BrandingConfig getBranding();
 }

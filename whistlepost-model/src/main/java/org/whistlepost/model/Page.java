@@ -4,11 +4,16 @@ import org.apache.sling.api.adapter.Adaptable;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.caconfig.annotations.ContextAwareConfiguration;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.whistlepost.model.page.Metadata;
+import org.whistlepost.config.ActionConfig;
+import org.whistlepost.config.BrandingConfig;
+import org.whistlepost.config.LayoutConfig;
+import org.whistlepost.config.MetadataConfig;
 
 import javax.inject.Inject;
+import java.util.List;
 
 import static org.apache.sling.query.SlingQuery.$;
 
@@ -22,8 +27,17 @@ public interface Page extends Comparable<Page>, Adaptable {
     @Inject
     String getTitle();
 
-    @Self
-    Metadata getMetadata();
+    @ContextAwareConfiguration
+    MetadataConfig getMetadata();
+
+    @ContextAwareConfiguration
+    BrandingConfig getBranding();
+
+    @ContextAwareConfiguration
+    LayoutConfig getLayout();
+
+    @ContextAwareConfiguration
+    List<ActionConfig> getActions();
 
     @Self
     Resource getResource();
