@@ -2,13 +2,12 @@ apply plugin: 'groovy'
 
 dependencies {
 
-    api project(':whistlepost-servlet')
-    
+    api project(':whistlepost-config')
+
     // sling models
     implementation "org.apache.sling:org.apache.sling.api:$slingApiVersion",
             "org.apache.sling:org.apache.sling.models.api:$slingModelsApiVersion",
             "org.apache.sling:org.apache.sling.models.caconfig:1.0.2",
-            "org.apache.sling:org.apache.sling.caconfig.impl:1.6.0",
             "javax:javaee-api:$javaEEVersion"
 
     // sling validation
@@ -26,21 +25,26 @@ dependencies {
     // markdown
     implementation 'com.vladsch.flexmark:flexmark:0.64.0'
 
+    // component dependencies
+    compileOnly "org.codehaus.groovy:groovy:$groovyVersion",
+            "org.mnode.ical4j:ical4j:$ical4jVersion"
+
     testImplementation "org.codehaus.groovy:groovy:$groovyVersion"
 
-    testImplementation platform("org.spockframework:spock-bom:2.0-M4-groovy-3.0"),
+    testImplementation platform("org.spockframework:spock-bom:2.1-groovy-3.0"),
             "org.spockframework:spock-core",
             "org.slf4j:slf4j-log4j12:$slf4jVersion",
             "org.apache.logging.log4j:log4j:$log4jVersion"
 
     // sling mocks
-    testImplementation "org.apache.sling:org.apache.sling.testing.sling-mock.junit5:$slingMocksVersion",
-            'org.apache.sling:org.apache.sling.testing.sling-mock-oak:3.1.2-1.40.0',
+    testImplementation 'org.apache.sling:org.apache.sling.testing.sling-mock-oak:3.1.2-1.40.0',
+            "org.apache.sling:org.apache.sling.testing.sling-mock.junit5:$slingMocksVersion",
             "org.apache.sling:org.apache.sling.models.impl:$slingModelsImplVersion",
             "org.osgi:org.osgi.service.http.whiteboard:1.1.1",
             "org.osgi:org.osgi.annotation.versioning:1.1.2",
-            "org.junit.jupiter:junit-jupiter-engine:5.8.2"
+            "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
 
+    // caconfig
     testImplementation 'org.apache.sling:org.apache.sling.testing.caconfig-mock-plugin:1.4.0'
 
     implementation "org.slf4j:slf4j-api:$slf4jVersion"

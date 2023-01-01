@@ -1,0 +1,4 @@
+<th:block data-th-with="control=${resource.adaptTo(@org.whistlepost.model.form.Button@class)}">
+    <div data-th-replace="/apps/wp/form/fragments/button.html::button(control=${control}, value=${#strings.substringAfter(request.requestPathInfo.suffix, '/')})">
+    </div>
+</th:block>

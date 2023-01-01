@@ -7,8 +7,8 @@ urlset(xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
     def sitemap = resource.adaptTo(org.whistlepost.model.Sitemap)
     sitemap.uris.each { uri ->
         url {
-            loc("$sitemap.urlBase$uri")
-            changefreq(sitemap.changeFrequency)
+            loc("${sitemap.config.urlBase()}$uri")
+            changefreq(sitemap.config.changeFrequency())
         }
     }
 }
