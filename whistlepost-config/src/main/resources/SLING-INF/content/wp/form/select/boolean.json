@@ -1,0 +1,20 @@
+{
+  "sling:configs": {
+    "options": {
+      "true": {
+        "text": "True",
+        "booleanValue": true
+      },
+      "false": {
+        "text": "False",
+        "booleanValue": false
+      }
+    },
+    "radio": {
+      "values": [
+        "True",
+        "False"
+      ]
+    }
+  }
+}

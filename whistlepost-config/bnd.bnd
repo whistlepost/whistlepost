@@ -1,6 +1,9 @@
-Sling-Initial-Content: SLING-INF/content;path:=/apps/wp;overwrite:=true;ignoreImportProviders:="jar"
-Automatic-Module-Name: org.whistlepost.core.config
-Bundle-Name: Whistlepost Core - Configuration
-Bundle-SymbolicName: org.whistlepost.core-config
+Sling-Initial-Content: SLING-INF/content;path:=/conf;overwrite:=false
+Automatic-Module-Name: org.whistlepost.config
+-plugin org.apache.sling.caconfig.bndplugin.ConfigurationClassScannerPlugin
+Export-Package = org.whistlepost.config*
+Bundle-Name: Whistlepost Configuration
+Bundle-Description: Core configuration classes for Whistlepost
+Bundle-SymbolicName: org.whistlepost.config
 Bundle-Category: whistlepost
 Bundle-Version: ${project.version}

@@ -1,0 +1,20 @@
+{
+  "sling:configs": {
+    "options": {
+      "on": {
+        "text": "On",
+        "value": "on"
+      },
+      "off": {
+        "text": "Off",
+        "value": "off"
+      }
+    },
+    "radio": {
+      "values": [
+        "On",
+        "Off"
+      ]
+    }
+  }
+}

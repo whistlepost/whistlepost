@@ -1,0 +1,23 @@
+{
+  "sling:configs": {
+    "actions": {
+      "edit": {
+        "path": "edit",
+        "label": "edit",
+        "isDefault": true
+      },
+      "addFolder": {
+        "path": "addFolder",
+        "label": "addFolder"
+      },
+      "addSubscription": {
+        "path": "add",
+        "label": "addArticle"
+      },
+      "delete": {
+        "path": "delete",
+        "label": "delete"
+      }
+    }
+  }
+}

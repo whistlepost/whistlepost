@@ -1,0 +1,9 @@
+{
+  "sling:configs": {
+    "validation": {
+      "type": "datetime-local",
+      "placeholder": "Enter date",
+      "title": "A localized date/time value"
+    }
+  }
+}

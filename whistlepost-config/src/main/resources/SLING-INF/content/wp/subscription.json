@@ -1,0 +1,15 @@
+{
+  "sling:configs": {
+    "actions": {
+      "edit": {
+        "path": "edit",
+        "label": "edit",
+        "isDefault": true
+      },
+      "delete": {
+        "path": "delete",
+        "label": "delete"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "sling:configs": {
+    "options": {
+      "article": {
+        "text": "Article",
+        "value": "article"
+      },
+      "recipe": {
+        "text": "Recipe",
+        "value": "recipe"
+      },
+      "subscription": {
+        "text": "Subscription",
+        "value": "subscription"
+      }
+    },
+    "radio": {
+      "values": [
+        "Article",
+        "Recipe",
+        "Subscription"
+      ]
+    }
+  }
+}

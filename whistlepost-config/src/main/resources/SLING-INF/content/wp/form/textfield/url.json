@@ -1,0 +1,10 @@
+{
+  "sling:configs": {
+    "validation": {
+      "type": "url",
+      "pattern": "\\p{L}+",
+      "placeholder": "Enter URL (e.g. https://www.example.com)",
+      "title": "An Internet address"
+    }
+  }
+}

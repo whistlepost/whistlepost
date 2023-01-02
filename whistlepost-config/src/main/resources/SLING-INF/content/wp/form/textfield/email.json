@@ -1,0 +1,10 @@
+{
+  "sling:configs": {
+    "validation": {
+      "type": "email",
+      "pattern": "\\p{L}+",
+      "placeholder": "Enter email (e.g. johnd@example.com)",
+      "title": "An email address"
+    }
+  }
+}
