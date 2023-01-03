@@ -1,0 +1,21 @@
+{
+  "sling:configs": {
+    "options": {
+      "not-specified": {
+        "text": "Not Specified",
+        "value": "X"
+      },
+      "female": {
+        "text": "Female",
+        "value": "F"
+      },
+      "male": {
+        "text": "Male",
+        "value": "M"
+      }
+    },
+    "radio": {
+      "values": ["Not Specified", "Female", "Male"]
+    }
+  }
+}
