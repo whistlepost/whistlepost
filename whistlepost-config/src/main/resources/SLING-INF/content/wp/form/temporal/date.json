@@ -1,0 +1,8 @@
+{
+  "sling:configs": {
+    "input": {
+      "type": "date",
+      "title": "A date value"
+    }
+  }
+}

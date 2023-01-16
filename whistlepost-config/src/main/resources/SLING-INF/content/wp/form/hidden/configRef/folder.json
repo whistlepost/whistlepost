@@ -1,0 +1,10 @@
+{
+  "sling:configs": {
+    "input": {
+      "id": "hConfigRef",
+      "name": "sling:configRef",
+      "value": "/conf/wp/folder",
+      "sling:resourceType": "wp/components/form/hidden"
+    }
+  }
+}

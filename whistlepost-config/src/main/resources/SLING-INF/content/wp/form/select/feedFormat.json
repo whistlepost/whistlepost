@@ -1,0 +1,17 @@
+{
+  "sling:configs": {
+    "options": {
+      "atom": {
+        "text": "Atom",
+        "value": "atom"
+      },
+      "rss": {
+        "text": "RSS",
+        "value": "rss"
+      }
+    },
+    "radio": {
+      "values": ["Atom", "RSS"]
+    }
+  }
+}

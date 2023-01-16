@@ -1,0 +1,20 @@
+{
+  "sling:configs": {
+    "fieldSets": {
+      "details": {
+        "legend": "Subscription Details",
+        "fields": [
+          "/content/form/controls/general/list/title",
+          "/content/form/controls/subscription/list/url",
+          "/content/form/controls/subscription/list/feedUrl"
+        ]
+      },
+      "submit": {
+        "fields": [
+          "/content/form/controls/button/list/submit",
+          "/content/form/controls/button/list/cancel"
+        ]
+      }
+    }
+  }
+}

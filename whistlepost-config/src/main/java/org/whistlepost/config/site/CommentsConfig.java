@@ -10,4 +10,6 @@ import org.apache.sling.caconfig.annotation.Configuration;
 public @interface CommentsConfig {
 
     String provider();
+
+    String shortcode();
 }

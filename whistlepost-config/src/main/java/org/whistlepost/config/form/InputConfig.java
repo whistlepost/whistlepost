@@ -2,8 +2,8 @@ package org.whistlepost.config.form;
 
 import org.apache.sling.caconfig.annotation.Configuration;
 
-@Configuration(name = "validation")
-public @interface ValidationConfig {
+@Configuration(name = "input")
+public @interface InputConfig {
 
     String type();
 
@@ -12,4 +12,8 @@ public @interface ValidationConfig {
     String placeholder();
 
     String title();
+
+    String min();
+
+    String max();
 }

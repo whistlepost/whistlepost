@@ -1,0 +1,25 @@
+{
+  "sling:configs": {
+    "fieldSets": {
+      "init": {
+        "fields": [
+          "/content/wp-admin/form/fields/hidden/list/folder-resourceType",
+          "/content/wp-admin/form/fields/hidden/list/folder-editForm"
+        ]
+      },
+      "details": {
+        "legend": "Folder Details",
+        "fields": [
+          "/content/form/controls/general/list/title",
+          "/content/wp-admin/form/fields/select/list/folderType"
+        ]
+      },
+      "submit": {
+        "fields": [
+          "/content/form/controls/button/list/submit",
+          "/content/form/controls/button/list/cancel"
+        ]
+      }
+    }
+  }
+}

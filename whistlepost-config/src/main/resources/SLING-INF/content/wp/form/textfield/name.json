@@ -1,8 +1,8 @@
 {
   "sling:configs": {
-    "validation": {
+    "input": {
       "type": "text",
-      "pattern": "\\p{L}+",
+      "pattern": "[\\p{L} -]+",
       "placeholder": "Enter name (e.g. John Doe)",
       "title": "A string of Latin characters"
     }

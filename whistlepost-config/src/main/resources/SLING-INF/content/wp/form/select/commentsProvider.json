@@ -1,0 +1,13 @@
+{
+  "sling:configs": {
+    "options": {
+      "google": {
+        "text": "Disqus",
+        "value": "disqus"
+      }
+    },
+    "radio": {
+      "values": ["Disqus"]
+    }
+  }
+}

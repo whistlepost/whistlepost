@@ -8,8 +8,10 @@ import org.apache.sling.caconfig.annotation.Configuration;
  * your preferred analytics provider that is then easily embeddable across
  * your entire site.
  */
-@Configuration(name = "site.analytics")
+@Configuration(name = "analytics")
 public @interface AnalyticsConfig {
 
     String provider();
+
+    String trackingId();
 }

@@ -1,4 +1,4 @@
-Sling-Initial-Content: SLING-INF/content;path:=/conf;overwrite:=false
+Sling-Initial-Content: SLING-INF/content;path:=/libs/conf;overwrite:=true
 Automatic-Module-Name: org.whistlepost.config
 -plugin org.apache.sling.caconfig.bndplugin.ConfigurationClassScannerPlugin
 Export-Package = org.whistlepost.config*

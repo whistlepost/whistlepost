@@ -1,0 +1,10 @@
+{
+  "sling:configs": {
+    "input": {
+      "id": "hResourceType",
+      "name": "sling:resourceType",
+      "value": "wp/templates/subscription",
+      "sling:resourceType": "wp/components/form/hidden"
+    }
+  }
+}

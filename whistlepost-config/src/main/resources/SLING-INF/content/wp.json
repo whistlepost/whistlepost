@@ -1,7 +1,7 @@
 {
   "sling:configs": {
     "branding": {
-      "sling:resourceType": "wp/include/branding",
+      "sling:resourceType": "wp/templates/branding",
       "image": "/assets/wp-content/images/masthead.png",
       "logo": "/assets/wp-content/images/logo-60.png",
       "alttext": "Welcome to Whistlepost",
@@ -18,7 +18,7 @@
       "sling:resourceType": "wp/layout"
     },
     "legal": {
-      "sling:resourceType": "wp/include/legal",
+      "sling:resourceType": "wp/templates/legal",
       "jcr:primaryType": "nt:unstructured",
       "copyright": "2022 Waranga News Inc.",
       "show_advanced_settings": false,

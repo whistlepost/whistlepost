@@ -1,0 +1,26 @@
+{
+  "sling:configs": {
+    "fieldSets": {
+      "init": {
+        "fields": [
+          "/content/wp-admin/form/fields/hidden/list/subscription-resourceType",
+          "/content/wp-admin/form/fields/hidden/list/subscription-editForm"
+        ]
+      },
+      "details": {
+        "legend": "Subscription Details",
+        "fields": [
+          "/content/form/controls/general/list/title",
+          "/content/form/controls/subscription/list/url",
+          "/content/form/controls/subscription/list/feedUrl"
+        ]
+      },
+      "submit": {
+        "fields": [
+          "/content/form/controls/button/list/submit",
+          "/content/form/controls/button/list/cancel"
+        ]
+      }
+    }
+  }
+}

@@ -7,13 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.whistelpost.config.AbstractConfigTest;
-import org.whistlepost.config.form.ValidationConfig;
+import org.whistlepost.config.form.InputConfig;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SlingContextExtension.class)
-public class ValidationConfigTest extends AbstractConfigTest {
+public class InputConfigTest extends AbstractConfigTest {
 
     @Override
     @BeforeEach
@@ -25,14 +25,14 @@ public class ValidationConfigTest extends AbstractConfigTest {
         context.load().json("/SLING-INF/content/wp/form/textfield/email.json", "/conf/wp/form/textfield/email");
         context.load().json("/SLING-INF/content/wp/form/textfield/name.json", "/conf/wp/form/textfield/name");
         context.load().json("/SLING-INF/content/wp/form/textfield/url.json", "/conf/wp/form/textfield/url");
-        context.load().json("/SLING-INF/content/wp/form/calendar/time.json", "/conf/wp/form/calendar/time");
-        context.load().json("/SLING-INF/content/wp/form/calendar/datetime-local.json", "/conf/wp/form/calendar/datetime-local");
+        context.load().json("/SLING-INF/content/wp/form/temporal/time.json", "/conf/wp/form/temporal/time");
+        context.load().json("/SLING-INF/content/wp/form/temporal/datetime-local.json", "/conf/wp/form/temporal/datetime-local");
 
         context.create().resource("/content/example/form/email", "sling:configRef", "/conf/wp/form/textfield/email");
         context.create().resource("/content/example/form/name", "sling:configRef", "/conf/wp/form/textfield/name");
         context.create().resource("/content/example/form/url", "sling:configRef", "/conf/wp/form/textfield/url");
-        context.create().resource("/content/example/form/time", "sling:configRef", "/conf/wp/form/calendar/time");
-        context.create().resource("/content/example/form/datetime-local", "sling:configRef", "/conf/wp/form/calendar/datetime-local");
+        context.create().resource("/content/example/form/time", "sling:configRef", "/conf/wp/form/temporal/time");
+        context.create().resource("/content/example/form/datetime-local", "sling:configRef", "/conf/wp/form/temporal/datetime-local");
     }
 
     @Test
@@ -40,7 +40,7 @@ public class ValidationConfigTest extends AbstractConfigTest {
         context.currentResource("/content/example/form/email");
 
         Resource resource = context.request().getResource();
-        ValidationConfig config = resource.adaptTo(ConfigurationBuilder.class).as(ValidationConfig.class);
+        InputConfig config = resource.adaptTo(ConfigurationBuilder.class).as(InputConfig.class);
         assertNotNull(config);
         assertEquals("email", config.type());
     }
@@ -50,10 +50,10 @@ public class ValidationConfigTest extends AbstractConfigTest {
         context.currentResource("/content/example/form/name");
 
         Resource resource = context.request().getResource();
-        ValidationConfig config = resource.adaptTo(ConfigurationBuilder.class).as(ValidationConfig.class);
+        InputConfig config = resource.adaptTo(ConfigurationBuilder.class).as(InputConfig.class);
         assertNotNull(config);
         assertEquals("text", config.type());
-        assertEquals("\\p{L}+", config.pattern());
+        assertEquals("[\\p{L} -]+", config.pattern());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class ValidationConfigTest extends AbstractConfigTest {
         context.currentResource("/content/example/form/url");
 
         Resource resource = context.request().getResource();
-        ValidationConfig config = resource.adaptTo(ConfigurationBuilder.class).as(ValidationConfig.class);
+        InputConfig config = resource.adaptTo(ConfigurationBuilder.class).as(InputConfig.class);
         assertNotNull(config);
         assertEquals("url", config.type());
     }
@@ -71,7 +71,7 @@ public class ValidationConfigTest extends AbstractConfigTest {
         context.currentResource("/content/example/form/time");
 
         Resource resource = context.request().getResource();
-        ValidationConfig config = resource.adaptTo(ConfigurationBuilder.class).as(ValidationConfig.class);
+        InputConfig config = resource.adaptTo(ConfigurationBuilder.class).as(InputConfig.class);
         assertNotNull(config);
         assertEquals("time", config.type());
     }
@@ -81,7 +81,7 @@ public class ValidationConfigTest extends AbstractConfigTest {
         context.currentResource("/content/example/form/datetime-local");
 
         Resource resource = context.request().getResource();
-        ValidationConfig config = resource.adaptTo(ConfigurationBuilder.class).as(ValidationConfig.class);
+        InputConfig config = resource.adaptTo(ConfigurationBuilder.class).as(InputConfig.class);
         assertNotNull(config);
         assertEquals("datetime-local", config.type());
     }

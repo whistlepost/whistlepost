@@ -1,0 +1,21 @@
+{
+  "sling:configs": {
+    "options": {
+      "google": {
+        "text": "Google",
+        "value": "google"
+      },
+      "matomo": {
+        "text": "Matomo",
+        "value": "matomo"
+      },
+      "mixpanel": {
+        "text": "Mixpanel",
+        "value": "mixpanel"
+      }
+    },
+    "radio": {
+      "values": ["Google", "Matomo", "Mixpanel"]
+    }
+  }
+}
