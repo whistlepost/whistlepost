@@ -3,8 +3,8 @@
     "input": {
       "id": "hConfigRef",
       "name": "sling:configRef",
-      "value": "/conf/wp/subscription",
-      "sling:resourceType": "wp/components/form/hidden"
+      "value": "/libs/conf/wp/subscription",
+      "sling:resourceType": "wp/component/form/hidden"
     }
   }
 }

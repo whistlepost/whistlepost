@@ -3,8 +3,8 @@
     "input": {
       "id": "hResourceType",
       "name": "sling:resourceType",
-      "value": "wp/templates/folder",
-      "sling:resourceType": "wp/components/form/hidden"
+      "value": "wp/template/folder",
+      "sling:resourceType": "wp/component/form/hidden"
     }
   }
 }
