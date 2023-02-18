@@ -4,6 +4,7 @@ buildscript {
     }
     dependencies {
         classpath "org.apache.sling:org.apache.sling.bnd.models:1.0.0",
+                'org.apache.sling:org.apache.sling.caconfig.bnd-plugin:1.0.2'
                 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
@@ -29,7 +30,6 @@ scmVersion {
 }
 
 //apply plugin: 'java'
-apply plugin: 'docker'
 
 configure(subprojects) {
     apply plugin: 'java-library'
@@ -58,6 +58,10 @@ configure(subprojects) {
             canBeConsumed = true
             canBeResolved = false
         }
+    }
+
+    test {
+        useJUnitPlatform()
     }
 
     publishing {
@@ -107,10 +111,6 @@ configure(subprojects) {
 
 repositories {
     mavenCentral()
-    // snapshot of cocoon-seralizers-charsets
-    maven {
-        url 'https://repository.apache.org/snapshots'
-    }
     mavenLocal()
 }
 
@@ -195,35 +195,3 @@ task copyAgent(type: Copy) {
 //configure(bundleprojects) { subproject ->
 //    apply from: "$rootDir/extension.gradle"
 //}
-
-task buildDocker(type: Docker) {
-    dockerfile = 'Dockerfile'
-    applicationName = 'whistlepost'
-    tagVersion = 'latest'
-    push project.hasProperty('docker_push') && 'true' == docker_push
-    apiUsername = project.hasProperty('docker_apiUsername') ? docker_apiUsername : ''
-    apiPassword = project.hasProperty('docker_apiPassword') ? docker_apiPassword : ''
-    apiEmail = project.hasProperty('docker_apiEmail') ? docker_apiEmail : ''
-
-    addFile 'sling.properties', '/opt/sling/'
-//    addFile bundleApp.archiveFile.get() as String, "/opt/sling/wp/install/2/"
-//    addFile bundleConfig.archiveFile.get() as String, "/opt/sling/wp/install/2/"
-//    addFile bundleContent.archiveFile.get() as String, "/opt/sling/wp/install/2/"
-
-    def runModes = [
-            'whistlepost-links': 'proxied'
-    ]
-
-    configurations.embed.each {
-//        addFile it, "/opt/sling/wp/install/27/"
-        addFile it, "/opt/sling/bundles/"
-    }
-
-    subprojects.each {
-//        def startLevel = project.hasProperty("${it.name}_bundleStartLevel") ? project.property("${it.name}_bundleStartLevel") : bundleStartLevel
-        def runMode = project.hasProperty("${it.name}_runMode") ? project.property("${it.name}_runMode") : runModes[it.name]
-        addFile it.jar.archivePath, "/opt/sling/wp/install${ runMode ? '.' + runMode : ''}/15/"
-    }
-//    subprojects.each { dependsOn("${it.name}:bundle") }
-}
-//buildDocker.dependsOn build
