@@ -14,5 +14,5 @@ public @interface BrandingConfig {
 
     String alttext();
 
-    String favicon();
+    String favicon() default "/assets/wp-pure/images/favicon.ico";
 }

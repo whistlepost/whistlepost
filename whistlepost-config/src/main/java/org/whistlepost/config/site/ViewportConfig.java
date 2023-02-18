@@ -5,7 +5,7 @@ import org.apache.sling.caconfig.annotation.Configuration;
 @Configuration(name = "viewport")
 public @interface ViewportConfig {
 
-    String width();
+    String width() default "device-width";
 
-    String initialScale();
+    String initialScale() default "1";
 }
