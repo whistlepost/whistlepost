@@ -1,4 +1,6 @@
 {
+  "addFolder": "Add Folder",
+  "addSubscription": "Add Subscription",
   "businessCritical": "Business Critical",
   "businessOwner": "Business Owner",
   "cancel": "Cancel",
@@ -7,6 +9,7 @@
   "copyright": "Copyright",
   "costCentre": "Cost Centre",
   "dateOfBirth": "Date Of Birth",
+  "delete": "Delete",
   "description": "Description",
   "edit": "Edit",
   "feedUrl": "Feed URL",
