@@ -1,8 +1,0 @@
-{
-  "sling:configs": {
-    "input": {
-      "type": "datetime-local",
-      "title": "A localized date/time value"
-    }
-  }
-}

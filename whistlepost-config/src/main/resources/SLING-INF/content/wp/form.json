@@ -1,8 +1,0 @@
-{
-  "sling:configs": {
-    "submit": {
-      "encoding": "multipart/form-data",
-      "target": "_self"
-    }
-  }
-}

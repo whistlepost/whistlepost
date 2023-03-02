@@ -1,4 +1,0 @@
-{
-  "jcr:primaryType":"sling:OsgiConfig",
-  "service.ranking": 100
-}

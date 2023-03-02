@@ -1,5 +1,0 @@
-{
-  "jcr:primaryType":"sling:OsgiConfig",
-  "org.apache.sling.commons.log.file": "",
-  "org.apache.sling.commons.log.level": "info"
-}

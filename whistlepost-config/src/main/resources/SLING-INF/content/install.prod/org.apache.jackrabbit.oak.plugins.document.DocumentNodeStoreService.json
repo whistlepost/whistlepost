@@ -1,4 +1,0 @@
-{
-  "jcr:primaryType":"sling:OsgiConfig",
-  "mongouri": "mongodb://mongo:27017/oak"
-}

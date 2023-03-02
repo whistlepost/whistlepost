@@ -1,8 +1,0 @@
-{
-  "sling:configs": {
-    "input": {
-      "type": "month",
-      "title": "A month value"
-    }
-  }
-}

@@ -1,9 +1,0 @@
-Sling-Initial-Content: SLING-INF/content;path:=/libs/conf;overwrite:=true
-Automatic-Module-Name: org.whistlepost.config
--plugin org.apache.sling.caconfig.bndplugin.ConfigurationClassScannerPlugin
-Export-Package = org.whistlepost.config*
-Bundle-Name: Whistlepost Configuration
-Bundle-Description: Core configuration classes for Whistlepost
-Bundle-SymbolicName: org.whistlepost.config
-Bundle-Category: whistlepost
-Bundle-Version: ${project.version}
