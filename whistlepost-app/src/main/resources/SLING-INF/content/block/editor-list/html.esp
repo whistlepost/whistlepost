@@ -1,9 +1,0 @@
-<ul>
-<%
-    for(var i in currentNode) {
-        if (currentNode[i]['sling:resourceType'] == 'wp/editor/article') {
-            out.print('<li><a href="/content/wp/admin/create.html' + currentNode[i].path + '">' + currentNode[i].title + '</a></li>');
-        }
-    }
-%>
-</ul>
