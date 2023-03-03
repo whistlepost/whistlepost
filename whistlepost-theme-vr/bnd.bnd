@@ -1,6 +1,0 @@
-Sling-Initial-Content: SLING-INF/content;path:=/libs/${project.name};overwrite:=true
-Sling-Bundle-Resources: /assets/libs/wp-vr;path:=/assets
-Automatic-Module-Name: org.mnode.whistlepost.vr
-Bundle-Name: Whistlepost Extension - Virtual Reality
-Bundle-SymbolicName: org.mnode.whistlepost-vr
-Bundle-Category: whistlepost
