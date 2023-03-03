@@ -1,7 +1,2 @@
-include 'whistlepost-app'
-include 'whistlepost-i18n'
-include 'whistlepost-content'
-include 'whistlepost-config'
 include 'whistlepost-model'
-include 'whistlepost-model-extensions'
 include 'whistlepost-models-pages'
