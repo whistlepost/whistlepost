@@ -1,0 +1,6 @@
+<th:block data-th-with="og=${resource.adaptTo(@org.whistlepost.model.extensions.OpenGraphEndpoint@class)}">
+    <div data-th-replace="/apps/wp-pure/fragments/opengraph.html::tile(og=${og}, width='240')"></div>
+    <th:block data-sling-include="${resource.path}" data-sling-replaceSelectors="'feed'">
+        [FEED]
+    </th:block>
+</th:block>

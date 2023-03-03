@@ -1,0 +1,14 @@
+{
+  "title": "My Example Site",
+  "description": "My amazing site for testing Whistlepost",
+  "author": "Foo Bar",
+  "keywords": ["whistlepost", "test", "apachesling"],
+  "sections": {
+    "feature": {
+      "resourceRef": "/content/articles/list/one"
+    },
+    "articles": {
+      "resourceRef": "/content/articles"
+    }
+  }
+}

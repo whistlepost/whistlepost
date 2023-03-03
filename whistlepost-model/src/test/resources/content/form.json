@@ -1,0 +1,7 @@
+{
+  "target": "_self",
+  "action": "/content/index",
+  "fieldSets": [
+    "/content/forms/fieldsets/default"
+  ]
+}

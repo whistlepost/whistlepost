@@ -1,0 +1,6 @@
+<section data-th-with="localBusinesses=${resource.adaptTo(@org.whistlepost.model.schema.LocalBusinessList@class)},page=${resource.adaptTo(@org.whistlepost.model.Page@class)}">
+    <div class="wp-layout dynamic"
+         data-th-replace="/apps/wp-pure/fragments/localBusiness.html :: sidebar(${localBusinesses}, ${page.title})">
+        [IMAGE LIST]
+    </div>
+</section>

@@ -1,0 +1,12 @@
+<section data-th-with="page=${resource.adaptTo(@org.whistlepost.model.SectionList@class)}">
+    <div class="pure-g">
+        <th:block data-th-each="section : ${page.sections}">
+            <div class="pure-u-1-4 pure-u-md-1"
+                data-th-class="|pure-u-1-${page.sections.size()} pure-u-md-1|">
+                <th:block data-sling-include="${section}" data-sling-replaceSelectors="'column'">
+                    [PAGE COLUMN]
+                </th:block>
+            </div>
+        </th:block>
+    </div>
+</section>

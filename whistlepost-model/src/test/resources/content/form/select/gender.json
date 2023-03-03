@@ -1,0 +1,8 @@
+{
+  "id": "gender",
+  "labelKey": "gender",
+  "name": "gender",
+  "optionList": "/content/forms/options/list/gender",
+  "sling:resourceType": "wp/component/form/select",
+  "sling:configRef": "/conf/site/form/select/gender"
+}

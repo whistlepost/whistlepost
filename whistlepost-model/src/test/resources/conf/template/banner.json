@@ -1,0 +1,7 @@
+{
+  "sling:configs": {
+    "theme": {
+      "name": "wp-bootstrap"
+    }
+  }
+}

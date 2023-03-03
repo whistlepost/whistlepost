@@ -1,0 +1,4 @@
+<th:block data-th-with="control=${resource.adaptTo(@org.whistlepost.model.Link@class)}">
+    <div data-th-replace="/apps/wp-pure/form/fragments/link.html::link(control=${control}, value=${#strings.substringAfter(request.requestPathInfo.suffix, '/')})">
+    </div>
+</th:block>

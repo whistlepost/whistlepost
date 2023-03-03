@@ -1,0 +1,5 @@
+<!-- HTML fragment to render header navigation -->
+<th:block data-th-with="nav=${resource.adaptTo(@org.whistlepost.model.site.Navigation@class)}, home=${resource.resourceResolver.resolve('/content/wnews/index').adaptTo(@org.whistlepost.model.Page@class)}">
+    <nav data-th-replace="/apps/wp-pure/fragments/menu.html :: menu(${nav}, ${home})">
+    </nav>
+</th:block>

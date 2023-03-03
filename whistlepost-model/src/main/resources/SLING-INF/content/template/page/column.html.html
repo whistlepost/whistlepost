@@ -1,0 +1,4 @@
+<!-- Render a page as a sidebar item -->
+<th:block data-th-with="page=${resource.adaptTo(@org.whistlepost.model.schema.CreativeWork@class)}">
+    <a data-th-replace="~{/apps/wp-pure/fragments/webpage.html :: image-link(${page})}">[PAGE LINK]</a>
+</th:block>

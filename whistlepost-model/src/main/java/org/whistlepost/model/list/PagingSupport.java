@@ -1,10 +1,7 @@
 package org.whistlepost.model.list;
 
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.models.annotations.Default;
-import org.apache.sling.models.annotations.Via;
 
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +10,10 @@ import java.util.List;
  */
 public interface PagingSupport<T> {
 
-    int DEFAULT_PAGE_SIZE = 6;
-
     /**
      * Returns the configured number of items per page.
      * @return a positive integer
      */
-    @Inject @Via("resource")
-    @Default(intValues = DEFAULT_PAGE_SIZE)
     int getPageSize();
 
     int getPageCount();

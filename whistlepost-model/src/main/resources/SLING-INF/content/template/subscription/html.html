@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      data-th-with="page=${resource.adaptTo(@org.whistlepost.model.Page@class)}">
+
+<th:block data-sling-include="${resource}" data-sling-resourceType="'wp/component/head'">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../assets/images/favicon.ico" rel="icon">
+    <link href="../../../../assets/css/whistlepost.bundle.css" rel="stylesheet">
+    <link href="../../../../assets/css/fonts.css" rel="stylesheet">
+</th:block>
+
+<body>
+<th:block data-sling-include="${resource}" data-sling-resourceType="'wp/component/admin'">[ADMIN BAR]</th:block>
+
+<div style="padding:20px">
+    <h1 data-th-text="${page.title}">[TITLE]</h1>
+    <a href="#"
+       data-th-href="|${resource.path}.edit.html|" data-th-text="#{edit}">[Edit]</a>
+
+    <th:block data-sling-include="${resource.path}" data-sling-replaceSelectors="'list'">
+        [SUBSCRIPTION]
+    </th:block>
+</div>
+</body>
+</html>

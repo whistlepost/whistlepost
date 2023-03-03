@@ -4,7 +4,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.caconfig.annotations.ContextAwareConfiguration;
-import org.whistlepost.config.component.BreadcrumbConfig;
+import org.whistlepost.caconfig.component.BreadcrumbConfig;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;

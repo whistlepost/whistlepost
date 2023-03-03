@@ -1,0 +1,18 @@
+<!--<head data-th-with="branding=${resolver.resolve(request, '/content/branding').adaptTo(@org.whistlepost.model.site.Branding@class)}">-->
+<head data-th-with="page=${resource.adaptTo(@org.whistlepost.model.Page@class)}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"
+          data-th-content="|${page.viewport.width()}, ${page.viewport.initialScale()}|">
+
+    <th:block data-th-if="${page.metadata.title()}">
+        <title data-th-text="|${page.title} - ${page.metadata.title()}|">[TITLE]</title>
+    </th:block>
+    <th:block data-th-unless="${page.metadata.title()}">
+        <title data-th-text="${page.title}">[TITLE]</title>
+    </th:block>
+
+    <link data-th-href="${page.branding.favicon()}" rel="icon">
+    <link href="/assets/wp-pure/whistlepost.bundle.css" rel="stylesheet">
+    <link href="/assets/wp-pure/css/fonts.css" rel="stylesheet">
+</head>

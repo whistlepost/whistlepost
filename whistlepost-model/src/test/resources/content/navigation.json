@@ -1,0 +1,19 @@
+{
+  "sling:resourceType": "wp/template/navigation",
+  "header": [
+    "/content/site/index"
+  ],
+  "columns": [
+    "/content/wildlife/current",
+    "/content/recipes/current",
+    "/content/gardening/current",
+    "/content/history/current",
+    "/content/kids/current",
+    "/content/firstpeoples/current"
+  ],
+  "footer": [
+    "/content/advertising",
+    "/content/subscribe",
+    "/content/contact"
+  ]
+}

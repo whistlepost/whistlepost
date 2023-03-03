@@ -1,0 +1,4 @@
+<!-- Render a column list as a dropdown menu item -->
+<th:block data-th-with="page=${resource.adaptTo(@org.whistlepost.model.Page@class)}, children=${resource.adaptTo(@org.whistlepost.model.SectionList@class)}">
+    <span data-th-replace="~{/apps/wp-pure/fragments/menu.html :: dropdown-menu-item(${page}, ${children})}">[MENU ITEM]</span>
+</th:block>

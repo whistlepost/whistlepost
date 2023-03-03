@@ -1,0 +1,5 @@
+<th:block data-th-with="page=${resource.adaptTo(@org.whistlepost.model.Page@class)}">
+    <header data-th-replace="${currentSession.userID != 'anonymous'} ? ~{/apps/wp-pure/fragments/admin.html::navbar(${page})} : ~{}">
+        [ADMIN BAR]
+    </header>
+</th:block>

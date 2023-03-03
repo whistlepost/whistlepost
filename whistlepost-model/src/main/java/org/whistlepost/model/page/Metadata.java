@@ -8,6 +8,10 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import javax.inject.Inject;
 import java.util.List;
 
+/**
+ * @deprecated use {@link org.whistlepost.caconfig.site.MetadataConfig}
+ */
+@Deprecated
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface Metadata {
 

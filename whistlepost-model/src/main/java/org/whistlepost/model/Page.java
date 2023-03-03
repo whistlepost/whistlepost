@@ -3,14 +3,12 @@ package org.whistlepost.model;
 import org.apache.sling.api.adapter.Adaptable;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.caconfig.annotations.ContextAwareConfiguration;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.whistlepost.config.ActionConfig;
-import org.whistlepost.config.BrandingConfig;
-import org.whistlepost.config.LayoutConfig;
-import org.whistlepost.config.MetadataConfig;
+import org.whistlepost.caconfig.site.*;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -22,13 +20,19 @@ import static org.apache.sling.query.SlingQuery.$;
  * only requires a single mandatory property: title.
  */
 @Model(adaptables = {Resource.class})
-public interface Page extends Comparable<Page>, Adaptable {
+public interface Page extends Comparable<Page>, Adaptable, Themeable {
 
-    @Inject
+    @Inject @Optional
     String getTitle();
 
     @ContextAwareConfiguration
     MetadataConfig getMetadata();
+
+    @ContextAwareConfiguration
+    ViewportConfig getViewport();
+
+    @ContextAwareConfiguration
+    OpenGraphConfig getOpenGraph();
 
     @ContextAwareConfiguration
     BrandingConfig getBranding();
@@ -37,7 +41,7 @@ public interface Page extends Comparable<Page>, Adaptable {
     LayoutConfig getLayout();
 
     @ContextAwareConfiguration
-    List<ActionConfig> getActions();
+    List<PageActionConfig> getActions();
 
     @Self
     Resource getResource();

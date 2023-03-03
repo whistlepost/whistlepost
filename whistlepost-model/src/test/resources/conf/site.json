@@ -10,12 +10,13 @@
     },
     "layout": {
       "title": "Layout",
+      "header": "/content/site/index",
       "sidebar": "/content/advertisements",
       "navigation": "/content/navigation",
       "sling:resourceType": "wp/layout"
     },
     "legal": {
-      "sling:resourceType": "wp/include/legal",
+      "sling:resourceType": "wp/template/legal",
       "jcr:primaryType": "nt:unstructured",
       "copyright": "2022 Waranga News Inc.",
       "show_advanced_settings": false,
@@ -47,6 +48,10 @@
     "sitemap": {
       "urlBase": "https://www.example.com/",
       "changeFrequency": "weekly"
+    },
+    "viewport": {
+      "width": "device-width",
+      "initialScale": "1.0"
     }
   }
 }

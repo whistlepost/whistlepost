@@ -2,12 +2,12 @@ apply plugin: 'groovy'
 
 dependencies {
 
-    api project(':whistlepost-config')
+    api 'org.whistlepost:whistlepost-caconfig:0.1.0-SNAPSHOT'
 
     // sling models
     implementation "org.apache.sling:org.apache.sling.api:$slingApiVersion",
             "org.apache.sling:org.apache.sling.models.api:$slingModelsApiVersion",
-            "org.apache.sling:org.apache.sling.models.caconfig:1.0.2",
+            "org.apache.sling:org.apache.sling.models.caconfig:$slingCaconfigVersion",
             "javax:javaee-api:$javaEEVersion"
 
     // sling validation

@@ -1,0 +1,10 @@
+<th:block data-th-with="feed=${request.adaptTo(@org.whistlepost.model.extensions.FeedEndpointRequest@class)},paging=${request.adaptTo(@org.mnode.whistlepost.model.request.Paging@class)}">
+    <div data-th-replace="/apps/wp-pure/fragments/feed.html::summary(${feed}, ${paging})">
+        <!--    <h4>[TITLE]</h4>-->
+        <ul>
+            <li>
+                [ENTRY]
+            </li>
+        </ul>
+    </div>
+</th:block>

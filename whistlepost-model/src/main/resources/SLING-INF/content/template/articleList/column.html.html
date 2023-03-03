@@ -1,0 +1,6 @@
+<section data-th-with="articles=${resource.adaptTo(@org.whistlepost.model.schema.ArticleList@class)},page=${resource.adaptTo(@org.whistlepost.model.Page@class)}">
+    <div class="wp-layout dynamic"
+         data-th-replace="/apps/wp-pure/fragments/article.html::link-list(${articles}, ${page.title})">
+        [ARTICLE LIST]
+    </div>
+</section>

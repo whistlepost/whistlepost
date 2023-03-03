@@ -8,7 +8,9 @@ import javax.inject.Inject;
 
 /**
  * Support for the <a href="https://ogp.me/">OpenGraph</a> protocol.
+ * @deprecated use {@link org.whistlepost.caconfig.site.OpenGraphConfig}
  */
+@Deprecated
 @Model(adaptables = {Resource.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public interface OpenGraph {
 
