@@ -1,7 +1,0 @@
-{
-  "title":"Whistlepost Admin",
-  "sling:resourceType":"wp/page/toc",
-  "jcr:primaryType":"nt:unstructured",
-  "list": ["content/index", "media/index", "extensions/index"],
-  "defaultContentsPage": "content/index"
-}
