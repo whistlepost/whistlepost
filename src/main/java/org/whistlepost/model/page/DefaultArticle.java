@@ -1,11 +1,9 @@
-package org.whistlepost.page;
+package org.whistlepost.model.page;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.ResourcePath;
-import org.whistlepost.model.api.Article;
-import org.whistlepost.model.api.Reference;
 
 import javax.inject.Inject;
 import javax.inject.Named;

@@ -1,4 +1,4 @@
-package org.whistlepost.model.api;
+package org.whistlepost.model.page;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;

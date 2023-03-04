@@ -1,8 +1,7 @@
-package org.whistlepost.page;
+package org.whistlepost.model.page;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
-import org.whistlepost.model.api.Advertisement;
 
 import java.util.Collections;
 import java.util.List;

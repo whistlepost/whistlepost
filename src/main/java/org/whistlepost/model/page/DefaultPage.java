@@ -1,13 +1,10 @@
-package org.whistlepost.page;
+package org.whistlepost.model.page;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
-import org.whistlepost.model.api.Metadata;
-import org.whistlepost.model.api.Page;
-import org.whistlepost.model.api.TableOfContents;
 
 import static org.apache.sling.models.annotations.injectorspecific.InjectionStrategy.OPTIONAL;
 import static org.apache.sling.query.SlingQuery.$;

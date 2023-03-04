@@ -1,4 +1,4 @@
-package org.whistlepost.model.api;
+package org.whistlepost.model.page;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
@@ -6,15 +6,17 @@ import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.ResourcePath;
 
 import javax.inject.Inject;
-import javax.inject.Named;
-import java.util.List;
+import java.net.URL;
 
 @Model(adaptables = {Resource.class})
-public interface TableOfContents {
+public interface Reference {
 
-    @Inject @Optional @Named("toc")
-    List<Reference> getPages();
+    @Inject @Optional
+    String getTitle();
 
-    @ResourcePath(name = "defaultContentsPage") @Optional
-    Page getDefaultPage();
+    @ResourcePath(name = "path") @Optional
+    Page getPage();
+
+    @Inject @Optional
+    URL getLink();
 }

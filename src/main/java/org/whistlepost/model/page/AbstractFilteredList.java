@@ -1,10 +1,9 @@
-package org.whistlepost.page;
+package org.whistlepost.model.page;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
-import org.whistlepost.model.api.PageableList;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;

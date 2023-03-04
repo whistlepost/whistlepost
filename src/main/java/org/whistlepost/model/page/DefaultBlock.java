@@ -1,10 +1,8 @@
-package org.whistlepost.page;
+package org.whistlepost.model.page;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
-import org.whistlepost.model.api.BlockEditor;
-import org.whistlepost.model.api.BlockResource;
 
 @Model(adaptables = {Resource.class})
 public class DefaultBlock implements BlockResource {
