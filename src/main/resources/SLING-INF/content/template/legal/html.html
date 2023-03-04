@@ -1,0 +1,17 @@
+
+<footer data-th-with="legal=${resource.adaptTo(@org.whistlepost.model.site.Legal@class)}">
+    <ul>
+        <li>
+            <a href="#" data-th-text="${legal.copyright}">[COPYRIGHT TEXT]</a>
+        </li>
+        <li>
+            <a href="#" data-th-href="|${legal.license}.html|">License</a>
+        </li>
+        <li>
+            <a href="#" data-th-href="|${legal.privacyPolicy}.html|">Privacy</a>
+        </li>
+        <li>
+            <a href="#" data-th-href="|${legal.termsOfService}.html|">Terms of Service</a>
+        </li>
+    </ul>
+</footer>

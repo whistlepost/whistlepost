@@ -1,0 +1,32 @@
+{
+  "sling:resourceType": "wnews/page/recipe",
+  "date": "2022-03-03",
+  "title": "Easy One Cup Slice",
+  "image": "https://s3-ap-southeast-2.amazonaws.com/wp-media-lib/wnews/gallery/2022/04/Slice.Screenshot.png",
+  "abstract": "YUM!\nThis was so incredibly simple to make, absolutely delicious to eat, and fantastic to have as a quick put-together, up-your-sleeve nibble if you’ve got visitors or an upcoming morning or afternoon tea.\nWe’ve chosen to freeze most of the batch, if only to save our waistlines!",
+  "body": {
+    "pars": [
+
+    ]
+  },
+  "ingredients": [
+    "•\t1 cup of sugar\n",
+    "•\t1 cup of Self Raising Flour\n",
+    "•\t1 cup of coconut\n",
+    "•\t1 cup of any dried fruit, nuts, choc bits \t\t\tyou have on hand (any combination)\n",
+    "•\t1 egg\n",
+    "•\t½ cup of milk\n",
+    "•\t120g butter, melted"
+  ],
+  "method": [
+    "Mix dry ingredients together.\n",
+    "Add the beaten egg, milk, and melted butter. ",
+    "Mix well and spread evenly into lined and greased slice tin. \n",
+    "Bake at 180ºC for 25-30mins\n",
+    "Sliced when cooled.\n",
+    "Enjoy!"
+  ],
+  "testimonials": "",
+  "published": false,
+  "sidebar": ""
+}

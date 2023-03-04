@@ -1,0 +1,57 @@
+{
+  "sling:configs": {
+    "branding": {
+      "image": "https://s3-ap-southeast-2.amazonaws.com/wp-media-lib/wnews/gallery/2021/09/wnews-masthead.png",
+      "logo": "/assets/wnews/images/217ed171a7f817350b356d44d1ee757e.png",
+      "alttext": "Waranga News",
+      "favicon": "/assets/wnews/favicon.ico",
+      "alt_text": "Masthead image",
+      "favicon_image": "https://s3-ap-southeast-2.amazonaws.com/wp-media-lib/wnews/gallery/2021/09/favicon.ico"
+    },
+    "layout": {
+      "title": "Layout",
+      "header": "/content/site/index",
+      "sidebar": "/content/advertisements",
+      "navigation": "/content/navigation",
+      "sling:resourceType": "wp/layout"
+    },
+    "legal": {
+      "sling:resourceType": "wp/template/legal",
+      "jcr:primaryType": "nt:unstructured",
+      "copyright": "2022 Waranga News Inc.",
+      "show_advanced_settings": false,
+      "license": "/content/licenses/list/cc-attribution",
+      "privacy": "/content/privacy",
+      "tos": "/content/tos",
+      "language": "en"
+    },
+    "metadata": {
+      "title": "Site Defaults",
+      "keywords": [],
+      "description": "",
+      "author": "Foo Bar",
+      "width": "device-width",
+      "initial-scale": "1.0",
+      "header": "/content/branding",
+      "sidebar": "/content/advertisements",
+      "footer": "/content/legal",
+      "navigation": "/content/navigation",
+      "banner_image": "https://s3-ap-southeast-2.amazonaws.com/wp-media-lib/wnews/gallery/2021/09/wnews-masthead.png",
+      "logo": "/assets/wnews/images/217ed171a7f817350b356d44d1ee757e.png",
+      "alttext": "Waranga News",
+      "favicon": "/assets/wnews/favicon.ico",
+      "copyright": "Waranga News 2022",
+      "layout": "/content/defaults",
+      "branding": "/content/defaults",
+      "legal": "/content/defaults"
+    },
+    "sitemap": {
+      "urlBase": "https://www.example.com/",
+      "changeFrequency": "weekly"
+    },
+    "viewport": {
+      "width": "device-width",
+      "initialScale": "1.0"
+    }
+  }
+}

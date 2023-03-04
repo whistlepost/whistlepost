@@ -1,4 +1,0 @@
-<%
-    var pageNumSuffix = request.requestPathInfo.suffix ? ' | ' + request.requestPathInfo.suffix.substring(1) : ''
-%>
-<%= currentNode.title %><%= pageNumSuffix %>

@@ -1,0 +1,7 @@
+<section data-th-with="articles=${resource.adaptTo(@org.whistlepost.model.schema.ArticleList@class)}">
+    <div class="wp-layout dynamic">
+        <th:block data-th-each="article : ${articles.getSortedList()}">
+            <article data-sling-include="${article.resource.path}" data-sling-replaceSelectors="'list'" data-sling-unwrap="true"></article>
+        </th:block>
+    </div>
+</section>

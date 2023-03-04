@@ -1,0 +1,8 @@
+{
+  "title": "Article One",
+  "sidebar": "/content/articles/list/sidebar",
+  "related": [
+    "/content/articles/list/two"
+  ],
+  "published": true
+}

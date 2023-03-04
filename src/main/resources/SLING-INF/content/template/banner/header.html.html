@@ -1,0 +1,5 @@
+<!-- HTML fragment to render branding in the site header -->
+<th:block data-th-with="image=${resource.adaptTo(@org.whistlepost.model.ExternalImage@class)}">
+    <div data-th-replace="~{|/apps/${image.theme.name}/fragments/image.html|::banner(${image})}">
+    </div>
+</th:block>

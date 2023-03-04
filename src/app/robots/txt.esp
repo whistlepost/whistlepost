@@ -1,8 +1,0 @@
-User-agent: <%= currentNode["user-agent"] %>
-<%
-  var allowed = currentNode["allow"];
-  for (var i = 0; i < allowed.length; i++) {
-    out.println("Allow: " + allowed[i]);
-  }
-%>
-Sitemap: <%= currentNode["sitemap"] %>

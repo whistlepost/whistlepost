@@ -1,0 +1,7 @@
+{
+  "sling:configs": {
+    "paging": {
+      "pageSize": 3
+    }
+  }
+}

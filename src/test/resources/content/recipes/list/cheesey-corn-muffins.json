@@ -1,0 +1,34 @@
+{
+  "sling:resourceType": "wnews/page/recipe",
+  "date": "2022-06-23",
+  "title": "Cheesey Corn Muffins",
+  "image": "https://s3-ap-southeast-2.amazonaws.com/wp-media-lib/wnews/gallery/2022/06/corn muffins copy.jpg",
+  "abstract": "",
+  "body": {
+    "pars": [
+
+    ]
+  },
+  "ingredients": [
+    "2½ cups self raising flour\n",
+    "½ cup fine polenta\n",
+    "1 cup milk\n",
+    "125g butter, melted\n",
+    "130g can corn kernels, drained\n",
+    "2 spring onions, finely chopped\n",
+    "½ cup grated cheddar cheese\n",
+    "12 semidried tomatoes, chopped (optional)"
+  ],
+  "method": [
+    "Preheat oven to 210º C and grease muffin trays.  \n",
+    "Sift flour and polenta into large bowl and make a well in centre.\n",
+    "In another bowl, whisk together milk, butter and eggs and then add corn, spring onion, cheddar and salt and pepper to taste.\n",
+    "Pour into the well made in flour mix and fold gently until combined – don’t overmix.\n",
+    "Spoon into greased tins and bake for twenty to twenty-five minutes. ",
+    "Leave for five minutes before removing from tin.  ",
+    "Nice served warm, split with a good spread of cold butter."
+  ],
+  "testimonials": "",
+  "published": true,
+  "sidebar": ""
+}

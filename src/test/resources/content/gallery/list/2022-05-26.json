@@ -1,0 +1,12 @@
+{
+  "sling:resourceType": "wp/page/imageObject",
+  "date": "2022-05-26",
+  "title": "2022 05 26",
+  "image": "https://s3-ap-southeast-2.amazonaws.com/wp-media-lib/wnews/gallery/2022/06/20220526p01.jpg",
+  "abstract": "",
+  "published": true,
+  "body": {
+    "content": ""
+  },
+  "related": []
+}

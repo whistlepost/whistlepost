@@ -1,0 +1,6 @@
+Automatic-Module-Name: org.whistlepost.models.pages
+-plugin.slingmodels = org.apache.sling.bnd.models.ModelsScannerPlugin;generatePackagesHeader=true
+Export-Package = org.mnode.whistlepost*
+Bundle-Name: Whistlepost Models - Pages
+Bundle-SymbolicName: org.whistlepost.models-pages
+Bundle-Category: whistlepost

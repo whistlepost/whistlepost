@@ -1,0 +1,10 @@
+<th:block data-th-with="container=${resource.adaptTo(@org.whistlepost.model.schema.CreativeWorkList@class)}">
+    <ul>
+        <li data-th-each="subscription : ${container.getSortedList()}">
+            <a data-th-href="|${subscription.resource.path}.html|"
+               data-th-with="og=${subscription.adaptTo(@org.whistlepost.model.extensions.OpenGraphEndpoint@class)}">
+                <img src="#" data-th-replace="/apps/wp-pure/fragments/opengraph.html::image(${og})">
+            </a>
+        </li>
+    </ul>
+</th:block>

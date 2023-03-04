@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      data-th-with="page=${resource.adaptTo(@org.whistlepost.model.Page@class)}">
+
+<th:block data-sling-include="${resource}" data-sling-resourceType="'wp/component/head'">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../assets/images/favicon.ico" rel="icon">
+    <link href="../../../../assets/css/whistlepost.bundle.css" rel="stylesheet">
+    <link href="../../../../assets/css/fonts.css" rel="stylesheet">
+</th:block>
+
+<body>
+<div class="wp-layout holygrail">
+    <header data-th-if="${not #strings.isEmpty(page.layout.header)}">
+        <th:block data-sling-include="${page.layout.header}" data-sling-replaceSelectors="'header'">
+            [HEADER SECTION]
+        </th:block>
+    </header>
+    <nav data-th-if="${not #strings.isEmpty(page.layout.navigation)}">
+        <th:block data-sling-include="${page.layout.navigation}">
+            [HEADER NAV SECTION]
+        </th:block>
+    </nav>
+    <main>
+        <th:block data-sling-include="${page}" data-sling-replaceSelectors="'section'">
+            [MAIN SECTIONS]
+        </th:block>
+    </main>
+    <aside data-th-if="${not #strings.isEmpty(page.layout.sidebar)}">
+        <th:block data-sling-include="${page.layout.sidebar}" data-sling-replaceSelectors="'sidebar'">
+            [SIDEBAR SECTION]
+        </th:block>
+    </aside>
+    <footer data-th-if="${not #strings.isEmpty(page.layout.footer)}">
+        <th:block data-sling-include="${page.layout.footer}" data-sling-replaceSelectors="'footer'">
+            [FOOTER SECTION]
+        </th:block>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "sling:resourceType": "wp/template/banner",
+  "sling:configRef": "/conf/template/banner",
+  "source": "http://example.com/banner.png",
+  "title": "Example Banner",
+  "altText": "Example Banner image"
+}

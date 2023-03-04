@@ -4,7 +4,6 @@ build/
 out/
 .idea/
 *.iml
-gradle.properties
 !/whistlepost-config/gradle.properties
 !/site-starter/templates/whistlepost-site/gradle.properties
 !/site-starter/templates/whistlepost-site/site-config/gradle.properties

@@ -1,0 +1,18 @@
+{
+  "title": "Site Defaults",
+  "author": "Foo Bar",
+  "width": "device-width",
+  "initial-scale": "1.0",
+  "header": "/content/branding",
+  "sidebar": "/content/advertisements",
+  "footer": "/content/legal",
+  "navigation": "/content/navigation",
+  "banner_image": "https://s3-ap-southeast-2.amazonaws.com/wp-media-lib/wnews/gallery/2021/09/wnews-masthead.png",
+  "logo": "/assets/wnews/images/217ed171a7f817350b356d44d1ee757e.png",
+  "alt-text": "Waranga News",
+  "favicon": "/assets/wnews/favicon.ico",
+  "copyright": "Waranga News 2022",
+  "layout": "/content/defaults",
+  "branding": "/content/defaults",
+  "legal": "/content/defaults"
+}

@@ -1,0 +1,5 @@
+<!-- Render a page as a menu item -->
+<th:block data-th-with="page=${resource.adaptTo(@org.whistlepost.model.Page@class)}">
+<!--    <span data-th-replace="${not #strings.isEmpty(page.branding.logo)} ? ~{/apps/wp-pure/fragments/menu.html::image-menu-item(${page})} : ~{/apps/wp-pure/fragments/menu.html::link-menu-item(${page})}">[MENU ITEM]</span>-->
+    <span data-th-replace="~{/apps/wp-pure/fragments/menu.html::link-menu-item(${page})}">[MENU ITEM]</span>
+</th:block>

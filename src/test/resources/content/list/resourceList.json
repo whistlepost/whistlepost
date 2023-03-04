@@ -1,0 +1,12 @@
+{
+  "list": {
+    "one": {
+      "sling:resourceType":"nt:unstructured",
+      "title": "Child One"
+    },
+    "two": {
+      "sling:resourceType":"nt:unstructured",
+      "title": "Child Two"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+package org.whistlepost.model.page;
+
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.factory.ModelFactory;
+import org.apache.sling.testing.mock.sling.junit5.SlingContextExtension;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.whistlepost.model.AbstractModelTest;
+import org.whistlepost.model.Page;
+import org.whistlepost.model.site.Navigation;
+
+@ExtendWith(SlingContextExtension.class)
+class NavigationTest extends AbstractModelTest {
+
+    @Test
+    public void testLayout() {
+        context.load().json("/content/navigation.json", "/content/navigation");
+        context.load().json("/content/site/index.json", "/content/site/index");
+        context.load().json("/content/defaults.json", "/content/defaults");
+
+        Resource resource = context.currentResource("/content/site/index");
+        Page page = context.getService(ModelFactory.class).createModel(resource, Page.class);
+        Navigation navigation = context.getService(ModelFactory.class).createModel(
+                context.currentResource(page.getLayout().navigation()), Navigation.class);
+        Assertions.assertEquals(1, navigation.getHeaderNav().size());
+        Assertions.assertEquals("My Example Site", navigation.getHeaderNav().get(0).getTitle());
+    }
+}

@@ -1,27 +1,2 @@
-def extensions = [
-    'whistlepost-analytics',
-    'whistlepost-authz',
-//    'whistlepost-calendar',
-//    'whistlepost-comments',
-//    'whistlepost-cors',
-    'whistlepost-editor',
-    'whistlepost-errorhandler',
-//    'whistlepost-feeds',
-//    'whistlepost-graphql',
-//    'whistlepost-headers',
-    'whistlepost-httpgateway',
-//    'whistlepost-jsonld',
-    'whistlepost-links',
-//    'whistlepost-material',
-//    'whistlepost-opengraph',
-    'whistlepost-pages',
-    'whistlepost-scripting-groovy-markup',
-    'whistlepost-scripting-liquid',
-//    'whistlepost-gallery'
-    'whistlepost-vr',
-]
-
-include(extensions as String[])
-rootProject.children.each { extension ->
-    extension.projectDir = new File("$rootDir/extensions/$extension.name")
-}
+//include 'whistlepost-model'
+//include 'whistlepost-models-pages'

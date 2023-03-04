@@ -1,0 +1,14 @@
+{
+  "title": "Filtered Content",
+  "list": {
+    "one": {
+      "title": "One"
+    },
+    "two": {
+      "title": "Two"
+    },
+    "three": {
+      "title": "Three"
+    }
+  }
+}

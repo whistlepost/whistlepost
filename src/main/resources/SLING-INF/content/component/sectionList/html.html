@@ -1,0 +1,7 @@
+<th:block data-th-with="sectionList=${resource.adaptTo(@org.whistlepost.model.SectionList@class)}">
+    <th:block data-th-each="section : ${sectionList.sections}">
+        <th:block data-sling-include="${section}">
+            [SECTIONS]
+        </th:block>
+    </th:block>
+</th:block>

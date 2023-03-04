@@ -1,0 +1,6 @@
+{
+  "title": "Recipes",
+  "pageSize": "3",
+  "filter": "nt:unstructured[published=true]",
+  "itemListOrder": "Descending"
+}

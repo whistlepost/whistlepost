@@ -1,0 +1,19 @@
+{
+  "sling:resourceType": "wp/component/paging",
+  "sling:configRef": "/conf/component/paging",
+  "list": {
+    "jcr:primaryType": "nt:unstructured",
+    "item1": {
+      "title": "Item 1"
+    },
+    "item2": {
+      "title": "Item 2"
+    },
+    "item3": {
+      "title": "Item 3"
+    },
+    "item4": {
+      "title": "Item 4"
+    }
+  }
+}

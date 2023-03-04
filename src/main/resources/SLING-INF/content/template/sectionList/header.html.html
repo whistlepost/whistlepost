@@ -1,0 +1,7 @@
+<header data-th-with="page=${resource.adaptTo(@org.whistlepost.model.Page@class)}">
+    <th:block data-th-each="section : ${page.sections}">
+        <th:block data-sling-include="${section}" data-sling-replaceSelectors="'section'">
+            [PAGE SECTION]
+        </th:block>
+    </th:block>
+</header>

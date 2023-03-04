@@ -1,0 +1,4 @@
+<nav data-th-with="toc=${resource.adaptTo(@org.whistlepost.model.TableOfContents@class)}">
+    <h2 data-th-text="#{'contents'}">[CONTENTS]</h2>
+    <div data-th-replace="/apps/wp-pure/fragments/toc.html::page-list(${toc}, 'content')"></div>
+</nav>
