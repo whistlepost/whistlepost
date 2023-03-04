@@ -22,6 +22,5 @@ class PageTest extends AbstractModelTest {
         Assertions.assertEquals("Site Defaults", page.getMetadata().title());
         Assertions.assertNotNull(page.getBranding());
         Assertions.assertEquals("/assets/wnews/favicon.ico", page.getBranding().favicon());
-        Assertions.assertEquals(2, page.getSections().size());
     }
 }

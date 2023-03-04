@@ -11,10 +11,13 @@ buildscript {
 
 plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.13.3'
-    id 'net.ltgt.errorprone' version "1.2.1" apply false
-    id 'biz.aQute.bnd.builder' version "$bndVersion" apply false
-    id 'org.javamodularity.moduleplugin' version '1.8.10' apply false
+    id 'biz.aQute.bnd.builder' version "$bndVersion"
 }
+
+apply plugin: 'groovy'
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
 
 scmVersion {
     tag {
@@ -29,139 +32,130 @@ scmVersion {
     }
 }
 
-//apply plugin: 'java'
-
-configure(subprojects) {
-    apply plugin: 'java-library'
-    apply plugin: 'maven-publish'
-    apply plugin: 'signing'
-    apply plugin: 'biz.aQute.bnd.builder'
-    apply plugin: 'org.javamodularity.moduleplugin'
-
-    repositories {
-        mavenCentral()
-        mavenLocal()
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
-        }
-    }
-
-    sourceCompatibility = 8
-    targetCompatibility = 8
-
-    group = 'org.whistlepost'
-    version = rootProject.scmVersion.version
-
-    ext {
-        isReleaseVersion = !version.endsWith("SNAPSHOT")
-    }
-
-    configurations {
-        bundles {
-            transitive = false
-            canBeConsumed = true
-            canBeResolved = false
-        }
-    }
-
-    test {
-        useJUnitPlatform()
-    }
-
-    publishing {
-        publications {
-            "$name"(MavenPublication) {
-                from components.java
-                pom.withXml {
-                    asNode().appendNode('name', name)
-                    asNode().appendNode('description', description)
-                    asNode().appendNode('url', 'https://www.whistlepost.org')
-
-                    def scmNode = asNode().appendNode('scm')
-                    scmNode.appendNode('url', 'https://github.com/whistlepost/whistlepost')
-                    scmNode.appendNode('connection', 'scm:git@github.com:whistlepost/whistlepost.git')
-                    scmNode.appendNode('developerConnection', 'scm:git@github.com:whistlepost/whistlepost.git')
-
-                    def licenseNode = asNode().appendNode('licenses').appendNode('license')
-                    licenseNode.appendNode('name', 'Apache License')
-                    licenseNode.appendNode('url', 'https://raw.githubusercontent.com/whistlepost/whistlepost/master/LICENSE')
-                    licenseNode.appendNode('distribution', 'repo')
-
-                    def developerNode = asNode().appendNode('developers').appendNode('developer')
-                    developerNode.appendNode('id', 'fortuna')
-                    developerNode.appendNode('name', 'Ben Fortuna')
-                }
-            }
-        }
-
-        repositories {
-            maven {
-                name = "OSSRH"
-                url = version.endsWith('SNAPSHOT') ? "https://oss.sonatype.org/content/repositories/snapshots/" :
-                        "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-                credentials {
-                    username = System.getenv("MAVEN_USERNAME")
-                    password = System.getenv("MAVEN_PASSWORD")
-                }
-            }
-        }
-    }
-
-    signing {
-        required { isReleaseVersion }
-        sign publishing.publications[name]
-    }
-}
-
 repositories {
     mavenCentral()
     mavenLocal()
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
 }
 
-//group = 'micronode'
-//version = scmVersion.version
-//description = '''
-//A publishing platform based on Apache Sling
-//'''
+sourceCompatibility = 8
+targetCompatibility = 8
 
-//def bundleprojects = subprojects.findAll {it.name ==~ /^(whistlepost-|sling-).*/}
+group = 'org.whistlepost'
+version = scmVersion.version
 
+ext {
+    isReleaseVersion = !version.endsWith("SNAPSHOT")
+}
 
-configurations {
-    embed
-//    embed.transitive = false
-    
-    bundles
-    bundles.transitive = false
+test {
+    useJUnitPlatform()
+}
 
-    agent
-    agent.transitive = false
+publishing {
+    publications {
+        "$name"(MavenPublication) {
+            from components.java
+            pom.withXml {
+                asNode().appendNode('name', name)
+                asNode().appendNode('description', description)
+                asNode().appendNode('url', 'https://www.whistlepost.org')
+
+                def scmNode = asNode().appendNode('scm')
+                scmNode.appendNode('url', 'https://github.com/whistlepost/whistlepost')
+                scmNode.appendNode('connection', 'scm:git@github.com:whistlepost/whistlepost.git')
+                scmNode.appendNode('developerConnection', 'scm:git@github.com:whistlepost/whistlepost.git')
+
+                def licenseNode = asNode().appendNode('licenses').appendNode('license')
+                licenseNode.appendNode('name', 'Apache License')
+                licenseNode.appendNode('url', 'https://raw.githubusercontent.com/whistlepost/whistlepost/master/LICENSE')
+                licenseNode.appendNode('distribution', 'repo')
+
+                def developerNode = asNode().appendNode('developers').appendNode('developer')
+                developerNode.appendNode('id', 'fortuna')
+                developerNode.appendNode('name', 'Ben Fortuna')
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "OSSRH"
+            url = version.endsWith('SNAPSHOT') ? "https://oss.sonatype.org/content/repositories/snapshots/" :
+                    "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
+}
+
+signing {
+    required { isReleaseVersion }
+    sign publishing.publications[name]
 }
 
 dependencies {
-    embed 'com.google.guava:guava:15.0'
+    api 'org.whistlepost:whistlepost-caconfig:0.1.0-SNAPSHOT'
+
+    // sling models
+    implementation "org.apache.sling:org.apache.sling.api:$slingApiVersion",
+            "org.apache.sling:org.apache.sling.models.api:$slingModelsApiVersion",
+            "org.apache.sling:org.apache.sling.models.caconfig:$slingCaconfigVersion",
+            "javax:javaee-api:$javaEEVersion"
+
+    // sling validation
+    implementation "org.apache.sling:org.apache.sling.validation.api:$slingValidationVersion"
+
+    // sling query
+    implementation "org.apache.sling:org.apache.sling.query:$slingQueryVersion"
+
+    // jsonpath
+    implementation 'com.jayway.jsonpath:json-path:2.7.0'
+
+    // csv
+    implementation 'com.opencsv:opencsv:5.6'
+
+    // markdown
+    implementation 'com.vladsch.flexmark:flexmark:0.64.0'
+
+    // component dependencies
+    compileOnly "org.codehaus.groovy:groovy:$groovyVersion",
+            "org.mnode.ical4j:ical4j:$ical4jVersion"
+
+    testImplementation "org.codehaus.groovy:groovy:$groovyVersion"
+
+    testImplementation platform("org.spockframework:spock-bom:2.1-groovy-3.0"),
+            "org.spockframework:spock-core",
+            "org.slf4j:slf4j-log4j12:$slf4jVersion",
+            "org.apache.logging.log4j:log4j:$log4jVersion"
+
+    // sling mocks
+    testImplementation 'org.apache.sling:org.apache.sling.testing.sling-mock-oak:3.1.2-1.40.0',
+            "org.apache.sling:org.apache.sling.testing.sling-mock.junit5:$slingMocksVersion",
+            "org.apache.sling:org.apache.sling.models.impl:$slingModelsImplVersion",
+            "org.osgi:org.osgi.service.http.whiteboard:1.1.1",
+            "org.osgi:org.osgi.annotation.versioning:1.1.2",
+            "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
+
+    // caconfig
+    testImplementation 'org.apache.sling:org.apache.sling.testing.caconfig-mock-plugin:1.4.0'
+
+    implementation "org.slf4j:slf4j-api:$slf4jVersion"
+
+    // sling query
+//    bundles "org.apache.sling:org.apache.sling.query:$slingQueryVersion"
+//    embed 'com.google.guava:guava:15.0'
 
     // tika parsers
 //    embed 'org.xerial:sqlite-jdbc:3.34.0',
 //            'org.apache.pdfbox:jbig2-imageio:3.0.3'
 
     // filesystem resource provider
-    embed 'org.apache.sling:org.apache.sling.fsresource:2.1.16'
-
-//    embed project(path: ':whistlepost-content', configuration: 'bundles')
-//    embed project(path: ':whistlepost-config', configuration: 'bundles')
-//    embed project(path: ':whistlepost-scripting-core', configuration: 'bundles')
-//    embed project(path: ':whistlepost-scripting-groovy', configuration: 'bundles')
-//    embed project(path: ':whistlepost-scripting-thymeleaf', configuration: 'bundles')
-//    embed project(path: ':whistlepost-scripting-liquid', configuration: 'bundles')
-//    embed project(path: ':whistlepost-authz', configuration: 'bundles')
-//    embed project(path: ':whistlepost-nosql', configuration: 'bundles')
-//    embed project(path: ':whistlepost-models-core', configuration: 'bundles')
-//    embed project(path: ':whistlepost-models-pages', configuration: 'bundles')
-//    embed project(path: ':whistlepost-models-schema', configuration: 'bundles')
-//    embed project(path: ':whistlepost-graphql', configuration: 'bundles')
-//    embed project(path: ':whistlepost-rewriter', configuration: 'bundles')
-//    embed project(path: ':whistlepost-icalendar', configuration: 'bundles')
+//    embed 'org.apache.sling:org.apache.sling.fsresource:2.1.16'
 
     // websocket
 //    embed 'javax.websocket:javax.websocket-api:1.1'
@@ -174,28 +168,11 @@ dependencies {
 //    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-(links|scripting-liquid)).*/)}
 //    bundles bundleprojects.findAll {!(it.name ==~ /^(whistlepost-scripting-liquid).*/)}
 
-    agent "io.prometheus.jmx:jmx_prometheus_javaagent:0.14.0"
-}
-
-task copyDeps(type: Copy) {
-    from configurations.embed
-    into 'build/deps'
-}
-
-task copyExt(type: Copy) {
-    from subprojects.collect { it.tasks.withType(Jar) }
-    into 'build/extensions'
+//    agent "io.prometheus.jmx:jmx_prometheus_javaagent:0.14.0"
 }
 
 task copyAgent(type: Copy) {
-    from configurations.agent
+//    from configurations.agent
     from('jmx_prometheus.yml')
     into 'build/agent'
 }
-
-//jar.enabled = false
-//assemble.dependsOn copyDeps, copyExt, copyAgent
-
-//configure(bundleprojects) { subproject ->
-//    apply from: "$rootDir/extension.gradle"
-//}
